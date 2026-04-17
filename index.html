@@ -137,46 +137,50 @@
         </div>
     </nav>
 
-    <div class="relative w-full h-[300px] md:h-[500px] bg-primary overflow-hidden group transition-colors duration-300">
+    <div class="relative w-full h-[350px] sm:h-[400px] md:h-[400px] lg:h-[500px] bg-primary overflow-hidden group transition-colors duration-300">
         <div id="carousel-track" class="flex h-full w-full transition-transform duration-700 ease-in-out" style="transform: translateX(0%)">
             
             <div class="w-full h-full flex-shrink-0 relative">
                 <a href="#" class="block w-full h-full transition-transform duration-700 hover:scale-[1.02]">
-                    <img src="https://i.imgur.com/eVRF354.jpg" alt="Featured Auction Slide 1" class="w-full h-full object-cover" />
+                    <img src="https://i.imgur.com/7UWHWlE.jpg" alt="Featured Auction Slide 1 Mobile" class="w-full h-full object-cover md:hidden" />
+                    <img src="https://i.imgur.com/eVRF354.jpg" alt="Featured Auction Slide 1 Desktop" class="w-full h-full object-cover hidden md:block" />
                 </a>
             </div>
 
             <div class="w-full h-full flex-shrink-0 relative">
                 <a href="#" class="block w-full h-full transition-transform duration-700 hover:scale-[1.02]">
-                    <img src="https://i.imgur.com/LnbubIs.jpg" alt="Featured Auction Slide 2" class="w-full h-full object-cover" />
+                    <img src="https://i.imgur.com/cz3zuE3.jpg" alt="Featured Auction Slide 2 Mobile" class="w-full h-full object-cover md:hidden" />
+                    <img src="https://i.imgur.com/LnbubIs.jpg" alt="Featured Auction Slide 2 Desktop" class="w-full h-full object-cover hidden md:block" />
                 </a>
             </div>
 
             <div class="w-full h-full flex-shrink-0 relative">
                 <a href="#" class="block w-full h-full transition-transform duration-700 hover:scale-[1.02]">
-                    <img src="https://placehold.co/2000x500/0a192f/f2f0ef?text=Upload+Slide+3+Image+Here" alt="Slide 3 Placeholder" class="w-full h-full object-cover" />
+                    <img src="https://placehold.co/400x400/0a192f/f2f0ef?text=Mobile+Slide+3" alt="Slide 3 Mobile Placeholder" class="w-full h-full object-cover md:hidden" />
+                    <img src="https://placehold.co/2000x500/0a192f/f2f0ef?text=Upload+Slide+3+Image+Here" alt="Slide 3 Desktop Placeholder" class="w-full h-full object-cover hidden md:block" />
                 </a>
             </div>
 
             <div class="w-full h-full flex-shrink-0 relative">
                 <a href="#" class="block w-full h-full transition-transform duration-700 hover:scale-[1.02]">
-                    <img src="https://placehold.co/2000x500/0a192f/f2f0ef?text=Upload+Slide+4+Image+Here" alt="Slide 4 Placeholder" class="w-full h-full object-cover" />
+                    <img src="https://placehold.co/400x400/0a192f/f2f0ef?text=Mobile+Slide+4" alt="Slide 4 Mobile Placeholder" class="w-full h-full object-cover md:hidden" />
+                    <img src="https://placehold.co/2000x500/0a192f/f2f0ef?text=Upload+Slide+4+Image+Here" alt="Slide 4 Desktop Placeholder" class="w-full h-full object-cover hidden md:block" />
                 </a>
             </div>
         </div>
 
         <button id="prev-slide" class="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 bg-surface/90 hover:bg-surface shadow-lg rounded-full p-2 md:p-3 z-20 text-secondary/80 hover:text-secondary opacity-0 group-hover:opacity-100 transition-all hover:scale-110 backdrop-blur-md">
-            <i data-lucide="chevron-left" class="w-5 h-5 md:w-6 md:h-6"></i>
+            <i data-lucide="chevron-left" class="w-4 h-4 md:w-6 md:h-6"></i>
         </button>
         <button id="next-slide" class="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 bg-surface/90 hover:bg-surface shadow-lg rounded-full p-2 md:p-3 z-20 text-secondary/80 hover:text-secondary opacity-0 group-hover:opacity-100 transition-all hover:scale-110 backdrop-blur-md">
-            <i data-lucide="chevron-right" class="w-5 h-5 md:w-6 md:h-6"></i>
+            <i data-lucide="chevron-right" class="w-4 h-4 md:w-6 md:h-6"></i>
         </button>
 
-        <div class="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 flex space-x-2 md:space-x-3 z-20">
-            <button class="dot w-2 h-2 md:w-2.5 md:h-2.5 rounded-full transition-all duration-300 shadow-md bg-secondary w-6 md:w-8" data-index="0" aria-label="Go to slide 1"></button>
-            <button class="dot w-2 h-2 md:w-2.5 md:h-2.5 rounded-full transition-all duration-300 shadow-md bg-secondary/40 hover:bg-secondary/70" data-index="1" aria-label="Go to slide 2"></button>
-            <button class="dot w-2 h-2 md:w-2.5 md:h-2.5 rounded-full transition-all duration-300 shadow-md bg-secondary/40 hover:bg-secondary/70" data-index="2" aria-label="Go to slide 3"></button>
-            <button class="dot w-2 h-2 md:w-2.5 md:h-2.5 rounded-full transition-all duration-300 shadow-md bg-secondary/40 hover:bg-secondary/70" data-index="3" aria-label="Go to slide 4"></button>
+        <div class="absolute bottom-3 md:bottom-6 left-1/2 -translate-x-1/2 flex space-x-2 md:space-x-3 z-20">
+            <button class="dot w-1.5 h-1.5 md:w-2.5 md:h-2.5 rounded-full transition-all duration-300 shadow-md bg-secondary w-4 md:w-8" data-index="0" aria-label="Go to slide 1"></button>
+            <button class="dot w-1.5 h-1.5 md:w-2.5 md:h-2.5 rounded-full transition-all duration-300 shadow-md bg-secondary/40 hover:bg-secondary/70" data-index="1" aria-label="Go to slide 2"></button>
+            <button class="dot w-1.5 h-1.5 md:w-2.5 md:h-2.5 rounded-full transition-all duration-300 shadow-md bg-secondary/40 hover:bg-secondary/70" data-index="2" aria-label="Go to slide 3"></button>
+            <button class="dot w-1.5 h-1.5 md:w-2.5 md:h-2.5 rounded-full transition-all duration-300 shadow-md bg-secondary/40 hover:bg-secondary/70" data-index="3" aria-label="Go to slide 4"></button>
         </div>
     </div>
 
