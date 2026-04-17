@@ -184,79 +184,128 @@
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                <div class="relative rounded-2xl overflow-hidden aspect-[4/3] group cursor-pointer shadow-soft hover:shadow-hover-up dark:shadow-dark-soft dark:hover:shadow-dark-hover-up hover:-translate-y-2 transition-all duration-300">
-                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1508344928928-7165b67de128?auto=format&fit=crop&q=80&w=800')"></div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
-                    <div class="absolute top-4 right-4 bg-secondary text-primary text-[10px] font-bold px-3 py-1 rounded-full tracking-widest z-10 uppercase shadow-lg">Live</div>
-                    <div class="absolute inset-0 p-4 md:p-6 flex flex-col justify-end items-center text-center z-10">
-                        <h3 class="text-white text-base md:text-lg font-bold mb-4 px-2 md:px-4 leading-tight drop-shadow-lg">2026 Spring Game Used Auction</h3>
-                        <div class="text-white/90 text-[10px] md:text-xs font-semibold uppercase tracking-wider mb-2 drop-shadow-md">Current Bidding Ends:</div>
-                        <div class="flex items-start space-x-1 md:space-x-2 mb-2">
-                            <div class="flex flex-col items-center">
-                                <div class="bg-black/30 backdrop-blur-md text-white text-2xl md:text-3xl font-bold px-2 md:px-3 py-1 md:py-2 rounded-lg shadow-inner">12</div>
-                                <span class="text-[8px] md:text-[10px] text-white/90 font-medium mt-1 uppercase drop-shadow-md">Days</span>
-                            </div>
-                            <span class="text-xl md:text-2xl text-white font-bold mt-1 drop-shadow-md">:</span>
-                            <div class="flex flex-col items-center">
-                                <div class="bg-black/30 backdrop-blur-md text-white text-2xl md:text-3xl font-bold px-2 md:px-3 py-1 md:py-2 rounded-lg shadow-inner">05</div>
-                                <span class="text-[8px] md:text-[10px] text-white/90 font-medium mt-1 uppercase drop-shadow-md">Hours</span>
-                            </div>
-                            <span class="text-xl md:text-2xl text-white font-bold mt-1 drop-shadow-md">:</span>
-                            <div class="flex flex-col items-center">
-                                <div class="bg-black/30 backdrop-blur-md text-white text-2xl md:text-3xl font-bold px-2 md:px-3 py-1 md:py-2 rounded-lg shadow-inner">52</div>
-                                <span class="text-[8px] md:text-[10px] text-white/90 font-medium mt-1 uppercase drop-shadow-md">Mins</span>
+                
+                <div class="relative rounded-2xl bg-surface group cursor-pointer shadow-soft hover:shadow-hover-up dark:shadow-dark-soft dark:hover:shadow-dark-hover-up hover:-translate-y-2 transition-all duration-300 border border-secondary/10 flex flex-col h-full overflow-hidden">
+                    <div class="h-1.5 w-full bg-gradient-to-r from-blue-500 to-purple-500 group-hover:h-2 transition-all duration-300"></div>
+                    
+                    <div class="p-6 md:p-8 flex flex-col flex-grow">
+                        <div class="flex justify-between items-center mb-6">
+                            <span class="bg-blue-500/10 text-blue-500 text-[10px] md:text-xs font-bold px-3 py-1 rounded-full tracking-widest uppercase flex items-center">
+                                <span class="w-1.5 h-1.5 rounded-full bg-blue-500 mr-2 animate-pulse"></span>
+                                Live Now
+                            </span>
+                            <i data-lucide="gavel" class="w-5 h-5 text-secondary/40 group-hover:text-blue-500 transition-colors duration-300"></i>
+                        </div>
+
+                        <h3 class="text-secondary text-lg md:text-xl font-bold mb-8 leading-tight group-hover:text-blue-500 transition-colors">2026 Spring Game Used Auction</h3>
+
+                        <div class="mt-auto">
+                            <div class="text-secondary/50 text-[10px] md:text-xs font-semibold uppercase tracking-wider mb-3">Current Bidding Ends:</div>
+                            <div class="flex items-center space-x-2">
+                                <div class="flex flex-col items-center flex-1">
+                                    <div class="bg-secondary/5 w-full flex justify-center items-center py-2 md:py-3 rounded-lg border border-secondary/10 group-hover:bg-secondary/10 transition-colors">
+                                        <span class="text-xl md:text-3xl font-bold text-secondary tracking-tight">12</span>
+                                    </div>
+                                    <span class="text-[9px] md:text-[10px] text-secondary/50 font-semibold mt-2 uppercase tracking-widest">Days</span>
+                                </div>
+                                <span class="text-lg md:text-xl text-secondary/30 font-bold -mt-4">:</span>
+                                <div class="flex flex-col items-center flex-1">
+                                    <div class="bg-secondary/5 w-full flex justify-center items-center py-2 md:py-3 rounded-lg border border-secondary/10 group-hover:bg-secondary/10 transition-colors">
+                                        <span class="text-xl md:text-3xl font-bold text-secondary tracking-tight">05</span>
+                                    </div>
+                                    <span class="text-[9px] md:text-[10px] text-secondary/50 font-semibold mt-2 uppercase tracking-widest">Hours</span>
+                                </div>
+                                <span class="text-lg md:text-xl text-secondary/30 font-bold -mt-4">:</span>
+                                <div class="flex flex-col items-center flex-1">
+                                    <div class="bg-secondary/5 w-full flex justify-center items-center py-2 md:py-3 rounded-lg border border-secondary/10 group-hover:bg-secondary/10 transition-colors">
+                                        <span class="text-xl md:text-3xl font-bold text-secondary tracking-tight">52</span>
+                                    </div>
+                                    <span class="text-[9px] md:text-[10px] text-secondary/50 font-semibold mt-2 uppercase tracking-widest">Mins</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="relative rounded-2xl overflow-hidden aspect-[4/3] group cursor-pointer shadow-soft hover:shadow-hover-up dark:shadow-dark-soft dark:hover:shadow-dark-hover-up hover:-translate-y-2 transition-all duration-300">
-                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&q=80&w=800')"></div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
-                    <div class="absolute top-4 right-4 bg-secondary text-primary text-[10px] font-bold px-3 py-1 rounded-full tracking-widest z-10 uppercase shadow-lg">Live</div>
-                    <div class="absolute inset-0 p-4 md:p-6 flex flex-col justify-end items-center text-center z-10">
-                        <h3 class="text-white text-base md:text-lg font-bold mb-4 px-2 md:px-4 leading-tight drop-shadow-lg">2026 Spring Music Memorabilia Auction</h3>
-                        <div class="text-white/90 text-[10px] md:text-xs font-semibold uppercase tracking-wider mb-2 drop-shadow-md">Current Bidding Ends:</div>
-                        <div class="flex items-start space-x-1 md:space-x-2 mb-2">
-                            <div class="flex flex-col items-center">
-                                <div class="bg-black/30 backdrop-blur-md text-white text-2xl md:text-3xl font-bold px-2 md:px-3 py-1 md:py-2 rounded-lg shadow-inner">23</div>
-                                <span class="text-[8px] md:text-[10px] text-white/90 font-medium mt-1 uppercase drop-shadow-md">Days</span>
-                            </div>
-                            <span class="text-xl md:text-2xl text-white font-bold mt-1 drop-shadow-md">:</span>
-                            <div class="flex flex-col items-center">
-                                <div class="bg-black/30 backdrop-blur-md text-white text-2xl md:text-3xl font-bold px-2 md:px-3 py-1 md:py-2 rounded-lg shadow-inner">05</div>
-                                <span class="text-[8px] md:text-[10px] text-white/90 font-medium mt-1 uppercase drop-shadow-md">Hours</span>
-                            </div>
-                            <span class="text-xl md:text-2xl text-white font-bold mt-1 drop-shadow-md">:</span>
-                            <div class="flex flex-col items-center">
-                                <div class="bg-black/30 backdrop-blur-md text-white text-2xl md:text-3xl font-bold px-2 md:px-3 py-1 md:py-2 rounded-lg shadow-inner">52</div>
-                                <span class="text-[8px] md:text-[10px] text-white/90 font-medium mt-1 uppercase drop-shadow-md">Mins</span>
+                <div class="relative rounded-2xl bg-surface group cursor-pointer shadow-soft hover:shadow-hover-up dark:shadow-dark-soft dark:hover:shadow-dark-hover-up hover:-translate-y-2 transition-all duration-300 border border-secondary/10 flex flex-col h-full overflow-hidden">
+                    <div class="h-1.5 w-full bg-gradient-to-r from-blue-500 to-purple-500 group-hover:h-2 transition-all duration-300"></div>
+                    
+                    <div class="p-6 md:p-8 flex flex-col flex-grow">
+                        <div class="flex justify-between items-center mb-6">
+                            <span class="bg-blue-500/10 text-blue-500 text-[10px] md:text-xs font-bold px-3 py-1 rounded-full tracking-widest uppercase flex items-center">
+                                <span class="w-1.5 h-1.5 rounded-full bg-blue-500 mr-2 animate-pulse"></span>
+                                Live Now
+                            </span>
+                            <i data-lucide="gavel" class="w-5 h-5 text-secondary/40 group-hover:text-blue-500 transition-colors duration-300"></i>
+                        </div>
+
+                        <h3 class="text-secondary text-lg md:text-xl font-bold mb-8 leading-tight group-hover:text-blue-500 transition-colors">2026 Spring Music Memorabilia Auction</h3>
+
+                        <div class="mt-auto">
+                            <div class="text-secondary/50 text-[10px] md:text-xs font-semibold uppercase tracking-wider mb-3">Current Bidding Ends:</div>
+                            <div class="flex items-center space-x-2">
+                                <div class="flex flex-col items-center flex-1">
+                                    <div class="bg-secondary/5 w-full flex justify-center items-center py-2 md:py-3 rounded-lg border border-secondary/10 group-hover:bg-secondary/10 transition-colors">
+                                        <span class="text-xl md:text-3xl font-bold text-secondary tracking-tight">23</span>
+                                    </div>
+                                    <span class="text-[9px] md:text-[10px] text-secondary/50 font-semibold mt-2 uppercase tracking-widest">Days</span>
+                                </div>
+                                <span class="text-lg md:text-xl text-secondary/30 font-bold -mt-4">:</span>
+                                <div class="flex flex-col items-center flex-1">
+                                    <div class="bg-secondary/5 w-full flex justify-center items-center py-2 md:py-3 rounded-lg border border-secondary/10 group-hover:bg-secondary/10 transition-colors">
+                                        <span class="text-xl md:text-3xl font-bold text-secondary tracking-tight">05</span>
+                                    </div>
+                                    <span class="text-[9px] md:text-[10px] text-secondary/50 font-semibold mt-2 uppercase tracking-widest">Hours</span>
+                                </div>
+                                <span class="text-lg md:text-xl text-secondary/30 font-bold -mt-4">:</span>
+                                <div class="flex flex-col items-center flex-1">
+                                    <div class="bg-secondary/5 w-full flex justify-center items-center py-2 md:py-3 rounded-lg border border-secondary/10 group-hover:bg-secondary/10 transition-colors">
+                                        <span class="text-xl md:text-3xl font-bold text-secondary tracking-tight">52</span>
+                                    </div>
+                                    <span class="text-[9px] md:text-[10px] text-secondary/50 font-semibold mt-2 uppercase tracking-widest">Mins</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="relative rounded-2xl overflow-hidden aspect-[4/3] group cursor-pointer shadow-soft hover:shadow-hover-up dark:shadow-dark-soft dark:hover:shadow-dark-hover-up hover:-translate-y-2 transition-all duration-300">
-                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?auto=format&fit=crop&q=80&w=800')"></div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
-                    <div class="absolute top-4 right-4 bg-secondary text-primary text-[10px] font-bold px-3 py-1 rounded-full tracking-widest z-10 uppercase shadow-lg">Live</div>
-                    <div class="absolute inset-0 p-4 md:p-6 flex flex-col justify-end items-center text-center z-10">
-                        <h3 class="text-white text-base md:text-lg font-bold mb-4 px-2 md:px-4 leading-tight drop-shadow-lg">2026 Comics Memorabilia Auction</h3>
-                        <div class="text-white/90 text-[10px] md:text-xs font-semibold uppercase tracking-wider mb-2 drop-shadow-md">Current Bidding Ends:</div>
-                        <div class="flex items-start space-x-1 md:space-x-2 mb-2">
-                            <div class="flex flex-col items-center">
-                                <div class="bg-black/30 backdrop-blur-md text-white text-2xl md:text-3xl font-bold px-2 md:px-3 py-1 md:py-2 rounded-lg shadow-inner">21</div>
-                                <span class="text-[8px] md:text-[10px] text-white/90 font-medium mt-1 uppercase drop-shadow-md">Days</span>
-                            </div>
-                            <span class="text-xl md:text-2xl text-white font-bold mt-1 drop-shadow-md">:</span>
-                            <div class="flex flex-col items-center">
-                                <div class="bg-black/30 backdrop-blur-md text-white text-2xl md:text-3xl font-bold px-2 md:px-3 py-1 md:py-2 rounded-lg shadow-inner">05</div>
-                                <span class="text-[8px] md:text-[10px] text-white/90 font-medium mt-1 uppercase drop-shadow-md">Hours</span>
-                            </div>
-                            <span class="text-xl md:text-2xl text-white font-bold mt-1 drop-shadow-md">:</span>
-                            <div class="flex flex-col items-center">
-                                <div class="bg-black/30 backdrop-blur-md text-white text-2xl md:text-3xl font-bold px-2 md:px-3 py-1 md:py-2 rounded-lg shadow-inner">52</div>
-                                <span class="text-[8px] md:text-[10px] text-white/90 font-medium mt-1 uppercase drop-shadow-md">Mins</span>
+                <div class="relative rounded-2xl bg-surface group cursor-pointer shadow-soft hover:shadow-hover-up dark:shadow-dark-soft dark:hover:shadow-dark-hover-up hover:-translate-y-2 transition-all duration-300 border border-secondary/10 flex flex-col h-full overflow-hidden">
+                    <div class="h-1.5 w-full bg-gradient-to-r from-blue-500 to-purple-500 group-hover:h-2 transition-all duration-300"></div>
+                    
+                    <div class="p-6 md:p-8 flex flex-col flex-grow">
+                        <div class="flex justify-between items-center mb-6">
+                            <span class="bg-blue-500/10 text-blue-500 text-[10px] md:text-xs font-bold px-3 py-1 rounded-full tracking-widest uppercase flex items-center">
+                                <span class="w-1.5 h-1.5 rounded-full bg-blue-500 mr-2 animate-pulse"></span>
+                                Live Now
+                            </span>
+                            <i data-lucide="gavel" class="w-5 h-5 text-secondary/40 group-hover:text-blue-500 transition-colors duration-300"></i>
+                        </div>
+
+                        <h3 class="text-secondary text-lg md:text-xl font-bold mb-8 leading-tight group-hover:text-blue-500 transition-colors">2026 Comics Memorabilia Auction</h3>
+
+                        <div class="mt-auto">
+                            <div class="text-secondary/50 text-[10px] md:text-xs font-semibold uppercase tracking-wider mb-3">Current Bidding Ends:</div>
+                            <div class="flex items-center space-x-2">
+                                <div class="flex flex-col items-center flex-1">
+                                    <div class="bg-secondary/5 w-full flex justify-center items-center py-2 md:py-3 rounded-lg border border-secondary/10 group-hover:bg-secondary/10 transition-colors">
+                                        <span class="text-xl md:text-3xl font-bold text-secondary tracking-tight">21</span>
+                                    </div>
+                                    <span class="text-[9px] md:text-[10px] text-secondary/50 font-semibold mt-2 uppercase tracking-widest">Days</span>
+                                </div>
+                                <span class="text-lg md:text-xl text-secondary/30 font-bold -mt-4">:</span>
+                                <div class="flex flex-col items-center flex-1">
+                                    <div class="bg-secondary/5 w-full flex justify-center items-center py-2 md:py-3 rounded-lg border border-secondary/10 group-hover:bg-secondary/10 transition-colors">
+                                        <span class="text-xl md:text-3xl font-bold text-secondary tracking-tight">05</span>
+                                    </div>
+                                    <span class="text-[9px] md:text-[10px] text-secondary/50 font-semibold mt-2 uppercase tracking-widest">Hours</span>
+                                </div>
+                                <span class="text-lg md:text-xl text-secondary/30 font-bold -mt-4">:</span>
+                                <div class="flex flex-col items-center flex-1">
+                                    <div class="bg-secondary/5 w-full flex justify-center items-center py-2 md:py-3 rounded-lg border border-secondary/10 group-hover:bg-secondary/10 transition-colors">
+                                        <span class="text-xl md:text-3xl font-bold text-secondary tracking-tight">52</span>
+                                    </div>
+                                    <span class="text-[9px] md:text-[10px] text-secondary/50 font-semibold mt-2 uppercase tracking-widest">Mins</span>
+                                </div>
                             </div>
                         </div>
                     </div>
