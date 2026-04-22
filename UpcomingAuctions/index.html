@@ -50,7 +50,7 @@
         }
     </style>
 </head>
-<body class="min-h-screen bg-primary font-sans text-secondary overflow-x-hidden transition-colors duration-300">
+<body class="min-h-screen bg-primary font-sans text-secondary overflow-x-hidden transition-colors duration-300 flex flex-col">
 
     <nav class="sticky top-0 z-50 flex items-center justify-between px-6 py-4 bg-primary/90 backdrop-blur-md transition-colors duration-300 shadow-sm relative">
         <div class="flex items-center space-x-8">
@@ -139,21 +139,19 @@
             <button class="px-5 py-2 rounded-full bg-secondary text-primary font-semibold text-sm whitespace-nowrap shadow-md hover:scale-105 transition-transform">All Events</button>
             <button class="px-5 py-2 rounded-full bg-surface text-secondary/80 font-semibold text-sm whitespace-nowrap shadow-soft hover:shadow-md hover:text-secondary hover:scale-105 transition-all border border-secondary/5">Sports Memorabilia</button>
             <button class="px-5 py-2 rounded-full bg-surface text-secondary/80 font-semibold text-sm whitespace-nowrap shadow-soft hover:shadow-md hover:text-secondary hover:scale-105 transition-all border border-secondary/5">Trading Cards</button>
-            <button class="px-5 py-2 rounded-full bg-surface text-secondary/80 font-semibold text-sm whitespace-nowrap shadow-soft hover:shadow-md hover:text-secondary hover:scale-105 transition-all border border-secondary/5">Fine Art & Antiques</button>
             <button class="px-5 py-2 rounded-full bg-surface text-secondary/80 font-semibold text-sm whitespace-nowrap shadow-soft hover:shadow-md hover:text-secondary hover:scale-105 transition-all border border-secondary/5">Precious Metals</button>
         </div>
     </header>
 
-    <main class="max-w-[1400px] mx-auto px-4 md:px-6 pb-20">
+    <main class="max-w-[1400px] mx-auto px-4 md:px-6 pb-20 w-full flex-grow">
 
         <div class="w-full bg-surface rounded-3xl shadow-soft dark:shadow-dark-soft overflow-hidden flex flex-col lg:flex-row mb-12 group transition-all duration-300 border border-secondary/10 relative">
             <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 z-10 opacity-80"></div>
             
-            <div class="w-full lg:w-3/5 h-[300px] md:h-[400px] lg:h-auto relative overflow-hidden bg-secondary">
-                <img src="https://images.unsplash.com/photo-1577726588698-17a41926dd1c?auto=format&fit=crop&q=80&w=1200" alt="Premiere Antiques" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+            <div class="w-full lg:w-3/5 h-[200px] md:h-[300px] lg:h-auto relative overflow-hidden bg-secondary/10 group-hover:bg-secondary/20 transition-colors duration-700">
+                <div class="absolute inset-0 bg-gradient-to-br from-transparent to-secondary/5"></div>
                 <div class="absolute bottom-6 left-6 right-6">
-                    <span class="bg-primary/90 backdrop-blur-md text-secondary text-xs font-bold px-3 py-1.5 rounded-md tracking-widest uppercase shadow-lg">Premiere Event</span>
+                    <span class="bg-surface text-secondary text-xs font-bold px-3 py-1.5 rounded-md tracking-widest uppercase shadow-lg">Premiere Event</span>
                 </div>
             </div>
 
@@ -197,9 +195,8 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             
             <div class="bg-surface rounded-2xl shadow-soft dark:shadow-dark-soft overflow-hidden flex flex-col group cursor-pointer border border-secondary/10 hover:shadow-hover-up dark:hover:shadow-dark-hover-up hover:-translate-y-2 transition-all duration-300">
-                <div class="h-48 relative overflow-hidden bg-primary/50">
-                    <img src="https://images.unsplash.com/photo-1640576921389-940733a5712f?auto=format&fit=crop&q=80&w=800" alt="Trading Cards" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                    <div class="absolute inset-0 bg-secondary/10 group-hover:bg-transparent transition-colors"></div>
+                <div class="h-32 md:h-40 relative overflow-hidden bg-secondary/5 group-hover:bg-secondary/10 transition-colors duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-transparent to-secondary/5"></div>
                 </div>
                 <div class="p-6 md:p-8 flex flex-col flex-grow">
                     <div class="flex items-center text-blue-500 text-xs font-bold uppercase tracking-widest mb-3">
@@ -219,9 +216,8 @@
             </div>
 
             <div class="bg-surface rounded-2xl shadow-soft dark:shadow-dark-soft overflow-hidden flex flex-col group cursor-pointer border border-secondary/10 hover:shadow-hover-up dark:hover:shadow-dark-hover-up hover:-translate-y-2 transition-all duration-300">
-                <div class="h-48 relative overflow-hidden bg-primary/50">
-                    <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&q=80&w=800" alt="Sports Memorabilia" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                    <div class="absolute inset-0 bg-secondary/10 group-hover:bg-transparent transition-colors"></div>
+                <div class="h-32 md:h-40 relative overflow-hidden bg-secondary/5 group-hover:bg-secondary/10 transition-colors duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-transparent to-secondary/5"></div>
                 </div>
                 <div class="p-6 md:p-8 flex flex-col flex-grow">
                     <div class="flex items-center text-blue-500 text-xs font-bold uppercase tracking-widest mb-3">
@@ -241,9 +237,8 @@
             </div>
 
             <div class="bg-surface rounded-2xl shadow-soft dark:shadow-dark-soft overflow-hidden flex flex-col group cursor-pointer border border-secondary/10 hover:shadow-hover-up dark:hover:shadow-dark-hover-up hover:-translate-y-2 transition-all duration-300">
-                <div class="h-48 relative overflow-hidden bg-primary/50">
-                    <img src="https://images.unsplash.com/photo-1621503676722-df38d21c3b17?auto=format&fit=crop&q=80&w=800" alt="Precious Metals" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                    <div class="absolute inset-0 bg-secondary/10 group-hover:bg-transparent transition-colors"></div>
+                <div class="h-32 md:h-40 relative overflow-hidden bg-secondary/5 group-hover:bg-secondary/10 transition-colors duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-transparent to-secondary/5"></div>
                 </div>
                 <div class="p-6 md:p-8 flex flex-col flex-grow">
                     <div class="flex items-center text-blue-500 text-xs font-bold uppercase tracking-widest mb-3">
@@ -265,7 +260,7 @@
         </div>
     </main>
 
-    <footer class="bg-secondary text-primary pt-12 md:pt-16 pb-8 transition-colors duration-300 mt-auto">
+    <footer class="bg-secondary text-primary pt-12 md:pt-16 pb-8 transition-colors duration-300 mt-auto border-t border-secondary/10">
         <div class="max-w-[1400px] mx-auto px-6">
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-8 mb-12 md:mb-16 text-sm">
                 <div>
