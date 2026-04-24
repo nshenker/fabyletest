@@ -120,17 +120,16 @@
 
     <header class="max-w-[1400px] mx-auto px-4 md:px-6 pt-12 pb-6">
         <div class="mb-8">
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 text-secondary">Auction Results</h1>
-            <p class="text-lg text-secondary/60 max-w-2xl">Browse our archive of record-breaking sales, historic hammer prices, and recently closed lots.</p>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 text-secondary">Past Auctions</h1>
+            <p class="text-lg text-secondary/60 max-w-2xl">Browse our archive of record-breaking events, explore individual lots, and view historical hammer prices.</p>
         </div>
 
         <div class="flex space-x-3 overflow-x-auto pb-4 hide-scrollbar">
             <button class="px-5 py-2 rounded-full bg-secondary text-primary font-semibold text-sm whitespace-nowrap shadow-md hover:scale-105 transition-transform">All Results</button>
             <button class="px-5 py-2 rounded-full bg-surface text-secondary/80 font-semibold text-sm whitespace-nowrap shadow-soft hover:shadow-md hover:text-secondary hover:scale-105 transition-all border border-secondary/5">2026</button>
             <button class="px-5 py-2 rounded-full bg-surface text-secondary/80 font-semibold text-sm whitespace-nowrap shadow-soft hover:shadow-md hover:text-secondary hover:scale-105 transition-all border border-secondary/5">2025</button>
-            <button class="px-5 py-2 rounded-full bg-surface text-secondary/80 font-semibold text-sm whitespace-nowrap shadow-soft hover:shadow-md hover:text-secondary hover:scale-105 transition-all border border-secondary/5">Record Setters</button>
-            <button class="px-5 py-2 rounded-full bg-surface text-secondary/80 font-semibold text-sm whitespace-nowrap shadow-soft hover:shadow-md hover:text-secondary hover:scale-105 transition-all border border-secondary/5">Sports</button>
-            <button class="px-5 py-2 rounded-full bg-surface text-secondary/80 font-semibold text-sm whitespace-nowrap shadow-soft hover:shadow-md hover:text-secondary hover:scale-105 transition-all border border-secondary/5">Music</button>
+            <button class="px-5 py-2 rounded-full bg-surface text-secondary/80 font-semibold text-sm whitespace-nowrap shadow-soft hover:shadow-md hover:text-secondary hover:scale-105 transition-all border border-secondary/5">Sports & TCG</button>
+            <button class="px-5 py-2 rounded-full bg-surface text-secondary/80 font-semibold text-sm whitespace-nowrap shadow-soft hover:shadow-md hover:text-secondary hover:scale-105 transition-all border border-secondary/5">Numismatics</button>
         </div>
     </header>
 
@@ -142,30 +141,35 @@
             <div class="w-full lg:w-3/5 h-[200px] md:h-[300px] lg:h-auto relative overflow-hidden bg-secondary/10 group-hover:bg-secondary/20 transition-colors duration-700">
                 <div class="absolute inset-0 bg-gradient-to-br from-transparent to-secondary/5"></div>
                 <div class="absolute bottom-6 left-6 right-6">
-                    <span class="bg-surface text-secondary text-xs font-bold px-3 py-1.5 rounded-md tracking-widest uppercase shadow-lg">Record Sale</span>
+                    <span class="bg-surface text-secondary text-xs font-bold px-3 py-1.5 rounded-md tracking-widest uppercase shadow-lg">Closed Event</span>
                 </div>
             </div>
 
             <div class="w-full lg:w-2/5 p-8 md:p-12 flex flex-col justify-center">
                 <div class="flex items-center text-secondary/60 text-sm font-semibold uppercase tracking-widest mb-4">
-                    <i data-lucide="check-circle" class="w-4 h-4 mr-2"></i> Sold April 18, 2026
+                    <i data-lucide="check-circle" class="w-4 h-4 mr-2"></i> Concluded Feb 28, 2026
                 </div>
                 
-                <h2 class="text-3xl md:text-4xl font-bold leading-tight mb-4 text-secondary group-hover:text-red-500 transition-colors">Michael Jordan 1998 Finals "Last Dance" Jersey</h2>
+                <h2 class="text-3xl md:text-4xl font-bold leading-tight mb-4 text-secondary group-hover:text-red-500 transition-colors">2026 Winter Modern NFL & MLB Premiere Showcase</h2>
                 
                 <p class="text-secondary/70 mb-8 leading-relaxed">
-                    A monumental piece of sports history. This game-worn, photomatched jersey from Game 1 of the 1998 NBA Finals set a new benchmark for modern sports apparel at auction.
+                    Our highly anticipated winter event concluding with record-breaking hammer prices for Panini Flawless and National Treasures modern era patches and autographs.
                 </p>
 
-                <div class="bg-primary p-6 rounded-2xl border border-secondary/5 mb-8">
-                    <div class="text-[10px] uppercase font-bold text-secondary/50 tracking-wider mb-1">Final Hammer Price</div>
-                    <div class="text-4xl md:text-5xl font-bold text-secondary tracking-tight">$1,550,000</div>
-                    <div class="text-sm text-secondary/60 mt-2 font-medium">Includes Buyer's Premium</div>
+                <div class="grid grid-cols-2 gap-4 mb-8">
+                    <div class="bg-primary p-4 rounded-xl text-center border border-secondary/5">
+                        <div class="text-2xl font-bold text-secondary mb-1">254</div>
+                        <div class="text-[10px] uppercase font-bold text-secondary/50 tracking-wider">Lots Sold</div>
+                    </div>
+                    <div class="bg-primary p-4 rounded-xl text-center border border-secondary/5">
+                        <div class="text-2xl font-bold text-secondary mb-1">$1.2M</div>
+                        <div class="text-[10px] uppercase font-bold text-secondary/50 tracking-wider">Total Realized</div>
+                    </div>
                 </div>
 
                 <div class="mt-auto">
                     <button class="w-full bg-secondary text-primary px-6 py-3.5 rounded-full font-bold hover:bg-secondary/90 transition-transform hover:-translate-y-1 shadow-md text-center flex justify-center items-center">
-                        View Lot Details
+                        View Auction Results
                     </button>
                 </div>
             </div>
@@ -177,20 +181,27 @@
                 <div class="h-32 md:h-40 relative overflow-hidden bg-secondary/5 group-hover:bg-secondary/10 transition-colors duration-500">
                     <div class="absolute inset-0 bg-gradient-to-tr from-transparent to-secondary/5"></div>
                     <div class="absolute top-4 right-4">
-                        <span class="bg-red-500/10 text-red-500 text-[10px] md:text-xs font-bold px-3 py-1 rounded-full tracking-widest uppercase">Sold</span>
+                        <span class="bg-red-500/10 text-red-500 text-[10px] md:text-xs font-bold px-3 py-1 rounded-full tracking-widest uppercase">Closed</span>
                     </div>
                 </div>
                 <div class="p-6 md:p-8 flex flex-col flex-grow">
                     <div class="flex items-center text-secondary/50 text-xs font-bold uppercase tracking-widest mb-3">
-                        <i data-lucide="calendar" class="w-3.5 h-3.5 mr-1.5"></i> Apr 05, 2026
+                        <i data-lucide="check-circle" class="w-3.5 h-3.5 mr-1.5"></i> Concluded Jan 15, 2026
                     </div>
-                    <h3 class="text-xl font-bold mb-6 leading-snug group-hover:text-blue-500 transition-colors">1952 Topps Mickey Mantle PSA 9</h3>
+                    <h3 class="text-xl font-bold mb-3 leading-snug group-hover:text-blue-500 transition-colors">Rare Pokémon TCG & 3D Cards Showcase</h3>
+                    <p class="text-sm text-secondary/60 mb-6 line-clamp-3">A dedicated event for Pokémon collectors, featuring pristine graded vintage singles, modern chase cards, and custom 3D displays.</p>
                     
                     <div class="mt-auto pt-4 border-t border-secondary/10">
-                        <div class="text-[10px] uppercase font-bold text-secondary/50 tracking-wider mb-1">Hammer Price</div>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-[10px] uppercase font-bold text-secondary/50 tracking-wider">Lots Sold</span>
+                            <span class="text-sm font-bold text-secondary">185</span>
+                        </div>
                         <div class="flex justify-between items-end">
-                            <span class="text-2xl font-bold text-secondary">$2,800,000</span>
-                            <span class="text-sm font-bold text-secondary group-hover:text-blue-500 flex items-center transition-colors">Details <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i></span>
+                            <div>
+                                <div class="text-[10px] uppercase font-bold text-secondary/50 tracking-wider mb-1">Total Realized</div>
+                                <span class="text-xl font-bold text-secondary">$425,000</span>
+                            </div>
+                            <span class="text-sm font-bold text-secondary group-hover:text-blue-500 flex items-center transition-colors">View <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i></span>
                         </div>
                     </div>
                 </div>
@@ -200,20 +211,27 @@
                 <div class="h-32 md:h-40 relative overflow-hidden bg-secondary/5 group-hover:bg-secondary/10 transition-colors duration-500">
                     <div class="absolute inset-0 bg-gradient-to-tr from-transparent to-secondary/5"></div>
                     <div class="absolute top-4 right-4">
-                        <span class="bg-red-500/10 text-red-500 text-[10px] md:text-xs font-bold px-3 py-1 rounded-full tracking-widest uppercase">Sold</span>
+                        <span class="bg-red-500/10 text-red-500 text-[10px] md:text-xs font-bold px-3 py-1 rounded-full tracking-widest uppercase">Closed</span>
                     </div>
                 </div>
                 <div class="p-6 md:p-8 flex flex-col flex-grow">
                     <div class="flex items-center text-secondary/50 text-xs font-bold uppercase tracking-widest mb-3">
-                        <i data-lucide="calendar" class="w-3.5 h-3.5 mr-1.5"></i> Mar 22, 2026
+                        <i data-lucide="check-circle" class="w-3.5 h-3.5 mr-1.5"></i> Concluded Nov 10, 2025
                     </div>
-                    <h3 class="text-xl font-bold mb-6 leading-snug group-hover:text-blue-500 transition-colors">Signed Beatles 'Sgt. Pepper's' Album</h3>
+                    <h3 class="text-xl font-bold mb-3 leading-snug group-hover:text-blue-500 transition-colors">Early 20th Century US Banknotes & Currency</h3>
+                    <p class="text-sm text-secondary/60 mb-6 line-clamp-3">A specialized numismatics event that brought over 150 rare silver certificates and historic Federal Reserve notes to the auction block.</p>
                     
                     <div class="mt-auto pt-4 border-t border-secondary/10">
-                        <div class="text-[10px] uppercase font-bold text-secondary/50 tracking-wider mb-1">Hammer Price</div>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-[10px] uppercase font-bold text-secondary/50 tracking-wider">Lots Sold</span>
+                            <span class="text-sm font-bold text-secondary">152</span>
+                        </div>
                         <div class="flex justify-between items-end">
-                            <span class="text-2xl font-bold text-secondary">$150,000</span>
-                            <span class="text-sm font-bold text-secondary group-hover:text-blue-500 flex items-center transition-colors">Details <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i></span>
+                            <div>
+                                <div class="text-[10px] uppercase font-bold text-secondary/50 tracking-wider mb-1">Total Realized</div>
+                                <span class="text-xl font-bold text-secondary">$310,000</span>
+                            </div>
+                            <span class="text-sm font-bold text-secondary group-hover:text-blue-500 flex items-center transition-colors">View <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i></span>
                         </div>
                     </div>
                 </div>
@@ -223,20 +241,27 @@
                 <div class="h-32 md:h-40 relative overflow-hidden bg-secondary/5 group-hover:bg-secondary/10 transition-colors duration-500">
                     <div class="absolute inset-0 bg-gradient-to-tr from-transparent to-secondary/5"></div>
                     <div class="absolute top-4 right-4">
-                        <span class="bg-red-500/10 text-red-500 text-[10px] md:text-xs font-bold px-3 py-1 rounded-full tracking-widest uppercase">Sold</span>
+                        <span class="bg-red-500/10 text-red-500 text-[10px] md:text-xs font-bold px-3 py-1 rounded-full tracking-widest uppercase">Closed</span>
                     </div>
                 </div>
                 <div class="p-6 md:p-8 flex flex-col flex-grow">
                     <div class="flex items-center text-secondary/50 text-xs font-bold uppercase tracking-widest mb-3">
-                        <i data-lucide="calendar" class="w-3.5 h-3.5 mr-1.5"></i> Feb 14, 2026
+                        <i data-lucide="check-circle" class="w-3.5 h-3.5 mr-1.5"></i> Concluded Sep 22, 2025
                     </div>
-                    <h3 class="text-xl font-bold mb-6 leading-snug group-hover:text-blue-500 transition-colors">1907 High Relief St. Gaudens Double Eagle</h3>
+                    <h3 class="text-xl font-bold mb-3 leading-snug group-hover:text-blue-500 transition-colors">Motorsports & Formula 1 Memorabilia</h3>
+                    <p class="text-sm text-secondary/60 mb-6 line-clamp-3">Featuring race-worn gear, signed photos, and exclusive team collectibles celebrating recent dominance on the track.</p>
                     
                     <div class="mt-auto pt-4 border-t border-secondary/10">
-                        <div class="text-[10px] uppercase font-bold text-secondary/50 tracking-wider mb-1">Hammer Price</div>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-[10px] uppercase font-bold text-secondary/50 tracking-wider">Lots Sold</span>
+                            <span class="text-sm font-bold text-secondary">89</span>
+                        </div>
                         <div class="flex justify-between items-end">
-                            <span class="text-2xl font-bold text-secondary">$450,000</span>
-                            <span class="text-sm font-bold text-secondary group-hover:text-blue-500 flex items-center transition-colors">Details <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i></span>
+                            <div>
+                                <div class="text-[10px] uppercase font-bold text-secondary/50 tracking-wider mb-1">Total Realized</div>
+                                <span class="text-xl font-bold text-secondary">$185,000</span>
+                            </div>
+                            <span class="text-sm font-bold text-secondary group-hover:text-blue-500 flex items-center transition-colors">View <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i></span>
                         </div>
                     </div>
                 </div>
