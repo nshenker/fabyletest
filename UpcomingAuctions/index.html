@@ -42,20 +42,13 @@
             --color-secondary: 10 25 47;  
             --color-surface: 255 255 255; 
         }
-        
         .dark {
             --color-primary: 10 25 47;    
             --color-secondary: 242 240 239; 
             --color-surface: 16 38 72;    
         }
-        
-        .hide-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .hide-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
 <body class="min-h-screen bg-primary font-sans text-secondary overflow-x-hidden transition-colors duration-300 flex flex-col">
@@ -65,11 +58,7 @@
             <a href="/" class="font-bold text-3xl tracking-tight text-secondary cursor-pointer">Fabyle</a>
             <div class="hidden lg:flex relative w-[400px]">
                 <i data-lucide="search" class="absolute left-4 top-2.5 h-4 w-4 text-secondary/60"></i>
-                <input 
-                    type="text" 
-                    placeholder="Search artists and listings" 
-                    class="w-full bg-secondary/5 hover:bg-secondary/10 transition-colors rounded-full py-2 pl-11 pr-4 text-sm outline-none focus:ring-2 focus:ring-secondary/30 placeholder-secondary/50 text-secondary"
-                />
+                <input type="text" placeholder="Search artists and listings" class="w-full bg-secondary/5 hover:bg-secondary/10 transition-colors rounded-full py-2 pl-11 pr-4 text-sm outline-none focus:ring-2 focus:ring-secondary/30 placeholder-secondary/50 text-secondary" />
             </div>
         </div>
 
@@ -79,11 +68,10 @@
                     <span class="flex items-center cursor-pointer text-secondary transition-colors">Auctions <i data-lucide="chevron-down" class="h-4 w-4 ml-1"></i></span>
                     <div class="absolute left-0 top-full w-48 bg-surface rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 py-2 border border-secondary/10">
                         <a href="/UpcomingAuctions" class="block px-4 py-2 text-sm text-secondary font-bold bg-secondary/5 transition-colors">Upcoming Auctions</a>
-                        <a href="#" class="block px-4 py-2 text-sm text-secondary/80 hover:text-secondary hover:bg-secondary/10 transition-colors">Results</a>
+                        <a href="/Results" class="block px-4 py-2 text-sm text-secondary/80 hover:text-secondary hover:bg-secondary/10 transition-colors">Results</a>
                         <a href="#" class="block px-4 py-2 text-sm text-secondary/80 hover:text-secondary hover:bg-secondary/10 transition-colors">Browse All</a>
                     </div>
                 </div>
-                
                 <span class="flex items-center cursor-pointer hover:text-secondary transition-colors">Shop</span>
                 <span class="cursor-pointer hover:text-secondary transition-colors">Calendar</span>
             </div>
@@ -93,14 +81,12 @@
                     <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
                     <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
                 </button>
-                
                 <button class="hidden lg:flex items-center text-secondary/80 hover:text-secondary transition-colors">
                     <i data-lucide="user" class="h-4 w-4 mr-1.5"></i> Login
                 </button>
                 <button class="hidden lg:block bg-secondary text-primary px-6 py-2 rounded-full hover:bg-secondary/90 transition-colors shadow-md ml-2">
                     Sell
                 </button>
-
                 <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-full hover:bg-secondary/10 text-secondary transition-colors">
                     <i data-lucide="menu" class="w-6 h-6"></i>
                 </button>
@@ -111,16 +97,11 @@
             <div class="p-6 space-y-6">
                 <div class="relative w-full">
                     <i data-lucide="search" class="absolute left-4 top-2.5 h-4 w-4 text-secondary/60"></i>
-                    <input 
-                        type="text" 
-                        placeholder="Search artists and listings" 
-                        class="w-full bg-secondary/5 hover:bg-secondary/10 transition-colors rounded-full py-2 pl-11 pr-4 text-sm outline-none focus:ring-2 focus:ring-secondary/30 placeholder-secondary/50 text-secondary"
-                    />
+                    <input type="text" placeholder="Search artists and listings" class="w-full bg-secondary/5 hover:bg-secondary/10 transition-colors rounded-full py-2 pl-11 pr-4 text-sm outline-none focus:ring-2 focus:ring-secondary/30 placeholder-secondary/50 text-secondary" />
                 </div>
-                
                 <div class="flex flex-col space-y-4 text-base font-semibold text-secondary/80">
                     <a href="/UpcomingAuctions" class="text-secondary font-bold transition-colors">Upcoming Auctions</a>
-                    <a href="#" class="hover:text-secondary transition-colors">Auction Results</a>
+                    <a href="/Results" class="hover:text-secondary transition-colors">Auction Results</a>
                     <a href="#" class="hover:text-secondary transition-colors">Browse All Auctions</a>
                     <hr class="border-secondary/10">
                     <a href="#" class="hover:text-secondary transition-colors">Shop</a>
@@ -155,53 +136,33 @@
 
         <div class="w-full bg-surface rounded-3xl shadow-soft dark:shadow-dark-soft overflow-hidden flex flex-col lg:flex-row mb-12 group transition-all duration-300 border border-secondary/10 relative">
             <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 z-10 opacity-80"></div>
-            
             <div class="w-full lg:w-3/5 h-[200px] md:h-[300px] lg:h-auto relative overflow-hidden bg-secondary/10 group-hover:bg-secondary/20 transition-colors duration-700">
                 <div class="absolute inset-0 bg-gradient-to-br from-transparent to-secondary/5"></div>
                 <div class="absolute bottom-6 left-6 right-6">
                     <span class="bg-surface text-secondary text-xs font-bold px-3 py-1.5 rounded-md tracking-widest uppercase shadow-lg">Premiere Event</span>
                 </div>
             </div>
-
             <div class="w-full lg:w-2/5 p-8 md:p-12 flex flex-col justify-center">
                 <div class="flex items-center text-secondary/60 text-sm font-semibold uppercase tracking-widest mb-4">
                     <i data-lucide="calendar" class="w-4 h-4 mr-2"></i> May 15, 2026 &bull; 10:00 AM EDT
                 </div>
-                
                 <h2 class="text-3xl md:text-4xl font-bold leading-tight mb-4 text-secondary group-hover:text-blue-500 transition-colors">Spring Fine Art & Rare Collectibles Showcase</h2>
-                
                 <p class="text-secondary/70 mb-8 leading-relaxed">
                     Our flagship spring auction features a beautifully curated 60-lot premiere inventory. Highlights include an original Arts & Crafts Glasgow School Umbrella Stand, an exquisite elephant sculpture, and masterfully crafted Art Deco furniture ready for the block.
                 </p>
-
                 <div class="grid grid-cols-3 gap-4 mb-8">
-                    <div class="bg-primary p-4 rounded-xl text-center border border-secondary/5">
-                        <div class="text-2xl font-bold text-secondary mb-1">21</div>
-                        <div class="text-[10px] uppercase font-bold text-secondary/50 tracking-wider">Days</div>
-                    </div>
-                    <div class="bg-primary p-4 rounded-xl text-center border border-secondary/5">
-                        <div class="text-2xl font-bold text-secondary mb-1">14</div>
-                        <div class="text-[10px] uppercase font-bold text-secondary/50 tracking-wider">Hours</div>
-                    </div>
-                    <div class="bg-primary p-4 rounded-xl text-center border border-secondary/5">
-                        <div class="text-2xl font-bold text-secondary mb-1">08</div>
-                        <div class="text-[10px] uppercase font-bold text-secondary/50 tracking-wider">Mins</div>
-                    </div>
+                    <div class="bg-primary p-4 rounded-xl text-center border border-secondary/5"><div class="text-2xl font-bold text-secondary mb-1">21</div><div class="text-[10px] uppercase font-bold text-secondary/50 tracking-wider">Days</div></div>
+                    <div class="bg-primary p-4 rounded-xl text-center border border-secondary/5"><div class="text-2xl font-bold text-secondary mb-1">14</div><div class="text-[10px] uppercase font-bold text-secondary/50 tracking-wider">Hours</div></div>
+                    <div class="bg-primary p-4 rounded-xl text-center border border-secondary/5"><div class="text-2xl font-bold text-secondary mb-1">08</div><div class="text-[10px] uppercase font-bold text-secondary/50 tracking-wider">Mins</div></div>
                 </div>
-
                 <div class="flex flex-col sm:flex-row gap-4 mt-auto">
-                    <button class="flex-1 bg-secondary text-primary px-6 py-3.5 rounded-full font-bold hover:bg-secondary/90 transition-transform hover:-translate-y-1 shadow-md text-center flex justify-center items-center">
-                        Register to Bid
-                    </button>
-                    <button class="flex-1 bg-primary text-secondary border border-secondary/20 px-6 py-3.5 rounded-full font-bold hover:border-secondary/40 hover:bg-secondary/5 transition-colors text-center flex justify-center items-center">
-                        <i data-lucide="book-open" class="w-4 h-4 mr-2"></i> View Catalog
-                    </button>
+                    <button class="flex-1 bg-secondary text-primary px-6 py-3.5 rounded-full font-bold hover:bg-secondary/90 transition-transform hover:-translate-y-1 shadow-md flex justify-center items-center">Register to Bid</button>
+                    <button class="flex-1 bg-primary text-secondary border border-secondary/20 px-6 py-3.5 rounded-full font-bold hover:border-secondary/40 hover:bg-secondary/5 transition-colors flex justify-center items-center"><i data-lucide="book-open" class="w-4 h-4 mr-2"></i> View Catalog</button>
                 </div>
             </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            
             <div class="bg-surface rounded-2xl shadow-soft dark:shadow-dark-soft overflow-hidden flex flex-col group cursor-pointer border border-secondary/10 hover:shadow-hover-up dark:hover:shadow-dark-hover-up hover:-translate-y-2 transition-all duration-300">
                 <div class="h-32 md:h-40 relative overflow-hidden bg-secondary/5 group-hover:bg-secondary/10 transition-colors duration-500">
                     <div class="absolute inset-0 bg-gradient-to-tr from-transparent to-secondary/5"></div>
@@ -211,14 +172,10 @@
                         <i data-lucide="clock" class="w-3.5 h-3.5 mr-1.5"></i> May 20, 2026
                     </div>
                     <h3 class="text-xl font-bold mb-3 leading-snug group-hover:text-blue-500 transition-colors">Modern Trading Cards & TCG Event</h3>
-                    <p class="text-sm text-secondary/60 mb-6 line-clamp-3">
-                        Featuring high-end graded modern sports cards, including a pristine Justin Herbert rookie, and rare TCG slabs from Pokémon, Magic: The Gathering, and One Piece.
-                    </p>
+                    <p class="text-sm text-secondary/60 mb-6 line-clamp-3">Featuring high-end graded modern sports cards, including a pristine Justin Herbert rookie, and rare TCG slabs from Pokémon, Magic: The Gathering, and One Piece.</p>
                     <div class="mt-auto flex justify-between items-center border-t border-secondary/10 pt-4">
                         <span class="text-sm font-semibold text-secondary/80">145 Lots</span>
-                        <span class="text-sm font-bold text-secondary group-hover:text-blue-500 flex items-center transition-colors">
-                            Explore <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i>
-                        </span>
+                        <span class="text-sm font-bold text-secondary group-hover:text-blue-500 flex items-center transition-colors">Explore <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i></span>
                     </div>
                 </div>
             </div>
@@ -232,14 +189,10 @@
                         <i data-lucide="clock" class="w-3.5 h-3.5 mr-1.5"></i> May 27, 2026
                     </div>
                     <h3 class="text-xl font-bold mb-3 leading-snug group-hover:text-blue-500 transition-colors">Game-Worn & Elite Sports Memorabilia</h3>
-                    <p class="text-sm text-secondary/60 mb-6 line-clamp-3">
-                        An exclusive collection of autographed jerseys, game-worn apparel, and highly sought-after patch cards, highlighted by a stunning 3/3 Shedeur Sanders patch.
-                    </p>
+                    <p class="text-sm text-secondary/60 mb-6 line-clamp-3">An exclusive collection of autographed jerseys, game-worn apparel, and highly sought-after patch cards, highlighted by a stunning 3/3 Shedeur Sanders patch.</p>
                     <div class="mt-auto flex justify-between items-center border-t border-secondary/10 pt-4">
                         <span class="text-sm font-semibold text-secondary/80">82 Lots</span>
-                        <span class="text-sm font-bold text-secondary group-hover:text-blue-500 flex items-center transition-colors">
-                            Explore <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i>
-                        </span>
+                        <span class="text-sm font-bold text-secondary group-hover:text-blue-500 flex items-center transition-colors">Explore <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i></span>
                     </div>
                 </div>
             </div>
@@ -253,18 +206,13 @@
                         <i data-lucide="clock" class="w-3.5 h-3.5 mr-1.5"></i> June 03, 2026
                     </div>
                     <h3 class="text-xl font-bold mb-3 leading-snug group-hover:text-blue-500 transition-colors">Numismatics & Precious Metals</h3>
-                    <p class="text-sm text-secondary/60 mb-6 line-clamp-3">
-                        Secure tangible assets in our upcoming vault auction featuring 1 oz silver rounds, gold bullion, and rare, uncirculated US currency notes.
-                    </p>
+                    <p class="text-sm text-secondary/60 mb-6 line-clamp-3">Secure tangible assets in our upcoming vault auction featuring 1 oz silver rounds, gold bullion, and rare, uncirculated US currency notes.</p>
                     <div class="mt-auto flex justify-between items-center border-t border-secondary/10 pt-4">
                         <span class="text-sm font-semibold text-secondary/80">300+ Lots</span>
-                        <span class="text-sm font-bold text-secondary group-hover:text-blue-500 flex items-center transition-colors">
-                            Explore <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i>
-                        </span>
+                        <span class="text-sm font-bold text-secondary group-hover:text-blue-500 flex items-center transition-colors">Explore <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i></span>
                     </div>
                 </div>
             </div>
-
         </div>
     </main>
 
@@ -277,7 +225,6 @@
                         <li><a href="#" class="hover:text-primary transition-colors">Buy</a></li>
                         <li><a href="#" class="hover:text-primary transition-colors">Sell</a></li>
                         <li><a href="#" class="hover:text-primary transition-colors">Sign Up Or Create Account</a></li>
-                        <li><a href="#" class="hover:text-primary transition-colors">Bidding Limit Increase Request</a></li>
                     </ul>
                 </div>
                 <div>
@@ -285,7 +232,6 @@
                     <ul class="space-y-2 md:space-y-3 text-primary/70 font-medium">
                         <li><a href="#" class="hover:text-primary transition-colors">User Privacy Notice</a></li>
                         <li><a href="#" class="hover:text-primary transition-colors">California Privacy Notice</a></li>
-                        <li><a href="#" class="hover:text-primary transition-colors flex items-center">Your Privacy Choices <span class="ml-2 inline-block w-6 h-3 bg-primary/20 rounded-full border border-primary/50 relative"><span class="absolute right-0 top-0 bottom-0 w-3 bg-primary rounded-full"></span></span></a></li>
                         <li><a href="#" class="hover:text-primary transition-colors">Fabyle User Agreement</a></li>
                     </ul>
                 </div>
@@ -293,7 +239,6 @@
                     <h4 class="font-bold mb-4 md:mb-6 text-primary text-base">Company</h4>
                     <ul class="space-y-2 md:space-y-3 text-primary/70 font-medium">
                         <li><a href="#" class="hover:text-primary transition-colors">Meet Our Experts</a></li>
-                        <li><a href="#" class="hover:text-primary transition-colors">Careers</a></li>
                         <li><a href="#" class="hover:text-primary transition-colors">Contact Us</a></li>
                         <li><a href="#" class="hover:text-primary transition-colors">FAQ</a></li>
                     </ul>
@@ -301,15 +246,12 @@
                 <div>
                     <h4 class="font-bold mb-4 md:mb-6 text-primary text-base">Follow Us</h4>
                     <div class="flex space-x-4 mb-6 md:mb-8">
-                        <a href="#" class="text-primary/70 hover:text-primary hover:-translate-y-1 transition-all p-2 bg-primary/10 rounded-full hover:bg-primary/20"><i data-lucide="instagram" class="w-4 h-4"></i></a>
-                        <a href="#" class="text-primary/70 hover:text-primary hover:-translate-y-1 transition-all p-2 bg-primary/10 rounded-full hover:bg-primary/20"><i data-lucide="twitter" class="w-4 h-4"></i></a>
-                        <a href="#" class="text-primary/70 hover:text-primary hover:-translate-y-1 transition-all p-2 bg-primary/10 rounded-full hover:bg-primary/20"><i data-lucide="facebook" class="w-4 h-4"></i></a>
-                        <a href="#" class="text-primary/70 hover:text-primary hover:-translate-y-1 transition-all p-2 bg-primary/10 rounded-full hover:bg-primary/20"><i data-lucide="youtube" class="w-4 h-4"></i></a>
+                        <a href="#" class="text-primary/70 hover:text-primary p-2 bg-primary/10 rounded-full hover:bg-primary/20"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+                        <a href="#" class="text-primary/70 hover:text-primary p-2 bg-primary/10 rounded-full hover:bg-primary/20"><i data-lucide="twitter" class="w-4 h-4"></i></a>
                     </div>
                     <div class="font-bold text-2xl md:text-3xl tracking-tight text-primary opacity-90">Fabyle</div>
                 </div>
             </div>
-
             <div class="pt-6 md:pt-8 border-t border-primary/20 flex flex-col justify-between items-center text-xs text-primary/60 text-center md:text-left">
                 <p>© 2026 Fabyle, an eBay company. All rights reserved.</p>
             </div>
@@ -317,27 +259,18 @@
     </footer>
 
     <script>
-        // Initialize Lucide Icons
         lucide.createIcons();
-
-        // Theme & Mobile Menu Toggle Logic
         document.addEventListener('DOMContentLoaded', () => {
             const themeToggleBtn = document.getElementById('theme-toggle');
             const htmlElement = document.documentElement;
             const mobileMenuBtn = document.getElementById('mobile-menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
 
-            // Theme Toggle
             themeToggleBtn.addEventListener('click', () => {
                 htmlElement.classList.toggle('dark');
-                if (htmlElement.classList.contains('dark')) {
-                    localStorage.setItem('theme', 'dark');
-                } else {
-                    localStorage.setItem('theme', 'light');
-                }
+                localStorage.setItem('theme', htmlElement.classList.contains('dark') ? 'dark' : 'light');
             });
 
-            // Mobile Menu Toggle
             mobileMenuBtn.addEventListener('click', () => {
                 mobileMenu.classList.toggle('hidden');
                 mobileMenu.classList.toggle('flex');
