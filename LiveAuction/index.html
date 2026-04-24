@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Auction Room | Fabyle</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: 'rgb(var(--color-primary) / <alpha-value>)',
+                        secondary: 'rgb(var(--color-secondary) / <alpha-value>)',
+                        surface: 'rgb(var(--color-surface) / <alpha-value>)'
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'hover-up': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
+                        'dark-soft': '0 4px 20px -2px rgba(0, 0, 0, 0.4)',
+                        'dark-hover-up': '0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5)',
+                        'glow-blue': '0 0 20px rgba(59, 130, 246, 0.5)',
+                        'glow-red': '0 0 20px rgba(239, 68, 68, 0.5)'
+                    },
+                    animation: {
+                        'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'slide-in': 'slideIn 0.3s ease-out forwards',
+                        'fade-out': 'fadeOut 0.5s ease-in forwards'
+                    },
+                    keyframes: {
+                        slideIn: {
+                            '0%': { transform: 'translateX(100%)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' }
+                        },
+                        fadeOut: {
+                            '0%': { opacity: '1' },
+                            '100%': { opacity: '0', display: 'none' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script>
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+    
+    <style>
+        :root {
+            --color-primary: 242 240 239; 
+            --color-secondary: 10 25 47;  
+            --color-surface: 255 255 255; 
+        }
+        .dark {
+            --color-primary: 10 25 47;    
+            --color-secondary: 242 240 239; 
+            --color-surface: 16 38 72;    
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Custom scrollbar for the bid feed */
+        .bid-feed-scroll::-webkit-scrollbar {
+            width: 4px;
+        }
+        .bid-feed-scroll::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .bid-feed-scroll::-webkit-scrollbar-thumb {
+            background: rgba(10, 25, 47, 0.2);
+            border-radius: 4px;
+        }
+        .dark .bid-feed-scroll::-webkit-scrollbar-thumb {
+            background: rgba(242, 240, 239, 0.2);
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-primary font-sans text-secondary overflow-hidden flex flex-col transition-colors duration-300">
+
+    <nav class="shrink-0 flex items-center justify-between px-4 md:px-6 py-3 bg-surface border-b border-secondary/10 relative z-50">
+        <div class="flex items-center space-x-6">
+            <a href="/" class="font-bold text-2xl tracking-tight text-secondary">Fabyle</a>
+            <div class="hidden md:flex items-center text-secondary/60 text-sm font-semibold">
+                <i data-lucide="chevron-right" class="w-4 h-4 mx-2"></i>
+                <span>2026 Spring Premiere</span>
+            </div>
+        </div>
+
+        <div class="flex items-center space-x-4">
+            <button id="audio-toggle" class="p-2 rounded-full hover:bg-secondary/10 text-secondary transition-colors" title="Toggle Auctioneer Audio">
+                <i data-lucide="volume-2" class="w-5 h-5"></i>
+            </button>
+            
+            <button id="theme-toggle" class="p-2 rounded-full hover:bg-secondary/10 text-secondary transition-colors">
+                <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+            </button>
+
+            <div class="hidden sm:flex items-center border border-secondary/20 rounded-full pl-1 pr-4 py-1">
+                <div class="w-6 h-6 bg-secondary text-primary rounded-full flex items-center justify-center text-xs font-bold mr-2">NS</div>
+                <span class="text-sm font-bold text-secondary">Bidder #842</span>
+            </div>
+            
+            <a href="/" class="text-sm font-bold text-secondary/60 hover:text-red-500 transition-colors ml-4 hidden sm:block">Exit Room</a>
+        </div>
+    </nav>
+
+    <main class="flex flex-col lg:flex-row flex-grow h-[calc(100vh-65px)] max-w-[1600px] mx-auto w-full">
+        
+        <div class="flex-grow flex flex-col p-4 md:p-6 lg:w-2/3 h-full overflow-y-auto hide-scrollbar">
+            
+            <div class="flex justify-between items-start mb-6">
+                <div>
+                    <div class="flex items-center mb-2">
+                        <span class="bg-red-500 text-white text-[10px] md:text-xs font-bold px-3 py-1 rounded-full tracking-widest uppercase flex items-center shadow-glow-red">
+                            <span class="w-2 h-2 rounded-full bg-white mr-2 animate-pulse-fast"></span> Live Now
+                        </span>
+                        <span class="ml-4 text-secondary/60 font-semibold text-sm">Lot 14 of 60</span>
+                    </div>
+                    <h1 class="text-2xl md:text-4xl font-bold leading-tight text-secondary mb-2">1952 Topps Mickey Mantle PSA 8</h1>
+                    <a href="#" class="text-sm font-bold text-blue-500 hover:text-blue-600 flex items-center">View Condition Report <i data-lucide="external-link" class="w-3 h-3 ml-1"></i></a>
+                </div>
+                
+                <div id="countdown-container" class="bg-surface border border-secondary/10 px-6 py-3 rounded-2xl shadow-soft text-center hidden">
+                    <div class="text-[10px] uppercase tracking-widest font-bold text-red-500 mb-1 animate-pulse">Fair Warning</div>
+                    <div class="text-3xl font-bold text-secondary tabular-nums" id="timer">00:15</div>
+                </div>
+            </div>
+
+            <div class="w-full bg-surface rounded-3xl border border-secondary/10 p-4 md:p-8 flex-grow flex items-center justify-center mb-6 relative group">
+                <button class="absolute top-4 right-4 p-2 bg-secondary/5 rounded-full hover:bg-secondary/10 text-secondary transition-colors z-10"><i data-lucide="maximize-2" class="w-5 h-5"></i></button>
+                
+                <div class="flex gap-4">
+                    <div class="w-48 md:w-64 aspect-[2.5/3.5] bg-gradient-to-br from-secondary/10 to-secondary/5 rounded-xl border-2 border-secondary/20 shadow-lg relative overflow-hidden flex flex-col transition-transform duration-500 group-hover:scale-105">
+                        <div class="h-[20%] border-b-2 border-secondary/20 bg-surface/50 p-2 flex flex-col justify-between">
+                            <div class="flex justify-between items-center text-[8px] md:text-[10px] font-bold text-secondary">
+                                <span>1952 TOPPS</span>
+                                <span>#311</span>
+                            </div>
+                            <div class="flex justify-between items-end">
+                                <span class="text-xs md:text-sm font-bold text-secondary">MICKEY MANTLE</span>
+                                <span class="bg-red-500 text-white text-[10px] md:text-xs font-bold px-1.5 py-0.5 rounded border border-red-600">NM-MT 8</span>
+                            </div>
+                        </div>
+                        <div class="flex-grow m-3 bg-gradient-to-b from-[#8B0000] to-[#FF4500] rounded flex items-center justify-center border-4 border-surface shadow-inner">
+                            <i data-lucide="image" class="w-8 h-8 text-white/20"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-surface rounded-3xl border border-secondary/10 p-6 md:p-8 flex flex-col sm:flex-row items-center justify-between shadow-soft mt-auto relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-blue-500"></div>
+
+                <div class="mb-6 sm:mb-0 text-center sm:text-left">
+                    <div class="text-xs font-bold text-secondary/50 uppercase tracking-widest mb-1">Current Asking</div>
+                    <div class="text-4xl md:text-5xl font-bold text-secondary tabular-nums" id="current-price">$485,000</div>
+                    <div class="text-sm font-semibold text-secondary/60 mt-1">Bidder #102 is winning</div>
+                </div>
+
+                <div class="flex flex-col gap-3 w-full sm:w-auto">
+                    <button onclick="placeBid()" id="bid-button" class="w-full sm:w-[280px] bg-blue-600 hover:bg-blue-700 text-white px-8 py-5 rounded-2xl font-bold text-xl md:text-2xl shadow-glow-blue transition-all hover:scale-105 active:scale-95 flex flex-col items-center leading-none">
+                        <span>Bid $500,000</span>
+                        <span class="text-[10px] font-medium opacity-80 mt-1 font-normal tracking-wide uppercase">Next Increment</span>
+                    </button>
+                    
+                    <div class="flex items-center justify-center bg-secondary/5 rounded-xl border border-secondary/10 p-1 w-full sm:w-[280px]">
+                        <button class="flex-1 py-2 text-xs font-bold text-secondary hover:bg-surface rounded-lg transition-colors">Max Bid</button>
+                        <div class="w-px h-4 bg-secondary/20"></div>
+                        <button class="flex-1 py-2 text-xs font-bold text-secondary hover:bg-surface rounded-lg transition-colors">Custom Bid</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-6 border-t border-secondary/10 pt-6 hidden md:block">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-sm font-bold text-secondary uppercase tracking-widest">Coming Up Next</h3>
+                </div>
+                <div class="flex gap-4 overflow-x-auto hide-scrollbar pb-2">
+                    <div class="w-48 bg-surface rounded-xl p-3 border border-secondary/10 flex-shrink-0 opacity-80 hover:opacity-100 transition-opacity cursor-pointer">
+                        <div class="h-24 bg-gradient-to-br from-secondary/10 to-secondary/5 rounded-lg mb-3 flex justify-center items-center">
+                            <div class="text-[8px] font-bold text-secondary/40">LOT 15</div>
+                        </div>
+                        <div class="text-xs font-bold text-secondary line-clamp-1 mb-1">1986 Fleer Michael Jordan RC</div>
+                        <div class="text-[10px] font-semibold text-secondary/60">Est: $150k - $200k</div>
+                    </div>
+                    <div class="w-48 bg-surface rounded-xl p-3 border border-secondary/10 flex-shrink-0 opacity-60 hover:opacity-100 transition-opacity cursor-pointer">
+                        <div class="h-24 bg-gradient-to-br from-secondary/10 to-secondary/5 rounded-lg mb-3 flex justify-center items-center">
+                            <div class="text-[8px] font-bold text-secondary/40">LOT 16</div>
+                        </div>
+                        <div class="text-xs font-bold text-secondary line-clamp-1 mb-1">LeBron James Rookie Patch Auto</div>
+                        <div class="text-[10px] font-semibold text-secondary/60">Est: $80k - $120k</div>
+                    </div>
+                    <div class="w-48 bg-surface rounded-xl p-3 border border-secondary/10 flex-shrink-0 opacity-40 hover:opacity-100 transition-opacity cursor-pointer">
+                        <div class="h-24 bg-gradient-to-br from-secondary/10 to-secondary/5 rounded-lg mb-3 flex justify-center items-center">
+                            <div class="text-[8px] font-bold text-secondary/40">LOT 17</div>
+                        </div>
+                        <div class="text-xs font-bold text-secondary line-clamp-1 mb-1">1933 Goudey Babe Ruth #149</div>
+                        <div class="text-[10px] font-semibold text-secondary/60">Est: $250k - $300k</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="lg:w-1/3 bg-surface/50 border-l border-secondary/10 flex flex-col h-[50vh] lg:h-full shrink-0 relative">
+            <div class="p-4 md:p-6 border-b border-secondary/10 bg-surface z-10 flex justify-between items-center shadow-sm">
+                <h3 class="font-bold text-secondary flex items-center">
+                    <i data-lucide="activity" class="w-4 h-4 mr-2 text-blue-500"></i> Bid History
+                </h3>
+                <span class="text-xs font-bold bg-secondary/10 text-secondary px-2 py-1 rounded-md">31 Bids</span>
+            </div>
+
+            <div id="bid-feed" class="flex-grow p-4 md:p-6 overflow-y-auto bid-feed-scroll flex flex-col gap-3 relative">
+                
+                <div class="bg-surface border border-secondary/10 p-4 rounded-xl shadow-sm flex justify-between items-center opacity-60">
+                    <div>
+                        <div class="text-[10px] font-bold text-secondary/50 uppercase tracking-widest mb-1">Floor Bidder</div>
+                        <div class="text-sm font-bold text-secondary">Bidder #102</div>
+                    </div>
+                    <div class="text-lg font-bold text-secondary">$485,000</div>
+                </div>
+
+                <div class="bg-surface border border-secondary/10 p-4 rounded-xl shadow-sm flex justify-between items-center opacity-40">
+                    <div>
+                        <div class="text-[10px] font-bold text-secondary/50 uppercase tracking-widest mb-1">Internet</div>
+                        <div class="text-sm font-bold text-secondary">Bidder #55</div>
+                    </div>
+                    <div class="text-lg font-bold text-secondary">$470,000</div>
+                </div>
+
+                <div class="bg-surface border border-secondary/10 p-4 rounded-xl shadow-sm flex justify-between items-center opacity-20">
+                    <div>
+                        <div class="text-[10px] font-bold text-secondary/50 uppercase tracking-widest mb-1">Phone</div>
+                        <div class="text-sm font-bold text-secondary">Bidder #891</div>
+                    </div>
+                    <div class="text-lg font-bold text-secondary">$455,000</div>
+                </div>
+            </div>
+
+            <div class="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-t from-surface to-transparent pointer-events-none"></div>
+        </div>
+    </main>
+
+    <div id="toast-container" class="fixed top-24 right-4 z-[100] flex flex-col gap-2 w-72 pointer-events-none">
+        </div>
+
+    <script>
+        lucide.createIcons();
+
+        // Theme Toggle Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const htmlElement = document.documentElement;
+            
+            themeToggleBtn.addEventListener('click', () => {
+                htmlElement.classList.toggle('dark');
+                localStorage.setItem('theme', htmlElement.classList.contains('dark') ? 'dark' : 'light');
+            });
+        });
+
+        // --- Live Room Simulation Logic ---
+        
+        let currentAsk = 500000;
+        let increment = 15000;
+        let bidCount = 31;
+        const priceDisplay = document.getElementById('current-price');
+        const bidButtonSpan = document.querySelector('#bid-button span:first-child');
+        const bidFeed = document.getElementById('bid-feed');
+        const toastContainer = document.getElementById('toast-container');
+        const countdownContainer = document.getElementById('countdown-container');
+        const timerDisplay = document.getElementById('timer');
+        
+        let timerInterval;
+        let isFairWarning = false;
+
+        // Format numbers to currency
+        const formatPrice = (num) => {
+            return "$" + num.toLocaleString();
+        };
+
+        // Trigger a Fair Warning timer
+        function startFairWarning() {
+            if (isFairWarning) return;
+            isFairWarning = true;
+            countdownContainer.classList.remove('hidden');
+            countdownContainer.classList.add('animate-slide-in');
+            
+            let seconds = 15;
+            timerDisplay.innerText = `00:${seconds}`;
+            
+            clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                seconds--;
+                timerDisplay.innerText = `00:${seconds < 10 ? '0'+seconds : seconds}`;
+                
+                if (seconds <= 5) {
+                    timerDisplay.classList.add('text-red-500');
+                }
+                
+                if (seconds <= 0) {
+                    clearInterval(timerInterval);
+                    timerDisplay.innerText = "SOLD!";
+                    document.getElementById('bid-button').disabled = true;
+                    document.getElementById('bid-button').classList.add('opacity-50', 'cursor-not-allowed');
+                }
+            }, 1000);
+        }
+
+        // Add a Toast Notification
+        function showToast(message, isAlert = false) {
+            const toast = document.createElement('div');
+            toast.className = `p-4 rounded-xl shadow-lg border backdrop-blur-md animate-slide-in flex items-center ${isAlert ? 'bg-red-500/90 border-red-500 text-white' : 'bg-surface/90 border-secondary/20 text-secondary'}`;
+            
+            const icon = isAlert ? '<i data-lucide="alert-circle" class="w-5 h-5 mr-3"></i>' : '<i data-lucide="arrow-up-circle" class="w-5 h-5 mr-3 text-blue-500"></i>';
+            
+            toast.innerHTML = `${icon} <span class="font-bold text-sm">${message}</span>`;
+            toastContainer.prepend(toast);
+            lucide.createIcons();
+
+            // Remove toast after 4 seconds
+            setTimeout(() => {
+                toast.classList.add('animate-fade-out');
+                setTimeout(() => toast.remove(), 500);
+            }, 4000);
+        }
+
+        // Add Bid to Feed
+        function addBidToFeed(bidder, amount, type) {
+            // Fade out older items slightly
+            Array.from(bidFeed.children).forEach(child => {
+                let currentOp = parseFloat(window.getComputedStyle(child).opacity);
+                if(currentOp > 0.2) child.style.opacity = (currentOp - 0.2).toString();
+            });
+
+            const newBid = document.createElement('div');
+            newBid.className = "bg-surface border border-secondary/10 p-4 rounded-xl shadow-md flex justify-between items-center animate-slide-in";
+            // If it's the user, highlight it blue
+            if(type === "You") {
+                newBid.classList.add("border-blue-500", "bg-blue-500/5");
+            }
+
+            newBid.innerHTML = `
+                <div>
+                    <div class="text-[10px] font-bold text-secondary/50 uppercase tracking-widest mb-1">${type}</div>
+                    <div class="text-sm font-bold text-secondary">${bidder}</div>
+                </div>
+                <div class="text-lg font-bold ${type === 'You' ? 'text-blue-500' : 'text-secondary'}">${formatPrice(amount)}</div>
+            `;
+            
+            bidFeed.prepend(newBid);
+            
+            // Keep feed clean, remove items past 6
+            if (bidFeed.children.length > 6) {
+                bidFeed.removeChild(bidFeed.lastChild);
+            }
+        }
+
+        // Simulate User Clicking Bid Button
+        window.placeBid = function() {
+            if(document.getElementById('bid-button').disabled) return;
+            
+            // Stop warning timer if active
+            clearInterval(timerInterval);
+            isFairWarning = false;
+            countdownContainer.classList.add('hidden');
+            timerDisplay.classList.remove('text-red-500');
+
+            // Update UI
+            let bidAmount = currentAsk;
+            priceDisplay.innerText = formatPrice(bidAmount);
+            priceDisplay.nextElementSibling.innerText = "You are winning";
+            priceDisplay.nextElementSibling.classList.add("text-blue-500");
+            
+            addBidToFeed("Bidder #842", bidAmount, "You");
+            showToast(`You bid ${formatPrice(bidAmount)}`);
+            
+            // Set next asking price
+            currentAsk += increment;
+            bidButtonSpan.innerText = `Bid ${formatPrice(currentAsk)}`;
+            
+            // Change button state slightly so user knows they are winning
+            const btn = document.getElementById('bid-button');
+            btn.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+            btn.classList.add('bg-green-600', 'hover:bg-green-700', 'shadow-none');
+            bidButtonSpan.innerText = "You hold the high bid";
+            btn.querySelector('span:nth-child(2)').style.display = 'none';
+            btn.disabled = true;
+
+            // Simulate someone outbidding you after 4 seconds
+            setTimeout(simulateIncomingBid, 4000);
+        };
+
+        // Simulate Random Incoming Bids
+        function simulateIncomingBid() {
+            if (document.getElementById('timer').innerText === "SOLD!") return;
+
+            let bidAmount = currentAsk;
+            let mockBidders = ["Internet - #42", "Floor - #12", "Phone - #88"];
+            let randomBidder = mockBidders[Math.floor(Math.random() * mockBidders.length)];
+            
+            priceDisplay.innerText = formatPrice(bidAmount);
+            priceDisplay.nextElementSibling.innerText = `${randomBidder.split(" - ")[1]} is winning`;
+            priceDisplay.nextElementSibling.classList.remove("text-blue-500");
+
+            addBidToFeed(randomBidder.split(" - ")[1], bidAmount, randomBidder.split(" - ")[0]);
+            
+            currentAsk += increment;
+            
+            // Reset User Button
+            const btn = document.getElementById('bid-button');
+            btn.classList.add('bg-blue-600', 'hover:bg-blue-700', 'shadow-glow-blue');
+            btn.classList.remove('bg-green-600', 'hover:bg-green-700');
+            bidButtonSpan.innerText = `Bid ${formatPrice(currentAsk)}`;
+            btn.querySelector('span:nth-child(2)').style.display = 'block';
+            btn.disabled = false;
+
+            showToast("New bid received from floor.");
+
+            // Start fair warning after 6 seconds of no bids
+            setTimeout(startFairWarning, 6000);
+        }
+
+        // Start the first warning after a delay
+        setTimeout(startFairWarning, 8000);
+
+    </script>
+</body>
+</html>
