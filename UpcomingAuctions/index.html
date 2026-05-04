@@ -72,7 +72,7 @@
                         <a href="#" class="block px-4 py-2 text-sm text-secondary/80 hover:text-secondary hover:bg-secondary/10 transition-colors">Browse All</a>
                     </div>
                 </div>
-                <span class="flex items-center cursor-pointer hover:text-secondary transition-colors">Shop</span>
+                <a href="/Shop" class="flex items-center cursor-pointer hover:text-secondary transition-colors">Shop</a>
                 <span class="cursor-pointer hover:text-secondary transition-colors">Calendar</span>
             </div>
 
@@ -81,7 +81,11 @@
                     <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
                     <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
                 </button>
-                <button class="hidden lg:flex items-center text-secondary/80 hover:text-secondary transition-colors">
+                <a href="/Shop" class="p-2 rounded-full hover:bg-secondary/10 text-secondary transition-colors relative">
+                    <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                    <span class="absolute top-0 right-0 w-2 h-2 bg-blue-500 rounded-full"></span>
+                </a>
+                <button class="hidden lg:flex items-center text-secondary/80 hover:text-secondary transition-colors ml-2">
                     <i data-lucide="user" class="h-4 w-4 mr-1.5"></i> Login
                 </button>
                 <button class="hidden lg:block bg-secondary text-primary px-6 py-2 rounded-full hover:bg-secondary/90 transition-colors shadow-md ml-2">
@@ -104,7 +108,7 @@
                     <a href="/Results" class="hover:text-secondary transition-colors">Auction Results</a>
                     <a href="#" class="hover:text-secondary transition-colors">Browse All Auctions</a>
                     <hr class="border-secondary/10">
-                    <a href="#" class="hover:text-secondary transition-colors">Shop</a>
+                    <a href="/Shop" class="hover:text-secondary transition-colors">Shop Gallery</a>
                     <a href="#" class="hover:text-secondary transition-colors">Calendar</a>
                     <hr class="border-secondary/10">
                     <a href="#" class="flex items-center hover:text-secondary transition-colors">
@@ -268,7 +272,11 @@
 
             themeToggleBtn.addEventListener('click', () => {
                 htmlElement.classList.toggle('dark');
-                localStorage.setItem('theme', htmlElement.classList.contains('dark') ? 'dark' : 'light');
+                if (htmlElement.classList.contains('dark')) {
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    localStorage.setItem('theme', 'light');
+                }
             });
 
             mobileMenuBtn.addEventListener('click', () => {
