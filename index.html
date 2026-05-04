@@ -72,8 +72,8 @@
                         <a href="#" class="block px-4 py-2 text-sm text-secondary/80 hover:text-secondary hover:bg-secondary/10 transition-colors">Browse All</a>
                     </div>
                 </div>
-                <span class="flex items-center cursor-pointer hover:text-secondary transition-colors">Shop</span>
-                <span class="cursor-pointer hover:text-secondary transition-colors">Calendar</span>
+                <a href="/Shop" class="flex items-center cursor-pointer hover:text-secondary transition-colors">Shop</a>
+                <a href="#" class="cursor-pointer hover:text-secondary transition-colors">Calendar</a>
             </div>
 
             <div class="flex items-center space-x-2 lg:space-x-4 text-sm font-semibold">
@@ -81,7 +81,11 @@
                     <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
                     <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
                 </button>
-                <button class="hidden lg:flex items-center text-secondary/80 hover:text-secondary transition-colors">
+                <a href="/Shop" class="p-2 rounded-full hover:bg-secondary/10 text-secondary transition-colors relative">
+                    <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                    <span class="absolute top-0 right-0 w-2 h-2 bg-blue-500 rounded-full"></span>
+                </a>
+                <button class="hidden lg:flex items-center text-secondary/80 hover:text-secondary transition-colors ml-2">
                     <i data-lucide="user" class="h-4 w-4 mr-1.5"></i> Login
                 </button>
                 <button class="hidden lg:block bg-secondary text-primary px-6 py-2 rounded-full hover:bg-secondary/90 transition-colors shadow-md ml-2">
@@ -104,7 +108,7 @@
                     <a href="/Results" class="hover:text-secondary transition-colors">Auction Results</a>
                     <a href="#" class="hover:text-secondary transition-colors">Browse All Auctions</a>
                     <hr class="border-secondary/10">
-                    <a href="#" class="hover:text-secondary transition-colors">Shop</a>
+                    <a href="/Shop" class="hover:text-secondary transition-colors">Shop Gallery</a>
                     <a href="#" class="hover:text-secondary transition-colors">Calendar</a>
                     <hr class="border-secondary/10">
                     <a href="#" class="flex items-center hover:text-secondary transition-colors">
@@ -243,6 +247,13 @@
         <section class="mb-16 md:mb-24">
             <h2 class="text-xl md:text-2xl font-bold mb-6 pb-2">Featured Lots</h2>
             <div class="relative group/carousel">
+                <button class="hidden md:block absolute left-0 top-1/3 -translate-y-1/2 -translate-x-1/2 bg-surface shadow-lg rounded-full p-2 z-20 text-secondary/60 hover:text-secondary opacity-0 group-hover/carousel:opacity-100 transition-all hover:scale-110">
+                    <i data-lucide="chevron-left" class="w-5 h-5"></i>
+                </button>
+                <button class="hidden md:block absolute right-0 top-1/3 -translate-y-1/2 translate-x-1/2 bg-surface shadow-lg rounded-full p-2 z-20 text-secondary/60 hover:text-secondary opacity-0 group-hover/carousel:opacity-100 transition-all hover:scale-110">
+                    <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                </button>
+
                 <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-6 hide-scrollbar">
                     
                     <div class="group/card cursor-pointer flex-shrink-0 w-[85%] sm:w-[45%] md:w-auto snap-center">
