@@ -67,14 +67,15 @@
         <div class="flex items-center space-x-4 lg:space-x-10">
             <div class="hidden lg:flex items-center space-x-6 text-sm font-semibold text-secondary/80">
                 <div class="relative group py-2">
-                    <span class="flex items-center cursor-pointer text-secondary transition-colors">Auctions <i data-lucide="chevron-down" class="h-4 w-4 ml-1"></i></span>
+                    <span class="flex items-center cursor-pointer hover:text-secondary transition-colors">Auctions <i data-lucide="chevron-down" class="h-4 w-4 ml-1"></i></span>
                     <div class="absolute left-0 top-full w-48 bg-surface rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 py-2 border border-secondary/10">
                         <a href="/UpcomingAuctions" class="block px-4 py-2 text-sm text-secondary/80 hover:text-secondary hover:bg-secondary/10 transition-colors">Upcoming Auctions</a>
-                        <a href="/Results" class="block px-4 py-2 text-sm text-secondary font-bold bg-secondary/5 transition-colors">Results</a>
+                        <a href="/Results" class="block px-4 py-2 text-sm text-secondary/80 hover:text-secondary hover:bg-secondary/10 transition-colors">Results</a>
                         <a href="#" class="block px-4 py-2 text-sm text-secondary/80 hover:text-secondary hover:bg-secondary/10 transition-colors">Browse All</a>
                     </div>
                 </div>
                 <a href="/Shop" class="flex items-center cursor-pointer hover:text-secondary transition-colors">Shop</a>
+                <span class="cursor-pointer hover:text-secondary transition-colors">Calendar</span>
             </div>
 
             <div class="flex items-center space-x-2 lg:space-x-4 text-sm font-semibold">
@@ -86,12 +87,14 @@
                     <i data-lucide="shopping-bag" class="w-5 h-5"></i>
                     <span class="absolute top-0 right-0 w-2 h-2 bg-blue-500 rounded-full"></span>
                 </a>
-                <button class="hidden lg:flex items-center text-secondary/80 hover:text-secondary transition-colors ml-2">
-                    <i data-lucide="user" class="h-4 w-4 mr-1.5"></i> Login
-                </button>
-                <button class="hidden lg:block bg-secondary text-primary px-6 py-2 rounded-full hover:bg-secondary/90 transition-colors shadow-md ml-2">
+                <!-- Link to Profile -->
+                <a href="/Profile" class="hidden lg:flex items-center text-secondary/80 hover:text-secondary transition-colors ml-2">
+                    <i data-lucide="user" class="h-4 w-4 mr-1.5"></i> Account
+                </a>
+                <!-- Link to Seller Dashboard -->
+                <a href="/Seller" class="hidden lg:block bg-secondary text-primary px-6 py-2 rounded-full hover:bg-secondary/90 transition-colors shadow-md ml-2">
                     Sell
-                </button>
+                </a>
                 <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-full hover:bg-secondary/10 text-secondary transition-colors">
                     <i data-lucide="menu" class="w-6 h-6"></i>
                 </button>
@@ -106,17 +109,18 @@
                 </div>
                 <div class="flex flex-col space-y-4 text-base font-semibold text-secondary/80">
                     <a href="/UpcomingAuctions" class="hover:text-secondary transition-colors">Upcoming Auctions</a>
-                    <a href="/Results" class="text-secondary font-bold transition-colors">Auction Results</a>
+                    <a href="/Results" class="hover:text-secondary transition-colors">Auction Results</a>
                     <a href="#" class="hover:text-secondary transition-colors">Browse All Auctions</a>
                     <hr class="border-secondary/10">
                     <a href="/Shop" class="hover:text-secondary transition-colors">Shop Gallery</a>
+                    <a href="#" class="hover:text-secondary transition-colors">Calendar</a>
                     <hr class="border-secondary/10">
-                    <a href="#" class="flex items-center hover:text-secondary transition-colors">
-                        <i data-lucide="user" class="h-5 w-5 mr-3"></i> Login / Register
+                    <a href="/Profile" class="flex items-center hover:text-secondary transition-colors">
+                        <i data-lucide="user" class="h-5 w-5 mr-3"></i> My Account
                     </a>
-                    <button class="bg-secondary text-primary px-6 py-3 rounded-full hover:bg-secondary/90 transition-colors shadow-md text-center w-full mt-2">
+                    <a href="/Seller" class="bg-secondary text-primary px-6 py-3 rounded-full hover:bg-secondary/90 transition-colors shadow-md text-center w-full mt-2 block">
                         Sell with Fabyle
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
