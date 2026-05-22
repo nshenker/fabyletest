@@ -55,7 +55,6 @@
 </head>
 <body class="min-h-screen bg-primary font-sans text-secondary overflow-x-hidden transition-colors duration-300 flex flex-col">
 
-    <!-- Navigation -->
     <nav class="sticky top-0 z-50 flex items-center justify-between px-6 py-4 bg-primary/90 backdrop-blur-md transition-colors duration-300 shadow-sm relative">
         <div class="flex items-center space-x-8">
             <a href="/" class="font-bold text-3xl tracking-tight text-secondary cursor-pointer">Fabyle</a>
@@ -124,7 +123,6 @@
         </div>
     </nav>
 
-    <!-- Page Header & Filters -->
     <header class="max-w-[1400px] mx-auto px-4 md:px-6 pt-12 pb-6">
         <div class="mb-8">
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 text-secondary">Upcoming Auctions</h1>
@@ -141,7 +139,6 @@
 
     <main class="max-w-[1400px] mx-auto px-4 md:px-6 pb-20 w-full flex-grow">
 
-        <!-- Featured Premiere Auction -->
         <div class="w-full bg-surface rounded-3xl shadow-soft dark:shadow-dark-soft overflow-hidden flex flex-col lg:flex-row mb-12 group transition-all duration-300 border border-secondary/10 relative">
             <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 z-10 opacity-80"></div>
             <div class="w-full lg:w-3/5 h-[200px] md:h-[300px] lg:h-auto relative overflow-hidden bg-secondary/10 group-hover:bg-secondary/20 transition-colors duration-700">
@@ -164,426 +161,40 @@
                     <div class="bg-primary p-4 rounded-xl text-center border border-secondary/5"><div class="text-2xl font-bold text-secondary mb-1">08</div><div class="text-[10px] uppercase font-bold text-secondary/50 tracking-wider">Mins</div></div>
                 </div>
                 <div class="flex flex-col sm:flex-row gap-4 mt-auto">
-                    <button class="flex-1 bg-secondary text-primary px-6 py-3.5 rounded-full font-bold hover:bg-secondary/90 transition-transform hover:-translate-y-1 shadow-md flex justify-center items-center">Register to Bid</button>
-                    <!-- Trigger Modal -->
+                    <button onclick="openRegistrationModal()" class="flex-1 bg-secondary text-primary px-6 py-3.5 rounded-full font-bold hover:bg-secondary/90 transition-transform hover:-translate-y-1 shadow-md flex justify-center items-center">Register to Bid</button>
                     <button onclick="openCatalogModal()" class="flex-1 bg-primary text-secondary border border-secondary/20 px-6 py-3.5 rounded-full font-bold hover:border-secondary/40 hover:bg-secondary/5 transition-colors flex justify-center items-center"><i data-lucide="book-open" class="w-4 h-4 mr-2"></i> View Catalog</button>
                 </div>
             </div>
         </div>
 
-        <!-- Upcoming Auctions Grid (Typography Only) -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            
-            <!-- Auction 1 -->
-            <div onclick="openCatalogModal()" class="relative rounded-2xl bg-surface group cursor-pointer shadow-soft hover:shadow-hover-up dark:shadow-dark-soft dark:hover:shadow-dark-hover-up hover:-translate-y-2 transition-all duration-300 border border-secondary/10 flex flex-col h-full overflow-hidden">
-                <div class="h-1.5 w-full bg-gradient-to-r from-blue-500 to-purple-500 group-hover:h-2 transition-all duration-300"></div>
-                <div class="p-6 md:p-8 flex flex-col flex-grow">
-                    <div class="flex justify-between items-center mb-6">
-                        <span class="bg-blue-500/10 text-blue-500 text-[10px] md:text-xs font-bold px-3 py-1 rounded-full tracking-widest uppercase flex items-center">
-                            <span class="w-1.5 h-1.5 rounded-full bg-blue-500 mr-2 animate-pulse"></span>
-                            Live Now
-                        </span>
-                        <i data-lucide="gavel" class="w-5 h-5 text-secondary/40 group-hover:text-blue-500 transition-colors duration-300"></i>
-                    </div>
-
-                    <h3 class="text-secondary text-lg md:text-xl font-bold mb-8 leading-tight group-hover:text-blue-500 transition-colors">2026 Spring Game Used Auction</h3>
-
-                    <div class="mt-auto">
-                        <div class="text-secondary/50 text-[10px] md:text-xs font-semibold uppercase tracking-wider mb-3">Current Bidding Ends:</div>
-                        <div class="flex items-center space-x-2">
-                            <div class="flex flex-col items-center flex-1">
-                                <div class="bg-secondary/5 w-full flex justify-center items-center py-2 md:py-3 rounded-lg border border-secondary/10 group-hover:bg-secondary/10 transition-colors">
-                                    <span class="text-xl md:text-3xl font-bold text-secondary tracking-tight">12</span>
-                                </div>
-                                <span class="text-[9px] md:text-[10px] text-secondary/50 font-semibold mt-2 uppercase tracking-widest">Days</span>
-                            </div>
-                            <span class="text-lg md:text-xl text-secondary/30 font-bold -mt-4">:</span>
-                            <div class="flex flex-col items-center flex-1">
-                                <div class="bg-secondary/5 w-full flex justify-center items-center py-2 md:py-3 rounded-lg border border-secondary/10 group-hover:bg-secondary/10 transition-colors">
-                                    <span class="text-xl md:text-3xl font-bold text-secondary tracking-tight">05</span>
-                                </div>
-                                <span class="text-[9px] md:text-[10px] text-secondary/50 font-semibold mt-2 uppercase tracking-widest">Hours</span>
-                            </div>
-                            <span class="text-lg md:text-xl text-secondary/30 font-bold -mt-4">:</span>
-                            <div class="flex flex-col items-center flex-1">
-                                <div class="bg-secondary/5 w-full flex justify-center items-center py-2 md:py-3 rounded-lg border border-secondary/10 group-hover:bg-secondary/10 transition-colors">
-                                    <span class="text-xl md:text-3xl font-bold text-secondary tracking-tight">52</span>
-                                </div>
-                                <span class="text-[9px] md:text-[10px] text-secondary/50 font-semibold mt-2 uppercase tracking-widest">Mins</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
-
-            <!-- Auction 2 -->
-            <div onclick="openCatalogModal()" class="relative rounded-2xl bg-surface group cursor-pointer shadow-soft hover:shadow-hover-up dark:shadow-dark-soft dark:hover:shadow-dark-hover-up hover:-translate-y-2 transition-all duration-300 border border-secondary/10 flex flex-col h-full overflow-hidden">
-                <div class="h-1.5 w-full bg-gradient-to-r from-blue-500 to-purple-500 group-hover:h-2 transition-all duration-300"></div>
-                <div class="p-6 md:p-8 flex flex-col flex-grow">
-                    <div class="flex justify-between items-center mb-6">
-                        <span class="bg-blue-500/10 text-blue-500 text-[10px] md:text-xs font-bold px-3 py-1 rounded-full tracking-widest uppercase flex items-center">
-                            <span class="w-1.5 h-1.5 rounded-full bg-blue-500 mr-2 animate-pulse"></span>
-                            Live Now
-                        </span>
-                        <i data-lucide="gavel" class="w-5 h-5 text-secondary/40 group-hover:text-blue-500 transition-colors duration-300"></i>
-                    </div>
-
-                    <h3 class="text-secondary text-lg md:text-xl font-bold mb-8 leading-tight group-hover:text-blue-500 transition-colors">2026 Spring Music Memorabilia Auction</h3>
-
-                    <div class="mt-auto">
-                        <div class="text-secondary/50 text-[10px] md:text-xs font-semibold uppercase tracking-wider mb-3">Current Bidding Ends:</div>
-                        <div class="flex items-center space-x-2">
-                            <div class="flex flex-col items-center flex-1">
-                                <div class="bg-secondary/5 w-full flex justify-center items-center py-2 md:py-3 rounded-lg border border-secondary/10 group-hover:bg-secondary/10 transition-colors">
-                                    <span class="text-xl md:text-3xl font-bold text-secondary tracking-tight">23</span>
-                                </div>
-                                <span class="text-[9px] md:text-[10px] text-secondary/50 font-semibold mt-2 uppercase tracking-widest">Days</span>
-                            </div>
-                            <span class="text-lg md:text-xl text-secondary/30 font-bold -mt-4">:</span>
-                            <div class="flex flex-col items-center flex-1">
-                                <div class="bg-secondary/5 w-full flex justify-center items-center py-2 md:py-3 rounded-lg border border-secondary/10 group-hover:bg-secondary/10 transition-colors">
-                                    <span class="text-xl md:text-3xl font-bold text-secondary tracking-tight">05</span>
-                                </div>
-                                <span class="text-[9px] md:text-[10px] text-secondary/50 font-semibold mt-2 uppercase tracking-widest">Hours</span>
-                            </div>
-                            <span class="text-lg md:text-xl text-secondary/30 font-bold -mt-4">:</span>
-                            <div class="flex flex-col items-center flex-1">
-                                <div class="bg-secondary/5 w-full flex justify-center items-center py-2 md:py-3 rounded-lg border border-secondary/10 group-hover:bg-secondary/10 transition-colors">
-                                    <span class="text-xl md:text-3xl font-bold text-secondary tracking-tight">52</span>
-                                </div>
-                                <span class="text-[9px] md:text-[10px] text-secondary/50 font-semibold mt-2 uppercase tracking-widest">Mins</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Auction 3 -->
-            <div onclick="openCatalogModal()" class="relative rounded-2xl bg-surface group cursor-pointer shadow-soft hover:shadow-hover-up dark:shadow-dark-soft dark:hover:shadow-dark-hover-up hover:-translate-y-2 transition-all duration-300 border border-secondary/10 flex flex-col h-full overflow-hidden">
-                <div class="h-1.5 w-full bg-gradient-to-r from-blue-500 to-purple-500 group-hover:h-2 transition-all duration-300"></div>
-                <div class="p-6 md:p-8 flex flex-col flex-grow">
-                    <div class="flex justify-between items-center mb-6">
-                        <span class="bg-blue-500/10 text-blue-500 text-[10px] md:text-xs font-bold px-3 py-1 rounded-full tracking-widest uppercase flex items-center">
-                            <span class="w-1.5 h-1.5 rounded-full bg-blue-500 mr-2 animate-pulse"></span>
-                            Live Now
-                        </span>
-                        <i data-lucide="gavel" class="w-5 h-5 text-secondary/40 group-hover:text-blue-500 transition-colors duration-300"></i>
-                    </div>
-
-                    <h3 class="text-secondary text-lg md:text-xl font-bold mb-8 leading-tight group-hover:text-blue-500 transition-colors">2026 Comics Memorabilia Auction</h3>
-
-                    <div class="mt-auto">
-                        <div class="text-secondary/50 text-[10px] md:text-xs font-semibold uppercase tracking-wider mb-3">Current Bidding Ends:</div>
-                        <div class="flex items-center space-x-2">
-                            <div class="flex flex-col items-center flex-1">
-                                <div class="bg-secondary/5 w-full flex justify-center items-center py-2 md:py-3 rounded-lg border border-secondary/10 group-hover:bg-secondary/10 transition-colors">
-                                    <span class="text-xl md:text-3xl font-bold text-secondary tracking-tight">21</span>
-                                </div>
-                                <span class="text-[9px] md:text-[10px] text-secondary/50 font-semibold mt-2 uppercase tracking-widest">Days</span>
-                            </div>
-                            <span class="text-lg md:text-xl text-secondary/30 font-bold -mt-4">:</span>
-                            <div class="flex flex-col items-center flex-1">
-                                <div class="bg-secondary/5 w-full flex justify-center items-center py-2 md:py-3 rounded-lg border border-secondary/10 group-hover:bg-secondary/10 transition-colors">
-                                    <span class="text-xl md:text-3xl font-bold text-secondary tracking-tight">05</span>
-                                </div>
-                                <span class="text-[9px] md:text-[10px] text-secondary/50 font-semibold mt-2 uppercase tracking-widest">Hours</span>
-                            </div>
-                            <span class="text-lg md:text-xl text-secondary/30 font-bold -mt-4">:</span>
-                            <div class="flex flex-col items-center flex-1">
-                                <div class="bg-secondary/5 w-full flex justify-center items-center py-2 md:py-3 rounded-lg border border-secondary/10 group-hover:bg-secondary/10 transition-colors">
-                                    <span class="text-xl md:text-3xl font-bold text-secondary tracking-tight">52</span>
-                                </div>
-                                <span class="text-[9px] md:text-[10px] text-secondary/50 font-semibold mt-2 uppercase tracking-widest">Mins</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-secondary text-primary pt-12 md:pt-16 pb-8 transition-colors duration-300 mt-auto border-t border-secondary/10">
-        <div class="max-w-[1400px] mx-auto px-6">
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-8 mb-12 md:mb-16 text-sm">
-                <div>
-                    <h4 class="font-bold mb-4 md:mb-6 text-primary text-base">Features</h4>
-                    <ul class="space-y-2 md:space-y-3 text-primary/70 font-medium">
-                        <li><a href="#" class="hover:text-primary transition-colors">Buy</a></li>
-                        <li><a href="#" class="hover:text-primary transition-colors">Sell</a></li>
-                        <li><a href="#" class="hover:text-primary transition-colors">Sign Up Or Create Account</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold mb-4 md:mb-6 text-primary text-base">Legal</h4>
-                    <ul class="space-y-2 md:space-y-3 text-primary/70 font-medium">
-                        <li><a href="#" class="hover:text-primary transition-colors">User Privacy Notice</a></li>
-                        <li><a href="#" class="hover:text-primary transition-colors">California Privacy Notice</a></li>
-                        <li><a href="#" class="hover:text-primary transition-colors">Fabyle User Agreement</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold mb-4 md:mb-6 text-primary text-base">Company</h4>
-                    <ul class="space-y-2 md:space-y-3 text-primary/70 font-medium">
-                        <li><a href="#" class="hover:text-primary transition-colors">Meet Our Experts</a></li>
-                        <li><a href="#" class="hover:text-primary transition-colors">Contact Us</a></li>
-                        <li><a href="#" class="hover:text-primary transition-colors">FAQ</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold mb-4 md:mb-6 text-primary text-base">Follow Us</h4>
-                    <div class="flex space-x-4 mb-6 md:mb-8">
-                        <a href="#" class="text-primary/70 hover:text-primary p-2 bg-primary/10 rounded-full hover:bg-primary/20"><i data-lucide="instagram" class="w-4 h-4"></i></a>
-                        <a href="#" class="text-primary/70 hover:text-primary p-2 bg-primary/10 rounded-full hover:bg-primary/20"><i data-lucide="twitter" class="w-4 h-4"></i></a>
-                    </div>
-                    <div class="font-bold text-2xl md:text-3xl tracking-tight text-primary opacity-90">Fabyle</div>
-                </div>
-            </div>
-            <div class="pt-6 md:pt-8 border-t border-primary/20 flex flex-col justify-between items-center text-xs text-primary/60 text-center md:text-left">
-                <p>© 2026 Fabyle, an eBay company. All rights reserved.</p>
-            </div>
+    <div id="registration-modal" class="fixed inset-0 z-[200] flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300 px-4">
+        <div class="absolute inset-0 bg-secondary/80 backdrop-blur-sm" onclick="closeRegistrationModal()"></div>
+        <div class="bg-primary w-full max-w-md rounded-3xl shadow-modal dark:shadow-dark-modal relative p-8 transform scale-95 transition-transform duration-300 border border-secondary/10">
+            <button onclick="closeRegistrationModal()" class="absolute top-4 right-4 text-secondary/60 hover:text-secondary">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            <h2 class="text-2xl font-bold mb-6">Register to Bid</h2>
+            <p class="text-secondary/70 mb-6">Fill out the information below to gain bidding access for this event.</p>
+            <form class="space-y-4">
+                <input type="text" placeholder="Full Name" class="w-full bg-secondary/5 rounded-xl p-3 border border-secondary/10 outline-none focus:ring-2 focus:ring-blue-500">
+                <input type="email" placeholder="Email Address" class="w-full bg-secondary/5 rounded-xl p-3 border border-secondary/10 outline-none focus:ring-2 focus:ring-blue-500">
+                <button type="button" class="w-full bg-blue-600 text-white font-bold py-3 rounded-xl hover:bg-blue-700 transition-colors">Submit Registration</button>
+            </form>
         </div>
-    </footer>
+    </div>
 
-    <!-- Upcoming Catalog Modal Overlay -->
     <div id="catalog-modal" class="fixed inset-0 z-[100] flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300 px-4 py-6 sm:p-6">
         <div class="absolute inset-0 bg-secondary/80 backdrop-blur-sm" onclick="closeCatalogModal()"></div>
-        
         <div class="bg-primary w-full max-w-[1400px] h-[95vh] rounded-3xl shadow-modal dark:shadow-dark-modal relative flex flex-col transform scale-95 transition-transform duration-300 border border-secondary/10" id="catalog-modal-content">
-            
             <button onclick="closeCatalogModal()" class="absolute top-4 right-4 z-20 bg-surface/90 backdrop-blur-md text-secondary p-2.5 rounded-full shadow-lg hover:bg-surface hover:scale-110 transition-all border border-secondary/10 group">
                 <i data-lucide="x" class="w-5 h-5 group-hover:rotate-90 transition-transform duration-300"></i>
             </button>
-
-            <!-- Scrollable Content -->
             <div class="overflow-y-auto flex-grow rounded-3xl hide-scrollbar relative">
-                
-                <!-- Sticky Header specific to the Auction -->
-                <div class="bg-surface/95 backdrop-blur-md border-b border-secondary/10 pt-10 pb-6 px-6 md:px-12 sticky top-0 z-10 flex flex-col md:flex-row md:items-end justify-between gap-6 shadow-sm">
-                    <div class="max-w-2xl">
-                        <div class="flex items-center text-blue-500 text-xs font-bold uppercase tracking-widest mb-2">
-                            <i data-lucide="calendar" class="w-3.5 h-3.5 mr-1.5"></i> Starts May 15, 2026 &bull; 10:00 AM EDT
-                        </div>
-                        <h2 class="text-2xl md:text-3xl font-bold tracking-tight text-secondary leading-tight">Spring Fine Art & Rare Collectibles Showcase</h2>
-                    </div>
-
-                    <div class="flex items-center gap-4 shrink-0">
-                        <div class="bg-secondary/5 px-4 py-2 rounded-xl text-center border border-secondary/10">
-                            <div class="text-[10px] uppercase font-bold text-secondary/50 tracking-wider">Total Lots</div>
-                            <div class="text-lg font-bold text-secondary">60</div>
-                        </div>
-                        <button class="bg-secondary text-primary px-6 py-3 rounded-xl font-bold hover:bg-secondary/90 transition-transform shadow-md">
-                            Register for Auction
-                        </button>
-                    </div>
                 </div>
-
-                <!-- Catalog Grid Area -->
-                <div class="p-6 md:p-12">
-                    
-                    <div class="flex flex-col md:flex-row justify-between md:items-center gap-4 mb-8">
-                        <div class="relative w-full md:w-[300px]">
-                            <i data-lucide="search" class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-secondary/40"></i>
-                            <input type="text" placeholder="Search this catalog..." class="w-full bg-surface border border-secondary/10 text-secondary text-sm rounded-full pl-10 pr-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-secondary/30 shadow-sm" />
-                        </div>
-                        <div class="relative w-max">
-                            <select class="appearance-none bg-surface border border-secondary/10 text-secondary text-xs md:text-sm font-semibold rounded-full pl-5 pr-10 py-2.5 focus:outline-none focus:ring-2 focus:ring-secondary/30 cursor-pointer shadow-sm">
-                                <option>Sort by: Lot Number (Asc)</option>
-                                <option>Sort by: Lot Number (Desc)</option>
-                                <option>Sort by: Estimate (High to Low)</option>
-                            </select>
-                            <i data-lucide="chevron-down" class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-secondary/50 pointer-events-none"></i>
-                        </div>
-                    </div>
-
-                    <!-- The Lots -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                        
-                        <!-- Lot 1 -->
-                        <div class="group/card cursor-pointer flex flex-col">
-                            <div class="relative rounded-2xl bg-surface flex flex-col h-full shadow-soft hover:shadow-hover-up dark:shadow-dark-soft dark:hover:shadow-dark-hover-up hover:-translate-y-1 transition-all duration-300 border border-secondary/10">
-                                <div class="h-48 relative overflow-hidden bg-secondary/5 group-hover:bg-secondary/10 transition-colors duration-500 rounded-t-2xl">
-                                    <div class="absolute inset-0 bg-gradient-to-tr from-transparent to-secondary/5"></div>
-                                    <button class="absolute top-3 right-3 text-secondary/30 hover:text-red-500 hover:scale-110 transition-all z-10"><i data-lucide="heart" class="w-5 h-5"></i></button>
-                                </div>
-                                <div class="p-5 flex-grow flex flex-col">
-                                    <div class="text-[10px] md:text-xs text-secondary/60 font-semibold mb-1 uppercase tracking-wider">Lot #1</div>
-                                    <h4 class="text-sm font-bold leading-snug mb-4 line-clamp-2 group-hover/card:text-blue-500 transition-colors">Arts & Crafts Glasgow School Umbrella Stand</h4>
-                                    
-                                    <div class="mt-auto pt-4">
-                                        <div class="flex justify-between items-end mb-4">
-                                            <div>
-                                                <div class="text-[10px] text-secondary/50 font-semibold uppercase tracking-wider mb-0.5">Est. Value</div>
-                                                <div class="text-base font-bold text-secondary">$1,000 - $1,500</div>
-                                            </div>
-                                            <div class="text-right">
-                                                <div class="text-[10px] text-secondary/50 font-semibold uppercase tracking-wider mb-0.5">Starting Bid</div>
-                                                <div class="text-sm font-bold text-secondary">$500</div>
-                                            </div>
-                                        </div>
-                                        <button class="w-full border-2 border-secondary/20 text-secondary hover:border-secondary/40 hover:bg-secondary/5 font-bold py-2 rounded-xl transition-colors text-sm">
-                                            Place Absentee Bid
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Lot 2 -->
-                        <div class="group/card cursor-pointer flex flex-col">
-                            <div class="relative rounded-2xl bg-surface flex flex-col h-full shadow-soft hover:shadow-hover-up dark:shadow-dark-soft dark:hover:shadow-dark-hover-up hover:-translate-y-1 transition-all duration-300 border border-secondary/10">
-                                <div class="h-48 relative overflow-hidden bg-secondary/5 group-hover:bg-secondary/10 transition-colors duration-500 rounded-t-2xl">
-                                    <div class="absolute inset-0 bg-gradient-to-tr from-transparent to-secondary/5"></div>
-                                    <button class="absolute top-3 right-3 text-secondary/30 hover:text-red-500 hover:scale-110 transition-all z-10"><i data-lucide="heart" class="w-5 h-5"></i></button>
-                                </div>
-                                <div class="p-5 flex-grow flex flex-col">
-                                    <div class="text-[10px] md:text-xs text-secondary/60 font-semibold mb-1 uppercase tracking-wider">Lot #2</div>
-                                    <h4 class="text-sm font-bold leading-snug mb-4 line-clamp-2 group-hover/card:text-blue-500 transition-colors">Carved Elephant Sculpture</h4>
-                                    
-                                    <div class="mt-auto pt-4">
-                                        <div class="flex justify-between items-end mb-4">
-                                            <div>
-                                                <div class="text-[10px] text-secondary/50 font-semibold uppercase tracking-wider mb-0.5">Est. Value</div>
-                                                <div class="text-base font-bold text-secondary">$400 - $600</div>
-                                            </div>
-                                            <div class="text-right">
-                                                <div class="text-[10px] text-secondary/50 font-semibold uppercase tracking-wider mb-0.5">Starting Bid</div>
-                                                <div class="text-sm font-bold text-secondary">$200</div>
-                                            </div>
-                                        </div>
-                                        <button class="w-full border-2 border-secondary/20 text-secondary hover:border-secondary/40 hover:bg-secondary/5 font-bold py-2 rounded-xl transition-colors text-sm">
-                                            Place Absentee Bid
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Lot 3 -->
-                        <div class="group/card cursor-pointer flex flex-col">
-                            <div class="relative rounded-2xl bg-surface flex flex-col h-full shadow-soft hover:shadow-hover-up dark:shadow-dark-soft dark:hover:shadow-dark-hover-up hover:-translate-y-1 transition-all duration-300 border border-secondary/10">
-                                <div class="h-48 relative overflow-hidden bg-secondary/5 group-hover:bg-secondary/10 transition-colors duration-500 rounded-t-2xl">
-                                    <div class="absolute inset-0 bg-gradient-to-tr from-transparent to-secondary/5"></div>
-                                    <button class="absolute top-3 right-3 text-secondary/30 hover:text-red-500 hover:scale-110 transition-all z-10"><i data-lucide="heart" class="w-5 h-5"></i></button>
-                                    <div class="absolute bottom-3 left-3 bg-blue-500/10 backdrop-blur-sm border border-blue-500/20 text-blue-500 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-widest">Featured</div>
-                                </div>
-                                <div class="p-5 flex-grow flex flex-col">
-                                    <div class="text-[10px] md:text-xs text-secondary/60 font-semibold mb-1 uppercase tracking-wider">Lot #3</div>
-                                    <h4 class="text-sm font-bold leading-snug mb-4 line-clamp-2 group-hover/card:text-blue-500 transition-colors">Philip Martiny American Bronze Figure</h4>
-                                    
-                                    <div class="mt-auto pt-4">
-                                        <div class="flex justify-between items-end mb-4">
-                                            <div>
-                                                <div class="text-[10px] text-secondary/50 font-semibold uppercase tracking-wider mb-0.5">Est. Value</div>
-                                                <div class="text-base font-bold text-secondary">$2,000 - $3,000</div>
-                                            </div>
-                                            <div class="text-right">
-                                                <div class="text-[10px] text-secondary/50 font-semibold uppercase tracking-wider mb-0.5">Current Bid</div>
-                                                <div class="text-sm font-bold text-blue-500">$1,800</div>
-                                            </div>
-                                        </div>
-                                        <button class="w-full bg-secondary text-primary font-bold py-2 rounded-xl hover:bg-secondary/90 transition-colors text-sm">
-                                            Bid $2,000
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Lot 4 -->
-                        <div class="group/card cursor-pointer flex flex-col">
-                            <div class="relative rounded-2xl bg-surface flex flex-col h-full shadow-soft hover:shadow-hover-up dark:shadow-dark-soft dark:hover:shadow-dark-hover-up hover:-translate-y-1 transition-all duration-300 border border-secondary/10">
-                                <div class="h-48 relative overflow-hidden bg-secondary/5 group-hover:bg-secondary/10 transition-colors duration-500 rounded-t-2xl">
-                                    <div class="absolute inset-0 bg-gradient-to-tr from-transparent to-secondary/5"></div>
-                                    <button class="absolute top-3 right-3 text-secondary/30 hover:text-red-500 hover:scale-110 transition-all z-10"><i data-lucide="heart" class="w-5 h-5"></i></button>
-                                </div>
-                                <div class="p-5 flex-grow flex flex-col">
-                                    <div class="text-[10px] md:text-xs text-secondary/60 font-semibold mb-1 uppercase tracking-wider">Lot #4</div>
-                                    <h4 class="text-sm font-bold leading-snug mb-4 line-clamp-2 group-hover/card:text-blue-500 transition-colors">Charles Schneider French Art Deco Glass</h4>
-                                    
-                                    <div class="mt-auto pt-4">
-                                        <div class="flex justify-between items-end mb-4">
-                                            <div>
-                                                <div class="text-[10px] text-secondary/50 font-semibold uppercase tracking-wider mb-0.5">Est. Value</div>
-                                                <div class="text-base font-bold text-secondary">$800 - $1,200</div>
-                                            </div>
-                                            <div class="text-right">
-                                                <div class="text-[10px] text-secondary/50 font-semibold uppercase tracking-wider mb-0.5">Starting Bid</div>
-                                                <div class="text-sm font-bold text-secondary">$400</div>
-                                            </div>
-                                        </div>
-                                        <button class="w-full border-2 border-secondary/20 text-secondary hover:border-secondary/40 hover:bg-secondary/5 font-bold py-2 rounded-xl transition-colors text-sm">
-                                            Place Absentee Bid
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Lot 5 -->
-                        <div class="group/card cursor-pointer flex flex-col">
-                            <div class="relative rounded-2xl bg-surface flex flex-col h-full shadow-soft hover:shadow-hover-up dark:shadow-dark-soft dark:hover:shadow-dark-hover-up hover:-translate-y-1 transition-all duration-300 border border-secondary/10">
-                                <div class="h-48 relative overflow-hidden bg-secondary/5 group-hover:bg-secondary/10 transition-colors duration-500 rounded-t-2xl">
-                                    <div class="absolute inset-0 bg-gradient-to-tr from-transparent to-secondary/5"></div>
-                                    <button class="absolute top-3 right-3 text-secondary/30 hover:text-red-500 hover:scale-110 transition-all z-10"><i data-lucide="heart" class="w-5 h-5"></i></button>
-                                </div>
-                                <div class="p-5 flex-grow flex flex-col">
-                                    <div class="text-[10px] md:text-xs text-secondary/60 font-semibold mb-1 uppercase tracking-wider">Lot #5</div>
-                                    <h4 class="text-sm font-bold leading-snug mb-4 line-clamp-2 group-hover/card:text-blue-500 transition-colors">Harry Epstein "Cloud" Chairs - Pair</h4>
-                                    
-                                    <div class="mt-auto pt-4">
-                                        <div class="flex justify-between items-end mb-4">
-                                            <div>
-                                                <div class="text-[10px] text-secondary/50 font-semibold uppercase tracking-wider mb-0.5">Est. Value</div>
-                                                <div class="text-base font-bold text-secondary">$3,000 - $4,000</div>
-                                            </div>
-                                            <div class="text-right">
-                                                <div class="text-[10px] text-secondary/50 font-semibold uppercase tracking-wider mb-0.5">Current Bid</div>
-                                                <div class="text-sm font-bold text-blue-500">$2,400</div>
-                                            </div>
-                                        </div>
-                                        <button class="w-full bg-secondary text-primary font-bold py-2 rounded-xl hover:bg-secondary/90 transition-colors text-sm">
-                                            Bid $2,600
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Lot 6 -->
-                        <div class="group/card cursor-pointer flex flex-col">
-                            <div class="relative rounded-2xl bg-surface flex flex-col h-full shadow-soft hover:shadow-hover-up dark:shadow-dark-soft dark:hover:shadow-dark-hover-up hover:-translate-y-1 transition-all duration-300 border border-secondary/10">
-                                <div class="h-48 relative overflow-hidden bg-secondary/5 group-hover:bg-secondary/10 transition-colors duration-500 rounded-t-2xl">
-                                    <div class="absolute inset-0 bg-gradient-to-tr from-transparent to-secondary/5"></div>
-                                    <button class="absolute top-3 right-3 text-secondary/30 hover:text-red-500 hover:scale-110 transition-all z-10"><i data-lucide="heart" class="w-5 h-5"></i></button>
-                                </div>
-                                <div class="p-5 flex-grow flex flex-col">
-                                    <div class="text-[10px] md:text-xs text-secondary/60 font-semibold mb-1 uppercase tracking-wider">Lot #6</div>
-                                    <h4 class="text-sm font-bold leading-snug mb-4 line-clamp-2 group-hover/card:text-blue-500 transition-colors">1928 $100 Gold Certificate (Fr. 2405) PMG 64 EPQ</h4>
-                                    
-                                    <div class="mt-auto pt-4">
-                                        <div class="flex justify-between items-end mb-4">
-                                            <div>
-                                                <div class="text-[10px] text-secondary/50 font-semibold uppercase tracking-wider mb-0.5">Est. Value</div>
-                                                <div class="text-base font-bold text-secondary">$500 - $700</div>
-                                            </div>
-                                            <div class="text-right">
-                                                <div class="text-[10px] text-secondary/50 font-semibold uppercase tracking-wider mb-0.5">Starting Bid</div>
-                                                <div class="text-sm font-bold text-secondary">$250</div>
-                                            </div>
-                                        </div>
-                                        <button class="w-full border-2 border-secondary/20 text-secondary hover:border-secondary/40 hover:bg-secondary/5 font-bold py-2 rounded-xl transition-colors text-sm">
-                                            Place Absentee Bid
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -597,11 +208,7 @@
 
             themeToggleBtn.addEventListener('click', () => {
                 htmlElement.classList.toggle('dark');
-                if (htmlElement.classList.contains('dark')) {
-                    localStorage.setItem('theme', 'dark');
-                } else {
-                    localStorage.setItem('theme', 'light');
-                }
+                localStorage.setItem('theme', htmlElement.classList.contains('dark') ? 'dark' : 'light');
             });
 
             mobileMenuBtn.addEventListener('click', () => {
@@ -610,27 +217,32 @@
             });
         });
 
+        // Registration Modal Logic
+        const regModal = document.getElementById('registration-modal');
+        function openRegistrationModal() {
+            regModal.classList.remove('opacity-0', 'pointer-events-none');
+            regModal.querySelector('div[class*="transform"]').classList.remove('scale-95');
+            document.body.style.overflow = 'hidden'; 
+        }
+        function closeRegistrationModal() {
+            regModal.classList.add('opacity-0', 'pointer-events-none');
+            regModal.querySelector('div[class*="transform"]').classList.add('scale-95');
+            document.body.style.overflow = ''; 
+        }
+
         // Catalog Modal Logic
         const catalogModal = document.getElementById('catalog-modal');
         const catalogModalContent = document.getElementById('catalog-modal-content');
-
         function openCatalogModal() {
             catalogModal.classList.remove('opacity-0', 'pointer-events-none');
             catalogModalContent.classList.remove('scale-95');
             document.body.style.overflow = 'hidden'; 
         }
-
         function closeCatalogModal() {
             catalogModal.classList.add('opacity-0', 'pointer-events-none');
             catalogModalContent.classList.add('scale-95');
             document.body.style.overflow = ''; 
         }
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && !catalogModal.classList.contains('opacity-0')) {
-                closeCatalogModal();
-            }
-        });
     </script>
 </body>
 </html>
