@@ -53,76 +53,6 @@
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
-<body class="min-h-screen bg-primaryHere is the complete, updated code for the **Upcoming Auctions** page.  font-sans text-secondary overflow-x-hidden transition-colors duration-300 flex flex-col">
-
-    <!-- Navigation -->
-    <
-
-I have added a stunning, fully responsive modal that slides in when you click "View Catalog" (or "Explore" on the other cards). To makenav class="sticky top-0 z-50 flex items-center justify-between px-6 py-4 bg-primary/90 backdrop-blur-md transition-colors duration-300 shadow-sm relative">
-        <div class="flex items-center space-x-8"> it highly personalized for your brand, I've populated the modal's catalog with some of the actual inventory from your consignments (like the Glasgow School Umbrella Stand, Elephant Sculpture, and
-            <a href="/" class="font-bold text-3xl tracking-tight text-secondary cursor-pointer">Fabyle</a>
-            <div Epstein chairs). 
-
-I also updated the dates on the upcoming auctions so they correctly reflect future dates based on the current timeline (May 2026). class="hidden lg:flex relative w-[400px]">
-                <i data-lucide="search" class="absolute left-4 top
-
-### `UpcomingAuctions/index.html`
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upcoming Auctions | Fabyle</title>
-    <script src="[https://cdn.tailwindcss.com](https://cdn.tailwindcss.com)"></script>
-    <script src="[https://unpkg.com/lucide@latest](https://unpkg.com/lucide@latest)"></script>
-    
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        primary: 'rgb(var(--color-primary) / <alpha-value>)',
-                        secondary: 'rgb(var(--color-secondary) / <alpha-value>)',
-                        surface: 'rgb(var(--color-surface) / <alpha-value>)'
-                    },
-                    boxShadow: {
-                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
-                        'hover-up': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
-                        'dark-soft': '0 4px 20px -2px rgba(0, 0, 0, 0.4)',
-                        'dark-hover-up': '0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5)',
-                        'modal': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
-                        'dark-modal': '0 25px 50px -12px rgba(0, 0, 0, 0.75)',
-                    }
-                }
-            }
-        }
-    </script>
-
-    <script>
-        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
-    </script>
-    
-    <style>
-        :root {
-            --color-primary: 242 240 239; 
-            --color-secondary: 10 25 47;  
-            --color-surface: 255 255 255; 
-        }
-        .dark {
-            --color-primary: 10 25 47;    
-            --color-secondary: 242 240 239; 
-            --color-surface: 16 38 72;    
-        }
-        .hide-scrollbar::-webkit-scrollbar { display: none; }
-        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-    </style>
-</head>
 <body class="min-h-screen bg-primary font-sans text-secondary overflow-x-hidden transition-colors duration-300 flex flex-col">
 
     <!-- Navigation -->
@@ -158,9 +88,9 @@ I also updated the dates on the upcoming auctions so they correctly reflect futu
                     <i data-lucide="shopping-bag" class="w-5 h-5"></i>
                 </a>
                 <a href="/Profile" class="hidden lg:flex items-center text-secondary/80 hover:text-secondary transition-colors ml-2">
-                    i data-lucide="user" class="h-4 w-4 mr-1.5"></i> Account
+                    <i data-lucide="user" class="h-4 w-4 mr-1.5"></i> Account
                 </a>
-                <a href="/Seller" class="hidden lg:block bg-secondary text-primary px-6 py-2 rounded-full hover:bg-secondary/90< transition-colors shadow-md ml-2">
+                <a href="/Seller" class="hidden lg:block bg-secondary text-primary px-6 py-2 rounded-full hover:bg-secondary/90 transition-colors shadow-md ml-2">
                     Sell
                 </a>
                 <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-full hover:bg-secondary/10 text-secondary transition-colors">
@@ -186,7 +116,7 @@ I also updated the dates on the upcoming auctions so they correctly reflect futu
                     <a href="/Profile" class="flex items-center hover:text-secondary transition-colors">
                         <i data-lucide="user" class="h-5 w-5 mr-3"></i> My Account
                     </a>
-                    <a href="/Seller" class="bg-secondary text-primary px-6 py-3 rounded</-full hover:bg-secondary/90 transition-colors shadow-md text-center w-full mt-2 block">
+                    <a href="/Seller" class="bg-secondary text-primary px-6 py-3 rounded-full hover:bg-secondary/90 transition-colors shadow-md text-center w-full mt-2 block">
                         Sell with Fabyle
                     </a>
                 </div>
@@ -196,7 +126,7 @@ I also updated the dates on the upcoming auctions so they correctly reflect futu
 
     <!-- Page Header & Filters -->
     <header class="max-w-[1400px] mx-auto px-4 md:px-6 pt-12 pb-6">
-        div class="mb-8">
+        <div class="mb-8">
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 text-secondary">Upcoming Auctions</h1>
             <p class="text-lg text-secondary/60 max-w-2xl">Discover and register for our highly anticipated events featuring rare collectibles, fine art, and premium memorabilia.</p>
         </div>
@@ -214,7 +144,7 @@ I also updated the dates on the upcoming auctions so they correctly reflect futu
         <!-- Featured Premiere Auction -->
         <div class="w-full bg-surface rounded-3xl shadow-soft dark:shadow-dark-soft overflow-hidden flex flex-col lg:flex-row mb-12 group transition-all duration-300 border border-secondary/10 relative">
             <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 z-10 opacity-80"></div>
-            <div class="w-full lg:w-3/5 h-[200px] md:h-[300px] lg:h-auto relative overflow-hidden bg-secondary/10 group-hover:bg-secondary/20 transition-colors duration-700 cursor-pointer" onclick="openModal()">
+            <div class="w-full lg:w-3/5 h-[200px] md:h-[300px] lg:h-auto relative overflow-hidden bg-secondary/10 group-hover:bg-secondary/20 transition-colors duration-700">
                 <div class="absolute inset-0 bg-gradient-to-br from-transparent to-secondary/5"></div>
                 <div class="absolute bottom-6 left-6 right-6">
                     <span class="bg-surface text-secondary text-xs font-bold px-3 py-1.5 rounded-md tracking-widest uppercase shadow-lg">Premiere Event</span>
@@ -222,77 +152,154 @@ I also updated the dates on the upcoming auctions so they correctly reflect futu
             </div>
             <div class="w-full lg:w-2/5 p-8 md:p-12 flex flex-col justify-center">
                 <div class="flex items-center text-secondary/60 text-sm font-semibold uppercase tracking-widest mb-4">
-                    <i data-lucide="calendar" class="w-4 h-4 mr-2"></i> May 30, 2026 &bull; 10:00 AM EDT
+                    <i data-lucide="calendar" class="w-4 h-4 mr-2"></i> May 15, 2026 &bull; 10:00 AM EDT
                 </div>
-                <h2 class="text-3xl md:text-4xl font-bold leading-tight mb-4 text-secondary group-hover:text-blue-500 transition-colors cursor-pointer" onclick="openModal()">Spring Fine Art & Rare Collectibles Showcase</h2>
+                <h2 class="text-3xl md:text-4xl font-bold leading-tight mb-4 text-secondary group-hover:text-blue-500 transition-colors">Spring Fine Art & Rare Collectibles Showcase</h2>
                 <p class="text-secondary/70 mb-8 leading-relaxed">
                     Our flagship spring auction features a beautifully curated 60-lot premiere inventory. Highlights include an original Arts & Crafts Glasgow School Umbrella Stand, an exquisite elephant sculpture, and masterfully crafted Art Deco furniture ready for the block.
                 </p>
                 <div class="grid grid-cols-3 gap-4 mb-8">
-                    <div class="bg-primary p-4 rounded-xl text-center border border-secondary/5"><div class="text-2xl font-bold text-secondary mb-1">08</div><div class="text-[10px] uppercase font-bold text-secondary/50 tracking-wider">Days</div></div>
-                    <div class="bg-primary p-4 rounded-xl text-center border border-secondary/5"><div class="text-2xl font-bold text-secondary mb-1">23</div><div class="text-[10px] uppercase font-bold text-secondary/50 tracking-wider">Hours</div></div>
-                    <div class="bg-primary p-4 rounded-xl text-center border border-secondary/5"><div class="text-2xl font-bold text-secondary mb-1">50</div><div class="text-[10px] uppercase font-bold text-secondary/50 tracking-wider">Mins</div></div>
+                    <div class="bg-primary p-4 rounded-xl text-center border border-secondary/5"><div class="text-2xl font-bold text-secondary mb-1">21</div><div class="text-[10px] uppercase font-bold text-secondary/50 tracking-wider">Days</div></div>
+                    <div class="bg-primary p-4 rounded-xl text-center border border-secondary/5"><div class="text-2xl font-bold text-secondary mb-1">14</div><div class="text-[10px] uppercase font-bold text-secondary/50 tracking-wider">Hours</div></div>
+                    <div class="bg-primary p-4 rounded-xl text-center border border-secondary/5"><div class="text-2xl font-bold text-secondary mb-1">08</div><div class="text-[10px] uppercase font-bold text-secondary/50 tracking-wider">Mins</div></div>
                 </div>
                 <div class="flex flex-col sm:flex-row gap-4 mt-auto">
                     <button class="flex-1 bg-secondary text-primary px-6 py-3.5 rounded-full font-bold hover:bg-secondary/90 transition-transform hover:-translate-y-1 shadow-md flex justify-center items-center">Register to Bid</button>
-                    <!-- Trigger Modal Button -->
-                    <button onclick="openModal()" class="flex-1 bg-primary text-secondary border border-secondary/20 px-6 py-3.5 rounded-full font-bold hover:border-secondary/40 hover:bg-secondary/5 transition-colors flex justify-center items-center"><i data-lucide="book-open" class="w-4 h-4 mr-2"></i> View Catalog</button>
+                    <!-- Trigger Modal -->
+                    <button onclick="openCatalogModal()" class="flex-1 bg-primary text-secondary border border-secondary/20 px-6 py-3.5 rounded-full font-bold hover:border-secondary/40 hover:bg-secondary/5 transition-colors flex justify-center items-center"><i data-lucide="book-open" class="w-4 h-4 mr-2"></i> View Catalog</button>
                 </div>
             </div>
         </div>
 
-        <!-- Upcoming Auctions Grid -->
+        <!-- Upcoming Auctions Grid (Typography Only) -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div onclick="openModal()" class="bg-surface rounded-2xl shadow-soft dark:shadow-dark<-soft overflow-hidden flex flex-col group cursor-pointer border border-secondary/10 hover:shadow-hover-up dark:hover:shadow-dark-hover-up hover:-translate-y-2 transition-all duration-300">
-                <div class="h-32 md:h-40 relative overflow-hidden bg-secondary/5 group-hover:bg-secondary/10 transition-colors duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-tr from-transparent to-secondary/5"></div>
-                </div>
+            
+            <!-- Auction 1 -->
+            <div onclick="openCatalogModal()" class="relative rounded-2xl bg-surface group cursor-pointer shadow-soft hover:shadow-hover-up dark:shadow-dark-soft dark:hover:shadow-dark-hover-up hover:-translate-y-2 transition-all duration-300 border border-secondary/10 flex flex-col h-full overflow-hidden">
+                <div class="h-1.5 w-full bg-gradient-to-r from-blue-500 to-purple-500 group-hover:h-2 transition-all duration-300"></div>
                 <div class="p-6 md:p-8 flex flex-col flex-grow">
-                    <div class="flex items-center text-blue-500 text-xs font-bold uppercase tracking-widest mb-3">
-                        <i data-lucide="clock" class="w-3.5 h-3.5 mr-1.5"></i> June 05, 2026
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="bg-blue-500/10 text-blue-500 text-[10px] md:text-xs font-bold px-3 py-1 rounded-full tracking-widest uppercase flex items-center">
+                            <span class="w-1.5 h-1.5 rounded-full bg-blue-500 mr-2 animate-pulse"></span>
+                            Live Now
+                        </span>
+                        <i data-lucide="gavel" class="w-5 h-5 text-secondary/40 group-hover:text-blue-500 transition-colors duration-300"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 leading-snug group-hover:text-blue-500 transition-colors">Modern Trading Cards & TCG Event</h3>
-                    <p class="text-sm text-secondary/60 mb-6 line-clamp-3">Featuring high-end graded modern sports cards, including a pristine Justin Herbert rookie, and rare TCG slabs from Pokémon, Magic: The Gathering, and One Piece.</p>
-                    <div class="mt-auto flex justify-between items-center border-t border-secondary/10 pt-4">
-                        <span class="text-sm font-semibold text-secondary/80">145 Lots</span>
-                        <span class="text-sm font-bold text-secondary group-hover:text-blue-500 flex items-center transition-colors">Explore i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i></span>
+
+                    <h3 class="text-secondary text-lg md:text-xl font-bold mb-8 leading-tight group-hover:text-blue-500 transition-colors">2026 Spring Game Used Auction</h3>
+
+                    <div class="mt-auto">
+                        <div class="text-secondary/50 text-[10px] md:text-xs font-semibold uppercase tracking-wider mb-3">Current Bidding Ends:</div>
+                        <div class="flex items-center space-x-2">
+                            <div class="flex flex-col items-center flex-1">
+                                <div class="bg-secondary/5 w-full flex justify-center items-center py-2 md:py-3 rounded-lg border border-secondary/10 group-hover:bg-secondary/10 transition-colors">
+                                    <span class="text-xl md:text-3xl font-bold text-secondary tracking-tight">12</span>
+                                </div>
+                                <span class="text-[9px] md:text-[10px] text-secondary/50 font-semibold mt-2 uppercase tracking-widest">Days</span>
+                            </div>
+                            <span class="text-lg md:text-xl text-secondary/30 font-bold -mt-4">:</span>
+                            <div class="flex flex-col items-center flex-1">
+                                <div class="bg-secondary/5 w-full flex justify-center items-center py-2 md:py-3 rounded-lg border border-secondary/10 group-hover:bg-secondary/10 transition-colors">
+                                    <span class="text-xl md:text-3xl font-bold text-secondary tracking-tight">05</span>
+                                </div>
+                                <span class="text-[9px] md:text-[10px] text-secondary/50 font-semibold mt-2 uppercase tracking-widest">Hours</span>
+                            </div>
+                            <span class="text-lg md:text-xl text-secondary/30 font-bold -mt-4">:</span>
+                            <div class="flex flex-col items-center flex-1">
+                                <div class="bg-secondary/5 w-full flex justify-center items-center py-2 md:py-3 rounded-lg border border-secondary/10 group-hover:bg-secondary/10 transition-colors">
+                                    <span class="text-xl md:text-3xl font-bold text-secondary tracking-tight">52</span>
+                                </div>
+                                <span class="text-[9px] md:text-[10px] text-secondary/50 font-semibold mt-2 uppercase tracking-widest">Mins</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div onclick="openModal()" class="bg-surface rounded-2xl shadow-soft dark:shadow-dark-soft overflow-hidden flex flex-col group cursor-pointer border border-secondary/10 hover:shadow-hover-up dark:hover:shadow-dark-hover-up hover:-translate-y-2 transition-all duration-300">
-                div class="h-32 md:h-40 relative overflow-hidden bg-secondary/5 group-hover:bg-secondary/10 transition-colors duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-tr from-transparent to-secondary/5"></div>
-                </div>
+            <!-- Auction 2 -->
+            <div onclick="openCatalogModal()" class="relative rounded-2xl bg-surface group cursor-pointer shadow-soft hover:shadow-hover-up dark:shadow-dark-soft dark:hover:shadow-dark-hover-up hover:-translate-y-2 transition-all duration-300 border border-secondary/10 flex flex-col h-full overflow-hidden">
+                <div class="h-1.5 w-full bg-gradient-to-r from-blue-500 to-purple-500 group-hover:h-2 transition-all duration-300"></div>
                 <div class="p-6 md:p-8 flex flex-col flex-grow">
-                    div class="flex items-center text-blue-500 text-xs font-bold uppercase tracking-widest mb-3">
-                        <i data-lucide="clock" class="w-3.5 h-3.5 mr-1.5"></i> June 12, 2026
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="bg-blue-500/10 text-blue-500 text-[10px] md:text-xs font-bold px-3 py-1 rounded-full tracking-widest uppercase flex items-center">
+                            <span class="w-1.5 h-1.5 rounded-full bg-blue-500 mr-2 animate-pulse"></span>
+                            Live Now
+                        </span>
+                        <i data-lucide="gavel" class="w-5 h-5 text-secondary/40 group-hover:text-blue-500 transition-colors duration-300"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 leading-snug group-hover:text-blue-500 transition-colors">Game-Worn & Elite Sports Memorabilia</h3>
-                    <p class="text-sm text-secondary/60 mb-6 line-clamp-3">An exclusive collection of autographed jerseys, game-worn apparel, and highly sought-after patch cards, highlighted by a stunning 3/3 Shedeur Sanders patch.</p>
-                    <div class="mt-auto flex justify-between items-center border-t border-secondary/10 pt-4">
-                        <span class="text-sm font-semibold text-secondary/80">82 Lots</span>
-                        <span class="text-sm font-bold text-secondary group-hover:text-blue-500 flex items-center transition-colors">Explore <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i></span>
+
+                    <h3 class="text-secondary text-lg md:text-xl font-bold mb-8 leading-tight group-hover:text-blue-500 transition-colors">2026 Spring Music Memorabilia Auction</h3>
+
+                    <div class="mt-auto">
+                        <div class="text-secondary/50 text-[10px] md:text-xs font-semibold uppercase tracking-wider mb-3">Current Bidding Ends:</div>
+                        <div class="flex items-center space-x-2">
+                            <div class="flex flex-col items-center flex-1">
+                                <div class="bg-secondary/5 w-full flex justify-center items-center py-2 md:py-3 rounded-lg border border-secondary/10 group-hover:bg-secondary/10 transition-colors">
+                                    <span class="text-xl md:text-3xl font-bold text-secondary tracking-tight">23</span>
+                                </div>
+                                <span class="text-[9px] md:text-[10px] text-secondary/50 font-semibold mt-2 uppercase tracking-widest">Days</span>
+                            </div>
+                            <span class="text-lg md:text-xl text-secondary/30 font-bold -mt-4">:</span>
+                            <div class="flex flex-col items-center flex-1">
+                                <div class="bg-secondary/5 w-full flex justify-center items-center py-2 md:py-3 rounded-lg border border-secondary/10 group-hover:bg-secondary/10 transition-colors">
+                                    <span class="text-xl md:text-3xl font-bold text-secondary tracking-tight">05</span>
+                                </div>
+                                <span class="text-[9px] md:text-[10px] text-secondary/50 font-semibold mt-2 uppercase tracking-widest">Hours</span>
+                            </div>
+                            <span class="text-lg md:text-xl text-secondary/30 font-bold -mt-4">:</span>
+                            <div class="flex flex-col items-center flex-1">
+                                <div class="bg-secondary/5 w-full flex justify-center items-center py-2 md:py-3 rounded-lg border border-secondary/10 group-hover:bg-secondary/10 transition-colors">
+                                    <span class="text-xl md:text-3xl font-bold text-secondary tracking-tight">52</span>
+                                </div>
+                                <span class="text-[9px] md:text-[10px] text-secondary/50 font-semibold mt-2 uppercase tracking-widest">Mins</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div onclick="openModal()" class="bg-surface rounded-2xl shadow-soft dark:shadow-dark-soft overflow-hidden flex flex-col group cursor-pointer border border-secondary/10 hover:shadow-hover-up dark:hover:shadow-dark-hover-up hover:-translate-y-2 transition-all duration-300">
-                <div class="h-32 md:h-40 relative overflow-hidden bg-secondary/5 group-hover:bg-secondary/10 transition-colors duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-tr from-transparent to-secondary/5"></div>
-                </div>
+            <!-- Auction 3 -->
+            <div onclick="openCatalogModal()" class="relative rounded-2xl bg-surface group cursor-pointer shadow-soft hover:shadow-hover-up dark:shadow-dark-soft dark:hover:shadow-dark-hover-up hover:-translate-y-2 transition-all duration-300 border border-secondary/10 flex flex-col h-full overflow-hidden">
+                <div class="h-1.5 w-full bg-gradient-to-r from-blue-500 to-purple-500 group-hover:h-2 transition-all duration-300"></div>
                 <div class="p-6 md:p-8 flex flex-col flex-grow">
-                    <div class="flex items-center text-blue-500 text-xs font-bold uppercase tracking-widest mb-3">
-                        <i data-lucide="clock" class="w-3.5 h-3.5 mr-1.5"></i> June 20, 2026
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="bg-blue-500/10 text-blue-500 text-[10px] md:text-xs font-bold px-3 py-1 rounded-full tracking-widest uppercase flex items-center">
+                            <span class="w-1.5 h-1.5 rounded-full bg-blue-500 mr-2 animate-pulse"></span>
+                            Live Now
+                        </span>
+                        <i data-lucide="gavel" class="w-5 h-5 text-secondary/40 group-hover:text-blue-500 transition-colors duration-300"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 leading-snug group-hover:text-blue-500 transition-colors">Numismatics & Precious Metals</h3>
-                    <p class="text-sm text-secondary/60 mb-6 line-clamp-3">Secure tangible assets in our upcoming vault auction featuring 1 oz silver rounds, gold bullion, and rare, uncirculated US currency notes.</p>
-                    <div class="mt-auto flex justify-between items-center border-t border-secondary/10 pt-4">
-                        <span class="text-sm font-semibold text-secondary/80">300+ Lots</span>
-                        <span class="text-sm font-bold text-secondary group-hover:text-blue-500 flex items-center transition-colors">Explore <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i></span>
+
+                    <h3 class="text-secondary text-lg md:text-xl font-bold mb-8 leading-tight group-hover:text-blue-500 transition-colors">2026 Comics Memorabilia Auction</h3>
+
+                    <div class="mt-auto">
+                        <div class="text-secondary/50 text-[10px] md:text-xs font-semibold uppercase tracking-wider mb-3">Current Bidding Ends:</div>
+                        <div class="flex items-center space-x-2">
+                            <div class="flex flex-col items-center flex-1">
+                                <div class="bg-secondary/5 w-full flex justify-center items-center py-2 md:py-3 rounded-lg border border-secondary/10 group-hover:bg-secondary/10 transition-colors">
+                                    <span class="text-xl md:text-3xl font-bold text-secondary tracking-tight">21</span>
+                                </div>
+                                <span class="text-[9px] md:text-[10px] text-secondary/50 font-semibold mt-2 uppercase tracking-widest">Days</span>
+                            </div>
+                            <span class="text-lg md:text-xl text-secondary/30 font-bold -mt-4">:</span>
+                            <div class="flex flex-col items-center flex-1">
+                                <div class="bg-secondary/5 w-full flex justify-center items-center py-2 md:py-3 rounded-lg border border-secondary/10 group-hover:bg-secondary/10 transition-colors">
+                                    <span class="text-xl md:text-3xl font-bold text-secondary tracking-tight">05</span>
+                                </div>
+                                <span class="text-[9px] md:text-[10px] text-secondary/50 font-semibold mt-2 uppercase tracking-widest">Hours</span>
+                            </div>
+                            <span class="text-lg md:text-xl text-secondary/30 font-bold -mt-4">:</span>
+                            <div class="flex flex-col items-center flex-1">
+                                <div class="bg-secondary/5 w-full flex justify-center items-center py-2 md:py-3 rounded-lg border border-secondary/10 group-hover:bg-secondary/10 transition-colors">
+                                    <span class="text-xl md:text-3xl font-bold text-secondary tracking-tight">52</span>
+                                </div>
+                                <span class="text-[9px] md:text-[10px] text-secondary/50 font-semibold mt-2 uppercase tracking-widest">Mins</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </main>
 
@@ -341,180 +348,234 @@ I also updated the dates on the upcoming auctions so they correctly reflect futu
 
     <!-- Upcoming Catalog Modal Overlay -->
     <div id="catalog-modal" class="fixed inset-0 z-[100] flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300 px-4 py-6 sm:p-6">
-        <!-- Backdrop -->
-        <div class="absolute inset-0 bg-secondary/80 backdrop-blur-sm" onclick="closeModal()"></div>
+        <div class="absolute inset-0 bg-secondary/80 backdrop-blur-sm" onclick="closeCatalogModal()"></div>
         
-        <!-- Modal Content Container -->
-        <div class="bg-primary w-full max-w-[1200px] h-[90vh] md:h-[85vh] rounded-3xl shadow-modal dark:shadow-dark-modal relative flex flex-col transform scale-95 transition-transform duration-300 border border-secondary/10" id="catalog-modal-content">
+        <div class="bg-primary w-full max-w-[1400px] h-[95vh] rounded-3xl shadow-modal dark:shadow-dark-modal relative flex flex-col transform scale-95 transition-transform duration-300 border border-secondary/10" id="catalog-modal-content">
             
-            <!-- Floating Close Button -->
-            <button onclick="closeModal()" class="absolute top-4 right-4 z-20 bg-surface/90 backdrop-blur-md text-secondary p-2.5 rounded-full shadow-lg hover:bg-surface hover:scale-110 transition-all border border-secondary/10 group">
+            <button onclick="closeCatalogModal()" class="absolute top-4 right-4 z-20 bg-surface/90 backdrop-blur-md text-secondary p-2.5 rounded-full shadow-lg hover:bg-surface hover:scale-110 transition-all border border-secondary/10 group">
                 <i data-lucide="x" class="w-5 h-5 group-hover:rotate-90 transition-transform duration-300"></i>
             </button>
 
-            <!-- Scrollable Inner Content -->
+            <!-- Scrollable Content -->
             <div class="overflow-y-auto flex-grow rounded-3xl hide-scrollbar relative">
                 
-                <!-- Modal Header -->
-                <div class="bg-surface border-b border-secondary/10 pb-8 pt-16 px-6 md:px-12 relative overflow-hidden">
-                    <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 z-10 opacity-80"></div>
-                    <div class="absolute inset-0 bg-gradient-to-br from-secondary/5 to-transparent pointer-events-none"></div>
-                    
-                    <div class="relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-8">
-                        <div class="max-w-2xl">
-                            <div class="flex items-center text-blue-500 text-xs font-bold uppercase tracking-widest mb-3">
-                                <i data-lucide="calendar" class="w-3.5 h-3.5 mr-1.5"></i> May 30, 2026 &bull; 10:00 AM EDT
-                            </div>
-                            <h2 class="text-2xl md:text-4xl font-bold tracking-tight text-secondary leading-tight mb-4">Spring Fine Art & Rare Collectibles Showcase</h2>
-                            <p class="text-sm md:text-base text-secondary/70">Preview our highly anticipated flagship catalog. Pre-bidding is now open for registered users ahead of the live event.</p>
+                <!-- Sticky Header specific to the Auction -->
+                <div class="bg-surface/95 backdrop-blur-md border-b border-secondary/10 pt-10 pb-6 px-6 md:px-12 sticky top-0 z-10 flex flex-col md:flex-row md:items-end justify-between gap-6 shadow-sm">
+                    <div class="max-w-2xl">
+                        <div class="flex items-center text-blue-500 text-xs font-bold uppercase tracking-widest mb-2">
+                            <i data-lucide="calendar" class="w-3.5 h-3.5 mr-1.5"></i> Starts May 15, 2026 &bull; 10:00 AM EDT
                         </div>
+                        <h2 class="text-2xl md:text-3xl font-bold tracking-tight text-secondary leading-tight">Spring Fine Art & Rare Collectibles Showcase</h2>
+                    </div>
 
-                        <div class="flex gap-6 md:gap-8 bg-primary/80 backdrop-blur-sm p-4 md:p-6 rounded-2xl border border-secondary/10 shrink-0 shadow-inner">
-                            <div>
-                                div class="text-[10px] uppercase font-bold text-secondary/50 tracking-wider mb-1">Total Lots</div>
-                                <div class="text-xl md:text-2xl font-bold text-secondary">60</div>
-                            </div>
-                            <div class="w-px bg-secondary/10"></div>
-                            <div>
-                                <div class="text-[10px] uppercase font-bold text-secondary/50 tracking-wider mb-1">Status</div>
-                                <div class="text-base md:text-lg font-bold text-blue-500 flex items-center"><span class="w-2 h-2 rounded-full bg-blue-500 mr-2 animate-pulse"></span> Pre-bidding</div>
-                            </div>
+                    <div class="flex items-center gap-4 shrink-0">
+                        <div class="bg-secondary/5 px-4 py-2 rounded-xl text-center border border-secondary/10">
+                            <div class="text-[10px] uppercase font-bold text-secondary/50 tracking-wider">Total Lots</div>
+                            <div class="text-lg font-bold text-secondary">60</div>
                         </div>
+                        <button class="bg-secondary text-primary px-6 py-3 rounded-xl font-bold hover:bg-secondary/90 transition-transform shadow-md">
+                            Register for Auction
+                        </button>
                     </div>
                 </div>
 
-                <!-- Modal Body (Lots Grid) -->
-                <div class="p<-6 md:p-12">
-                    <div class="flex justify-between items-center mb-8">
-                        <h3 class="text-xl md:text-2xl font-bold">Catalog Preview</h3>
-                        <div class="relative">
-                            <select class="appearance-none bg-surface border border-secondary/10 text-secondary text-xs md:text-sm font-semibold rounded-full pl-5 pr-10 py-2 focus:outline-none focus:ring-2 focus:ring-secondary/30 cursor-pointer shadow-sm">
-                                <option>Lot Number: Low to High</option>
-                                <option>Lot Number: High to Low</option>
-                                <option>Estimate: High to Low</option>
-                                <option>Most Active Bids</option>
+                <!-- Catalog Grid Area -->
+                <div class="p-6 md:p-12">
+                    
+                    <div class="flex flex-col md:flex-row justify-between md:items-center gap-4 mb-8">
+                        <div class="relative w-full md:w-[300px]">
+                            <i data-lucide="search" class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-secondary/40"></i>
+                            <input type="text" placeholder="Search this catalog..." class="w-full bg-surface border border-secondary/10 text-secondary text-sm rounded-full pl-10 pr-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-secondary/30 shadow-sm" />
+                        </div>
+                        <div class="relative w-max">
+                            <select class="appearance-none bg-surface border border-secondary/10 text-secondary text-xs md:text-sm font-semibold rounded-full pl-5 pr-10 py-2.5 focus:outline-none focus:ring-2 focus:ring-secondary/30 cursor-pointer shadow-sm">
+                                <option>Sort by: Lot Number (Asc)</option>
+                                <option>Sort by: Lot Number (Desc)</option>
+                                <option>Sort by: Estimate (High to Low)</option>
                             </select>
                             <i data-lucide="chevron-down" class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-secondary/50 pointer-events-none"></i>
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- The Lots -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                         
-                        <!-- Modal Lot 1 -->
+                        <!-- Lot 1 -->
                         <div class="group/card cursor-pointer flex flex-col">
                             <div class="relative rounded-2xl bg-surface flex flex-col h-full shadow-soft hover:shadow-hover-up dark:shadow-dark-soft dark:hover:shadow-dark-hover-up hover:-translate-y-1 transition-all duration-300 border border-secondary/10">
-                                <div class="h-40 relative overflow-hidden bg-secondary/5 group-hover:bg-secondary/10 transition-colors duration-500 rounded-t-2xl">
+                                <div class="h-48 relative overflow-hidden bg-secondary/5 group-hover:bg-secondary/10 transition-colors duration-500 rounded-t-2xl">
                                     <div class="absolute inset-0 bg-gradient-to-tr from-transparent to-secondary/5"></div>
                                     <button class="absolute top-3 right-3 text-secondary/30 hover:text-red-500 hover:scale-110 transition-all z-10"><i data-lucide="heart" class="w-5 h-5"></i></button>
                                 </div>
                                 <div class="p-5 flex-grow flex flex-col">
-                                    <div class="flex justify-between items-start mb-2">
-                                        <div class="text-[10px] md:text-xs text-secondary/60 font-semibold uppercase tracking-wider">Lot 1</div>
-                                        <span class="bg-blue-500/10 text-blue-500 text-[9px] font-bold px-2 py-0.5 rounded-sm uppercase tracking-widest border border-blue-500/20">Accepting Bids</span>
-                                    </div>
-                                    <h4 class="text-sm font-bold leading-snug mb-4 line-clamp-3 group-hover/card:text-blue-500 transition-colors">Arts & Crafts Glasgow School Umbrella Stand</h4>
-                                    <div class="mt-auto border-t border-secondary/10 pt-4">
-                                        <div class="flex justify-between items-end mb-2">
+                                    <div class="text-[10px] md:text-xs text-secondary/60 font-semibold mb-1 uppercase tracking-wider">Lot #1</div>
+                                    <h4 class="text-sm font-bold leading-snug mb-4 line-clamp-2 group-hover/card:text-blue-500 transition-colors">Arts & Crafts Glasgow School Umbrella Stand</h4>
+                                    
+                                    <div class="mt-auto pt-4">
+                                        <div class="flex justify-between items-end mb-4">
                                             <div>
-                                                <div class="text-[10px] text-secondary/50 font-semibold uppercase tracking-wider mb-1">Current Bid</div>
-                                                <div class="text-lg font-bold text-secondary">$1,200</div>
+                                                <div class="text-[10px] text-secondary/50 font-semibold uppercase tracking-wider mb-0.5">Est. Value</div>
+                                                <div class="text-base font-bold text-secondary">$1,000 - $1,500</div>
                                             </div>
                                             <div class="text-right">
-                                                <div class="text-[10px] text-secondary/50 font-semibold uppercase tracking-wider mb-1">Estimate</div>
-                                                <div class="text-sm font-bold text-secondary/80">$1k - $1.5k</div>
+                                                <div class="text-[10px] text-secondary/50 font-semibold uppercase tracking-wider mb-0.5">Starting Bid</div>
+                                                <div class="text-sm font-bold text-secondary">$500</div>
                                             </div>
                                         </div>
-                                        <button class="w-full bg-secondary/5 hover:bg-secondary/10 text-secondary font-bold py-2 rounded-xl text-sm transition-colors mt-2">Place Bid</button>
+                                        <button class="w-full border-2 border-secondary/20 text-secondary hover:border-secondary/40 hover:bg-secondary/5 font-bold py-2 rounded-xl transition-colors text-sm">
+                                            Place Absentee Bid
+                                        </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Modal Lot 2 -->
+                        <!-- Lot 2 -->
                         <div class="group/card cursor-pointer flex flex-col">
                             <div class="relative rounded-2xl bg-surface flex flex-col h-full shadow-soft hover:shadow-hover-up dark:shadow-dark-soft dark:hover:shadow-dark-hover-up hover:-translate-y-1 transition-all duration-300 border border-secondary/10">
-                                <div class="h-40 relative overflow-hidden bg-secondary/5 group-hover:bg-secondary/10 transition-colors duration-500 rounded-t-2xl">
+                                <div class="h-48 relative overflow-hidden bg-secondary/5 group-hover:bg-secondary/10 transition-colors duration-500 rounded-t-2xl">
                                     <div class="absolute inset-0 bg-gradient-to-tr from-transparent to-secondary/5"></div>
                                     <button class="absolute top-3 right-3 text-secondary/30 hover:text-red-500 hover:scale-110 transition-all z-10"><i data-lucide="heart" class="w-5 h-5"></i></button>
                                 </div>
                                 <div class="p-5 flex-grow flex flex-col">
-                                    <div class="flex justify-between items-start mb-2">
-                                        <div class="text-[10px] md:text-xs text-secondary/60 font-semibold uppercase tracking-wider">Lot 2</div>
-                                        <span class="bg-blue-500/10 text-blue-500 text-[9px] font-bold px-2 py-0.5 rounded-sm uppercase tracking-widest border border-blue-500/20">Accepting Bids</span>
-                                    </div>
-                                    <h4 class="text-sm font-bold leading-snug mb-4 line-clamp-3 group-hover/card:text-blue-500 transition-colors">Intricately Carved Bronze Elephant Sculpture</h4>
-                                    <div class="mt-auto border-t border-secondary/10 pt-4">
-                                        <div class="flex justify-between items-end mb-2">
+                                    <div class="text-[10px] md:text-xs text-secondary/60 font-semibold mb-1 uppercase tracking-wider">Lot #2</div>
+                                    <h4 class="text-sm font-bold leading-snug mb-4 line-clamp-2 group-hover/card:text-blue-500 transition-colors">Carved Elephant Sculpture</h4>
+                                    
+                                    <div class="mt-auto pt-4">
+                                        <div class="flex justify-between items-end mb-4">
                                             <div>
-                                                <div class="text-[10px] text-secondary/50 font-semibold uppercase tracking-wider mb<-1">Current Bid</div>
-                                                <div class="text-lg font-bold text-secondary">$250</div>
+                                                <div class="text-[10px] text-secondary/50 font-semibold uppercase tracking-wider mb-0.5">Est. Value</div>
+                                                <div class="text-base font-bold text-secondary">$400 - $600</div>
                                             </div>
                                             <div class="text-right">
-                                                <div class="text-[10px] text-secondary/50 font-semibold uppercase tracking-wider mb-1">Estimate</div>
-                                                <div class="text-sm font-bold text-secondary/80">$400 - $600</div>
+                                                <div class="text-[10px] text-secondary/50 font-semibold uppercase tracking-wider mb-0.5">Starting Bid</div>
+                                                <div class="text-sm font-bold text-secondary">$200</div>
                                             </div>
                                         </div>
-                                        <button class="w-full bg-secondary/5 hover:bg-secondary/10 text-secondary font-bold py-2 rounded-xl text-sm transition-colors mt-2">Place Bid</button>
+                                        <button class="w-full border-2 border-secondary/20 text-secondary hover:border-secondary/40 hover:bg-secondary/5 font-bold py-2 rounded-xl transition-colors text-sm">
+                                            Place Absentee Bid
+                                        </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Modal Lot 3 -->
+                        <!-- Lot 3 -->
                         <div class="group/card cursor-pointer flex flex-col">
                             <div class="relative rounded-2xl bg-surface flex flex-col h-full shadow-soft hover:shadow-hover-up dark:shadow-dark-soft dark:hover:shadow-dark-hover-up hover:-translate-y-1 transition-all duration-300 border border-secondary/10">
-                                <div class="h-40 relative overflow-hidden bg-secondary/5 group-hover:bg-secondary/10 transition-colors duration-500 rounded-t-2xl">
+                                <div class="h-48 relative overflow-hidden bg-secondary/5 group-hover:bg-secondary/10 transition-colors duration-500 rounded-t-2xl">
                                     <div class="absolute inset-0 bg-gradient-to-tr from-transparent to-secondary/5"></div>
-                                    <button class="absolute top-3 right-3 text-secondary/30 hover:text-red-500 hover:scale-110 transition-all z-10"><i data<-lucide="heart" class="w-5 h-5"></i></button>
+                                    <button class="absolute top-3 right-3 text-secondary/30 hover:text-red-500 hover:scale-110 transition-all z-10"><i data-lucide="heart" class="w-5 h-5"></i></button>
+                                    <div class="absolute bottom-3 left-3 bg-blue-500/10 backdrop-blur-sm border border-blue-500/20 text-blue-500 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-widest">Featured</div>
                                 </div>
                                 <div class="p-5 flex-grow flex flex-col">
-                                    <div class="flex justify-between items-start mb-2">
-                                        <div class="text-[10px] md:text-xs text-secondary/60 font-semibold uppercase tracking-wider">Lot 3</div>
-                                        <span class="bg-blue-500/10 text-blue-500 text-[9px] font-bold px-2 py-0.5 rounded-sm uppercase tracking-widest border border-blue-500/20">Accepting Bids</span>
-                                    </div>
-                                    <h4 class="text-sm font-bold leading-snug mb-4 line-clamp-3 group-hover/card:text-blue-500 transition-colors">Harry Epstein Art Deco "Cloud" Chair Set</h4>
-                                    <div class="mt-auto border-t border-secondary/10 pt-4">
-                                        <div class="flex justify-between items-end mb-2">
+                                    <div class="text-[10px] md:text-xs text-secondary/60 font-semibold mb-1 uppercase tracking-wider">Lot #3</div>
+                                    <h4 class="text-sm font-bold leading-snug mb-4 line-clamp-2 group-hover/card:text-blue-500 transition-colors">Philip Martiny American Bronze Figure</h4>
+                                    
+                                    <div class="mt-auto pt-4">
+                                        <div class="flex justify-between items-end mb-4">
                                             <div>
-                                                <div class="text-[10px] text-secondary/50 font-semibold uppercase tracking-wider mb-1">Current Bid</div>
-                                                <div class="text-lg font-bold text-secondary">$1,800</div>
+                                                <div class="text-[10px] text-secondary/50 font-semibold uppercase tracking-wider mb-0.5">Est. Value</div>
+                                                <div class="text-base font-bold text-secondary">$2,000 - $3,000</div>
                                             </div>
                                             <div class="text-right">
-                                                <div class="text-[10px] text-secondary/50 font-semibold uppercase tracking-wider mb-1">Estimate</div>
-                                                <div class="text-sm font-bold text-secondary/80">$2k - $3k</div>
+                                                <div class="text-[10px] text-secondary/50 font-semibold uppercase tracking-wider mb-0.5">Current Bid</div>
+                                                <div class="text-sm font-bold text-blue-500">$1,800</div>
                                             </div>
                                         </div>
-                                        <button class="w-full bg-secondary/5 hover:bg-secondary/10 text-secondary font-bold py-2 rounded-xl text-sm transition-colors mt-2">Place Bid</button>
+                                        <button class="w-full bg-secondary text-primary font-bold py-2 rounded-xl hover:bg-secondary/90 transition-colors text-sm">
+                                            Bid $2,000
+                                        </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Modal Lot 4 -->
+                        <!-- Lot 4 -->
                         <div class="group/card cursor-pointer flex flex-col">
                             <div class="relative rounded-2xl bg-surface flex flex-col h-full shadow-soft hover:shadow-hover-up dark:shadow-dark-soft dark:hover:shadow-dark-hover-up hover:-translate-y-1 transition-all duration-300 border border-secondary/10">
-                                <div class="h-40 relative overflow-hidden bg-secondary/5 group-hover:bg-secondary/10 transition-colors duration-500 rounded-t-2xl">
-                                    div class="absolute inset-0 bg-gradient-to-tr from-transparent to-secondary/5"></div>
+                                <div class="h-48 relative overflow-hidden bg-secondary/5 group-hover:bg-secondary/10 transition-colors duration-500 rounded-t-2xl">
+                                    <div class="absolute inset-0 bg-gradient-to-tr from-transparent to-secondary/5"></div>
                                     <button class="absolute top-3 right-3 text-secondary/30 hover:text-red-500 hover:scale-110 transition-all z-10"><i data-lucide="heart" class="w-5 h-5"></i></button>
                                 </div>
                                 <div class="p-5 flex-grow flex flex-col">
-                                    <div class="flex justify-between items-start mb-2">
-                                        <div class="text-[10px] md:text-xs text-secondary/60 font-semibold uppercase tracking-wider">Lot 4</div>
-                                        <span class="bg-blue-500/10 text-blue-500 text-[9px] font-bold px-2 py-0.5 rounded-sm uppercase tracking-widest border border-blue-500/20">Accepting Bids</span>
-                                    </div>
-                                    <h4 class="text-sm font-bold leading-snug mb-4 line-clamp-3 group-hover/card:text-blue-500 transition-colors">Charles Schneider "Le Verre Francais" Cameo Glass Vase</h4>
-                                    div class="mt-auto border-t border-secondary/10 pt-4">
-                                        <div class="flex justify-between items-end mb-2">
+                                    <div class="text-[10px] md:text-xs text-secondary/60 font-semibold mb-1 uppercase tracking-wider">Lot #4</div>
+                                    <h4 class="text-sm font-bold leading-snug mb-4 line-clamp-2 group-hover/card:text-blue-500 transition-colors">Charles Schneider French Art Deco Glass</h4>
+                                    
+                                    <div class="mt-auto pt-4">
+                                        <div class="flex justify-between items-end mb-4">
                                             <div>
-                                                <div class="text-[10px] text-secondary/50 font-semibold uppercase tracking-wider mb-1">Current Bid</div>
-                                                <div class="text-lg font-bold text-secondary">$650</div>
+                                                <div class="text-[10px] text-secondary/50 font-semibold uppercase tracking-wider mb-0.5">Est. Value</div>
+                                                <div class="text-base font-bold text-secondary">$800 - $1,200</div>
                                             </div>
                                             <div class="text-right">
-                                                <div class="text-[10px] text-secondary/50 font-semibold uppercase tracking-wider mb-1">Estimate</div>
-                                                <div class="text-sm font-bold text-secondary/80">$800 - $1.2k</div>
+                                                <div class="text-[10px] text-secondary/50 font-semibold uppercase tracking-wider mb-0.5">Starting Bid</div>
+                                                <div class="text-sm font-bold text-secondary">$400</div>
                                             </div>
                                         </div>
-                                        <button class="w-full bg-secondary/5 hover:bg-secondary/10 text-secondary font-bold py-2 rounded-xl text-sm transition-colors mt-2">Place Bid</button>
+                                        <button class="w-full border-2 border-secondary/20 text-secondary hover:border-secondary/40 hover:bg-secondary/5 font-bold py-2 rounded-xl transition-colors text-sm">
+                                            Place Absentee Bid
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Lot 5 -->
+                        <div class="group/card cursor-pointer flex flex-col">
+                            <div class="relative rounded-2xl bg-surface flex flex-col h-full shadow-soft hover:shadow-hover-up dark:shadow-dark-soft dark:hover:shadow-dark-hover-up hover:-translate-y-1 transition-all duration-300 border border-secondary/10">
+                                <div class="h-48 relative overflow-hidden bg-secondary/5 group-hover:bg-secondary/10 transition-colors duration-500 rounded-t-2xl">
+                                    <div class="absolute inset-0 bg-gradient-to-tr from-transparent to-secondary/5"></div>
+                                    <button class="absolute top-3 right-3 text-secondary/30 hover:text-red-500 hover:scale-110 transition-all z-10"><i data-lucide="heart" class="w-5 h-5"></i></button>
+                                </div>
+                                <div class="p-5 flex-grow flex flex-col">
+                                    <div class="text-[10px] md:text-xs text-secondary/60 font-semibold mb-1 uppercase tracking-wider">Lot #5</div>
+                                    <h4 class="text-sm font-bold leading-snug mb-4 line-clamp-2 group-hover/card:text-blue-500 transition-colors">Harry Epstein "Cloud" Chairs - Pair</h4>
+                                    
+                                    <div class="mt-auto pt-4">
+                                        <div class="flex justify-between items-end mb-4">
+                                            <div>
+                                                <div class="text-[10px] text-secondary/50 font-semibold uppercase tracking-wider mb-0.5">Est. Value</div>
+                                                <div class="text-base font-bold text-secondary">$3,000 - $4,000</div>
+                                            </div>
+                                            <div class="text-right">
+                                                <div class="text-[10px] text-secondary/50 font-semibold uppercase tracking-wider mb-0.5">Current Bid</div>
+                                                <div class="text-sm font-bold text-blue-500">$2,400</div>
+                                            </div>
+                                        </div>
+                                        <button class="w-full bg-secondary text-primary font-bold py-2 rounded-xl hover:bg-secondary/90 transition-colors text-sm">
+                                            Bid $2,600
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Lot 6 -->
+                        <div class="group/card cursor-pointer flex flex-col">
+                            <div class="relative rounded-2xl bg-surface flex flex-col h-full shadow-soft hover:shadow-hover-up dark:shadow-dark-soft dark:hover:shadow-dark-hover-up hover:-translate-y-1 transition-all duration-300 border border-secondary/10">
+                                <div class="h-48 relative overflow-hidden bg-secondary/5 group-hover:bg-secondary/10 transition-colors duration-500 rounded-t-2xl">
+                                    <div class="absolute inset-0 bg-gradient-to-tr from-transparent to-secondary/5"></div>
+                                    <button class="absolute top-3 right-3 text-secondary/30 hover:text-red-500 hover:scale-110 transition-all z-10"><i data-lucide="heart" class="w-5 h-5"></i></button>
+                                </div>
+                                <div class="p-5 flex-grow flex flex-col">
+                                    <div class="text-[10px] md:text-xs text-secondary/60 font-semibold mb-1 uppercase tracking-wider">Lot #6</div>
+                                    <h4 class="text-sm font-bold leading-snug mb-4 line-clamp-2 group-hover/card:text-blue-500 transition-colors">1928 $100 Gold Certificate (Fr. 2405) PMG 64 EPQ</h4>
+                                    
+                                    <div class="mt-auto pt-4">
+                                        <div class="flex justify-between items-end mb-4">
+                                            <div>
+                                                <div class="text-[10px] text-secondary/50 font-semibold uppercase tracking-wider mb-0.5">Est. Value</div>
+                                                <div class="text-base font-bold text-secondary">$500 - $700</div>
+                                            </div>
+                                            <div class="text-right">
+                                                <div class="text-[10px] text-secondary/50 font-semibold uppercase tracking-wider mb-0.5">Starting Bid</div>
+                                                <div class="text-sm font-bold text-secondary">$250</div>
+                                            </div>
+                                        </div>
+                                        <button class="w-full border-2 border-secondary/20 text-secondary hover:border-secondary/40 hover:bg-secondary/5 font-bold py-2 rounded-xl transition-colors text-sm">
+                                            Place Absentee Bid
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -536,7 +597,11 @@ I also updated the dates on the upcoming auctions so they correctly reflect futu
 
             themeToggleBtn.addEventListener('click', () => {
                 htmlElement.classList.toggle('dark');
-                localStorage.setItem('theme', htmlElement.classList.contains('dark') ? 'dark' : 'light');
+                if (htmlElement.classList.contains('dark')) {
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    localStorage.setItem('theme', 'light');
+                }
             });
 
             mobileMenuBtn.addEventListener('click', () => {
@@ -545,25 +610,25 @@ I also updated the dates on the upcoming auctions so they correctly reflect futu
             });
         });
 
-        // Modal Logic
-        const modal = document.getElementById('catalog-modal');
-        const modalContent = document.getElementById('catalog-modal-content');
+        // Catalog Modal Logic
+        const catalogModal = document.getElementById('catalog-modal');
+        const catalogModalContent = document.getElementById('catalog-modal-content');
 
-        function openModal() {
-            modal.classList.remove('opacity-0', 'pointer-events-none');
-            modalContent.classList.remove('scale-95');
+        function openCatalogModal() {
+            catalogModal.classList.remove('opacity-0', 'pointer-events-none');
+            catalogModalContent.classList.remove('scale-95');
             document.body.style.overflow = 'hidden'; 
         }
 
-        function closeModal() {
-            modal.classList.add('opacity-0', 'pointer-events-none');
-            modalContent.classList.add('scale-95');
+        function closeCatalogModal() {
+            catalogModal.classList.add('opacity-0', 'pointer-events-none');
+            catalogModalContent.classList.add('scale-95');
             document.body.style.overflow = ''; 
         }
 
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && !modal.classList.contains('opacity-0')) {
-                closeModal();
+            if (e.key === 'Escape' && !catalogModal.classList.contains('opacity-0')) {
+                closeCatalogModal();
             }
         });
     </script>
