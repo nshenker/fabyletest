@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consign with Us | Fabyle</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: 'rgb(var(--color-primary) / <alpha-value>)',
+                        secondary: 'rgb(var(--color-secondary) / <alpha-value>)',
+                        surface: 'rgb(var(--color-surface) / <alpha-value>)'
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'hover-up': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
+                        'dark-soft': '0 4px 20px -2px rgba(0, 0, 0, 0.4)',
+                        'dark-hover-up': '0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script>
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+    
+    <style>
+        :root {
+            --color-primary: 242 240 239; 
+            --color-secondary: 10 25 47;  
+            --color-surface: 255 255 255; 
+        }
+        .dark {
+            --color-primary: 10 25 47;    
+            --color-secondary: 242 240 239; 
+            --color-surface: 16 38 72;    
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Custom file input styling */
+        input[type="file"]::file-selector-button {
+            border: none;
+            background: rgba(var(--color-secondary) / 0.1);
+            padding: 8px 16px;
+            border-radius: 8px;
+            color: rgb(var(--color-secondary));
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.2s ease-in-out;
+            margin-right: 16px;
+        }
+        input[type="file"]::file-selector-button:hover {
+            background: rgba(var(--color-secondary) / 0.2);
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-primary font-sans text-secondary overflow-x-hidden transition-colors duration-300 flex flex-col">
+
+    <nav class="sticky top-0 z-50 flex items-center justify-between px-6 py-4 bg-primary/90 backdrop-blur-md transition-colors duration-300 shadow-sm relative">
+        <div class="flex items-center space-x-8">
+            <a href="/" class="font-bold text-3xl tracking-tight text-secondary cursor-pointer">Fabyle</a>
+            <div class="hidden lg:flex relative w-[400px]">
+                <i data-lucide="search" class="absolute left-4 top-2.5 h-4 w-4 text-secondary/60"></i>
+                <input type="text" placeholder="Search artists and listings" class="w-full bg-secondary/5 hover:bg-secondary/10 transition-colors rounded-full py-2 pl-11 pr-4 text-sm outline-none focus:ring-2 focus:ring-secondary/30 placeholder-secondary/50 text-secondary" />
+            </div>
+        </div>
+
+        <div class="flex items-center space-x-4 lg:space-x-10">
+            <div class="hidden lg:flex items-center space-x-6 text-sm font-semibold text-secondary/80">
+                <div class="relative group py-2">
+                    <span class="flex items-center cursor-pointer hover:text-secondary transition-colors">Auctions <i data-lucide="chevron-down" class="h-4 w-4 ml-1"></i></span>
+                    <div class="absolute left-0 top-full w-48 bg-surface rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 py-2 border border-secondary/10">
+                        <a href="/UpcomingAuctions" class="block px-4 py-2 text-sm text-secondary/80 hover:text-secondary hover:bg-secondary/10 transition-colors">Upcoming Auctions</a>
+                        <a href="/Results" class="block px-4 py-2 text-sm text-secondary/80 hover:text-secondary hover:bg-secondary/10 transition-colors">Results</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-secondary/80 hover:text-secondary hover:bg-secondary/10 transition-colors">Browse All</a>
+                    </div>
+                </div>
+                <a href="/Shop" class="flex items-center cursor-pointer hover:text-secondary transition-colors">Shop</a>
+                <span class="cursor-pointer hover:text-secondary transition-colors">Calendar</span>
+            </div>
+
+            <div class="flex items-center space-x-2 lg:space-x-4 text-sm font-semibold">
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-secondary/10 text-secondary transition-colors lg:mr-2" aria-label="Toggle Theme">
+                    <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                    <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+                </button>
+                <a href="/Shop" class="p-2 rounded-full hover:bg-secondary/10 text-secondary transition-colors relative">
+                    <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                </a>
+                <a href="/Profile" class="hidden lg:flex items-center text-secondary/80 hover:text-secondary transition-colors ml-2">
+                    <i data-lucide="user" class="h-4 w-4 mr-1.5"></i> Account
+                </a>
+                <a href="/Consign" class="hidden lg:block bg-secondary text-primary px-6 py-2 rounded-full hover:bg-secondary/90 transition-colors shadow-md ml-2">
+                    Sell
+                </a>
+                <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-full hover:bg-secondary/10 text-secondary transition-colors">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="absolute top-full left-0 w-full bg-surface shadow-lg hidden lg:hidden flex-col border-t border-secondary/10 z-40 transition-all duration-300">
+            <div class="p-6 space-y-6">
+                <div class="relative w-full">
+                    <i data-lucide="search" class="absolute left-4 top-2.5 h-4 w-4 text-secondary/60"></i>
+                    <input type="text" placeholder="Search artists and listings" class="w-full bg-secondary/5 hover:bg-secondary/10 transition-colors rounded-full py-2 pl-11 pr-4 text-sm outline-none focus:ring-2 focus:ring-secondary/30 placeholder-secondary/50 text-secondary" />
+                </div>
+                <div class="flex flex-col space-y-4 text-base font-semibold text-secondary/80">
+                    <a href="/UpcomingAuctions" class="hover:text-secondary transition-colors">Upcoming Auctions</a>
+                    <a href="/Results" class="hover:text-secondary transition-colors">Auction Results</a>
+                    <a href="#" class="hover:text-secondary transition-colors">Browse All Auctions</a>
+                    <hr class="border-secondary/10">
+                    <a href="/Shop" class="hover:text-secondary transition-colors">Shop Gallery</a>
+                    <a href="#" class="hover:text-secondary transition-colors">Calendar</a>
+                    <hr class="border-secondary/10">
+                    <a href="/Profile" class="flex items-center hover:text-secondary transition-colors">
+                        <i data-lucide="user" class="h-5 w-5 mr-3"></i> My Account
+                    </a>
+                    <a href="/Consign" class="bg-secondary text-primary px-6 py-3 rounded-full hover:bg-secondary/90 transition-colors shadow-md text-center w-full mt-2 block">
+                        Sell with Fabyle
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-[1400px] mx-auto px-4 md:px-6 py-12 md:py-20 w-full flex-grow">
+        
+        <div class="flex flex-col lg:flex-row gap-12 lg:gap-20">
+            
+            <div class="lg:w-1/2 flex flex-col justify-center">
+                <div class="flex items-center text-blue-500 text-xs font-bold uppercase tracking-widest mb-4">
+                    <i data-lucide="star" class="w-4 h-4 mr-2"></i> Global Reach, Record Prices
+                </div>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-secondary leading-tight mb-6">
+                    Unlock the Value of Your Collection
+                </h1>
+                <p class="text-lg text-secondary/70 mb-10 leading-relaxed max-w-xl">
+                    Whether you have a single rare item or an entire collection, Fabyle's team of dedicated specialists will help you navigate the consignment process to maximize your returns.
+                </p>
+
+                <div class="space-y-8">
+                    <div class="flex items-start">
+                        <div class="bg-secondary/5 p-3 rounded-2xl mr-4 text-secondary mt-1">
+                            <i data-lucide="search-check" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-secondary mb-2">1. Request an Estimate</h3>
+                            <p class="text-secondary/60 leading-relaxed text-sm">Submit details and photos of your item. Our specialists will review your submission and provide a complimentary auction estimate within 48 hours.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start">
+                        <div class="bg-secondary/5 p-3 rounded-2xl mr-4 text-secondary mt-1">
+                            <i data-lucide="truck" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-secondary mb-2">2. Secure Shipping & Cataloging</h3>
+                            <p class="text-secondary/60 leading-relaxed text-sm">Once approved, we provide fully insured shipping labels. Our experts will authenticate, professionally photograph, and catalog your item for auction.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start">
+                        <div class="bg-secondary/5 p-3 rounded-2xl mr-4 text-secondary mt-1">
+                            <i data-lucide="gavel" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-secondary mb-2">3. Sell & Get Paid</h3>
+                            <p class="text-secondary/60 leading-relaxed text-sm">Your item goes live in front of our global network of passionate collectors. Once the auction closes and the buyer pays, you receive your funds swiftly.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:w-1/2">
+                <div class="bg-surface rounded-3xl p-8 md:p-10 border border-secondary/10 shadow-soft dark:shadow-dark-soft relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 z-10 opacity-80"></div>
+                    
+                    <h2 class="text-2xl font-bold text-secondary mb-2 mt-2">Submit an Item for Review</h2>
+                    <p class="text-secondary/60 text-sm mb-8">Please provide as much detail as possible to help our specialists evaluate your item accurately.</p>
+                    
+                    <form class="space-y-6" onsubmit="event.preventDefault(); showSuccessState();">
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-[10px] font-bold text-secondary/50 uppercase tracking-widest mb-2">First Name</label>
+                                <input type="text" required class="w-full bg-secondary/5 rounded-xl p-3.5 border border-secondary/10 outline-none focus:ring-2 focus:ring-blue-500 focus:bg-surface transition-all text-secondary" placeholder="Jane">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-bold text-secondary/50 uppercase tracking-widest mb-2">Last Name</label>
+                                <input type="text" required class="w-full bg-secondary/5 rounded-xl p-3.5 border border-secondary/10 outline-none focus:ring-2 focus:ring-blue-500 focus:bg-surface transition-all text-secondary" placeholder="Doe">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-[10px] font-bold text-secondary/50 uppercase tracking-widest mb-2">Email Address</label>
+                                <input type="email" required class="w-full bg-secondary/5 rounded-xl p-3.5 border border-secondary/10 outline-none focus:ring-2 focus:ring-blue-500 focus:bg-surface transition-all text-secondary" placeholder="jane@example.com">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-bold text-secondary/50 uppercase tracking-widest mb-2">Phone Number</label>
+                                <input type="tel" class="w-full bg-secondary/5 rounded-xl p-3.5 border border-secondary/10 outline-none focus:ring-2 focus:ring-blue-500 focus:bg-surface transition-all text-secondary" placeholder="(555) 123-4567">
+                            </div>
+                        </div>
+
+                        <hr class="border-secondary/10 my-6">
+
+                        <div>
+                            <label class="block text-[10px] font-bold text-secondary/50 uppercase tracking-widest mb-2">Category</label>
+                            <div class="relative">
+                                <select required class="appearance-none w-full bg-secondary/5 rounded-xl p-3.5 border border-secondary/10 outline-none focus:ring-2 focus:ring-blue-500 focus:bg-surface transition-all text-secondary font-medium cursor-pointer">
+                                    <option value="" disabled selected>Select a category...</option>
+                                    <option value="sports">Sports Memorabilia</option>
+                                    <option value="tcg">Trading Cards (TCG/Sports)</option>
+                                    <option value="art">Fine Art</option>
+                                    <option value="watches">Watches & Timepieces</option>
+                                    <option value="coins">Coins & Currency</option>
+                                    <option value="other">Other / Not Sure</option>
+                                </select>
+                                <i data-lucide="chevron-down" class="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-secondary/50 pointer-events-none"></i>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-[10px] font-bold text-secondary/50 uppercase tracking-widest mb-2">Item Title / Maker</label>
+                            <input type="text" required class="w-full bg-secondary/5 rounded-xl p-3.5 border border-secondary/10 outline-none focus:ring-2 focus:ring-blue-500 focus:bg-surface transition-all text-secondary" placeholder="e.g. 1986 Fleer Michael Jordan Rookie #57 PSA 8">
+                        </div>
+
+                        <div>
+                            <label class="block text-[10px] font-bold text-secondary/50 uppercase tracking-widest mb-2">Description & Condition</label>
+                            <textarea required rows="4" class="w-full bg-secondary/5 rounded-xl p-3.5 border border-secondary/10 outline-none focus:ring-2 focus:ring-blue-500 focus:bg-surface transition-all text-secondary resize-none" placeholder="Provide details about origin, condition, grading, or provenance..."></textarea>
+                        </div>
+
+                        <div>
+                            <label class="block text-[10px] font-bold text-secondary/50 uppercase tracking-widest mb-2">Upload Photos</label>
+                            <div class="w-full bg-secondary/5 rounded-xl p-4 border border-dashed border-secondary/20 hover:border-blue-500/50 transition-colors group cursor-pointer relative flex flex-col items-center justify-center text-center">
+                                <input type="file" multiple accept="image/*" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" id="file-upload" onchange="updateFileCount(this)">
+                                <i data-lucide="upload-cloud" class="w-8 h-8 text-secondary/40 group-hover:text-blue-500 mb-2 transition-colors"></i>
+                                <span class="text-sm font-semibold text-secondary" id="file-label">Drag and drop, or click to browse files</span>
+                                <span class="text-[10px] text-secondary/50 mt-1">PNG, JPG up to 10MB</span>
+                            </div>
+                        </div>
+
+                        <button id="submit-btn" type="submit" class="w-full bg-secondary text-primary font-bold text-lg py-4 rounded-xl hover:bg-secondary/90 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-md flex justify-center items-center">
+                            Submit for Evaluation <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
+                        </button>
+                    </form>
+
+                    <div id="success-state" class="hidden absolute inset-0 bg-surface z-20 flex flex-col items-center justify-center p-8 text-center">
+                        <div class="w-20 h-20 bg-green-500/10 text-green-500 rounded-full flex items-center justify-center mb-6">
+                            <i data-lucide="check-circle" class="w-10 h-10"></i>
+                        </div>
+                        <h2 class="text-3xl font-bold text-secondary mb-3">Submission Received!</h2>
+                        <p class="text-secondary/70 mb-8 max-w-md">Thank you for considering Fabyle. One of our specialists will review your item and reach out to you within 48 hours.</p>
+                        <button onclick="resetForm()" class="bg-secondary/10 text-secondary border border-secondary/20 px-8 py-3 rounded-full font-bold hover:bg-secondary/20 transition-colors">
+                            Submit Another Item
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-secondary text-primary pt-12 md:pt-16 pb-8 transition-colors duration-300 mt-auto border-t border-secondary/10">
+        <div class="max-w-[1400px] mx-auto px-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-8 mb-12 md:mb-16 text-sm">
+                <div>
+                    <h4 class="font-bold mb-4 md:mb-6 text-primary text-base">Features</h4>
+                    <ul class="space-y-2 md:space-y-3 text-primary/70 font-medium">
+                        <li><a href="#" class="hover:text-primary transition-colors">Buy</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Sell</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Sign Up Or Create Account</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 md:mb-6 text-primary text-base">Legal</h4>
+                    <ul class="space-y-2 md:space-y-3 text-primary/70 font-medium">
+                        <li><a href="#" class="hover:text-primary transition-colors">User Privacy Notice</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">California Privacy Notice</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Fabyle User Agreement</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 md:mb-6 text-primary text-base">Company</h4>
+                    <ul class="space-y-2 md:space-y-3 text-primary/70 font-medium">
+                        <li><a href="#" class="hover:text-primary transition-colors">Meet Our Experts</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 md:mb-6 text-primary text-base">Follow Us</h4>
+                    <div class="flex space-x-4 mb-6 md:mb-8">
+                        <a href="#" class="text-primary/70 hover:text-primary p-2 bg-primary/10 rounded-full hover:bg-primary/20"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+                        <a href="#" class="text-primary/70 hover:text-primary p-2 bg-primary/10 rounded-full hover:bg-primary/20"><i data-lucide="twitter" class="w-4 h-4"></i></a>
+                    </div>
+                    <div class="font-bold text-2xl md:text-3xl tracking-tight text-primary opacity-90">Fabyle</div>
+                </div>
+            </div>
+            <div class="pt-6 md:pt-8 border-t border-primary/20 flex flex-col justify-between items-center text-xs text-primary/60 text-center md:text-left">
+                <p>© 2026 Fabyle, an eBay company. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        
+        // Theme & Mobile Menu Toggle
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const htmlElement = document.documentElement;
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            themeToggleBtn.addEventListener('click', () => {
+                htmlElement.classList.toggle('dark');
+                localStorage.setItem('theme', htmlElement.classList.contains('dark') ? 'dark' : 'light');
+            });
+
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('flex');
+            });
+        });
+
+        // Form Interactions
+        function updateFileCount(input) {
+            const label = document.getElementById('file-label');
+            if (input.files && input.files.length > 0) {
+                label.innerText = `${input.files.length} file(s) selected`;
+                label.classList.add('text-blue-500');
+            } else {
+                label.innerText = 'Drag and drop, or click to browse files';
+                label.classList.remove('text-blue-500');
+            }
+        }
+
+        function showSuccessState() {
+            const successState = document.getElementById('success-state');
+            successState.classList.remove('hidden');
+            successState.classList.add('animate-slide-in');
+        }
+
+        function resetForm() {
+            const form = document.querySelector('form');
+            const successState = document.getElementById('success-state');
+            const fileLabel = document.getElementById('file-label');
+            
+            form.reset();
+            fileLabel.innerText = 'Drag and drop, or click to browse files';
+            fileLabel.classList.remove('text-blue-500');
+            successState.classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
