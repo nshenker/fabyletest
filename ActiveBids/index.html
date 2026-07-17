@@ -7,18 +7,80 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: { extend: { colors: { primary: 'rgb(var(--color-primary) / <alpha-value>)', secondary: 'rgb(var(--color-secondary) / <alpha-value>)', surface: 'rgb(var(--color-surface) / <alpha-value>)' }, boxShadow: { 'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)', 'hover-up': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)', 'dark-soft': '0 4px 20px -2px rgba(0, 0, 0, 0.4)', 'dark-hover-up': '0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5)' } } }
-        }
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: 'rgb(var(--color-primary) / <alpha-value>)', secondary: 'rgb(var(--color-secondary) / <alpha-value>)', surface: 'rgb(var(--color-surface) / <alpha-value>)' }, boxShadow: { 'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)', 'hover-up': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)', 'dark-soft': '0 4px 20px -2px rgba(0, 0, 0, 0.4)', 'dark-hover-up': '0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5)' } } } }
         if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) document.documentElement.classList.add('dark'); else document.documentElement.classList.remove('dark');
     </script>
-    <style>
-        :root { --color-primary: 242 240 239; --color-secondary: 10 25 47; --color-surface: 255 255 255; }
-        .dark { --color-primary: 10 25 47; --color-secondary: 242 240 239; --color-surface: 16 38 72; }
-    </style>
+    <style>:root { --color-primary: 242 240 239; --color-secondary: 10 25 47; --color-surface: 255 255 255; } .dark { --color-primary: 10 25 47; --color-secondary: 242 240 239; --color-surface: 16 38 72; } .hide-scrollbar::-webkit-scrollbar { display: none; } .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }</style>
 </head>
 <body class="min-h-screen bg-primary font-sans text-secondary overflow-x-hidden transition-colors duration-300 flex flex-col">
+
+    <nav class="sticky top-0 z-50 flex items-center justify-between px-6 py-4 bg-primary/90 backdrop-blur-md transition-colors duration-300 shadow-sm relative">
+        <div class="flex items-center space-x-8">
+            <a href="/" class="font-bold text-3xl tracking-tight text-secondary cursor-pointer">Fabyle</a>
+            <div class="hidden lg:flex relative w-[400px]">
+                <i data-lucide="search" class="absolute left-4 top-2.5 h-4 w-4 text-secondary/60"></i>
+                <input type="text" placeholder="Search artists and listings" class="w-full bg-secondary/5 hover:bg-secondary/10 transition-colors rounded-full py-2 pl-11 pr-4 text-sm outline-none focus:ring-2 focus:ring-secondary/30 placeholder-secondary/50 text-secondary" />
+            </div>
+        </div>
+
+        <div class="flex items-center space-x-4 lg:space-x-10">
+            <div class="hidden lg:flex items-center space-x-6 text-sm font-semibold text-secondary/80">
+                <div class="relative group py-2">
+                    <span class="flex items-center cursor-pointer hover:text-secondary transition-colors">Auctions <i data-lucide="chevron-down" class="h-4 w-4 ml-1"></i></span>
+                    <div class="absolute left-0 top-full w-48 bg-surface rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 py-2 border border-secondary/10">
+                        <a href="/UpcomingAuctions" class="block px-4 py-2 text-sm text-secondary/80 hover:text-secondary hover:bg-secondary/10 transition-colors">Upcoming Auctions</a>
+                        <a href="/Results" class="block px-4 py-2 text-sm text-secondary/80 hover:text-secondary hover:bg-secondary/10 transition-colors">Results</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-secondary/80 hover:text-secondary hover:bg-secondary/10 transition-colors">Browse All</a>
+                    </div>
+                </div>
+                <a href="/Shop" class="flex items-center cursor-pointer hover:text-secondary transition-colors">Shop</a>
+            </div>
+
+            <div class="flex items-center space-x-2 lg:space-x-4 text-sm font-semibold">
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-secondary/10 text-secondary transition-colors lg:mr-2" aria-label="Toggle Theme">
+                    <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                    <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+                </button>
+                <a href="/Shop" class="p-2 rounded-full hover:bg-secondary/10 text-secondary transition-colors relative">
+                    <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                    <span class="absolute top-0 right-0 w-2 h-2 bg-blue-500 rounded-full"></span>
+                </a>
+                <a href="/Profile" class="hidden lg:flex items-center text-secondary/80 hover:text-secondary transition-colors ml-2">
+                    <i data-lucide="user" class="h-4 w-4 mr-1.5"></i> Account
+                </a>
+                <a href="/Consign" class="hidden lg:block bg-secondary text-primary px-6 py-2 rounded-full hover:bg-secondary/90 transition-colors shadow-md ml-2">
+                    Sell
+                </a>
+                <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-full hover:bg-secondary/10 text-secondary transition-colors">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="absolute top-full left-0 w-full bg-surface shadow-lg hidden lg:hidden flex-col border-t border-secondary/10 z-40 transition-all duration-300">
+            <div class="p-6 space-y-6">
+                <div class="relative w-full">
+                    <i data-lucide="search" class="absolute left-4 top-2.5 h-4 w-4 text-secondary/60"></i>
+                    <input type="text" placeholder="Search artists and listings" class="w-full bg-secondary/5 hover:bg-secondary/10 transition-colors rounded-full py-2 pl-11 pr-4 text-sm outline-none focus:ring-2 focus:ring-secondary/30 placeholder-secondary/50 text-secondary" />
+                </div>
+                <div class="flex flex-col space-y-4 text-base font-semibold text-secondary/80">
+                    <a href="/UpcomingAuctions" class="hover:text-secondary transition-colors">Upcoming Auctions</a>
+                    <a href="/Results" class="hover:text-secondary transition-colors">Auction Results</a>
+                    <a href="#" class="hover:text-secondary transition-colors">Browse All Auctions</a>
+                    <hr class="border-secondary/10">
+                    <a href="/Shop" class="hover:text-secondary transition-colors">Shop Gallery</a>
+                    <a href="#" class="hover:text-secondary transition-colors">Calendar</a>
+                    <hr class="border-secondary/10">
+                    <a href="/Profile" class="flex items-center hover:text-secondary transition-colors">
+                        <i data-lucide="user" class="h-5 w-5 mr-3"></i> My Account
+                    </a>
+                    <a href="/Consign" class="bg-secondary text-primary px-6 py-3 rounded-full hover:bg-secondary/90 transition-colors shadow-md text-center w-full mt-2 block">
+                        Sell with Fabyle
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
 
     <main class="max-w-[1400px] mx-auto px-4 md:px-6 py-8 md:py-12 w-full flex-grow flex flex-col lg:flex-row gap-8">
         
@@ -123,11 +185,69 @@
         </div>
     </main>
 
+    <footer class="bg-secondary text-primary pt-12 md:pt-16 pb-8 transition-colors duration-300 mt-auto border-t border-secondary/10">
+        <div class="max-w-[1400px] mx-auto px-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-8 mb-12 md:mb-16 text-sm">
+                <div>
+                    <h4 class="font-bold mb-4 md:mb-6 text-primary text-base">Features</h4>
+                    <ul class="space-y-2 md:space-y-3 text-primary/70 font-medium">
+                        <li><a href="#" class="hover:text-primary transition-colors">Buy</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Sell</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Sign Up Or Create Account</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 md:mb-6 text-primary text-base">Legal</h4>
+                    <ul class="space-y-2 md:space-y-3 text-primary/70 font-medium">
+                        <li><a href="#" class="hover:text-primary transition-colors">User Privacy Notice</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">California Privacy Notice</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Fabyle User Agreement</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 md:mb-6 text-primary text-base">Company</h4>
+                    <ul class="space-y-2 md:space-y-3 text-primary/70 font-medium">
+                        <li><a href="#" class="hover:text-primary transition-colors">Meet Our Experts</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 md:mb-6 text-primary text-base">Follow Us</h4>
+                    <div class="flex space-x-4 mb-6 md:mb-8">
+                        <a href="#" class="text-primary/70 hover:text-primary p-2 bg-primary/10 rounded-full hover:bg-primary/20"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+                        <a href="#" class="text-primary/70 hover:text-primary p-2 bg-primary/10 rounded-full hover:bg-primary/20"><i data-lucide="twitter" class="w-4 h-4"></i></a>
+                    </div>
+                    <div class="font-bold text-2xl md:text-3xl tracking-tight text-primary opacity-90">Fabyle</div>
+                </div>
+            </div>
+            <div class="pt-6 md:pt-8 border-t border-primary/20 flex flex-col justify-between items-center text-xs text-primary/60 text-center md:text-left">
+                <p>© 2026 Fabyle, an eBay company. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
     <script>
-        lucide.createIcons();
-        document.getElementById('theme-toggle').addEventListener('click', () => {
-            document.documentElement.classList.toggle('dark');
-            localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const htmlElement = document.documentElement;
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (themeToggleBtn) {
+                themeToggleBtn.addEventListener('click', () => {
+                    htmlElement.classList.toggle('dark');
+                    localStorage.setItem('theme', htmlElement.classList.contains('dark') ? 'dark' : 'light');
+                });
+            }
+
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                    mobileMenu.classList.toggle('flex');
+                });
+            }
         });
     </script>
 </body>
