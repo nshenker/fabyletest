@@ -51,10 +51,10 @@
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         
         @media print {
-            body { background: white; color: black; }
+            body { background: white !important; color: black !important; }
             nav, footer, .no-print { display: none !important; }
-            main { padding: 0 !important; margin: 0 !important; }
-            .print-shadow-none { box-shadow: none !important; border: none !important; }
+            main { padding: 0 !important; margin: 0 !important; width: 100% !important; max-width: 100% !important; }
+            .print-shadow-none { box-shadow: none !important; border: 1px solid #ddd !important; }
         }
     </style>
 </head>
@@ -118,4 +118,249 @@
                     <a href="#" class="hover:text-secondary transition-colors">Calendar</a>
                     <hr class="border-secondary/10">
                     <a href="/Profile" class="flex items-center hover:text-secondary transition-colors">
-                        <i data-lucide="user" class="h-5
+                        <i data-lucide="user" class="h-5 w-5 mr-3"></i> My Account
+                    </a>
+                    <a href="/Consign" class="bg-secondary text-primary px-6 py-3 rounded-full hover:bg-secondary/90 transition-colors shadow-md text-center w-full mt-2 block">
+                        Sell with Fabyle
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-[1000px] mx-auto px-4 md:px-6 py-8 md:py-12 w-full flex-grow flex flex-col gap-6">
+        
+        <div class="flex flex-col sm:flex-row justify-between items-center gap-4 no-print mb-2">
+            <a href="/Orders" class="flex items-center text-sm font-bold text-secondary/60 hover:text-blue-500 transition-colors">
+                <i data-lucide="arrow-left" class="w-4 h-4 mr-2"></i> Back to Orders
+            </a>
+            <div class="flex gap-3 w-full sm:w-auto">
+                <button onclick="window.print()" class="flex-1 sm:flex-none bg-surface border border-secondary/20 hover:bg-secondary/5 text-secondary px-5 py-2.5 rounded-xl font-bold text-sm transition-colors flex items-center justify-center shadow-sm">
+                    <i data-lucide="printer" class="w-4 h-4 mr-2"></i> Print
+                </button>
+                <button class="flex-1 sm:flex-none bg-surface border border-secondary/20 hover:bg-secondary/5 text-secondary px-5 py-2.5 rounded-xl font-bold text-sm transition-colors flex items-center justify-center shadow-sm">
+                    <i data-lucide="download" class="w-4 h-4 mr-2"></i> Save PDF
+                </button>
+            </div>
+        </div>
+
+        <div class="bg-surface rounded-3xl p-6 md:p-12 border border-secondary/10 shadow-soft dark:shadow-dark-soft print-shadow-none relative overflow-hidden flex flex-col">
+            
+            <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 opacity-80 no-print"></div>
+            
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-secondary/10 pb-8 mb-8 gap-6">
+                <div>
+                    <h1 class="font-bold text-4xl tracking-tight text-secondary mb-1">Fabyle</h1>
+                    <p class="text-xs font-semibold text-secondary/50 uppercase tracking-widest">Auctions & Gallery Shop</p>
+                </div>
+                <div class="text-left md:text-right">
+                    <div class="text-3xl font-bold text-secondary mb-1">INVOICE</div>
+                    <div class="text-sm font-semibold text-secondary/60">#FA-8891</div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+                <div>
+                    <h3 class="text-[10px] font-bold text-secondary/50 uppercase tracking-widest mb-3">Billed To</h3>
+                    <div class="text-base font-bold text-secondary mb-1">Nick Shenker</div>
+                    <div class="text-sm font-medium text-secondary/70 leading-relaxed">
+                        123 Collector's Lane<br>
+                        Suite 4B<br>
+                        New York, NY 10012<br>
+                        nick.shenker@example.com
+                    </div>
+                </div>
+                <div class="md:text-right">
+                    <div class="mb-4">
+                        <h3 class="text-[10px] font-bold text-secondary/50 uppercase tracking-widest mb-1">Date Issued</h3>
+                        <div class="text-sm font-bold text-secondary">April 14, 2026</div>
+                    </div>
+                    <div class="mb-4">
+                        <h3 class="text-[10px] font-bold text-secondary/50 uppercase tracking-widest mb-1">Due Date</h3>
+                        <div class="text-sm font-bold text-red-500 flex items-center md:justify-end">
+                            <i data-lucide="clock" class="w-4 h-4 mr-2"></i> April 17, 2026
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-[10px] font-bold text-secondary/50 uppercase tracking-widest mb-2">Status</h3>
+                        <span class="inline-flex items-center bg-orange-500/10 text-orange-600 text-xs font-bold px-3 py-1 rounded border border-orange-500/20 uppercase tracking-widest">
+                            <i data-lucide="alert-circle" class="w-3.5 h-3.5 mr-1.5"></i> Pending Payment
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="overflow-x-auto mb-8">
+                <table class="w-full text-left border-collapse min-w-[600px]">
+                    <thead>
+                        <tr class="text-[10px] uppercase tracking-widest text-secondary/50 border-b border-secondary/10 bg-secondary/5">
+                            <th class="py-4 px-4 font-bold rounded-tl-xl w-3/5">Description</th>
+                            <th class="py-4 px-4 font-bold text-center">Type</th>
+                            <th class="py-4 px-4 font-bold text-right rounded-tr-xl">Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm font-semibold text-secondary">
+                        <tr class="border-b border-secondary/5">
+                            <td class="py-5 px-4">
+                                <div class="font-bold text-base mb-1">Shedeur Sanders 3/3 Patch Card</div>
+                                <div class="text-xs text-secondary/60 font-medium">Lot #42 - Spring Sports Premiere</div>
+                            </td>
+                            <td class="py-5 px-4 text-center">
+                                <span class="bg-blue-500/10 text-blue-500 text-[10px] font-bold px-2 py-0.5 rounded border border-blue-500/20">Auction Win</span>
+                            </td>
+                            <td class="py-5 px-4 text-right font-bold text-base">$7,080.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="flex flex-col md:flex-row justify-between items-end gap-8 mb-12">
+                
+                <div class="w-full md:w-1/2 bg-secondary/5 rounded-xl p-5 border border-secondary/10">
+                    <h3 class="text-[10px] font-bold text-secondary/50 uppercase tracking-widest mb-2">Notes & Terms</h3>
+                    <p class="text-xs font-medium text-secondary/70 leading-relaxed">
+                        All auction wins include a standard 20% buyer's premium based on the final hammer price. 
+                        Items are shipped fully insured within 2 business days of payment clearance. 
+                        All sales are final per the Fabyle User Agreement.
+                    </p>
+                </div>
+
+                <div class="w-full md:w-1/3 space-y-3">
+                    <div class="flex justify-between items-center text-sm font-semibold text-secondary/70">
+                        <span>Hammer Price</span>
+                        <span>$5,900.00</span>
+                    </div>
+                    <div class="flex justify-between items-center text-sm font-semibold text-secondary/70">
+                        <span>Buyer's Premium (20%)</span>
+                        <span>$1,180.00</span>
+                    </div>
+                    <div class="flex justify-between items-center text-sm font-semibold text-secondary/70">
+                        <span>Insured Shipping</span>
+                        <span>$150.00</span>
+                    </div>
+                    <div class="flex justify-between items-center text-sm font-semibold text-secondary/70">
+                        <span>Sales Tax (0.0%)</span>
+                        <span>$0.00</span>
+                    </div>
+                    <div class="h-px bg-secondary/10 my-2"></div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm font-bold text-secondary uppercase tracking-widest">Total Due</span>
+                        <span class="text-2xl font-bold text-blue-500">$7,230.00</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="border-t border-secondary/10 pt-8 no-print">
+                <h3 class="text-lg font-bold text-secondary mb-6 flex items-center">
+                    <i data-lucide="wallet" class="w-5 h-5 mr-2 text-blue-500"></i> Select Payment Method
+                </h3>
+                
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <button class="bg-surface border border-secondary/20 hover:border-blue-500 hover:bg-blue-500/5 p-4 md:p-6 rounded-2xl flex flex-col items-center justify-center gap-3 transition-all group shadow-sm">
+                        <div class="p-3 bg-secondary/5 rounded-full group-hover:bg-white group-hover:shadow-sm transition-colors">
+                            <i data-lucide="credit-card" class="w-6 h-6 text-secondary/60 group-hover:text-blue-500"></i>
+                        </div>
+                        <span class="font-bold text-sm text-secondary">Credit Card</span>
+                    </button>
+                    
+                    <button class="bg-surface border border-secondary/20 hover:border-blue-500 hover:bg-blue-500/5 p-4 md:p-6 rounded-2xl flex flex-col items-center justify-center gap-3 transition-all group shadow-sm">
+                        <div class="p-3 bg-secondary/5 rounded-full group-hover:bg-white group-hover:shadow-sm transition-colors">
+                            <i data-lucide="smartphone" class="w-6 h-6 text-secondary/60 group-hover:text-[#00457C]"></i>
+                        </div>
+                        <span class="font-bold text-sm text-secondary">PayPal</span>
+                    </button>
+                    
+                    <button class="bg-surface border border-secondary/20 hover:border-blue-500 hover:bg-blue-500/5 p-4 md:p-6 rounded-2xl flex flex-col items-center justify-center gap-3 transition-all group shadow-sm">
+                        <div class="p-3 bg-secondary/5 rounded-full group-hover:bg-white group-hover:shadow-sm transition-colors">
+                            <i data-lucide="landmark" class="w-6 h-6 text-secondary/60 group-hover:text-blue-500"></i>
+                        </div>
+                        <span class="font-bold text-sm text-secondary whitespace-nowrap">Wire Transfer</span>
+                    </button>
+                    
+                    <button class="bg-surface border border-secondary/20 hover:border-blue-500 hover:bg-blue-500/5 p-4 md:p-6 rounded-2xl flex flex-col items-center justify-center gap-3 transition-all group shadow-sm">
+                        <div class="p-3 bg-secondary/5 rounded-full group-hover:bg-white group-hover:shadow-sm transition-colors">
+                            <i data-lucide="mail" class="w-6 h-6 text-secondary/60 group-hover:text-blue-500"></i>
+                        </div>
+                        <span class="font-bold text-sm text-secondary">Mail Check</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="mt-16 pt-8 border-t border-secondary/10 text-center text-xs font-medium text-secondary/40">
+                <p>Thank you for choosing Fabyle.</p>
+                <p class="mt-1">Fabyle LLC • 100 Art District Way, New York, NY 10001 • support@fabyle.com</p>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-secondary text-primary pt-12 md:pt-16 pb-8 transition-colors duration-300 mt-auto border-t border-secondary/10 no-print">
+        <div class="max-w-[1400px] mx-auto px-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-8 mb-12 md:mb-16 text-sm">
+                <div>
+                    <h4 class="font-bold mb-4 md:mb-6 text-primary text-base">Features</h4>
+                    <ul class="space-y-2 md:space-y-3 text-primary/70 font-medium">
+                        <li><a href="#" class="hover:text-primary transition-colors">Buy</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Sell</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Sign Up Or Create Account</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 md:mb-6 text-primary text-base">Legal</h4>
+                    <ul class="space-y-2 md:space-y-3 text-primary/70 font-medium">
+                        <li><a href="#" class="hover:text-primary transition-colors">User Privacy Notice</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">California Privacy Notice</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Fabyle User Agreement</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 md:mb-6 text-primary text-base">Company</h4>
+                    <ul class="space-y-2 md:space-y-3 text-primary/70 font-medium">
+                        <li><a href="#" class="hover:text-primary transition-colors">Meet Our Experts</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 md:mb-6 text-primary text-base">Follow Us</h4>
+                    <div class="flex space-x-4 mb-6 md:mb-8">
+                        <a href="#" class="text-primary/70 hover:text-primary p-2 bg-primary/10 rounded-full hover:bg-primary/20"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+                        <a href="#" class="text-primary/70 hover:text-primary p-2 bg-primary/10 rounded-full hover:bg-primary/20"><i data-lucide="twitter" class="w-4 h-4"></i></a>
+                    </div>
+                    <div class="font-bold text-2xl md:text-3xl tracking-tight text-primary opacity-90">Fabyle</div>
+                </div>
+            </div>
+            <div class="pt-6 md:pt-8 border-t border-primary/20 flex flex-col justify-between items-center text-xs text-primary/60 text-center md:text-left">
+                <p>© 2026 Fabyle, an eBay company. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Safely initialize Lucide icons after the DOM is ready
+            lucide.createIcons();
+
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const htmlElement = document.documentElement;
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (themeToggleBtn) {
+                themeToggleBtn.addEventListener('click', () => {
+                    htmlElement.classList.toggle('dark');
+                    localStorage.setItem('theme', htmlElement.classList.contains('dark') ? 'dark' : 'light');
+                });
+            }
+
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                    mobileMenu.classList.toggle('flex');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
