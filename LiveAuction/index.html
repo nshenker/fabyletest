@@ -23,7 +23,9 @@
                         'dark-soft': '0 4px 20px -2px rgba(0, 0, 0, 0.4)',
                         'dark-hover-up': '0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5)',
                         'glow-blue': '0 0 20px rgba(59, 130, 246, 0.5)',
-                        'glow-red': '0 0 20px rgba(239, 68, 68, 0.5)'
+                        'glow-red': '0 0 20px rgba(239, 68, 68, 0.5)',
+                        'modal': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+                        'dark-modal': '0 25px 50px -12px rgba(0, 0, 0, 0.75)',
                     },
                     animation: {
                         'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
@@ -120,7 +122,7 @@
                 <a href="/Profile" class="hidden lg:flex items-center text-secondary/80 hover:text-secondary transition-colors ml-2">
                     <i data-lucide="user" class="h-4 w-4 mr-1.5"></i> Account
                 </a>
-               <a href="/Consign" class="hidden lg:block bg-secondary text-primary px-6 py-2 rounded-full hover:bg-secondary/90 transition-colors shadow-md ml-2">
+                <a href="/Consign" class="hidden lg:block bg-secondary text-primary px-6 py-2 rounded-full hover:bg-secondary/90 transition-colors shadow-md ml-2">
                     Sell
                 </a>
                 <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-full hover:bg-secondary/10 text-secondary transition-colors">
@@ -233,7 +235,7 @@
                 </div>
 
                 <div class="flex flex-col sm:flex-row gap-4 w-full xl:w-auto shrink-0">
-                    <button onclick="showToast('Custom bid modal opened (Simulation)')" class="flex-1 sm:flex-none bg-surface text-secondary border-2 border-secondary/20 hover:border-secondary/40 hover:bg-secondary/5 px-6 py-4 rounded-2xl font-bold text-lg transition-all flex items-center justify-center whitespace-nowrap shadow-sm">
+                    <button onclick="openCustomBidModal()" class="flex-1 sm:flex-none bg-surface text-secondary border-2 border-secondary/20 hover:border-secondary/40 hover:bg-secondary/5 px-6 py-4 rounded-2xl font-bold text-lg transition-all flex items-center justify-center whitespace-nowrap shadow-sm">
                         <i data-lucide="edit-3" class="w-5 h-5 mr-2"></i> Custom Bid
                     </button>
 
@@ -313,6 +315,33 @@
             <div class="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-t from-surface to-transparent pointer-events-none"></div>
         </div>
     </main>
+
+    <div id="custom-bid-modal" class="fixed inset-0 z-[200] flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300 px-4">
+        <div class="absolute inset-0 bg-secondary/80 backdrop-blur-sm" onclick="closeCustomBidModal()"></div>
+        <div class="bg-surface w-full max-w-md rounded-3xl shadow-modal dark:shadow-dark-modal relative p-8 transform scale-95 transition-transform duration-300 border border-secondary/10" id="custom-bid-content">
+            <button onclick="closeCustomBidModal()" class="absolute top-4 right-4 text-secondary/60 hover:text-secondary transition-colors">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            <h2 class="text-2xl font-bold mb-2 text-secondary">Place Custom Bid</h2>
+            <p class="text-sm text-secondary/60 mb-6">Enter an amount equal to or greater than the current asking price.</p>
+
+            <div class="mb-6">
+                <label class="block text-[10px] font-bold text-secondary/50 uppercase tracking-widest mb-2">Your Max Bid Amount</label>
+                <div class="relative">
+                    <span class="absolute left-4 top-1/2 -translate-y-1/2 text-secondary font-bold text-xl">$</span>
+                    <input type="number" id="custom-bid-input" class="w-full bg-secondary/5 rounded-xl p-4 pl-8 border border-secondary/10 outline-none focus:ring-2 focus:ring-blue-500 focus:bg-surface transition-all text-secondary font-bold text-xl tabular-nums" placeholder="500000" min="0" step="1000">
+                </div>
+                <div class="flex justify-between items-center mt-2 text-xs font-semibold text-secondary/50">
+                    <span>Current Ask: <span id="modal-current-ask" class="text-secondary">$500,000</span></span>
+                </div>
+            </div>
+
+            <div class="flex gap-4">
+                <button onclick="closeCustomBidModal()" class="flex-1 bg-secondary/10 text-secondary font-bold py-3 rounded-xl hover:bg-secondary/20 transition-colors">Cancel</button>
+                <button onclick="submitCustomBid()" class="flex-1 bg-blue-600 text-white font-bold py-3 rounded-xl hover:bg-blue-700 transition-colors shadow-glow-blue border border-blue-500">Place Bid</button>
+            </div>
+        </div>
+    </div>
 
     <div id="toast-container" class="fixed top-24 right-4 z-[100] flex flex-col gap-2 w-72 pointer-events-none">
     </div>
@@ -445,9 +474,51 @@
             }
         }
 
-        // Simulate User Clicking Bid Button
-        window.placeBid = function() {
+        // Custom Bid Modal Logic
+        const customBidModal = document.getElementById('custom-bid-modal');
+        const customBidContent = document.getElementById('custom-bid-content');
+        const customBidInput = document.getElementById('custom-bid-input');
+        const modalCurrentAsk = document.getElementById('modal-current-ask');
+
+        function openCustomBidModal() {
+            if (document.getElementById('bid-button').disabled) return;
+            
+            customBidInput.value = currentAsk;
+            modalCurrentAsk.innerText = formatPrice(currentAsk);
+            
+            customBidModal.classList.remove('opacity-0', 'pointer-events-none');
+            customBidContent.classList.remove('scale-95');
+        }
+
+        function closeCustomBidModal() {
+            customBidModal.classList.add('opacity-0', 'pointer-events-none');
+            customBidContent.classList.add('scale-95');
+        }
+
+        function submitCustomBid() {
+            const val = parseInt(customBidInput.value);
+            if (isNaN(val)) return;
+            window.placeBid(val);
+        }
+
+        // Close modals on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !customBidModal.classList.contains('opacity-0')) {
+                closeCustomBidModal();
+            }
+        });
+
+        // Simulate User Clicking Bid Button (Now handles custom amounts)
+        window.placeBid = function(customAmount = null) {
             if(document.getElementById('bid-button').disabled) return;
+            
+            let bidAmount = customAmount !== null ? customAmount : currentAsk;
+
+            // Validation for Custom Bids
+            if (customAmount !== null && customAmount < currentAsk) {
+                showToast("Bid must be at least " + formatPrice(currentAsk), true);
+                return;
+            }
             
             // Stop warning timer if active
             clearInterval(timerInterval);
@@ -456,7 +527,6 @@
             timerDisplay.classList.remove('text-red-500');
 
             // Update UI
-            let bidAmount = currentAsk;
             priceDisplay.innerText = formatPrice(bidAmount);
             priceDisplay.nextElementSibling.innerText = "You are winning";
             priceDisplay.nextElementSibling.classList.add("text-blue-500", "bg-blue-500/10");
@@ -464,8 +534,8 @@
             addBidToFeed("Bidder #842", bidAmount, "You");
             showToast(`You bid ${formatPrice(bidAmount)}`);
             
-            // Set next asking price
-            currentAsk += increment;
+            // Set next asking price based on standard increment from the NEW bid
+            currentAsk = bidAmount + increment;
             bidButtonSpan.innerText = `Bid ${formatPrice(currentAsk)}`;
             
             // Change button state slightly so user knows they are winning
@@ -475,6 +545,10 @@
             bidButtonSpan.innerText = "You hold the high bid";
             btn.querySelector('span:nth-child(2)').style.display = 'none';
             btn.disabled = true;
+
+            if (customAmount !== null) {
+                closeCustomBidModal();
+            }
 
             // Simulate someone outbidding you after 4 seconds
             setTimeout(simulateIncomingBid, 4000);
