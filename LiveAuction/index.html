@@ -117,14 +117,12 @@
                     <i data-lucide="shopping-bag" class="w-5 h-5"></i>
                     <span class="absolute top-0 right-0 w-2 h-2 bg-blue-500 rounded-full"></span>
                 </a>
-                <!-- Link to Profile -->
                 <a href="/Profile" class="hidden lg:flex items-center text-secondary/80 hover:text-secondary transition-colors ml-2">
                     <i data-lucide="user" class="h-4 w-4 mr-1.5"></i> Account
                 </a>
-                <!-- Link to Seller Dashboard -->
                <a href="/Consign" class="hidden lg:block bg-secondary text-primary px-6 py-2 rounded-full hover:bg-secondary/90 transition-colors shadow-md ml-2">
-    Sell
-</a>
+                    Sell
+                </a>
                 <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-full hover:bg-secondary/10 text-secondary transition-colors">
                     <i data-lucide="menu" class="w-6 h-6"></i>
                 </button>
@@ -149,8 +147,8 @@
                         <i data-lucide="user" class="h-5 w-5 mr-3"></i> My Account
                     </a>
                     <a href="/Consign" class="bg-secondary text-primary px-6 py-3 rounded-full hover:bg-secondary/90 transition-colors shadow-md text-center w-full mt-2 block">
-    Sell with Fabyle
-</a>
+                        Sell with Fabyle
+                    </a>
                 </div>
             </div>
         </div>
@@ -169,7 +167,6 @@
                         <span class="ml-4 text-secondary/60 font-semibold text-sm">Lot 14 of 60</span>
                     </div>
                     <h1 class="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight text-secondary mb-2">1952 Topps Mickey Mantle PSA 8</h1>
-                    <a href="#" class="text-sm font-bold text-blue-500 hover:text-blue-600 flex items-center">View Condition Report <i data-lucide="external-link" class="w-3 h-3 ml-1"></i></a>
                 </div>
                 
                 <div id="countdown-container" class="bg-surface border border-secondary/10 px-6 py-3 rounded-2xl shadow-soft text-center hidden shrink-0">
@@ -194,6 +191,34 @@
                     </div>
                     <div class="flex-grow m-3 bg-gradient-to-b from-[#8B0000] to-[#FF4500] rounded flex items-center justify-center border-4 border-surface shadow-inner">
                         <i data-lucide="image" class="w-8 h-8 text-white/20"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-surface rounded-3xl border border-secondary/10 overflow-hidden mb-6 shadow-soft transition-all duration-300">
+                <button onclick="toggleLotDetails()" class="w-full p-5 md:p-6 flex justify-between items-center text-left hover:bg-secondary/5 transition-colors group">
+                    <h3 class="font-bold text-secondary flex items-center md:text-lg">
+                        <i data-lucide="file-text" class="w-5 h-5 mr-3 text-secondary/60 group-hover:text-blue-500 transition-colors"></i> 
+                        Description, Condition & Dimensions
+                    </h3>
+                    <i data-lucide="chevron-down" id="lot-details-arrow" class="w-5 h-5 text-secondary/50 group-hover:text-secondary transition-transform duration-300"></i>
+                </button>
+                <div id="lot-details-content" class="hidden px-5 md:px-6 pb-6 text-sm text-secondary/70 border-t border-secondary/10 pt-5">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="md:col-span-2 space-y-4">
+                            <div>
+                                <h4 class="font-bold text-secondary text-xs uppercase tracking-widest mb-1.5 flex items-center"><i data-lucide="align-left" class="w-3.5 h-3.5 mr-1.5 text-blue-500"></i> Description</h4>
+                                <p class="leading-relaxed">This 1952 Topps Mickey Mantle #311 is one of the most iconic and recognizable trading cards in the hobby. Centering is near perfect with stunning color preservation and sharp corners. A true centerpiece for any serious collection.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-secondary text-xs uppercase tracking-widest mb-1.5 flex items-center"><i data-lucide="search" class="w-3.5 h-3.5 mr-1.5 text-blue-500"></i> Condition Report</h4>
+                                <p class="leading-relaxed">Graded NM-MT 8 by PSA. Edges show minimal wear under magnification. The surface is exceptionally clean without any major print lines or wax stains. Registration is roughly 45/55 L/R.</p>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-secondary text-xs uppercase tracking-widest mb-1.5 flex items-center"><i data-lucide="maximize" class="w-3.5 h-3.5 mr-1.5 text-blue-500"></i> Dimensions</h4>
+                            <p class="leading-relaxed">Standard Trading Card Size:<br>2-5/8" x 3-3/4"</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -290,24 +315,39 @@
     </main>
 
     <div id="toast-container" class="fixed top-24 right-4 z-[100] flex flex-col gap-2 w-72 pointer-events-none">
-        </div>
+    </div>
 
     <script>
-        lucide.createIcons();
-
-        // Theme Toggle Logic
         document.addEventListener('DOMContentLoaded', () => {
+            // Safely initialize Lucide icons
+            lucide.createIcons();
+
+            // Theme Toggle Logic
             const themeToggleBtn = document.getElementById('theme-toggle');
             const htmlElement = document.documentElement;
             
-            themeToggleBtn.addEventListener('click', () => {
-                htmlElement.classList.toggle('dark');
-                localStorage.setItem('theme', htmlElement.classList.contains('dark') ? 'dark' : 'light');
-            });
+            if (themeToggleBtn) {
+                themeToggleBtn.addEventListener('click', () => {
+                    htmlElement.classList.toggle('dark');
+                    localStorage.setItem('theme', htmlElement.classList.contains('dark') ? 'dark' : 'light');
+                });
+            }
         });
 
+        // Toggle Accordion Logic
+        function toggleLotDetails() {
+            const content = document.getElementById('lot-details-content');
+            const arrow = document.getElementById('lot-details-arrow');
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                arrow.classList.add('rotate-180');
+            } else {
+                content.classList.add('hidden');
+                arrow.classList.remove('rotate-180');
+            }
+        }
+
         // --- Live Room Simulation Logic ---
-        
         let currentAsk = 500000;
         let increment = 15000;
         let bidCount = 31;
@@ -365,7 +405,7 @@
             
             toast.innerHTML = `${icon} <span class="font-bold text-sm">${message}</span>`;
             toastContainer.prepend(toast);
-            lucide.createIcons();
+            lucide.createIcons(); // Re-initialize icons for newly added HTML
 
             // Remove toast after 4 seconds
             setTimeout(() => {
