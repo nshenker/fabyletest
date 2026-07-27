@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Consignment Agreement | Fabyle</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: 'rgb(var(--color-primary) / <alpha-value>)',
+                        secondary: 'rgb(var(--color-secondary) / <alpha-value>)',
+                        surface: 'rgb(var(--color-surface) / <alpha-value>)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script>
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+    
+    <style>
+        :root {
+            --color-primary: 242 240 239; 
+            --color-secondary: 10 25 47;  
+            --color-surface: 255 255 255; 
+        }
+        .dark {
+            --color-primary: 10 25 47;    
+            --color-secondary: 242 240 239; 
+            --color-surface: 16 38 72;    
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-primary font-sans text-secondary overflow-x-hidden transition-colors duration-300 flex flex-col">
+
+    <nav class="sticky top-0 z-50 flex items-center justify-between px-6 py-4 bg-primary/90 backdrop-blur-md transition-colors duration-300 shadow-sm relative border-b border-secondary/10">
+        <div class="flex items-center space-x-8">
+            <a href="../" class="font-bold text-3xl tracking-tight text-secondary cursor-pointer">Fabyle</a>
+            <div class="hidden lg:flex relative w-[400px]">
+                <i data-lucide="search" class="absolute left-4 top-2.5 h-4 w-4 text-secondary/60"></i>
+                <input type="text" placeholder="Search artists and listings" class="w-full bg-secondary/5 hover:bg-secondary/10 transition-colors rounded-full py-2 pl-11 pr-4 text-sm outline-none focus:ring-2 focus:ring-secondary/30 placeholder-secondary/50 text-secondary" />
+            </div>
+        </div>
+
+        <div class="flex items-center space-x-4 lg:space-x-10">
+            <div class="hidden lg:flex items-center space-x-6 text-sm font-semibold text-secondary/80">
+                <div class="relative group py-2">
+                    <span class="flex items-center cursor-pointer hover:text-secondary transition-colors">Auctions <i data-lucide="chevron-down" class="h-4 w-4 ml-1"></i></span>
+                    <div class="absolute left-0 top-full w-48 bg-surface rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 py-2 border border-secondary/10">
+                        <a href="../UpcomingAuctions/" class="block px-4 py-2 text-sm text-secondary/80 hover:text-secondary hover:bg-secondary/10 transition-colors">Upcoming Auctions</a>
+                        <a href="../Results/" class="block px-4 py-2 text-sm text-secondary/80 hover:text-secondary hover:bg-secondary/10 transition-colors">Results</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-secondary/80 hover:text-secondary hover:bg-secondary/10 transition-colors">Browse All</a>
+                    </div>
+                </div>
+                <a href="../Shop/" class="flex items-center cursor-pointer hover:text-secondary transition-colors">Shop</a>
+            </div>
+
+            <div class="flex items-center space-x-2 lg:space-x-4 text-sm font-semibold">
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-secondary/10 text-secondary transition-colors lg:mr-2" aria-label="Toggle Theme">
+                    <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                    <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+                </button>
+                <button aria-label="Open Cart" class="p-2 rounded-full hover:bg-secondary/10 text-secondary transition-colors relative group">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 group-hover:scale-105 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="8" cy="21" r="1.5"></circle>
+                        <circle cx="19" cy="21" r="1.5"></circle>
+                        <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+                    </svg>
+                    <span class="absolute top-0 right-0 w-2.5 h-2.5 bg-blue-500 rounded-full border-2 border-primary"></span>
+                </button>
+                <a href="../Login/" class="hidden lg:flex items-center text-blue-600 hover:text-blue-700 transition-colors ml-2 font-bold">Log In</a>
+                <a href="../Consign/" class="hidden lg:block bg-secondary text-primary px-6 py-2 rounded-full hover:bg-secondary/90 transition-colors shadow-md ml-4">Sell</a>
+                <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-full hover:bg-secondary/10 text-secondary transition-colors">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="absolute top-full left-0 w-full bg-surface shadow-lg hidden lg:hidden flex-col border-t border-secondary/10 z-40 transition-all duration-300">
+            <div class="p-6 space-y-6">
+                <div class="relative w-full">
+                    <i data-lucide="search" class="absolute left-4 top-2.5 h-4 w-4 text-secondary/60"></i>
+                    <input type="text" placeholder="Search artists and listings" class="w-full bg-secondary/5 hover:bg-secondary/10 transition-colors rounded-full py-2 pl-11 pr-4 text-sm outline-none focus:ring-2 focus:ring-secondary/30 placeholder-secondary/50 text-secondary" />
+                </div>
+                <div class="flex flex-col space-y-4 text-base font-semibold text-secondary/80">
+                    <a href="../UpcomingAuctions/" class="hover:text-secondary transition-colors">Upcoming Auctions</a>
+                    <a href="../Results/" class="hover:text-secondary transition-colors">Auction Results</a>
+                    <a href="#" class="hover:text-secondary transition-colors">Browse All Auctions</a>
+                    <hr class="border-secondary/10">
+                    <a href="../Shop/" class="hover:text-secondary transition-colors">Shop Gallery</a>
+                    <a href="../FAQ/" class="hover:text-secondary transition-colors">FAQ</a>
+                    <hr class="border-secondary/10">
+                    <a href="../Login/" class="flex items-center hover:text-blue-500 text-blue-600 transition-colors">
+                        <i data-lucide="log-in" class="h-5 w-5 mr-3"></i> Log In
+                    </a>
+                    <a href="../Consign/" class="bg-secondary text-primary px-6 py-3 rounded-full hover:bg-secondary/90 transition-colors shadow-md text-center w-full mt-2 block">
+                        Sell with Fabyle
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="w-full flex-grow py-12 md:py-20 px-6">
+        <div class="max-w-4xl mx-auto bg-surface rounded-3xl p-8 md:p-12 border border-secondary/10 shadow-sm relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-blue-500 to-purple-500"></div>
+
+            <div class="border-b border-secondary/10 pb-8 mb-8 text-center md:text-left">
+                <h1 class="text-3xl md:text-5xl font-bold text-secondary tracking-tight mb-4">Seller Consignment Agreement</h1>
+                <p class="text-secondary/70 font-medium mb-2 text-sm md:text-base">
+                    2912 Avenue T, Brooklyn, NY 11229 | <a href="tel:9178814161" class="hover:text-blue-500 transition-colors">917.881.4161</a> | <a href="mailto:consign@fabyle.com" class="hover:text-blue-500 transition-colors">consign@fabyle.com</a>
+                </p>
+                <div class="inline-flex bg-blue-500/10 text-blue-600 p-4 rounded-xl mt-4 text-sm font-semibold border border-blue-500/20 text-left">
+                    <i data-lucide="alert-circle" class="w-5 h-5 mr-3 shrink-0 mt-0.5"></i>
+                    <span><strong>Disclaimer:</strong> Fabyle LLC recommends that both parties consult with legal counsel to ensure full compliance with the New York City Department of Consumer and Worker Protection (DCWP) and the Uniform Commercial Code (UCC).</span>
+                </div>
+            </div>
+
+            <div class="text-secondary/80 space-y-8 text-base leading-relaxed">
+                <p class="font-medium">This Consignment Agreement is entered into by and between Fabyle LLC ("Fabyle") and the Consignor listed on Page 1.</p>
+
+                <div>
+                    <h3 class="text-xl font-bold text-secondary mb-3">1. Authority & Exclusive Agency</h3>
+                    <p>Consignor grants Fabyle exclusive right to authenticate, grade, market, and sell the Property (Page 1) at public auction/private sale for 90 days from receipt.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold text-secondary mb-3">2. Representations & Warranties (Clear Title)</h3>
+                    <p>Consignor represents and warrants they are the sole, rightful owner of the Property, possess unencumbered title, and the items are free from any liens, claims, or encumbrances. Consignor expressly warrants that the items are not stolen, forged, counterfeit, or subject to any pending law enforcement investigation.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold text-secondary mb-3">3. Grading & Authentication</h3>
+                    <p>Fabyle reserves the right to submit "raw" items to 3rd-party services (PSA, BGS, CGC, etc.). Grading fees are advanced by Fabyle and subsequently deducted from the Consignor's settlement proceeds. Fabyle retains sole discretion over which items warrant grading.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold text-secondary mb-3">4. Commission & Fees</h3>
+                    <p>Fabyle shall deduct the commission selected on Page 1 from the Hammer Price of each sold lot. The Consignor acknowledges that Fabyle also charges the Buyer a "Buyer's Premium," which is retained entirely by Fabyle.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold text-secondary mb-3">5. Insurance & Risk of Loss</h3>
+                    <p>Fabyle assumes the risk of loss from receipt until delivery to the Buyer or return to the Consignor, covered by Fabyle's fine arts/collectibles insurance at fair market value. Fabyle is not liable for minor, pre-existing damage, natural degradation, or damage to third-party graded "slabs" that do not affect the internal collectible.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold text-secondary mb-3">6. Reserves & Estimates</h3>
+                    <p>Unless expressly agreed otherwise, all items are sold without a reserve (absolute auction). If a reserve is listed on Page 1, Fabyle will not sell the lot for less than the reserve amount. Pre-auction estimates are statements of opinion, not guarantees of final sale price.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold text-secondary mb-3">7. Settlement & Payment</h3>
+                    <p>Settlement statements and payments are provided 30-45 days after the auction's close, contingent upon Fabyle receiving full, cleared payment from the Buyer. If a Buyer defaults, Fabyle reserves the right to cancel the sale and re-offer the Property.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold text-secondary mb-3">8. Unsold Lots & Withdrawal</h3>
+                    <p>Once Property is processed, the Consignor may not withdraw it prior to auction. Unauthorized withdrawal results in a penalty equal to 20% of the lot's median pre-auction estimate plus incurred fees. Unsold lots may be re-offered or returned at the Consignor's expense.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold text-secondary mb-3">9. Law Enforcement Cooperation & Title Disputes</h3>
+                    <p>Fabyle actively cooperates with all law enforcement agencies. If Fabyle is notified, served with a subpoena, or reasonably suspects that an item may be stolen, illicitly acquired, or subject to a title dispute, Fabyle reserves the absolute right to: (a) withhold the item from auction; (b) freeze settlement funds; and/or (c) surrender the item to authorities. Fabyle shall bear no liability to the Consignor for taking such actions.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold text-secondary mb-3">10. Dispute Resolution & Governing Law</h3>
+                    <p>This Agreement shall be governed by the laws of the State of New York. Any disputes, claims, or controversies arising out of or relating to this Agreement shall be resolved through binding arbitration in Kings County (Brooklyn), New York, administered in accordance with the commercial rules of the American Arbitration Association. The parties expressly waive their right to a trial by jury. The prevailing party shall be entitled to recover its reasonable attorney's fees and costs.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-secondary text-primary pt-12 md:pt-16 pb-8 transition-colors duration-300 mt-auto border-t border-secondary/10">
+        </footer>
+
+    <script>
+        lucide.createIcons();
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        themeToggleBtn.addEventListener('click', () => {
+            htmlElement.classList.toggle('dark');
+            localStorage.setItem('theme', htmlElement.classList.contains('dark') ? 'dark' : 'light');
+        });
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+        });
+    </script>
+</body>
+</html>
