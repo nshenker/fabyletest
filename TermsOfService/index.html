@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service | Fabyle</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: 'rgb(var(--color-primary) / <alpha-value>)',
+                        secondary: 'rgb(var(--color-secondary) / <alpha-value>)',
+                        surface: 'rgb(var(--color-surface) / <alpha-value>)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script>
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+    
+    <style>
+        :root {
+            --color-primary: 242 240 239; 
+            --color-secondary: 10 25 47;  
+            --color-surface: 255 255 255; 
+        }
+        .dark {
+            --color-primary: 10 25 47;    
+            --color-secondary: 242 240 239; 
+            --color-surface: 16 38 72;    
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-primary font-sans text-secondary overflow-x-hidden transition-colors duration-300 flex flex-col">
+
+    <nav class="sticky top-0 z-50 flex items-center justify-between px-6 py-4 bg-primary/90 backdrop-blur-md transition-colors duration-300 shadow-sm relative border-b border-secondary/10">
+        <div class="flex items-center space-x-8">
+            <a href="../index.html" class="font-bold text-3xl tracking-tight text-secondary cursor-pointer">Fabyle</a>
+            <div class="hidden lg:flex relative w-[400px]">
+                <i data-lucide="search" class="absolute left-4 top-2.5 h-4 w-4 text-secondary/60"></i>
+                <input type="text" placeholder="Search artists and listings" class="w-full bg-secondary/5 hover:bg-secondary/10 transition-colors rounded-full py-2 pl-11 pr-4 text-sm outline-none focus:ring-2 focus:ring-secondary/30 placeholder-secondary/50 text-secondary" />
+            </div>
+        </div>
+
+        <div class="flex items-center space-x-4 lg:space-x-10">
+            <div class="hidden lg:flex items-center space-x-6 text-sm font-semibold text-secondary/80">
+                <div class="relative group py-2">
+                    <span class="flex items-center cursor-pointer hover:text-secondary transition-colors">Auctions <i data-lucide="chevron-down" class="h-4 w-4 ml-1"></i></span>
+                    <div class="absolute left-0 top-full w-48 bg-surface rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 py-2 border border-secondary/10">
+                        <a href="../UpcomingAuctions/index.html" class="block px-4 py-2 text-sm text-secondary/80 hover:text-secondary hover:bg-secondary/10 transition-colors">Upcoming Auctions</a>
+                        <a href="../Results/index.html" class="block px-4 py-2 text-sm text-secondary/80 hover:text-secondary hover:bg-secondary/10 transition-colors">Results</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-secondary/80 hover:text-secondary hover:bg-secondary/10 transition-colors">Browse All</a>
+                    </div>
+                </div>
+                <a href="../Shop/index.html" class="flex items-center cursor-pointer hover:text-secondary transition-colors">Shop</a>
+            </div>
+
+            <div class="flex items-center space-x-2 lg:space-x-4 text-sm font-semibold">
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-secondary/10 text-secondary transition-colors lg:mr-2" aria-label="Toggle Theme">
+                    <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                    <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+                </button>
+                <a href="../Shop/index.html" class="p-2 rounded-full hover:bg-secondary/10 text-secondary transition-colors relative">
+                    <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                </a>
+                
+                <a href="../Login/index.html" class="hidden lg:flex items-center text-blue-600 hover:text-blue-700 transition-colors ml-2 font-bold">
+                    Log In
+                </a>
+
+                <a href="../Consign/index.html" class="hidden lg:block bg-secondary text-primary px-6 py-2 rounded-full hover:bg-secondary/90 transition-colors shadow-md ml-4">
+                    Sell
+                </a>
+                <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-full hover:bg-secondary/10 text-secondary transition-colors">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="absolute top-full left-0 w-full bg-surface shadow-lg hidden lg:hidden flex-col border-t border-secondary/10 z-40 transition-all duration-300">
+            <div class="p-6 space-y-6">
+                <div class="relative w-full">
+                    <i data-lucide="search" class="absolute left-4 top-2.5 h-4 w-4 text-secondary/60"></i>
+                    <input type="text" placeholder="Search artists and listings" class="w-full bg-secondary/5 hover:bg-secondary/10 transition-colors rounded-full py-2 pl-11 pr-4 text-sm outline-none focus:ring-2 focus:ring-secondary/30 placeholder-secondary/50 text-secondary" />
+                </div>
+                <div class="flex flex-col space-y-4 text-base font-semibold text-secondary/80">
+                    <a href="../UpcomingAuctions/index.html" class="hover:text-secondary transition-colors">Upcoming Auctions</a>
+                    <a href="../Results/index.html" class="hover:text-secondary transition-colors">Auction Results</a>
+                    <a href="#" class="hover:text-secondary transition-colors">Browse All Auctions</a>
+                    <hr class="border-secondary/10">
+                    <a href="../Shop/index.html" class="hover:text-secondary transition-colors">Shop Gallery</a>
+                    <a href="#" class="hover:text-secondary transition-colors">Calendar</a>
+                    <hr class="border-secondary/10">
+                    <a href="../Login/index.html" class="flex items-center hover:text-blue-500 text-blue-600 transition-colors">
+                        <i data-lucide="log-in" class="h-5 w-5 mr-3"></i> Log In
+                    </a>
+                    <a href="../Consign/index.html" class="bg-secondary text-primary px-6 py-3 rounded-full hover:bg-secondary/90 transition-colors shadow-md text-center w-full mt-2 block">
+                        Sell with Fabyle
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="w-full flex-grow py-12 md:py-20 px-6">
+        <div class="max-w-4xl mx-auto bg-surface rounded-3xl p-8 md:p-12 border border-secondary/10 shadow-sm relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-blue-500 to-purple-500"></div>
+
+            <div class="border-b border-secondary/10 pb-8 mb-8 text-center md:text-left">
+                <h1 class="text-3xl md:text-5xl font-bold text-secondary tracking-tight mb-3">Terms of Service</h1>
+                <p class="text-sm text-secondary/60 font-semibold uppercase tracking-widest">Effective Date: 07.14.2026</p>
+            </div>
+
+            <div class="text-secondary/80 space-y-8 text-base md:text-lg leading-relaxed">
+                
+                <p>These Terms and Conditions (“Terms”) govern all auctions, private sales, and related services provided by Fabyle LLC, doing business as Fabyle (“Fabyle,” “we,” “us,” or “our”), located in Brooklyn, New York. We specialize in the auction and sale of collectibles, including but not limited to sports cards, Trading Card Games (e.g., Pokémon, Magic: The Gathering), comic books, game-used memorabilia, autographs, and pop-culture artifacts.</p>
+                
+                <p>By registering for an auction, submitting a bid, or purchasing any item through Fabyle, you (the “Buyer” or “Bidder”) agree to be bound by these Terms.</p>
+
+                <div>
+                    <h3 class="text-2xl font-bold text-secondary mb-4">1. General Provisions</h3>
+                    <ul class="space-y-3 list-disc pl-5">
+                        <li><strong class="text-secondary">NYC Auctioneer License:</strong> Fabyle operates in compliance with the New York City Department of Consumer and Worker Protection (DCWP). Our licensed auctioneer of record is [Auctioneer Name], License No. [License Number].</li>
+                        <li><strong class="text-secondary">Agent for the Seller:</strong> Unless explicitly stated otherwise, Fabyle acts as an agent for the consignor (the “Seller”) of the collectible. The contract of sale is made directly between the Buyer and the Seller.</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-bold text-secondary mb-4">2. Bidding Mechanics and Extended Bidding</h3>
+                    <ul class="space-y-3 list-disc pl-5">
+                        <li><strong class="text-secondary">Bidding as a Binding Contract:</strong> Placing a bid constitutes a legally binding offer to purchase the lot at the bid price, plus the Buyer’s Premium, applicable taxes, and shipping/insurance costs. Bids cannot be retracted once submitted.</li>
+                        <li><strong class="text-secondary">Reserves:</strong> Certain high-value lots may be offered subject to a reserve (the confidential minimum price below which the lot will not be sold). Fabyle may bid on behalf of the Seller up to the reserve amount.</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-bold text-secondary mb-4">3. Buyer's Premium and Taxes</h3>
+                    <ul class="space-y-3 list-disc pl-5">
+                        <li><strong class="text-secondary">Buyer’s Premium:</strong> A Buyer’s Premium will be added to the hammer price (winning bid) of each lot. Our Buyer's Premium is tiered based on the final hammer price: 15% for items under $1,000; 10% for items between $1,001 and $10,000; and 5% for items $10,001 and above.</li>
+                        <li><strong class="text-secondary">Taxes:</strong> All purchases are subject to applicable state and local sales taxes. Items shipped to or picked up in New York City are subject to the NY State and NYC combined sales tax rate of 8.875%. Taxes are calculated based on the delivery address. Bidders are responsible for any applicable customs or duties for international shipments.</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-bold text-secondary mb-4">4. Payment and Transfer of Title</h3>
+                    <ul class="space-y-3 list-disc pl-5">
+                        <li><strong class="text-secondary">Invoicing:</strong> Invoices are transmitted electronically within 48 hours of the auction’s close.</li>
+                        <li><strong class="text-secondary">Payment Deadline:</strong> Full payment is due within seven (7) calendar days of the invoice date.</li>
+                        <li><strong class="text-secondary">Accepted Payment Methods:</strong> We accept wire transfers, ACH, and major credit cards. Credit card payments are subject to a [e.g., 3%] processing fee and are capped at a maximum of $5000 per invoice. Invoices exceeding this amount must be paid via wire transfer or ACH.</li>
+                        <li><strong class="text-secondary">Non-Payment:</strong> If a Buyer fails to pay, Fabyle reserves the right to cancel the sale, resell the collectible, charge a late fee of 1.5% per month, and permanently ban the Buyer from future Fabyle auctions.</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-bold text-secondary mb-4">5. Condition, Grading, and Authenticity (Collectibles Specific)</h3>
+                    <ul class="space-y-3 list-disc pl-5">
+                        <li><strong class="text-secondary">Third-Party Graded (Encapsulated) Items:</strong> For items graded and encapsulated by third-party authentication services (e.g., PSA, BGS, CGC, SGC, JSA), Fabyle does not guarantee the grade assigned. Differences in opinion between grading companies or individual evaluators do not constitute grounds for a return.</li>
+                        <li><strong class="text-secondary">Holder Condition:</strong> Encapsulated "slabs" or holders may occasionally exhibit minor scratching, scuffing, or chipping. These holder flaws do not warrant a return or a discount. Fabyle will only note severe damage (e.g., a cracked case) in the lot description.</li>
+                        <li><strong class="text-secondary">"Raw" (Ungraded) Condition:</strong> All raw cards, comics, and memorabilia are sold "AS IS." Any condition grades stated by Fabyle for raw items are strictly opinions. Fabyle makes no guarantee that a raw item will achieve a specific grade if subsequently submitted to a third-party grading company. Returns will not be accepted because a raw item received a lower-than-expected grade.</li>
+                        <li><strong class="text-secondary">Autographs and Memorabilia:</strong> Memorabilia and autographs are typically accompanied by a Letter of Authenticity (LOA) or Certificate of Authenticity (COA) from a recognized third-party authenticator (e.g., PSA/DNA, JSA, Beckett, MeiGray). If an item is sold without an LOA/COA, and the Buyer provides written proof from a mutually agreed-upon authenticator within [e.g., 30 days] that the item is not authentic, Fabyle will rescind the sale and refund the purchase price.</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-bold text-secondary mb-4">6. Shipping and Insurance</h3>
+                    <ul class="space-y-3 list-disc pl-5">
+                        <li><strong class="text-secondary">Shipping Arrangement:</strong> Fabyle expertly packages all collectibles in-house or via secure third-party carriers (e.g., FedEx, USPS Registered Mail). Shipping, handling, and mandatory transit insurance costs are billed to the Buyer.</li>
+                        <li><strong class="text-secondary">High-Value Transport:</strong> Lots exceeding [e.g., $50,000] in value may require specialized armored transport or restricted delivery methods.</li>
+                        <li><strong class="text-secondary">Risk of Loss:</strong> Risk of loss passes to the Buyer upon delivery to the shipping address on file.</li>
+                        <li><strong class="text-secondary">Unclaimed Items:</strong> Items paid for but left at Fabyle’s facility without valid shipping instructions for more than 30 days are subject to secure storage fees of [$X] per lot per month.</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-bold text-secondary mb-4">7. Governing Law and Dispute Resolution</h3>
+                    <ul class="space-y-3 list-disc pl-5">
+                        <li><strong class="text-secondary">Governing Law:</strong> These Terms shall be governed by the laws of the State of New York, without regard to conflict of law principles.</li>
+                        <li><strong class="text-secondary">Jurisdiction:</strong> Any legal action arising out of these Terms shall be instituted exclusively in the state or federal courts located in Kings County (Brooklyn), New York.</li>
+                        <li><strong class="text-secondary">Limitation of Liability:</strong> Fabyle’s liability to a Buyer shall strictly not exceed the actual purchase price paid (hammer price plus Buyer’s Premium) for the collectible in question.</li>
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-secondary text-primary pt-12 md:pt-16 pb-8 transition-colors duration-300 mt-auto border-t border-secondary/10">
+        <div class="max-w-[1400px] mx-auto px-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-8 mb-12 md:mb-16 text-sm">
+                <div>
+                    <h4 class="font-bold mb-4 md:mb-6 text-primary text-base">Features</h4>
+                    <ul class="space-y-2 md:space-y-3 text-primary/70 font-medium">
+                        <li><a href="#" class="hover:text-primary transition-colors">Buy</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Sell</a></li>
+                        <li><a href="../Signup/index.html" class="hover:text-primary transition-colors">Sign Up Or Create Account</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 md:mb-6 text-primary text-base">Legal</h4>
+                    <ul class="space-y-2 md:space-y-3 text-primary/70 font-medium">
+                        <li><a href="../PrivacyPolicy/index.html" class="hover:text-primary transition-colors">Privacy Policy</a></li>
+                        <li><a href="../TermsOfService/index.html" class="hover:text-primary transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Fabyle User Agreement</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 md:mb-6 text-primary text-base">Company</h4>
+                    <ul class="space-y-2 md:space-y-3 text-primary/70 font-medium">
+                        <li><a href="#" class="hover:text-primary transition-colors">Meet Our Experts</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 md:mb-6 text-primary text-base">Follow Us</h4>
+                    <div class="flex space-x-4 mb-6 md:mb-8">
+                        <a href="#" class="text-primary/70 hover:text-primary p-2 bg-primary/10 rounded-full hover:bg-primary/20"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+                        <a href="#" class="text-primary/70 hover:text-primary p-2 bg-primary/10 rounded-full hover:bg-primary/20"><i data-lucide="twitter" class="w-4 h-4"></i></a>
+                    </div>
+                    <div class="font-bold text-2xl md:text-3xl tracking-tight text-primary opacity-90">Fabyle</div>
+                </div>
+            </div>
+            <div class="pt-6 md:pt-8 border-t border-primary/20 flex flex-col justify-between items-center text-xs text-primary/60 text-center md:text-left">
+                <p>© 2026 Fabyle, an eBay company. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        themeToggleBtn.addEventListener('click', () => {
+            htmlElement.classList.toggle('dark');
+            localStorage.setItem('theme', htmlElement.classList.contains('dark') ? 'dark' : 'light');
+        });
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+        });
+    </script>
+</body>
+</html>
