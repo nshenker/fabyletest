@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fabyle Auctions | Log In</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: 'rgb(var(--color-primary) / <alpha-value>)',
+                        secondary: 'rgb(var(--color-secondary) / <alpha-value>)',
+                        surface: 'rgb(var(--color-surface) / <alpha-value>)'
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'hover-up': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
+                        'dark-soft': '0 4px 20px -2px rgba(0, 0, 0, 0.4)',
+                        'dark-hover-up': '0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script>
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+    
+    <style>
+        :root {
+            --color-primary: 242 240 239; 
+            --color-secondary: 10 25 47;  
+            --color-surface: 255 255 255; 
+        }
+        .dark {
+            --color-primary: 10 25 47;    
+            --color-secondary: 242 240 239; 
+            --color-surface: 16 38 72;    
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="min-h-screen bg-primary font-sans text-secondary overflow-x-hidden transition-colors duration-300 flex flex-col">
+
+    <nav class="sticky top-0 z-50 flex items-center justify-between px-6 py-4 bg-primary/90 backdrop-blur-md transition-colors duration-300 shadow-sm relative">
+        <div class="flex items-center space-x-8">
+            <a href="../index.html" class="font-bold text-3xl tracking-tight text-secondary cursor-pointer">Fabyle</a>
+        </div>
+        <div class="flex items-center space-x-2 lg:space-x-4 text-sm font-semibold">
+            <button id="theme-toggle" class="p-2 rounded-full hover:bg-secondary/10 text-secondary transition-colors" aria-label="Toggle Theme">
+                <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+            </button>
+        </div>
+    </nav>
+
+    <main class="w-full flex-grow flex items-center justify-center px-4 py-12">
+        <div class="w-full max-w-md bg-surface rounded-3xl p-8 sm:p-10 border border-secondary/10 shadow-soft relative overflow-hidden">
+
+            <div class="text-center mb-8">
+                <h1 class="text-3xl font-bold text-secondary tracking-tight mb-2">Welcome Back</h1>
+                <p class="text-sm text-secondary/60">Log in to access your bids, vault, and profile.</p>
+            </div>
+
+            <form onsubmit="event.preventDefault(); window.location.href='../Profile/index.html';" class="space-y-5">
+                
+                <div>
+                    <label class="block text-[10px] font-bold text-secondary/50 uppercase tracking-widest mb-1.5">Email Address</label>
+                    <div class="relative">
+                        <i data-lucide="mail" class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-secondary/40"></i>
+                        <input type="email" required class="w-full bg-secondary/5 rounded-xl pl-11 pr-4 py-3 border border-secondary/10 outline-none focus:ring-2 focus:ring-secondary/30 focus:bg-surface transition-all text-secondary text-sm" placeholder="name@example.com">
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex justify-between items-center mb-1.5">
+                        <label class="block text-[10px] font-bold text-secondary/50 uppercase tracking-widest">Password</label>
+                        <a href="#" class="text-[11px] font-bold text-secondary/60 hover:text-secondary transition-colors">Forgot Password?</a>
+                    </div>
+                    <div class="relative">
+                        <i data-lucide="lock" class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-secondary/40"></i>
+                        <input type="password" required class="w-full bg-secondary/5 rounded-xl pl-11 pr-4 py-3 border border-secondary/10 outline-none focus:ring-2 focus:ring-secondary/30 focus:bg-surface transition-all text-secondary text-sm" placeholder="••••••••">
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full bg-secondary hover:bg-secondary/90 text-primary font-bold py-3.5 rounded-xl transition-all shadow-md mt-4 flex items-center justify-center group">
+                    <span>Log In</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"></i>
+                </button>
+
+            </form>
+
+            <div class="mt-8 text-center border-t border-secondary/10 pt-6">
+                <p class="text-sm text-secondary/70">
+                    Don't have an account? 
+                    <a href="../Signup/index.html" class="font-bold text-secondary hover:underline transition-colors ml-1">Sign Up</a>
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        lucide.createIcons();
+        document.getElementById('theme-toggle').addEventListener('click', () => {
+            const htmlElement = document.documentElement;
+            htmlElement.classList.toggle('dark');
+            localStorage.setItem('theme', htmlElement.classList.contains('dark') ? 'dark' : 'light');
+        });
+    </script>
+</body>
+</html>
