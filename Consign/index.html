@@ -71,7 +71,7 @@
 
     <nav class="sticky top-0 z-50 flex items-center justify-between px-6 py-4 bg-primary/90 backdrop-blur-md transition-colors duration-300 shadow-sm relative">
         <div class="flex items-center space-x-8">
-            <a href="/" class="font-bold text-3xl tracking-tight text-secondary cursor-pointer">Fabyle</a>
+            <a href="../index.html" class="font-bold text-3xl tracking-tight text-secondary cursor-pointer">Fabyle</a>
             <div class="hidden lg:flex relative w-[400px]">
                 <i data-lucide="search" class="absolute left-4 top-2.5 h-4 w-4 text-secondary/60"></i>
                 <input type="text" placeholder="Search artists and listings" class="w-full bg-secondary/5 hover:bg-secondary/10 transition-colors rounded-full py-2 pl-11 pr-4 text-sm outline-none focus:ring-2 focus:ring-secondary/30 placeholder-secondary/50 text-secondary" />
@@ -96,10 +96,15 @@
                     <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
                     <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
                 </button>
-                <a href="../Shop/index.html" class="p-2 rounded-full hover:bg-secondary/10 text-secondary transition-colors relative">
-                    <i data-lucide="shopping-bag" class="w-5 h-5"></i>
-                    <span class="absolute top-0 right-0 w-2 h-2 bg-blue-500 rounded-full"></span>
-                </a>
+                
+                <button aria-label="Open Cart" class="p-2 rounded-full hover:bg-secondary/10 text-secondary transition-colors relative group">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 group-hover:scale-105 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="8" cy="21" r="1.5"></circle>
+                        <circle cx="19" cy="21" r="1.5"></circle>
+                        <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+                    </svg>
+                    <span class="absolute top-0 right-0 w-2.5 h-2.5 bg-blue-500 rounded-full border-2 border-primary"></span>
+                </button>
                 
                 <a href="../Login/index.html" class="hidden lg:flex items-center text-blue-600 hover:text-blue-700 transition-colors ml-2 font-bold">
                     Log In
