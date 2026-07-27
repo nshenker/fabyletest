@@ -65,12 +65,75 @@
     <nav class="sticky top-0 z-50 flex items-center justify-between px-6 py-4 bg-primary/90 backdrop-blur-md transition-colors duration-300 shadow-sm relative">
         <div class="flex items-center space-x-8">
             <a href="../index.html" class="font-bold text-3xl tracking-tight text-secondary cursor-pointer">Fabyle</a>
+            <div class="hidden lg:flex relative w-[400px]">
+                <i data-lucide="search" class="absolute left-4 top-2.5 h-4 w-4 text-secondary/60"></i>
+                <input type="text" placeholder="Search artists and listings" class="w-full bg-secondary/5 hover:bg-secondary/10 transition-colors rounded-full py-2 pl-11 pr-4 text-sm outline-none focus:ring-2 focus:ring-secondary/30 placeholder-secondary/50 text-secondary" />
+            </div>
         </div>
-        <div class="flex items-center space-x-2 lg:space-x-4 text-sm font-semibold">
-            <button id="theme-toggle" class="p-2 rounded-full hover:bg-secondary/10 text-secondary transition-colors" aria-label="Toggle Theme">
-                <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
-                <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
-            </button>
+
+        <div class="flex items-center space-x-4 lg:space-x-10">
+            <div class="hidden lg:flex items-center space-x-6 text-sm font-semibold text-secondary/80">
+                <div class="relative group py-2">
+                    <span class="flex items-center cursor-pointer hover:text-secondary transition-colors">Auctions <i data-lucide="chevron-down" class="h-4 w-4 ml-1"></i></span>
+                    <div class="absolute left-0 top-full w-48 bg-surface rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 py-2 border border-secondary/10">
+                        <a href="../UpcomingAuctions/index.html" class="block px-4 py-2 text-sm text-secondary/80 hover:text-secondary hover:bg-secondary/10 transition-colors">Upcoming Auctions</a>
+                        <a href="../Results/index.html" class="block px-4 py-2 text-sm text-secondary/80 hover:text-secondary hover:bg-secondary/10 transition-colors">Results</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-secondary/80 hover:text-secondary hover:bg-secondary/10 transition-colors">Browse All</a>
+                    </div>
+                </div>
+                <a href="../Shop/index.html" class="flex items-center cursor-pointer hover:text-secondary transition-colors">Shop</a>
+            </div>
+
+            <div class="flex items-center space-x-2 lg:space-x-4 text-sm font-semibold">
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-secondary/10 text-secondary transition-colors lg:mr-2" aria-label="Toggle Theme">
+                    <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                    <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+                </button>
+                
+                <button aria-label="Open Cart" class="p-2 rounded-full hover:bg-secondary/10 text-secondary transition-colors relative group">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 group-hover:scale-105 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="8" cy="21" r="1.5"></circle>
+                        <circle cx="19" cy="21" r="1.5"></circle>
+                        <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+                    </svg>
+                    <span class="absolute top-0 right-0 w-2.5 h-2.5 bg-blue-500 rounded-full border-2 border-primary"></span>
+                </button>
+                
+                <a href="../Login/index.html" class="hidden lg:flex items-center text-blue-600 hover:text-blue-700 transition-colors ml-2 font-bold">
+                    Log In
+                </a>
+
+                <a href="../Consign/index.html" class="hidden lg:block bg-secondary text-primary px-6 py-2 rounded-full hover:bg-secondary/90 transition-colors shadow-md ml-4">
+                    Sell
+                </a>
+                <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-full hover:bg-secondary/10 text-secondary transition-colors">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="absolute top-full left-0 w-full bg-surface shadow-lg hidden lg:hidden flex-col border-t border-secondary/10 z-40 transition-all duration-300">
+            <div class="p-6 space-y-6">
+                <div class="relative w-full">
+                    <i data-lucide="search" class="absolute left-4 top-2.5 h-4 w-4 text-secondary/60"></i>
+                    <input type="text" placeholder="Search artists and listings" class="w-full bg-secondary/5 hover:bg-secondary/10 transition-colors rounded-full py-2 pl-11 pr-4 text-sm outline-none focus:ring-2 focus:ring-secondary/30 placeholder-secondary/50 text-secondary" />
+                </div>
+                <div class="flex flex-col space-y-4 text-base font-semibold text-secondary/80">
+                    <a href="../UpcomingAuctions/index.html" class="hover:text-secondary transition-colors">Upcoming Auctions</a>
+                    <a href="../Results/index.html" class="hover:text-secondary transition-colors">Auction Results</a>
+                    <a href="#" class="hover:text-secondary transition-colors">Browse All Auctions</a>
+                    <hr class="border-secondary/10">
+                    <a href="../Shop/index.html" class="hover:text-secondary transition-colors">Shop Gallery</a>
+                    <a href="#" class="hover:text-secondary transition-colors">Calendar</a>
+                    <hr class="border-secondary/10">
+                    <a href="../Login/index.html" class="flex items-center hover:text-blue-500 text-blue-600 transition-colors">
+                        <i data-lucide="log-in" class="h-5 w-5 mr-3"></i> Log In
+                    </a>
+                    <a href="../Consign/index.html" class="bg-secondary text-primary px-6 py-3 rounded-full hover:bg-secondary/90 transition-colors shadow-md text-center w-full mt-2 block">
+                        Sell with Fabyle
+                    </a>
+                </div>
+            </div>
         </div>
     </nav>
 
