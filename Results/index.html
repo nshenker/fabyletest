@@ -21,9 +21,7 @@
                         'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
                         'hover-up': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
                         'dark-soft': '0 4px 20px -2px rgba(0, 0, 0, 0.4)',
-                        'dark-hover-up': '0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5)',
-                        'modal': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
-                        'dark-modal': '0 25px 50px -12px rgba(0, 0, 0, 0.75)',
+                        'dark-hover-up': '0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5)'
                     }
                 }
             }
@@ -55,7 +53,7 @@
 </head>
 <body class="min-h-screen bg-primary font-sans text-secondary overflow-x-hidden transition-colors duration-300 flex flex-col">
 
-   <nav class="sticky top-0 z-50 flex items-center justify-between px-6 py-4 bg-primary/90 backdrop-blur-md transition-colors duration-300 shadow-sm relative border-b border-secondary/10">
+    <nav class="sticky top-0 z-50 flex items-center justify-between px-6 py-4 bg-primary/90 backdrop-blur-md transition-colors duration-300 shadow-sm relative border-b border-secondary/10">
         <div class="flex items-center space-x-8">
             <a href="../" class="font-bold text-3xl tracking-tight text-secondary cursor-pointer">Fabyle</a>
             <div class="hidden lg:flex relative w-[400px]">
@@ -67,10 +65,10 @@
         <div class="flex items-center space-x-4 lg:space-x-10">
             <div class="hidden lg:flex items-center space-x-6 text-sm font-semibold text-secondary/80">
                 <div class="relative group py-2">
-                    <span class="flex items-center cursor-pointer hover:text-secondary transition-colors">Auctions <i data-lucide="chevron-down" class="h-4 w-4 ml-1"></i></span>
+                    <span class="flex items-center cursor-pointer text-secondary transition-colors">Auctions <i data-lucide="chevron-down" class="h-4 w-4 ml-1"></i></span>
                     <div class="absolute left-0 top-full w-48 bg-surface rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 py-2 border border-secondary/10">
                         <a href="../UpcomingAuctions/" class="block px-4 py-2 text-sm text-secondary/80 hover:text-secondary hover:bg-secondary/10 transition-colors">Upcoming Auctions</a>
-                        <a href="../Results/" class="block px-4 py-2 text-sm text-secondary/80 hover:text-secondary hover:bg-secondary/10 transition-colors">Results</a>
+                        <a href="../Results/" class="block px-4 py-2 text-sm text-secondary font-bold bg-secondary/5 transition-colors">Results</a>
                         <a href="#" class="block px-4 py-2 text-sm text-secondary/80 hover:text-secondary hover:bg-secondary/10 transition-colors">Browse All</a>
                     </div>
                 </div>
@@ -90,12 +88,9 @@
                     </svg>
                     <span class="absolute top-0 right-0 w-2.5 h-2.5 bg-blue-500 rounded-full border-2 border-primary"></span>
                 </button>
-                <a href="../Login/" class="hidden lg:flex items-center text-blue-600 hover:text-blue-700 transition-colors ml-2 font-bold">
-                    Log In
-                </a>
-                <a href="../Consign/" class="hidden lg:block bg-secondary text-primary px-6 py-2 rounded-full hover:bg-secondary/90 transition-colors shadow-md ml-4">
-                    Sell
-                </a>
+                
+                <a href="../Login/" class="hidden lg:flex items-center text-blue-600 hover:text-blue-700 transition-colors ml-2 font-bold">Log In</a>
+                <a href="../Consign/" class="hidden lg:block bg-secondary text-primary px-6 py-2 rounded-full hover:bg-secondary/90 transition-colors shadow-md ml-4">Sell</a>
                 <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-full hover:bg-secondary/10 text-secondary transition-colors">
                     <i data-lucide="menu" class="w-6 h-6"></i>
                 </button>
@@ -110,11 +105,11 @@
                 </div>
                 <div class="flex flex-col space-y-4 text-base font-semibold text-secondary/80">
                     <a href="../UpcomingAuctions/" class="hover:text-secondary transition-colors">Upcoming Auctions</a>
-                    <a href="../Results/" class="hover:text-secondary transition-colors">Auction Results</a>
+                    <a href="../Results/" class="text-secondary font-bold transition-colors">Auction Results</a>
                     <a href="#" class="hover:text-secondary transition-colors">Browse All Auctions</a>
                     <hr class="border-secondary/10">
                     <a href="../Shop/" class="hover:text-secondary transition-colors">Shop Gallery</a>
-                    <a href="#" class="hover:text-secondary transition-colors">Calendar</a>
+                    <a href="../FAQ/" class="hover:text-secondary transition-colors">FAQ</a>
                     <hr class="border-secondary/10">
                     <a href="../Login/" class="flex items-center hover:text-blue-500 text-blue-600 transition-colors">
                         <i data-lucide="log-in" class="h-5 w-5 mr-3"></i> Log In
@@ -128,142 +123,144 @@
     </nav>
 
     <header class="max-w-[1400px] mx-auto px-4 md:px-6 pt-12 pb-6">
-        <div class="mb-8">
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 text-secondary">Past Auctions</h1>
-            <p class="text-lg text-secondary/60 max-w-2xl">Browse our archive of record-breaking events, explore individual lots, and view historical hammer prices.</p>
-        </div>
-
-        <div class="flex space-x-3 overflow-x-auto pb-4 hide-scrollbar">
-            <button class="px-5 py-2 rounded-full bg-secondary text-primary font-semibold text-sm whitespace-nowrap shadow-md hover:scale-105 transition-transform">All Results</button>
-            <button class="px-5 py-2 rounded-full bg-surface text-secondary/80 font-semibold text-sm whitespace-nowrap shadow-soft hover:shadow-md hover:text-secondary hover:scale-105 transition-all border border-secondary/5">2026</button>
+        <div class="mb-4">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 text-secondary">Past Results</h1>
+            <p class="text-lg text-secondary/60 max-w-2xl">Explore our archive of past auctions, historic hammer prices, and records set across all collectible categories.</p>
         </div>
     </header>
 
     <main class="max-w-[1400px] mx-auto px-4 md:px-6 pb-20 w-full flex-grow">
 
-        <div onclick="openModal()" class="w-full bg-surface rounded-3xl shadow-soft dark:shadow-dark-soft overflow-hidden flex flex-col lg:flex-row mb-12 group transition-all duration-300 border border-secondary/10 relative cursor-pointer hover:shadow-hover-up dark:hover:shadow-dark-hover-up hover:-translate-y-1">
-            <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-red-500 via-orange-500 to-red-500 z-10 opacity-80"></div>
-            
-            <div class="w-full lg:w-3/5 h-[200px] md:h-[300px] lg:h-auto relative overflow-hidden bg-secondary/10 group-hover:bg-secondary/20 transition-colors duration-700">
-                <div class="absolute inset-0 bg-gradient-to-br from-transparent to-secondary/5"></div>
+        <div class="w-full bg-surface rounded-3xl shadow-soft dark:shadow-dark-soft overflow-hidden flex flex-col lg:flex-row mb-12 group transition-all duration-300 border border-secondary/10 relative">
+            <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-amber-500 to-amber-700 z-10 opacity-80"></div>
+            <div class="w-full lg:w-3/5 h-[250px] md:h-[350px] lg:h-auto relative overflow-hidden bg-secondary/5 flex items-center justify-center">
+                <img src="https://i.imgur.com/kDbBjXw.jpg" alt="Featured Past Auction" class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700 grayscale-[20%]">
+                <div class="absolute inset-0 bg-gradient-to-br from-transparent to-secondary/30"></div>
                 <div class="absolute bottom-6 left-6 right-6">
-                    <span class="bg-surface text-secondary text-xs font-bold px-3 py-1.5 rounded-md tracking-widest uppercase shadow-lg">Record Sale</span>
+                    <span class="bg-surface/90 backdrop-blur-md text-secondary text-xs font-bold px-3 py-1.5 rounded-md tracking-widest uppercase shadow-lg">Historic Premiere Event</span>
                 </div>
             </div>
-
             <div class="w-full lg:w-2/5 p-8 md:p-12 flex flex-col justify-center">
-                <div class="flex items-center text-secondary/60 text-sm font-semibold uppercase tracking-widest mb-4">
-                    <i data-lucide="check-circle" class="w-4 h-4 mr-2"></i> Sold April 18, 2026
+                <div class="flex items-center text-amber-600 dark:text-amber-500 text-sm font-bold uppercase tracking-widest mb-4 bg-amber-500/10 w-max px-3 py-1 rounded-full border border-amber-500/20">
+                    <i data-lucide="check-circle" class="w-4 h-4 mr-2"></i> Auction Closed
                 </div>
-                
-                <h2 class="text-3xl md:text-4xl font-bold leading-tight mb-4 text-secondary group-hover:text-red-500 transition-colors">Michael Jordan 1998 Finals "Last Dance" Jersey</h2>
-                
+                <div class="text-secondary/60 text-xs font-semibold uppercase tracking-widest mb-2">
+                    Completed: Dec 12, 2025
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold leading-tight mb-4 text-secondary group-hover:text-amber-600 transition-colors">Winter Fine Art & Antiquities</h2>
                 <p class="text-secondary/70 mb-8 leading-relaxed">
-                    A monumental piece of sports history. This game-worn, photomatched jersey from Game 1 of the 1998 NBA Finals set a new benchmark for modern sports apparel at auction.
+                    Our celebrated 2025 Winter showcase shattered multiple category records, featuring high-end Art Deco pieces, rare sculptures, and a breathtaking collection of mid-century antiquities.
                 </p>
-
-                <div class="bg-primary p-6 rounded-2xl border border-secondary/5 mb-8">
-                    <div class="text-[10px] uppercase font-bold text-secondary/50 tracking-wider mb-1">Final Hammer Price</div>
-                    <div class="text-4xl md:text-5xl font-bold text-secondary tracking-tight">$1,550,000</div>
-                    <div class="text-sm text-secondary/60 mt-2 font-medium">Includes Buyer's Premium</div>
+                <div class="grid grid-cols-2 gap-4 mb-8">
+                    <div class="bg-primary p-4 rounded-xl border border-secondary/5">
+                        <div class="text-[10px] uppercase font-bold text-secondary/50 tracking-wider mb-1">Total Realized</div>
+                        <div class="text-2xl font-bold text-secondary tracking-tight">$2.4M</div>
+                    </div>
+                    <div class="bg-primary p-4 rounded-xl border border-secondary/5">
+                        <div class="text-[10px] uppercase font-bold text-secondary/50 tracking-wider mb-1">Lots Sold</div>
+                        <div class="text-2xl font-bold text-secondary tracking-tight">100%</div>
+                    </div>
                 </div>
-
                 <div class="mt-auto">
-                    <button class="w-full bg-secondary text-primary px-6 py-3.5 rounded-full font-bold transition-transform shadow-md text-center flex justify-center items-center pointer-events-none">
-                        View Details & Lots
-                    </button>
+                    <a href="../PastAuctionCatalog/" class="w-full bg-secondary text-primary px-6 py-3.5 rounded-full font-bold hover:bg-secondary/90 transition-transform hover:-translate-y-1 shadow-md flex justify-center items-center"><i data-lucide="bar-chart-2" class="w-4 h-4 mr-2"></i> View Results</a>
                 </div>
             </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             
-            <div onclick="openModal()" class="bg-surface rounded-2xl shadow-soft dark:shadow-dark-soft overflow-hidden flex flex-col group cursor-pointer border border-secondary/10 hover:shadow-hover-up dark:hover:shadow-dark-hover-up hover:-translate-y-2 transition-all duration-300 h-full">
-                <div class="h-32 md:h-40 relative overflow-hidden bg-secondary/5 group-hover:bg-secondary/10 transition-colors duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-tr from-transparent to-secondary/5"></div>
-                    <div class="absolute top-4 right-4">
-                        <span class="bg-red-500/10 text-red-500 text-[10px] md:text-xs font-bold px-3 py-1 rounded-full tracking-widest uppercase">Closed</span>
+            <div class="relative rounded-2xl bg-surface group shadow-soft dark:shadow-dark-soft transition-all duration-300 border border-secondary/10 flex flex-col h-full overflow-hidden hover:-translate-y-1">
+                <div class="h-1.5 w-full bg-secondary/20 group-hover:bg-amber-500 transition-colors duration-300"></div>
+                <div class="h-48 w-full bg-secondary/5 relative overflow-hidden flex items-center justify-center">
+                    <img src="https://i.imgur.com/ymVBFcB.jpg" alt="Past Auction" class="w-full h-full object-cover opacity-70 grayscale-[30%] group-hover:scale-105 group-hover:grayscale-0 transition-all duration-500">
+                    <div class="absolute top-4 left-4">
+                        <span class="bg-surface/90 backdrop-blur-sm text-secondary/80 text-[10px] md:text-xs font-bold px-3 py-1 rounded-full tracking-widest uppercase flex items-center shadow-sm border border-secondary/10">
+                            Closed
+                        </span>
                     </div>
                 </div>
                 <div class="p-6 md:p-8 flex flex-col flex-grow">
-                    <div class="flex items-center text-secondary/50 text-xs font-bold uppercase tracking-widest mb-3">
-                        <i data-lucide="check-circle" class="w-3.5 h-3.5 mr-1.5"></i> Concluded Jan 15, 2026
+                    <div class="flex items-center text-secondary/60 text-xs font-semibold uppercase tracking-widest mb-3">
+                        <i data-lucide="calendar" class="w-3.5 h-3.5 mr-1.5"></i> Oct 28, 2025
                     </div>
-                    <h3 class="text-xl font-bold mb-3 leading-snug group-hover:text-blue-500 transition-colors">Rare Pokémon TCG & 3D Cards Showcase</h3>
-                    <p class="text-sm text-secondary/60 mb-6 line-clamp-3">A dedicated event for Pokémon collectors, featuring pristine graded vintage singles, modern chase cards, and custom 3D displays.</p>
+                    <h3 class="text-secondary text-lg md:text-xl font-bold mb-6 leading-tight group-hover:text-amber-600 transition-colors">2025 Fall Game Used & Cards</h3>
                     
-                    <div class="mt-auto pt-4 border-t border-secondary/10">
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="text-[10px] uppercase font-bold text-secondary/50 tracking-wider">Lots Sold</span>
-                            <span class="text-sm font-bold text-secondary">185</span>
-                        </div>
-                        <div class="flex justify-between items-end">
+                    <div class="mt-auto border-t border-secondary/10 pt-4">
+                        <div class="flex justify-between items-center mb-6">
                             <div>
-                                <div class="text-[10px] uppercase font-bold text-secondary/50 tracking-wider mb-1">Total Realized</div>
-                                <span class="text-xl font-bold text-secondary">$425,000</span>
+                                <div class="text-[10px] text-secondary/50 uppercase tracking-widest font-bold">Lots</div>
+                                <div class="font-bold text-lg text-secondary">250</div>
                             </div>
-                            <span class="text-sm font-bold text-secondary group-hover:text-blue-500 flex items-center transition-colors">View <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i></span>
+                            <div class="text-right">
+                                <div class="text-[10px] text-secondary/50 uppercase tracking-widest font-bold">Realized</div>
+                                <div class="font-bold text-lg text-secondary">$1.1M</div>
+                            </div>
                         </div>
+                        <a href="../PastAuctionCatalog/" class="w-full bg-primary text-secondary border border-secondary/20 px-4 py-3 rounded-xl font-bold hover:bg-secondary/5 transition-colors text-sm text-center block shadow-sm">View Results</a>
                     </div>
                 </div>
             </div>
 
-            <div onclick="openModal()" class="bg-surface rounded-2xl shadow-soft dark:shadow-dark-soft overflow-hidden flex flex-col group cursor-pointer border border-secondary/10 hover:shadow-hover-up dark:hover:shadow-dark-hover-up hover:-translate-y-2 transition-all duration-300 h-full">
-                <div class="h-32 md:h-40 relative overflow-hidden bg-secondary/5 group-hover:bg-secondary/10 transition-colors duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-tr from-transparent to-secondary/5"></div>
-                    <div class="absolute top-4 right-4">
-                        <span class="bg-red-500/10 text-red-500 text-[10px] md:text-xs font-bold px-3 py-1 rounded-full tracking-widest uppercase">Closed</span>
+            <div class="relative rounded-2xl bg-surface group shadow-soft dark:shadow-dark-soft transition-all duration-300 border border-secondary/10 flex flex-col h-full overflow-hidden hover:-translate-y-1">
+                <div class="h-1.5 w-full bg-secondary/20 group-hover:bg-amber-500 transition-colors duration-300"></div>
+                <div class="h-48 w-full bg-secondary/5 relative overflow-hidden flex items-center justify-center">
+                    <img src="https://i.imgur.com/Oe5Q0jW.jpg" alt="Past Auction" class="w-full h-full object-cover opacity-70 grayscale-[30%] group-hover:scale-105 group-hover:grayscale-0 transition-all duration-500">
+                    <div class="absolute top-4 left-4">
+                        <span class="bg-surface/90 backdrop-blur-sm text-secondary/80 text-[10px] md:text-xs font-bold px-3 py-1 rounded-full tracking-widest uppercase flex items-center shadow-sm border border-secondary/10">
+                            Closed
+                        </span>
                     </div>
                 </div>
                 <div class="p-6 md:p-8 flex flex-col flex-grow">
-                    <div class="flex items-center text-secondary/50 text-xs font-bold uppercase tracking-widest mb-3">
-                        <i data-lucide="check-circle" class="w-3.5 h-3.5 mr-1.5"></i> Concluded Nov 10, 2025
+                    <div class="flex items-center text-secondary/60 text-xs font-semibold uppercase tracking-widest mb-3">
+                        <i data-lucide="calendar" class="w-3.5 h-3.5 mr-1.5"></i> Sep 15, 2025
                     </div>
-                    <h3 class="text-xl font-bold mb-3 leading-snug group-hover:text-blue-500 transition-colors">Early 20th Century US Banknotes & Currency</h3>
-                    <p class="text-sm text-secondary/60 mb-6 line-clamp-3">A specialized numismatics event that brought over 150 rare silver certificates and historic Federal Reserve notes to the auction block.</p>
+                    <h3 class="text-secondary text-lg md:text-xl font-bold mb-6 leading-tight group-hover:text-amber-600 transition-colors">2025 Pop Culture & Film Props</h3>
                     
-                    <div class="mt-auto pt-4 border-t border-secondary/10">
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="text-[10px] uppercase font-bold text-secondary/50 tracking-wider">Lots Sold</span>
-                            <span class="text-sm font-bold text-secondary">152</span>
-                        </div>
-                        <div class="flex justify-between items-end">
+                    <div class="mt-auto border-t border-secondary/10 pt-4">
+                        <div class="flex justify-between items-center mb-6">
                             <div>
-                                <div class="text-[10px] uppercase font-bold text-secondary/50 tracking-wider mb-1">Total Realized</div>
-                                <span class="text-xl font-bold text-secondary">$310,000</span>
+                                <div class="text-[10px] text-secondary/50 uppercase tracking-widest font-bold">Lots</div>
+                                <div class="font-bold text-lg text-secondary">185</div>
                             </div>
-                            <span class="text-sm font-bold text-secondary group-hover:text-blue-500 flex items-center transition-colors">View <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i></span>
+                            <div class="text-right">
+                                <div class="text-[10px] text-secondary/50 uppercase tracking-widest font-bold">Realized</div>
+                                <div class="font-bold text-lg text-secondary">$840K</div>
+                            </div>
                         </div>
+                        <a href="../PastAuctionCatalog/" class="w-full bg-primary text-secondary border border-secondary/20 px-4 py-3 rounded-xl font-bold hover:bg-secondary/5 transition-colors text-sm text-center block shadow-sm">View Results</a>
                     </div>
                 </div>
             </div>
 
-            <div onclick="openModal()" class="bg-surface rounded-2xl shadow-soft dark:shadow-dark-soft overflow-hidden flex flex-col group cursor-pointer border border-secondary/10 hover:shadow-hover-up dark:hover:shadow-dark-hover-up hover:-translate-y-2 transition-all duration-300 h-full">
-                <div class="h-32 md:h-40 relative overflow-hidden bg-secondary/5 group-hover:bg-secondary/10 transition-colors duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-tr from-transparent to-secondary/5"></div>
-                    <div class="absolute top-4 right-4">
-                        <span class="bg-red-500/10 text-red-500 text-[10px] md:text-xs font-bold px-3 py-1 rounded-full tracking-widest uppercase">Closed</span>
+            <div class="relative rounded-2xl bg-surface group shadow-soft dark:shadow-dark-soft transition-all duration-300 border border-secondary/10 flex flex-col h-full overflow-hidden hover:-translate-y-1">
+                <div class="h-1.5 w-full bg-secondary/20 group-hover:bg-amber-500 transition-colors duration-300"></div>
+                <div class="h-48 w-full bg-secondary/5 relative overflow-hidden flex items-center justify-center">
+                    <img src="https://i.imgur.com/LFLhLUQ.jpg" alt="Past Auction" class="w-full h-full object-cover opacity-70 grayscale-[30%] group-hover:scale-105 group-hover:grayscale-0 transition-all duration-500">
+                    <div class="absolute top-4 left-4">
+                        <span class="bg-surface/90 backdrop-blur-sm text-secondary/80 text-[10px] md:text-xs font-bold px-3 py-1 rounded-full tracking-widest uppercase flex items-center shadow-sm border border-secondary/10">
+                            Closed
+                        </span>
                     </div>
                 </div>
                 <div class="p-6 md:p-8 flex flex-col flex-grow">
-                    <div class="flex items-center text-secondary/50 text-xs font-bold uppercase tracking-widest mb-3">
-                        <i data-lucide="check-circle" class="w-3.5 h-3.5 mr-1.5"></i> Concluded Sep 22, 2025
+                    <div class="flex items-center text-secondary/60 text-xs font-semibold uppercase tracking-widest mb-3">
+                        <i data-lucide="calendar" class="w-3.5 h-3.5 mr-1.5"></i> Jul 04, 2025
                     </div>
-                    <h3 class="text-xl font-bold mb-3 leading-snug group-hover:text-blue-500 transition-colors">Motorsports & Formula 1 Memorabilia</h3>
-                    <p class="text-sm text-secondary/60 mb-6 line-clamp-3">Featuring race-worn gear, signed photos, and exclusive team collectibles celebrating recent dominance on the track.</p>
+                    <h3 class="text-secondary text-lg md:text-xl font-bold mb-6 leading-tight group-hover:text-amber-600 transition-colors">Summer Golden Age Comics</h3>
                     
-                    <div class="mt-auto pt-4 border-t border-secondary/10">
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="text-[10px] uppercase font-bold text-secondary/50 tracking-wider">Lots Sold</span>
-                            <span class="text-sm font-bold text-secondary">89</span>
-                        </div>
-                        <div class="flex justify-between items-end">
+                    <div class="mt-auto border-t border-secondary/10 pt-4">
+                        <div class="flex justify-between items-center mb-6">
                             <div>
-                                <div class="text-[10px] uppercase font-bold text-secondary/50 tracking-wider mb-1">Total Realized</div>
-                                <span class="text-xl font-bold text-secondary">$185,000</span>
+                                <div class="text-[10px] text-secondary/50 uppercase tracking-widest font-bold">Lots</div>
+                                <div class="font-bold text-lg text-secondary">310</div>
                             </div>
-                            <span class="text-sm font-bold text-secondary group-hover:text-blue-500 flex items-center transition-colors">View <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i></span>
+                            <div class="text-right">
+                                <div class="text-[10px] text-secondary/50 uppercase tracking-widest font-bold">Realized</div>
+                                <div class="font-bold text-lg text-secondary">$3.2M</div>
+                            </div>
                         </div>
+                        <a href="../PastAuctionCatalog/" class="w-full bg-primary text-secondary border border-secondary/20 px-4 py-3 rounded-xl font-bold hover:bg-secondary/5 transition-colors text-sm text-center block shadow-sm">View Results</a>
                     </div>
                 </div>
             </div>
@@ -277,7 +274,7 @@
                 <div>
                     <h4 class="font-bold mb-4 md:mb-6 text-primary text-base">Features</h4>
                     <ul class="space-y-2 md:space-y-3 text-primary/70 font-medium">
-                        <li><a href="../UpcomingAuctions/" class="hover:text-primary transition-colors">Bid</a></li>
+                        <li><a href="../UpcomingAuctions/" class="hover:text-primary transition-colors">Buy</a></li>
                         <li><a href="../Consign/" class="hover:text-primary transition-colors">Sell</a></li>
                         <li><a href="../Signup/" class="hover:text-primary transition-colors">Sign Up</a></li>
                     </ul>
@@ -293,6 +290,7 @@
                 <div>
                     <h4 class="font-bold mb-4 md:mb-6 text-primary text-base">Company</h4>
                     <ul class="space-y-2 md:space-y-3 text-primary/70 font-medium">
+                        <li><a href="#" class="hover:text-primary transition-colors">Meet Our Experts</a></li>
                         <li><a href="../Contact/" class="hover:text-primary transition-colors">Contact Us</a></li>
                         <li><a href="../FAQ/" class="hover:text-primary transition-colors">FAQ</a></li>
                     </ul>
@@ -326,129 +324,6 @@
             </div>
         </div>
     </footer>
-    
-    <div id="auction-modal" class="fixed inset-0 z-[100] flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300 px-4 py-6 sm:p-6">
-        <div class="absolute inset-0 bg-secondary/80 backdrop-blur-sm" onclick="closeModal()"></div>
-        
-        <div class="bg-primary w-full max-w-[1200px] h-[90vh] md:h-[85vh] rounded-3xl shadow-modal dark:shadow-dark-modal relative flex flex-col transform scale-95 transition-transform duration-300 border border-secondary/10" id="auction-modal-content">
-            
-            <button onclick="closeModal()" class="absolute top-4 right-4 z-20 bg-surface/90 backdrop-blur-md text-secondary p-2.5 rounded-full shadow-lg hover:bg-surface hover:scale-110 transition-all border border-secondary/10 group">
-                <i data-lucide="x" class="w-5 h-5 group-hover:rotate-90 transition-transform duration-300"></i>
-            </button>
-
-            <div class="overflow-y-auto flex-grow rounded-3xl hide-scrollbar relative">
-                <div class="bg-surface border-b border-secondary/10 pb-8 pt-16 px-6 md:px-12 relative overflow-hidden">
-                    <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-red-500 via-orange-500 to-red-500 z-10 opacity-80"></div>
-                    <div class="absolute inset-0 bg-gradient-to-br from-secondary/5 to-transparent pointer-events-none"></div>
-                    
-                    <div class="relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-8">
-                        <div class="max-w-2xl">
-                            <div class="flex items-center text-red-500 text-xs font-bold uppercase tracking-widest mb-3">
-                                <i data-lucide="check-circle" class="w-3.5 h-3.5 mr-1.5"></i> Concluded Jan 15, 2026
-                            </div>
-                            <h2 class="text-2xl md:text-4xl font-bold tracking-tight text-secondary leading-tight mb-4">Rare Pokémon TCG & 3D Cards Showcase</h2>
-                            <p class="text-sm md:text-base text-secondary/70">A dedicated event for Pokémon collectors, featuring pristine graded vintage singles, modern chase cards, and custom 3D displays.</p>
-                        </div>
-
-                        <div class="flex gap-6 md:gap-8 bg-primary/80 backdrop-blur-sm p-4 md:p-6 rounded-2xl border border-secondary/10 shrink-0 shadow-inner">
-                            <div>
-                                <div class="text-[10px] uppercase font-bold text-secondary/50 tracking-wider mb-1">Lots Sold</div>
-                                <div class="text-xl md:text-2xl font-bold text-secondary">185</div>
-                            </div>
-                            <div class="w-px bg-secondary/10"></div>
-                            <div>
-                                <div class="text-[10px] uppercase font-bold text-secondary/50 tracking-wider mb-1">Total Realized</div>
-                                <div class="text-xl md:text-2xl font-bold text-secondary">$425,000</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="p-6 md:p-12">
-                    <div class="flex justify-between items-center mb-8">
-                        <h3 class="text-xl md:text-2xl font-bold">Sold Lots</h3>
-                        <div class="relative">
-                            <select class="appearance-none bg-surface border border-secondary/10 text-secondary text-xs md:text-sm font-semibold rounded-full pl-5 pr-10 py-2 focus:outline-none focus:ring-2 focus:ring-secondary/30 cursor-pointer shadow-sm">
-                                <option>Highest Price</option>
-                                <option>Lot Number</option>
-                                <option>Most Bids</option>
-                            </select>
-                            <i data-lucide="chevron-down" class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-secondary/50 pointer-events-none"></i>
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <div class="group/card cursor-pointer flex flex-col">
-                            <div class="relative rounded-2xl bg-surface flex flex-col h-full shadow-soft hover:shadow-hover-up dark:shadow-dark-soft dark:hover:shadow-dark-hover-up hover:-translate-y-1 transition-all duration-300 border border-secondary/10">
-                                <div class="h-40 relative overflow-hidden bg-secondary/5 group-hover:bg-secondary/10 transition-colors duration-500 rounded-t-2xl">
-                                    <div class="absolute inset-0 bg-gradient-to-tr from-transparent to-secondary/5"></div>
-                                </div>
-                                <div class="p-5 flex-grow flex flex-col">
-                                    <div class="flex justify-between items-start mb-2">
-                                        <div class="text-[10px] md:text-xs text-secondary/60 font-semibold uppercase tracking-wider">Lot #1</div>
-                                        <span class="bg-red-500/10 text-red-500 text-[9px] font-bold px-2 py-0.5 rounded-sm uppercase tracking-widest">Sold</span>
-                                    </div>
-                                    <h4 class="text-sm font-bold leading-snug mb-4 line-clamp-3 group-hover/card:text-blue-500 transition-colors">1st Edition Base Set Charizard PSA 9</h4>
-                                    <div class="mt-auto border-t border-secondary/10 pt-4">
-                                        <div class="text-[10px] text-secondary/50 font-semibold uppercase tracking-wider mb-1">Hammer Price</div>
-                                        <div class="text-xl font-bold text-secondary mb-2">$32,500</div>
-                                        <div class="flex justify-between items-center">
-                                            <div class="text-[10px] text-secondary/60 font-medium bg-secondary/5 px-2 py-1 rounded">48 Bids</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="group/card cursor-pointer flex flex-col">
-                            <div class="relative rounded-2xl bg-surface flex flex-col h-full shadow-soft hover:shadow-hover-up dark:shadow-dark-soft dark:hover:shadow-dark-hover-up hover:-translate-y-1 transition-all duration-300 border border-secondary/10">
-                                <div class="h-40 relative overflow-hidden bg-secondary/5 group-hover:bg-secondary/10 transition-colors duration-500 rounded-t-2xl">
-                                    <div class="absolute inset-0 bg-gradient-to-tr from-transparent to-secondary/5"></div>
-                                </div>
-                                <div class="p-5 flex-grow flex flex-col">
-                                    <div class="flex justify-between items-start mb-2">
-                                        <div class="text-[10px] md:text-xs text-secondary/60 font-semibold uppercase tracking-wider">Lot #2</div>
-                                        <span class="bg-red-500/10 text-red-500 text-[9px] font-bold px-2 py-0.5 rounded-sm uppercase tracking-widest">Sold</span>
-                                    </div>
-                                    <h4 class="text-sm font-bold leading-snug mb-4 line-clamp-3 group-hover/card:text-blue-500 transition-colors">Umbreon Gold Star Neo Discovery PSA 10</h4>
-                                    <div class="mt-auto border-t border-secondary/10 pt-4">
-                                        <div class="text-[10px] text-secondary/50 font-semibold uppercase tracking-wider mb-1">Hammer Price</div>
-                                        <div class="text-xl font-bold text-secondary mb-2">$18,200</div>
-                                        <div class="flex justify-between items-center">
-                                            <div class="text-[10px] text-secondary/60 font-medium bg-secondary/5 px-2 py-1 rounded">31 Bids</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="group/card cursor-pointer flex flex-col">
-                            <div class="relative rounded-2xl bg-surface flex flex-col h-full shadow-soft hover:shadow-hover-up dark:shadow-dark-soft dark:hover:shadow-dark-hover-up hover:-translate-y-1 transition-all duration-300 border border-secondary/10">
-                                <div class="h-40 relative overflow-hidden bg-secondary/5 group-hover:bg-secondary/10 transition-colors duration-500 rounded-t-2xl">
-                                    <div class="absolute inset-0 bg-gradient-to-tr from-transparent to-secondary/5"></div>
-                                </div>
-                                <div class="p-5 flex-grow flex flex-col">
-                                    <div class="flex justify-between items-start mb-2">
-                                        <div class="text-[10px] md:text-xs text-secondary/60 font-semibold uppercase tracking-wider">Lot #3</div>
-                                        <span class="bg-red-500/10 text-red-500 text-[9px] font-bold px-2 py-0.5 rounded-sm uppercase tracking-widest">Sold</span>
-                                    </div>
-                                    <h4 class="text-sm font-bold leading-snug mb-4 line-clamp-3 group-hover/card:text-blue-500 transition-colors">1st Edition Slowbro CGC 9 (Pop 14)</h4>
-                                    <div class="mt-auto border-t border-secondary/10 pt-4">
-                                        <div class="text-[10px] text-secondary/50 font-semibold uppercase tracking-wider mb-1">Hammer Price</div>
-                                        <div class="text-xl font-bold text-secondary mb-2">$4,100</div>
-                                        <div class="flex justify-between items-center">
-                                            <div class="text-[10px] text-secondary/60 font-medium bg-secondary/5 px-2 py-1 rounded">19 Bids</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <script>
         lucide.createIcons();
@@ -467,28 +342,6 @@
                 mobileMenu.classList.toggle('hidden');
                 mobileMenu.classList.toggle('flex');
             });
-        });
-
-        // Modal Logic
-        const modal = document.getElementById('auction-modal');
-        const modalContent = document.getElementById('auction-modal-content');
-
-        function openModal() {
-            modal.classList.remove('opacity-0', 'pointer-events-none');
-            modalContent.classList.remove('scale-95');
-            document.body.style.overflow = 'hidden'; 
-        }
-
-        function closeModal() {
-            modal.classList.add('opacity-0', 'pointer-events-none');
-            modalContent.classList.add('scale-95');
-            document.body.style.overflow = ''; 
-        }
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && !modal.classList.contains('opacity-0')) {
-                closeModal();
-            }
         });
     </script>
 </body>
