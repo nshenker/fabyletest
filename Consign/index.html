@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consign with Us | Fabyle</title>
+    <meta name="description" content="Consign your premium collectibles, sports cards, comics, and memorabilia with Fabyle. Enjoy industry-low commission rates, global auction reach, and white-glove service.">
+    <title>Consign Collectibles & Sell at Auction | Fabyle</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     
@@ -18,10 +20,25 @@
                         surface: 'rgb(var(--color-surface) / <alpha-value>)'
                     },
                     boxShadow: {
-                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
-                        'hover-up': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
-                        'dark-soft': '0 4px 20px -2px rgba(0, 0, 0, 0.4)',
-                        'dark-hover-up': '0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5)',
+                        'soft': '0 8px 30px -5px rgba(0,0,0,0.05)',
+                        'hover-up': '0 20px 40px -5px rgba(0,0,0,0.1)',
+                        'dark-soft': '0 8px 30px -5px rgba(0,0,0,0.4)',
+                        'dark-hover-up': '0 20px 40px -5px rgba(0,0,0,0.6)',
+                        'glow-blue': '0 0 25px rgba(59, 130, 246, 0.4)'
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-out forwards',
+                        'slide-up': 'slideUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(30px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        }
                     }
                 }
             }
@@ -38,43 +55,36 @@
     
     <style>
         :root {
-            --color-primary: 242 240 239; 
-            --color-secondary: 10 25 47;  
+            --color-primary: 250 250 250; 
+            --color-secondary: 15 23 42;  
             --color-surface: 255 255 255; 
         }
         .dark {
-            --color-primary: 10 25 47;    
-            --color-secondary: 242 240 239; 
-            --color-surface: 16 38 72;    
+            --color-primary: 15 23 42;    
+            --color-secondary: 250 250 250; 
+            --color-surface: 30 41 59;    
+        }
+        .bg-pattern {
+            background-image: radial-gradient(rgb(var(--color-secondary) / 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
         }
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        
-        /* Custom file input styling */
-        input[type="file"]::file-selector-button {
-            border: none;
-            background: rgba(var(--color-secondary) / 0.1);
-            padding: 8px 16px;
-            border-radius: 8px;
-            color: rgb(var(--color-secondary));
-            cursor: pointer;
-            font-weight: 600;
-            transition: background 0.2s ease-in-out;
-            margin-right: 16px;
-        }
-        input[type="file"]::file-selector-button:hover {
-            background: rgba(var(--color-secondary) / 0.2);
-        }
     </style>
 </head>
-<body class="min-h-screen bg-primary font-sans text-secondary overflow-x-hidden transition-colors duration-300 flex flex-col">
+<body class="min-h-screen bg-primary bg-pattern font-sans text-secondary overflow-x-hidden transition-colors duration-300 flex flex-col relative">
+
+    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <div class="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[100px]"></div>
+        <div class="absolute bottom-[-10%] right-[-5%] w-[600px] h-[600px] bg-purple-500/10 rounded-full blur-[120px]"></div>
+    </div>
 
     <nav class="sticky top-0 z-50 flex items-center justify-between px-6 py-4 bg-primary/80 backdrop-blur-2xl transition-colors duration-300 shadow-sm relative border-b border-secondary/5">
         <div class="flex items-center space-x-8">
             <a href="../" class="font-black text-3xl tracking-tighter text-secondary cursor-pointer">Fabyle<span class="text-blue-600">.</span></a>
             <div class="hidden lg:flex relative w-[350px] xl:w-[450px]">
                 <i data-lucide="search" class="absolute left-4 top-2.5 h-4 w-4 text-secondary/50"></i>
-                <input type="text" placeholder="Search lots, artists, and events..." class="w-full bg-surface hover:bg-secondary/5 transition-colors rounded-full py-2 pl-11 pr-4 text-sm outline-none focus:ring-2 focus:ring-blue-500 border border-secondary/10 placeholder-secondary/40 text-secondary shadow-inner" />
+                <input type="text" placeholder="Search lots, artists, and events..." class="w-full bg-surface hover:bg-secondary/5 transition-colors rounded-full py-2 pl-11 pr-4 text-sm outline-none focus:ring-2 focus:ring-blue-500 border border-secondary/10 placeholder-secondary/40 text-secondary shadow-sm" />
             </div>
         </div>
 
@@ -89,7 +99,7 @@
                     </div>
                 </div>
                 <a href="../Shop/" class="flex items-center cursor-pointer hover:text-blue-600 transition-colors">Shop</a>
-                <a href="../Consign/" class="flex items-center cursor-pointer hover:text-blue-600 transition-colors">Consign</a>
+                <a href="../Consign/" class="flex items-center cursor-pointer text-blue-600 transition-colors">Consign</a>
             </div>
 
             <div class="flex items-center space-x-3 text-sm font-semibold">
@@ -130,7 +140,7 @@
                     <a href="../UpcomingAuctions/" class="hover:text-blue-600 transition-colors">Upcoming Auctions</a>
                     <a href="../Results/" class="hover:text-blue-600 transition-colors">Auction Results</a>
                     <a href="../Shop/" class="hover:text-blue-600 transition-colors">Shop Gallery</a>
-                    <a href="../Consign/" class="hover:text-blue-600 transition-colors">Consign with Us</a>
+                    <a href="../Consign/" class="text-blue-600 transition-colors">Consign with Us</a>
                     <hr class="border-secondary/10 my-2">
                     <div class="flex gap-4">
                         <a href="../Login/" class="flex-1 bg-secondary/5 border border-secondary/10 text-secondary py-3 rounded-xl text-center hover:bg-secondary/10 transition-colors">Log In</a>
@@ -140,175 +150,259 @@
             </div>
         </div>
     </nav>
-    
-    <main class="max-w-[1400px] mx-auto px-4 md:px-6 py-12 md:py-20 w-full flex-grow">
+
+    <main class="w-full flex-grow relative z-10 pb-24">
         
-        <div class="flex flex-col lg:flex-row gap-12 lg:gap-20">
-            
-            <div class="lg:w-1/2 flex flex-col justify-center">
-                <div class="flex items-center text-blue-500 text-xs font-bold uppercase tracking-widest mb-4">
-                    <i data-lucide="star" class="w-4 h-4 mr-2"></i> Global Reach, Record Prices
-                </div>
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-secondary leading-tight mb-6">
-                    Unlock the Value of Your Collection
-                </h1>
-                <p class="text-lg text-secondary/70 mb-10 leading-relaxed max-w-xl">
-                    Whether you have a single rare item or an entire collection, Fabyle's team of dedicated specialists will help you navigate the consignment process to maximize your returns.
-                </p>
-
-                <div class="space-y-8">
-                    <div class="flex items-start">
-                        <div class="bg-secondary/5 p-3 rounded-2xl mr-4 text-secondary mt-1">
-                            <i data-lucide="search-check" class="w-6 h-6"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-secondary mb-2">1. Request an Estimate</h3>
-                            <p class="text-secondary/60 leading-relaxed text-sm">Submit details and photos of your item. Our specialists will review your submission and provide a complimentary auction estimate within 48 hours.</p>
-                        </div>
+        <section class="max-w-[1400px] mx-auto px-6 py-12 md:py-20">
+            <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+                
+                <div class="w-full lg:w-1/2 flex flex-col justify-center text-center lg:text-left animate-slide-up">
+                    <div class="inline-flex items-center justify-center lg:justify-start space-x-2 text-blue-600 text-[11px] font-bold uppercase tracking-[0.2em] mb-6 w-max mx-auto lg:mx-0">
+                        <span class="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse"></span>
+                        White-Glove Auction Services
                     </div>
+                    
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tighter text-secondary leading-[1.05] mb-6">
+                        Sell Your Premium <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Collectibles.</span>
+                    </h1>
+                    
+                    <p class="text-lg text-secondary/60 leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0 font-medium">
+                        Maximize your return with Fabyle. We offer industry-low commission rates, global bidder reach, expert authentication, and secure vault storage. Request a free auction estimate today.
+                    </p>
 
-                    <div class="flex items-start">
-                        <div class="bg-secondary/5 p-3 rounded-2xl mr-4 text-secondary mt-1">
-                            <i data-lucide="truck" class="w-6 h-6"></i>
+                    <div class="flex flex-wrap justify-center lg:justify-start gap-4 mb-10">
+                        <div class="bg-surface border border-secondary/10 rounded-2xl px-5 py-3 shadow-sm flex items-center">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-blue-500 mr-3"></i>
+                            <div class="text-left">
+                                <div class="text-[10px] uppercase font-bold text-secondary/50 tracking-wider">Starting At</div>
+                                <div class="font-bold text-secondary">8% Commission</div>
+                            </div>
                         </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-secondary mb-2">2. Secure Shipping & Cataloging</h3>
-                            <p class="text-secondary/60 leading-relaxed text-sm">Once approved, we provide fully insured shipping labels. Our experts will authenticate, professionally photograph, and catalog your item for auction.</p>
+                        <div class="bg-surface border border-secondary/10 rounded-2xl px-5 py-3 shadow-sm flex items-center">
+                            <i data-lucide="globe" class="w-5 h-5 text-purple-500 mr-3"></i>
+                            <div class="text-left">
+                                <div class="text-[10px] uppercase font-bold text-secondary/50 tracking-wider">Global Reach</div>
+                                <div class="font-bold text-secondary">150+ Countries</div>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="flex items-start">
-                        <div class="bg-secondary/5 p-3 rounded-2xl mr-4 text-secondary mt-1">
-                            <i data-lucide="gavel" class="w-6 h-6"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-secondary mb-2">3. Sell & Get Paid</h3>
-                            <p class="text-secondary/60 leading-relaxed text-sm">Your item goes live in front of our global network of passionate collectors. Once the auction closes and the buyer pays, you receive your funds swiftly.</p>
+                        <div class="bg-surface border border-secondary/10 rounded-2xl px-5 py-3 shadow-sm flex items-center">
+                            <i data-lucide="banknote" class="w-5 h-5 text-green-500 mr-3"></i>
+                            <div class="text-left">
+                                <div class="text-[10px] uppercase font-bold text-secondary/50 tracking-wider">Fast Payouts</div>
+                                <div class="font-bold text-secondary">Within 30 Days</div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="lg:w-1/2">
-                <div class="bg-surface rounded-3xl p-8 md:p-10 border border-secondary/10 shadow-soft dark:shadow-dark-soft relative overflow-hidden">
-                    <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 z-10 opacity-80"></div>
-                    
-                    <h2 class="text-2xl font-bold text-secondary mb-2 mt-2">Submit an Item for Review</h2>
-                    <p class="text-secondary/60 text-sm mb-8">Please provide as much detail as possible to help our specialists evaluate your item accurately.</p>
-                    
-                    <form class="space-y-6" onsubmit="event.preventDefault(); showSuccessState();">
+                <div class="w-full lg:w-1/2 flex justify-center lg:justify-end animate-fade-in" style="animation-delay: 0.2s;">
+                    <div class="w-full max-w-lg bg-surface/80 backdrop-blur-xl rounded-[2.5rem] p-8 md:p-10 border border-secondary/10 shadow-2xl relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-blue-600 to-purple-600"></div>
                         
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label class="block text-[10px] font-bold text-secondary/50 uppercase tracking-widest mb-2">First Name</label>
-                                <input type="text" required class="w-full bg-secondary/5 rounded-xl p-3.5 border border-secondary/10 outline-none focus:ring-2 focus:ring-blue-500 focus:bg-surface transition-all text-secondary" placeholder="Jane">
+                        <div id="consign-form-container">
+                            <h2 class="text-2xl font-bold text-secondary mb-2 tracking-tight">Get a Free Estimate</h2>
+                            <p class="text-sm text-secondary/60 mb-8 font-medium">Tell us what you're looking to sell. Our experts will respond within 48 hours.</p>
+
+                            <form id="consign-form" onsubmit="handleConsignSubmit(event)" class="space-y-5">
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-[10px] font-bold text-secondary/50 uppercase tracking-widest mb-1.5">First Name</label>
+                                        <input type="text" required class="w-full bg-secondary/5 rounded-xl px-4 py-3 border border-secondary/10 outline-none focus:ring-2 focus:ring-blue-500 transition-all text-secondary text-sm">
+                                    </div>
+                                    <div>
+                                        <label class="block text-[10px] font-bold text-secondary/50 uppercase tracking-widest mb-1.5">Last Name</label>
+                                        <input type="text" required class="w-full bg-secondary/5 rounded-xl px-4 py-3 border border-secondary/10 outline-none focus:ring-2 focus:ring-blue-500 transition-all text-secondary text-sm">
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label class="block text-[10px] font-bold text-secondary/50 uppercase tracking-widest mb-1.5">Email Address</label>
+                                    <input type="email" required class="w-full bg-secondary/5 rounded-xl px-4 py-3 border border-secondary/10 outline-none focus:ring-2 focus:ring-blue-500 transition-all text-secondary text-sm">
+                                </div>
+
+                                <div>
+                                    <label class="block text-[10px] font-bold text-secondary/50 uppercase tracking-widest mb-1.5">Item Description</label>
+                                    <textarea rows="3" required placeholder="Include brand, year, condition, and any grading info..." class="w-full bg-secondary/5 rounded-xl px-4 py-3 border border-secondary/10 outline-none focus:ring-2 focus:ring-blue-500 transition-all text-secondary text-sm resize-none"></textarea>
+                                </div>
+
+                                <div>
+                                    <label class="block text-[10px] font-bold text-secondary/50 uppercase tracking-widest mb-1.5">Upload Photos</label>
+                                    <div class="w-full bg-secondary/5 border border-dashed border-secondary/20 rounded-xl px-4 py-6 text-center hover:bg-secondary/10 transition-colors cursor-pointer group">
+                                        <i data-lucide="upload-cloud" class="w-6 h-6 mx-auto mb-2 text-secondary/40 group-hover:text-blue-500 transition-colors"></i>
+                                        <span class="text-xs font-semibold text-secondary/60">Click or drag images here</span>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl transition-transform hover:scale-[1.02] active:scale-[0.98] shadow-glow-blue mt-2 flex items-center justify-center">
+                                    Submit Request
+                                </button>
+                            </form>
+                        </div>
+
+                        <div id="success-container" class="hidden flex-col items-center justify-center text-center py-12">
+                            <div class="w-16 h-16 bg-green-500/10 text-green-500 rounded-full flex items-center justify-center mb-6">
+                                <i data-lucide="check-circle" class="w-8 h-8"></i>
                             </div>
-                            <div>
-                                <label class="block text-[10px] font-bold text-secondary/50 uppercase tracking-widest mb-2">Last Name</label>
-                                <input type="text" required class="w-full bg-secondary/5 rounded-xl p-3.5 border border-secondary/10 outline-none focus:ring-2 focus:ring-blue-500 focus:bg-surface transition-all text-secondary" placeholder="Doe">
+                            <h2 class="text-2xl font-bold text-secondary mb-3">Request Received!</h2>
+                            <p class="text-sm text-secondary/60">Thank you for considering Fabyle. One of our acquisition specialists will review your submission and contact you shortly.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="max-w-[1400px] mx-auto px-6 py-16 md:py-24 border-t border-secondary/5">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-black text-secondary tracking-tight mb-4">Transparent Seller Commission Rates</h2>
+                <p class="text-secondary/60 font-medium text-lg">We believe trust starts with financial transparency. Our tiered consignment fees are among the most competitive in the auction industry. No hidden fees. If your item doesn't sell, you owe us nothing.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
+                <div class="bg-surface border border-secondary/10 rounded-3xl p-8 text-center shadow-soft hover:-translate-y-2 transition-transform duration-300">
+                    <div class="text-[10px] uppercase font-bold text-secondary/50 tracking-widest mb-2">Final Sale Price</div>
+                    <div class="text-2xl font-black text-secondary mb-6">Under $1,000</div>
+                    <div class="text-5xl font-black text-blue-600 mb-6">12%</div>
+                    <p class="text-sm text-secondary/60 font-medium">Standard rate for entry-level collectibles. Includes professional photography and secure vaulting.</p>
+                </div>
+                
+                <div class="bg-surface border border-blue-500/30 rounded-3xl p-8 text-center shadow-hover-up relative transform md:-translate-y-4">
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-blue-600 text-white text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-full shadow-glow-blue">Most Common</div>
+                    <div class="text-[10px] uppercase font-bold text-secondary/50 tracking-widest mb-2 mt-4">Final Sale Price</div>
+                    <div class="text-2xl font-black text-secondary mb-6">$1,001 - $10,000</div>
+                    <div class="text-5xl font-black text-blue-600 mb-6">10%</div>
+                    <p class="text-sm text-secondary/60 font-medium">For premium items. Includes priority catalog placement and targeted email marketing campaigns.</p>
+                </div>
+
+                <div class="bg-surface border border-secondary/10 rounded-3xl p-8 text-center shadow-soft hover:-translate-y-2 transition-transform duration-300">
+                    <div class="text-[10px] uppercase font-bold text-secondary/50 tracking-widest mb-2">Final Sale Price</div>
+                    <div class="text-2xl font-black text-secondary mb-6">$10,001+</div>
+                    <div class="text-5xl font-black text-blue-600 mb-6">8%</div>
+                    <p class="text-sm text-secondary/60 font-medium">Elite tier rate. Includes white-glove shipping, custom promotional videos, and press outreach.</p>
+                </div>
+            </div>
+            <div class="text-center mt-10 text-xs font-bold text-secondary/40 uppercase tracking-widest">
+                * Highly valuable collections (over $100,000) are eligible for customized, heavily reduced commission rates.
+            </div>
+        </section>
+
+        <section class="bg-surface border-y border-secondary/5 py-16 md:py-24 shadow-sm">
+            <div class="max-w-[1400px] mx-auto px-6">
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+                    
+                    <div>
+                        <h2 class="text-3xl font-black text-secondary tracking-tight mb-6">What We Accept at Auction</h2>
+                        <p class="text-secondary/60 font-medium mb-8 leading-relaxed">Fabyle specializes in curating the finest pop culture and sports artifacts. We meticulously authenticate and evaluate every item to ensure our bidders have access to only the highest quality inventory. We are currently accepting consignments for:</p>
+                        
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <i data-lucide="check" class="w-5 h-5 text-blue-500 mr-3 shrink-0 mt-0.5"></i>
+                                <div>
+                                    <h3 class="font-bold text-secondary text-lg">Sports Cards & Memorabilia</h3>
+                                    <p class="text-sm text-secondary/60 mt-1">Graded vintage and modern rookie cards, game-worn jerseys, signed equipment, and historic tickets.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-lucide="check" class="w-5 h-5 text-blue-500 mr-3 shrink-0 mt-0.5"></i>
+                                <div>
+                                    <h3 class="font-bold text-secondary text-lg">Trading Card Games (TCG)</h3>
+                                    <p class="text-sm text-secondary/60 mt-1">High-grade Pokémon, Magic: The Gathering (MTG), Yu-Gi-Oh!, and sealed vintage booster boxes.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-lucide="check" class="w-5 h-5 text-blue-500 mr-3 shrink-0 mt-0.5"></i>
+                                <div>
+                                    <h3 class="font-bold text-secondary text-lg">Comic Books & Original Art</h3>
+                                    <p class="text-sm text-secondary/60 mt-1">CGC/CBCS graded Golden, Silver, and Bronze Age comics, as well as original published illustration art.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-lucide="check" class="w-5 h-5 text-blue-500 mr-3 shrink-0 mt-0.5"></i>
+                                <div>
+                                    <h3 class="font-bold text-secondary text-lg">Movie Props & Pop Culture</h3>
+                                    <p class="text-sm text-secondary/60 mt-1">Screen-used film props, rare vinyl records, historical documents, and significant pop-culture artifacts.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-primary rounded-[2rem] p-8 md:p-12 border border-secondary/5">
+                        <h2 class="text-2xl font-black text-secondary tracking-tight mb-8">The Consignment Process</h2>
+                        
+                        <div class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-blue-500 before:to-purple-500">
+                            
+                            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                                <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-primary bg-blue-600 text-white font-bold text-sm shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">1</div>
+                                <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-surface p-5 rounded-2xl border border-secondary/10 shadow-sm ml-4 md:ml-0">
+                                    <h3 class="font-bold text-secondary mb-1">Submit Your Items</h3>
+                                    <p class="text-xs text-secondary/60 font-medium">Use the form above to send photos and descriptions. We provide a free estimate.</p>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label class="block text-[10px] font-bold text-secondary/50 uppercase tracking-widest mb-2">Email Address</label>
-                                <input type="email" required class="w-full bg-secondary/5 rounded-xl p-3.5 border border-secondary/10 outline-none focus:ring-2 focus:ring-blue-500 focus:bg-surface transition-all text-secondary" placeholder="jane@example.com">
+                            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                                <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-primary bg-blue-600 text-white font-bold text-sm shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">2</div>
+                                <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-surface p-5 rounded-2xl border border-secondary/10 shadow-sm ml-4 md:ml-0">
+                                    <h3 class="font-bold text-secondary mb-1">Ship to the Vault</h3>
+                                    <p class="text-xs text-secondary/60 font-medium">We send you a fully insured shipping label. Your items are secured in our climate-controlled vault.</p>
+                                </div>
                             </div>
-                            <div>
-                                <label class="block text-[10px] font-bold text-secondary/50 uppercase tracking-widest mb-2">Phone Number</label>
-                                <input type="tel" class="w-full bg-secondary/5 rounded-xl p-3.5 border border-secondary/10 outline-none focus:ring-2 focus:ring-blue-500 focus:bg-surface transition-all text-secondary" placeholder="(555) 123-4567">
+
+                            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                                <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-primary bg-blue-600 text-white font-bold text-sm shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">3</div>
+                                <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-surface p-5 rounded-2xl border border-secondary/10 shadow-sm ml-4 md:ml-0">
+                                    <h3 class="font-bold text-secondary mb-1">Auction & Marketing</h3>
+                                    <p class="text-xs text-secondary/60 font-medium">We professionally photograph, catalog, and heavily market your items to our global bidder base.</p>
+                                </div>
                             </div>
-                        </div>
 
-                        <hr class="border-secondary/10 my-6">
-
-                        <div>
-                            <label class="block text-[10px] font-bold text-secondary/50 uppercase tracking-widest mb-2">Category</label>
-                            <div class="relative">
-                                <select required class="appearance-none w-full bg-secondary/5 rounded-xl p-3.5 border border-secondary/10 outline-none focus:ring-2 focus:ring-blue-500 focus:bg-surface transition-all text-secondary font-medium cursor-pointer">
-                                    <option value="" disabled selected>Select a category...</option>
-                                    <option value="sports">Sports Memorabilia</option>
-                                    <option value="tcg">Trading Cards (TCG/Sports)</option>
-                                    <option value="art">Fine Art</option>
-                                    <option value="watches">Watches & Timepieces</option>
-                                    <option value="coins">Coins & Currency</option>
-                                    <option value="other">Other / Not Sure</option>
-                                </select>
-                                <i data-lucide="chevron-down" class="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-secondary/50 pointer-events-none"></i>
+                            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                                <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-primary bg-blue-600 text-white font-bold text-sm shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">4</div>
+                                <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-surface p-5 rounded-2xl border border-secondary/10 shadow-sm ml-4 md:ml-0">
+                                    <h3 class="font-bold text-secondary mb-1">Get Paid</h3>
+                                    <p class="text-xs text-secondary/60 font-medium">Once the auction closes and the buyer pays, you receive your settlement within 30 days via Check or Wire.</p>
+                                </div>
                             </div>
-                        </div>
 
-                        <div>
-                            <label class="block text-[10px] font-bold text-secondary/50 uppercase tracking-widest mb-2">Item Title / Maker</label>
-                            <input type="text" required class="w-full bg-secondary/5 rounded-xl p-3.5 border border-secondary/10 outline-none focus:ring-2 focus:ring-blue-500 focus:bg-surface transition-all text-secondary" placeholder="e.g. 1986 Fleer Michael Jordan Rookie #57 PSA 8">
                         </div>
-
-                        <div>
-                            <label class="block text-[10px] font-bold text-secondary/50 uppercase tracking-widest mb-2">Description & Condition</label>
-                            <textarea required rows="4" class="w-full bg-secondary/5 rounded-xl p-3.5 border border-secondary/10 outline-none focus:ring-2 focus:ring-blue-500 focus:bg-surface transition-all text-secondary resize-none" placeholder="Provide details about origin, condition, grading, or provenance..."></textarea>
-                        </div>
-
-                        <div>
-                            <label class="block text-[10px] font-bold text-secondary/50 uppercase tracking-widest mb-2">Upload Photos</label>
-                            <div class="w-full bg-secondary/5 rounded-xl p-4 border border-dashed border-secondary/20 hover:border-blue-500/50 transition-colors group cursor-pointer relative flex flex-col items-center justify-center text-center">
-                                <input type="file" multiple accept="image/*" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" id="file-upload" onchange="updateFileCount(this)">
-                                <i data-lucide="upload-cloud" class="w-8 h-8 text-secondary/40 group-hover:text-blue-500 mb-2 transition-colors"></i>
-                                <span class="text-sm font-semibold text-secondary" id="file-label">Drag and drop, or click to browse files</span>
-                                <span class="text-[10px] text-secondary/50 mt-1">PNG, JPG up to 10MB</span>
-                            </div>
-                        </div>
-
-                        <button id="submit-btn" type="submit" class="w-full bg-secondary text-primary font-bold text-lg py-4 rounded-xl hover:bg-secondary/90 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-md flex justify-center items-center">
-                            Submit for Evaluation <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
-                        </button>
-                    </form>
-
-                    <div id="success-state" class="hidden absolute inset-0 bg-surface z-20 flex flex-col items-center justify-center p-8 text-center">
-                        <div class="w-20 h-20 bg-green-500/10 text-green-500 rounded-full flex items-center justify-center mb-6">
-                            <i data-lucide="check-circle" class="w-10 h-10"></i>
-                        </div>
-                        <h2 class="text-3xl font-bold text-secondary mb-3">Submission Received!</h2>
-                        <p class="text-secondary/70 mb-8 max-w-md">Thank you for considering Fabyle. One of our specialists will review your item and reach out to you within 48 hours.</p>
-                        <button onclick="resetForm()" class="bg-secondary/10 text-secondary border border-secondary/20 px-8 py-3 rounded-full font-bold hover:bg-secondary/20 transition-colors">
-                            Submit Another Item
-                        </button>
                     </div>
 
                 </div>
             </div>
+        </section>
 
-        </div>
     </main>
 
-    <footer class="bg-secondary text-primary pt-12 md:pt-16 pb-8 transition-colors duration-300 mt-auto border-t border-secondary/10">
+    <footer class="bg-secondary text-primary pt-16 pb-8 mt-auto relative z-10">
         <div class="max-w-[1400px] mx-auto px-6">
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-8 mb-12 md:mb-16 text-sm">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 mb-16 text-sm">
                 <div>
-                    <h4 class="font-bold mb-4 md:mb-6 text-primary text-base">Features</h4>
-                    <ul class="space-y-2 md:space-y-3 text-primary/70 font-medium">
-                        <li><a href="../UpcomingAuctions/" class="hover:text-primary transition-colors">Bid</a></li>
+                    <h4 class="font-bold mb-6 text-primary text-base">Features</h4>
+                    <ul class="space-y-3 text-primary/70 font-medium">
+                        <li><a href="../UpcomingAuctions/" class="hover:text-primary transition-colors">Buy</a></li>
                         <li><a href="../Consign/" class="hover:text-primary transition-colors">Sell</a></li>
                         <li><a href="../Signup/" class="hover:text-primary transition-colors">Sign Up</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-bold mb-4 md:mb-6 text-primary text-base">Legal</h4>
-                    <ul class="space-y-2 md:space-y-3 text-primary/70 font-medium">
+                    <h4 class="font-bold mb-6 text-primary text-base">Legal</h4>
+                    <ul class="space-y-3 text-primary/70 font-medium">
                         <li><a href="../PrivacyPolicy/" class="hover:text-primary transition-colors">Privacy Policy</a></li>
                         <li><a href="../TermsOfService/" class="hover:text-primary transition-colors">Terms of Service</a></li>
                         <li><a href="../SellerAgreement/" class="hover:text-primary transition-colors">Fabyle Seller Agreement</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-bold mb-4 md:mb-6 text-primary text-base">Company</h4>
-                    <ul class="space-y-2 md:space-y-3 text-primary/70 font-medium">
+                    <h4 class="font-bold mb-6 text-primary text-base">Company</h4>
+                    <ul class="space-y-3 text-primary/70 font-medium">
+                        <li><a href="#" class="hover:text-primary transition-colors">Meet Our Experts</a></li>
                         <li><a href="../Contact/" class="hover:text-primary transition-colors">Contact Us</a></li>
                         <li><a href="../FAQ/" class="hover:text-primary transition-colors">FAQ</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-bold mb-4 md:mb-6 text-primary text-base">Follow Us</h4>
-                    <div class="flex space-x-4 mb-6 md:mb-8">
+                    <h4 class="font-bold mb-6 text-primary text-base">Follow Us</h4>
+                    <div class="flex space-x-4 mb-8">
                         <a href="https://x.com/FabyleNYC" target="_blank" aria-label="X (Twitter)" class="text-primary/70 hover:text-primary p-2 bg-primary/10 rounded-full hover:bg-primary/20 transition-colors flex items-center justify-center w-10 h-10">
                             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
@@ -327,10 +421,10 @@
                             </svg>
                         </a>
                     </div>
-                    <div class="font-bold text-2xl md:text-3xl tracking-tight text-primary opacity-90">Fabyle</div>
+                    <div class="font-black text-3xl tracking-tighter text-primary">Fabyle<span class="text-blue-500">.</span></div>
                 </div>
             </div>
-            <div class="pt-6 md:pt-8 border-t border-primary/20 flex flex-col justify-between items-center text-xs text-primary/60 text-center md:text-left">
+            <div class="pt-8 border-t border-primary/10 flex flex-col justify-between items-center text-xs text-primary/50 text-center md:text-left font-medium">
                 <p>© 2026 Fabyle. All rights reserved.</p>
             </div>
         </div>
@@ -338,52 +432,28 @@
 
     <script>
         lucide.createIcons();
-        
-        // Theme & Mobile Menu Toggle
-        document.addEventListener('DOMContentLoaded', () => {
-            const themeToggleBtn = document.getElementById('theme-toggle');
+
+        // Theme Logic
+        document.getElementById('theme-toggle').addEventListener('click', () => {
             const htmlElement = document.documentElement;
-            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-            const mobileMenu = document.getElementById('mobile-menu');
-
-            themeToggleBtn.addEventListener('click', () => {
-                htmlElement.classList.toggle('dark');
-                localStorage.setItem('theme', htmlElement.classList.contains('dark') ? 'dark' : 'light');
-            });
-
-            mobileMenuBtn.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-                mobileMenu.classList.toggle('flex');
-            });
+            htmlElement.classList.toggle('dark');
+            localStorage.setItem('theme', htmlElement.classList.contains('dark') ? 'dark' : 'light');
         });
 
-        // Form Interactions
-        function updateFileCount(input) {
-            const label = document.getElementById('file-label');
-            if (input.files && input.files.length > 0) {
-                label.innerText = `${input.files.length} file(s) selected`;
-                label.classList.add('text-blue-500');
-            } else {
-                label.innerText = 'Drag and drop, or click to browse files';
-                label.classList.remove('text-blue-500');
-            }
-        }
+        // Mobile Menu Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+        });
 
-        function showSuccessState() {
-            const successState = document.getElementById('success-state');
-            successState.classList.remove('hidden');
-            successState.classList.add('animate-slide-in');
-        }
-
-        function resetForm() {
-            const form = document.querySelector('form');
-            const successState = document.getElementById('success-state');
-            const fileLabel = document.getElementById('file-label');
-            
-            form.reset();
-            fileLabel.innerText = 'Drag and drop, or click to browse files';
-            fileLabel.classList.remove('text-blue-500');
-            successState.classList.add('hidden');
+        // Form Simulation Logic
+        function handleConsignSubmit(e) {
+            e.preventDefault();
+            document.getElementById('consign-form-container').classList.add('hidden');
+            document.getElementById('success-container').classList.remove('hidden');
+            document.getElementById('success-container').classList.add('flex', 'animate-fade-in');
         }
     </script>
 </body>
