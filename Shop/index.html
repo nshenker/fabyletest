@@ -18,10 +18,25 @@
                         surface: 'rgb(var(--color-surface) / <alpha-value>)'
                     },
                     boxShadow: {
-                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
-                        'hover-up': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
-                        'dark-soft': '0 4px 20px -2px rgba(0, 0, 0, 0.4)',
-                        'dark-hover-up': '0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5)',
+                        'soft': '0 8px 30px -5px rgba(0,0,0,0.05)',
+                        'hover-up': '0 20px 40px -5px rgba(0,0,0,0.1)',
+                        'dark-soft': '0 8px 30px -5px rgba(0,0,0,0.4)',
+                        'dark-hover-up': '0 20px 40px -5px rgba(0,0,0,0.6)',
+                        'glow-blue': '0 0 25px rgba(59, 130, 246, 0.4)'
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s ease-out forwards',
+                        'slide-up': 'slideUp 0.6s ease-out forwards'
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(30px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        }
                     }
                 }
             }
@@ -38,22 +53,33 @@
     
     <style>
         :root {
-            --color-primary: 242 240 239; 
-            --color-secondary: 10 25 47;  
+            --color-primary: 250 250 250; 
+            --color-secondary: 15 23 42;  
             --color-surface: 255 255 255; 
         }
         .dark {
-            --color-primary: 10 25 47;    
-            --color-secondary: 242 240 239; 
-            --color-surface: 16 38 72;    
+            --color-primary: 15 23 42;    
+            --color-secondary: 250 250 250; 
+            --color-surface: 30 41 59;    
         }
+        
+        .bg-pattern {
+            background-image: radial-gradient(rgb(var(--color-secondary) / 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
-<body class="min-h-screen bg-primary font-sans text-secondary overflow-x-hidden transition-colors duration-300 flex flex-col relative pb-20 lg:pb-0">
+<body class="min-h-screen bg-primary bg-pattern font-sans text-secondary overflow-x-hidden transition-colors duration-300 flex flex-col relative">
 
-   <nav class="sticky top-0 z-50 flex items-center justify-between px-6 py-4 bg-primary/80 backdrop-blur-2xl transition-colors duration-300 shadow-sm relative border-b border-secondary/5">
+    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <div class="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[100px]"></div>
+        <div class="absolute bottom-[-10%] right-[-5%] w-[600px] h-[600px] bg-purple-500/10 rounded-full blur-[120px]"></div>
+    </div>
+
+    <nav class="sticky top-0 z-50 flex items-center justify-between px-6 py-4 bg-primary/80 backdrop-blur-2xl transition-colors duration-300 shadow-sm relative border-b border-secondary/5">
         <div class="flex items-center space-x-8">
             <a href="../" class="font-black text-3xl tracking-tighter text-secondary cursor-pointer">Fabyle<span class="text-blue-600">.</span></a>
             <div class="hidden lg:flex relative w-[350px] xl:w-[450px]">
@@ -72,7 +98,7 @@
                         <a href="#" class="block px-5 py-2 text-sm text-secondary/80 hover:text-blue-600 hover:bg-secondary/5 transition-colors">Browse All Lots</a>
                     </div>
                 </div>
-                <a href="../Shop/" class="flex items-center cursor-pointer hover:text-blue-600 transition-colors">Shop</a>
+                <a href="../Shop/" class="flex items-center cursor-pointer text-blue-600 transition-colors">Shop</a>
                 <a href="../Consign/" class="flex items-center cursor-pointer hover:text-blue-600 transition-colors">Consign</a>
             </div>
 
@@ -82,13 +108,13 @@
                     <i data-lucide="moon" class="w-4 h-4 block dark:hidden"></i>
                 </button>
                 
-                <button aria-label="Open Cart" class="p-2.5 rounded-full bg-surface shadow-sm border border-secondary/10 hover:bg-secondary/5 text-secondary transition-colors relative group hidden sm:block">
+                <button id="nav-cart-btn" onclick="toggleCart()" aria-label="Open Cart" class="p-2.5 rounded-full bg-surface shadow-sm border border-secondary/10 hover:bg-secondary/5 text-secondary transition-colors relative group hidden sm:block">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="8" cy="21" r="1.5"></circle>
                         <circle cx="19" cy="21" r="1.5"></circle>
                         <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
                     </svg>
-                    <span class="absolute top-0 right-0 w-2.5 h-2.5 bg-blue-500 rounded-full border-2 border-surface"></span>
+                    <span id="cart-badge" class="absolute top-0 right-0 w-2.5 h-2.5 bg-blue-500 rounded-full border-2 border-surface hidden"></span>
                 </button>
                 
                 <a href="../Login/" class="hidden lg:flex items-center text-secondary hover:text-blue-600 transition-colors ml-2 font-bold">
@@ -113,8 +139,9 @@
                 <div class="flex flex-col space-y-4 text-base font-bold text-secondary/80">
                     <a href="../UpcomingAuctions/" class="hover:text-blue-600 transition-colors">Upcoming Auctions</a>
                     <a href="../Results/" class="hover:text-blue-600 transition-colors">Auction Results</a>
-                    <a href="../Shop/" class="hover:text-blue-600 transition-colors">Shop Gallery</a>
+                    <a href="../Shop/" class="text-blue-600 transition-colors">Shop Gallery</a>
                     <a href="../Consign/" class="hover:text-blue-600 transition-colors">Consign with Us</a>
+                    <a href="#" onclick="toggleCart(); document.getElementById('mobile-menu').classList.add('hidden');" class="hover:text-blue-600 transition-colors flex items-center">View Cart <i data-lucide="shopping-cart" class="w-4 h-4 ml-2"></i></a>
                     <hr class="border-secondary/10 my-2">
                     <div class="flex gap-4">
                         <a href="../Login/" class="flex-1 bg-secondary/5 border border-secondary/10 text-secondary py-3 rounded-xl text-center hover:bg-secondary/10 transition-colors">Log In</a>
@@ -125,224 +152,181 @@
         </div>
     </nav>
 
-    <header class="max-w-[1400px] mx-auto px-4 md:px-6 pt-12 pb-6 w-full">
-        <div class="mb-8">
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 text-secondary">Gallery Shop</h1>
-            <p class="text-lg text-secondary/60 max-w-2xl">Purchase authenticated premium collectibles instantly, with secure global shipping and direct verification.</p>
-        </div>
-
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-secondary/10 pb-6">
-            <div class="flex space-x-3 overflow-x-auto hide-scrollbar w-full md:w-auto">
-                <button class="px-5 py-2 rounded-full bg-secondary text-primary font-semibold text-sm whitespace-nowrap shadow-md hover:scale-105 transition-transform">All Categories</button>
-                <button class="px-5 py-2 rounded-full bg-surface text-secondary/80 font-semibold text-sm whitespace-nowrap shadow-soft hover:shadow-md hover:text-secondary hover:scale-105 transition-all border border-secondary/5">Watches & Timepieces</button>
-                <button class="px-5 py-2 rounded-full bg-surface text-secondary/80 font-semibold text-sm whitespace-nowrap shadow-soft hover:shadow-md hover:text-secondary hover:scale-105 transition-all border border-secondary/5">Trading Cards</button>
-                <button class="px-5 py-2 rounded-full bg-surface text-secondary/80 font-semibold text-sm whitespace-nowrap shadow-soft hover:shadow-md hover:text-secondary hover:scale-105 transition-all border border-secondary/5">Fine Art</button>
+    <main class="w-full flex-grow relative z-10">
+        
+        <header class="max-w-[1400px] mx-auto px-6 py-12 md:py-20 animate-fade-in">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 border-b border-secondary/5 pb-8">
+                <div>
+                    <div class="inline-flex items-center justify-center space-x-2 text-blue-600 text-[11px] font-bold uppercase tracking-[0.2em] mb-4">
+                        <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+                        Fixed Price & Offers
+                    </div>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter text-secondary leading-tight">Gallery Shop</h1>
+                    <p class="text-secondary/60 mt-4 font-medium text-lg max-w-2xl">Curated, authenticated masterpieces available for immediate acquisition outside of the auction block.</p>
+                </div>
+                
+                <div class="relative w-full md:w-auto shrink-0">
+                    <select class="appearance-none w-full bg-surface border border-secondary/10 rounded-xl px-6 py-3.5 pr-12 text-sm font-bold text-secondary outline-none focus:ring-2 focus:ring-blue-500 shadow-sm cursor-pointer hover:bg-secondary/5 transition-colors">
+                        <option>Sort by: Featured</option>
+                        <option>Sort by: Newest Additions</option>
+                        <option>Sort by: Price (High to Low)</option>
+                        <option>Sort by: Price (Low to High)</option>
+                    </select>
+                    <i data-lucide="chevron-down" class="w-4 h-4 absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-secondary/50"></i>
+                </div>
             </div>
+        </header>
 
-            <div class="relative w-max self-end md:self-auto shrink-0">
-                <select class="appearance-none bg-surface border border-secondary/10 text-secondary text-sm font-semibold rounded-full pl-5 pr-10 py-2 focus:outline-none focus:ring-2 focus:ring-secondary/30 cursor-pointer shadow-sm">
-                    <option>Sort by: Newest Arrivals</option>
-                    <option>Price: High to Low</option>
-                    <option>Price: Low to High</option>
-                </select>
-                <i data-lucide="chevron-down" class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-secondary/50 pointer-events-none"></i>
-            </div>
-        </div>
-    </header>
-
-    <main class="max-w-[1400px] mx-auto px-4 md:px-6 pb-20 w-full flex-grow relative flex gap-8">
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-full">
-            
-            <div class="group/card cursor-pointer flex flex-col">
-                <div class="relative rounded-2xl bg-surface flex flex-col h-full shadow-soft hover:shadow-hover-up dark:shadow-dark-soft dark:hover:shadow-dark-hover-up hover:-translate-y-2 transition-all duration-300 border border-secondary/10">
-                    <div class="h-48 relative overflow-hidden bg-secondary/5 group-hover:bg-secondary/10 transition-colors duration-500 rounded-t-2xl">
-                        <div class="absolute inset-0 bg-gradient-to-tr from-transparent to-secondary/5"></div>
-                        <button class="absolute top-3 right-3 text-secondary/30 hover:text-red-500 hover:scale-110 transition-all z-10"><i data-lucide="heart" class="w-5 h-5"></i></button>
-                        <div class="absolute bottom-3 left-3 bg-blue-500/10 backdrop-blur-sm border border-blue-500/20 text-blue-500 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-widest flex items-center">
-                            Available Now
+        <section class="max-w-[1400px] mx-auto px-6 pb-24 animate-slide-up" style="animation-delay: 0.1s;">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
+                
+                <div class="group flex flex-col bg-surface rounded-[2rem] border border-secondary/5 shadow-soft hover:shadow-hover-up transition-all duration-500 hover:-translate-y-1 overflow-hidden p-5">
+                    <div class="aspect-[4/5] bg-secondary/5 rounded-2xl relative flex items-center justify-center p-6 mb-6">
+                        <img src="https://i.imgur.com/4h3ULRm.jpg" class="max-w-full max-h-full object-contain drop-shadow-xl group-hover:scale-105 transition-transform duration-700">
+                        <button class="absolute top-4 right-4 bg-surface/80 backdrop-blur p-2.5 rounded-full text-secondary/30 hover:text-red-500 shadow-sm z-10 transition-colors"><i data-lucide="heart" class="w-4 h-4"></i></button>
+                        <div class="absolute top-4 left-4 bg-surface/90 backdrop-blur text-secondary text-[9px] font-bold px-3 py-1.5 rounded-lg tracking-widest uppercase border border-secondary/10 shadow-sm">
+                            Buy Now
                         </div>
                     </div>
-                    <div class="p-5 flex-grow flex flex-col">
-                        <div class="text-[10px] text-secondary/60 font-semibold mb-1 uppercase tracking-wider">Trading Cards</div>
-                        <h4 class="text-sm font-bold leading-snug mb-6 line-clamp-2 group-hover/card:text-blue-500 transition-colors">PSA 10 Gem Mint 1999 Pokémon Base Set Charizard</h4>
-                        
-                        <div class="mt-auto border-t border-secondary/10 pt-4">
-                            <div class="text-2xl font-bold text-secondary mb-3">$14,500</div>
-                            <button class="w-full bg-secondary text-primary font-bold py-2.5 rounded-xl hover:bg-secondary/90 transition-colors flex justify-center items-center">
-                                Add to Cart <i data-lucide="shopping-cart" class="w-4 h-4 ml-2"></i>
+                    <div class="flex flex-col flex-grow px-2">
+                        <h3 class="text-base font-bold text-secondary leading-snug mb-2 line-clamp-2">Vintage 1952 Topps Mickey Mantle PSA 9 Mint</h3>
+                        <p class="text-[10px] text-secondary/40 font-bold uppercase tracking-widest mb-4">PSA Authenticated</p>
+                        <div class="mt-auto pt-4 border-t border-secondary/5 flex items-center justify-between">
+                            <div class="text-xl font-black text-secondary">$18,500</div>
+                            <button onclick="addToCart('Vintage 1952 Topps Mickey Mantle PSA 9 Mint', '$18,500', 'https://i.imgur.com/4h3ULRm.jpg')" class="bg-secondary hover:bg-secondary/90 text-primary p-3 rounded-xl transition-transform hover:scale-105 shadow-md group/btn relative">
+                                <i data-lucide="plus" class="w-5 h-5 absolute inset-0 m-auto opacity-0 group-hover/btn:opacity-100 transition-opacity transform group-hover/btn:rotate-90"></i>
+                                <i data-lucide="shopping-cart" class="w-5 h-5 group-hover/btn:opacity-0 transition-opacity"></i>
                             </button>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="group/card cursor-pointer flex flex-col">
-                <div class="relative rounded-2xl bg-surface flex flex-col h-full shadow-soft hover:shadow-hover-up dark:shadow-dark-soft dark:hover:shadow-dark-hover-up hover:-translate-y-2 transition-all duration-300 border border-secondary/10">
-                    <div class="h-48 relative overflow-hidden bg-secondary/5 group-hover:bg-secondary/10 transition-colors duration-500 rounded-t-2xl">
-                        <div class="absolute inset-0 bg-gradient-to-tr from-transparent to-secondary/5"></div>
-                        <button class="absolute top-3 right-3 text-secondary/30 hover:text-red-500 hover:scale-110 transition-all z-10"><i data-lucide="heart" class="w-5 h-5"></i></button>
-                        <div class="absolute bottom-3 left-3 bg-blue-500/10 backdrop-blur-sm border border-blue-500/20 text-blue-500 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-widest flex items-center">
-                            Available Now
+                <div class="group flex flex-col bg-surface rounded-[2rem] border border-secondary/5 shadow-soft hover:shadow-hover-up transition-all duration-500 hover:-translate-y-1 overflow-hidden p-5">
+                    <div class="aspect-[4/5] bg-secondary/5 rounded-2xl relative flex items-center justify-center p-6 mb-6">
+                        <img src="https://i.imgur.com/kDbBjXw.jpg" class="max-w-full max-h-full object-contain drop-shadow-xl group-hover:scale-105 transition-transform duration-700">
+                        <button class="absolute top-4 right-4 bg-surface/80 backdrop-blur p-2.5 rounded-full text-secondary/30 hover:text-red-500 shadow-sm z-10 transition-colors"><i data-lucide="heart" class="w-4 h-4"></i></button>
+                        <div class="absolute top-4 left-4 bg-surface/90 backdrop-blur text-secondary text-[9px] font-bold px-3 py-1.5 rounded-lg tracking-widest uppercase border border-secondary/10 shadow-sm">
+                            Buy Now
                         </div>
                     </div>
-                    <div class="p-5 flex-grow flex flex-col">
-                        <div class="text-[10px] text-secondary/60 font-semibold mb-1 uppercase tracking-wider">Timepieces</div>
-                        <h4 class="text-sm font-bold leading-snug mb-6 line-clamp-2 group-hover/card:text-blue-500 transition-colors">Rolex Daytona 116500LN "Panda" Dial - Full Set</h4>
-                        
-                        <div class="mt-auto border-t border-secondary/10 pt-4">
-                            <div class="text-2xl font-bold text-secondary mb-3">$32,000</div>
-                            <button class="w-full bg-secondary text-primary font-bold py-2.5 rounded-xl hover:bg-secondary/90 transition-colors flex justify-center items-center">
-                                Add to Cart <i data-lucide="shopping-cart" class="w-4 h-4 ml-2"></i>
+                    <div class="flex flex-col flex-grow px-2">
+                        <h3 class="text-base font-bold text-secondary leading-snug mb-2 line-clamp-2">Original 1977 Star Wars Movie Poster Signed</h3>
+                        <p class="text-[10px] text-secondary/40 font-bold uppercase tracking-widest mb-4">JSA Certified</p>
+                        <div class="mt-auto pt-4 border-t border-secondary/5 flex items-center justify-between">
+                            <div class="text-xl font-black text-secondary">$9,200</div>
+                            <button onclick="addToCart('Original 1977 Star Wars Movie Poster Signed', '$9,200', 'https://i.imgur.com/kDbBjXw.jpg')" class="bg-secondary hover:bg-secondary/90 text-primary p-3 rounded-xl transition-transform hover:scale-105 shadow-md group/btn relative">
+                                <i data-lucide="plus" class="w-5 h-5 absolute inset-0 m-auto opacity-0 group-hover/btn:opacity-100 transition-opacity transform group-hover/btn:rotate-90"></i>
+                                <i data-lucide="shopping-cart" class="w-5 h-5 group-hover/btn:opacity-0 transition-opacity"></i>
                             </button>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="group/card cursor-pointer flex flex-col">
-                <div class="relative rounded-2xl bg-surface flex flex-col h-full shadow-soft hover:shadow-hover-up dark:shadow-dark-soft dark:hover:shadow-dark-hover-up hover:-translate-y-2 transition-all duration-300 border border-secondary/10">
-                    <div class="h-48 relative overflow-hidden bg-secondary/5 group-hover:bg-secondary/10 transition-colors duration-500 rounded-t-2xl">
-                        <div class="absolute inset-0 bg-gradient-to-tr from-transparent to-secondary/5"></div>
-                        <button class="absolute top-3 right-3 text-secondary/30 hover:text-red-500 hover:scale-110 transition-all z-10"><i data-lucide="heart" class="w-5 h-5"></i></button>
-                        <div class="absolute bottom-3 left-3 bg-blue-500/10 backdrop-blur-sm border border-blue-500/20 text-blue-500 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-widest flex items-center">
-                            Available Now
+                <div class="group flex flex-col bg-surface rounded-[2rem] border border-secondary/5 shadow-soft hover:shadow-hover-up transition-all duration-500 hover:-translate-y-1 overflow-hidden p-5">
+                    <div class="aspect-[4/5] bg-secondary/5 rounded-2xl relative flex items-center justify-center p-6 mb-6">
+                        <img src="https://i.imgur.com/ymVBFcB.jpg" class="max-w-full max-h-full object-contain drop-shadow-xl group-hover:scale-105 transition-transform duration-700">
+                        <button class="absolute top-4 right-4 bg-surface/80 backdrop-blur p-2.5 rounded-full text-secondary/30 hover:text-red-500 shadow-sm z-10 transition-colors"><i data-lucide="heart" class="w-4 h-4"></i></button>
+                        <div class="absolute top-4 left-4 bg-blue-500/10 backdrop-blur text-blue-600 text-[9px] font-bold px-3 py-1.5 rounded-lg tracking-widest uppercase border border-blue-500/20 shadow-sm">
+                            Make Offer
                         </div>
                     </div>
-                    <div class="p-5 flex-grow flex flex-col">
-                        <div class="text-[10px] text-secondary/60 font-semibold mb-1 uppercase tracking-wider">Fine Art</div>
-                        <h4 class="text-sm font-bold leading-snug mb-6 line-clamp-2 group-hover/card:text-blue-500 transition-colors">Banksy "Girl with Balloon" Unsigned Screenprint</h4>
-                        
-                        <div class="mt-auto border-t border-secondary/10 pt-4">
-                            <div class="text-2xl font-bold text-secondary mb-3">$45,000</div>
-                            <button class="w-full bg-secondary text-primary font-bold py-2.5 rounded-xl hover:bg-secondary/90 transition-colors flex justify-center items-center">
-                                Add to Cart <i data-lucide="shopping-cart" class="w-4 h-4 ml-2"></i>
+                    <div class="flex flex-col flex-grow px-2">
+                        <h3 class="text-base font-bold text-secondary leading-snug mb-2 line-clamp-2">Game Worn Michael Jordan Chicago Bulls Jersey</h3>
+                        <p class="text-[10px] text-secondary/40 font-bold uppercase tracking-widest mb-4">MeiGray Authentication</p>
+                        <div class="mt-auto pt-4 border-t border-secondary/5 flex items-center justify-between">
+                            <div class="text-xl font-black text-secondary">$55,000</div>
+                            <button onclick="addToCart('Game Worn Michael Jordan Chicago Bulls Jersey', '$55,000', 'https://i.imgur.com/ymVBFcB.jpg')" class="bg-surface border border-secondary/20 hover:bg-secondary/5 text-secondary p-3 rounded-xl transition-transform hover:scale-105 shadow-sm group/btn relative">
+                                <i data-lucide="plus" class="w-5 h-5 absolute inset-0 m-auto opacity-0 group-hover/btn:opacity-100 transition-opacity transform group-hover/btn:rotate-90"></i>
+                                <i data-lucide="shopping-cart" class="w-5 h-5 group-hover/btn:opacity-0 transition-opacity"></i>
                             </button>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="group/card cursor-pointer flex flex-col">
-                <div class="relative rounded-2xl bg-surface flex flex-col h-full shadow-soft hover:shadow-hover-up dark:shadow-dark-soft dark:hover:shadow-dark-hover-up hover:-translate-y-2 transition-all duration-300 border border-secondary/10">
-                    <div class="h-48 relative overflow-hidden bg-secondary/5 group-hover:bg-secondary/10 transition-colors duration-500 rounded-t-2xl">
-                        <div class="absolute inset-0 bg-gradient-to-tr from-transparent to-secondary/5"></div>
-                        <button class="absolute top-3 right-3 text-secondary/30 hover:text-red-500 hover:scale-110 transition-all z-10"><i data-lucide="heart" class="w-5 h-5"></i></button>
-                        <div class="absolute bottom-3 left-3 bg-blue-500/10 backdrop-blur-sm border border-blue-500/20 text-blue-500 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-widest flex items-center">
-                            Available Now
+                <div class="group flex flex-col bg-surface rounded-[2rem] border border-secondary/5 shadow-soft hover:shadow-hover-up transition-all duration-500 hover:-translate-y-1 overflow-hidden p-5">
+                    <div class="aspect-[4/5] bg-secondary/5 rounded-2xl relative flex items-center justify-center p-6 mb-6">
+                        <img src="https://i.imgur.com/LFLhLUQ.jpg" class="max-w-full max-h-full object-contain drop-shadow-xl group-hover:scale-105 transition-transform duration-700">
+                        <button class="absolute top-4 right-4 bg-surface/80 backdrop-blur p-2.5 rounded-full text-secondary/30 hover:text-red-500 shadow-sm z-10 transition-colors"><i data-lucide="heart" class="w-4 h-4"></i></button>
+                        <div class="absolute top-4 left-4 bg-surface/90 backdrop-blur text-secondary text-[9px] font-bold px-3 py-1.5 rounded-lg tracking-widest uppercase border border-secondary/10 shadow-sm">
+                            Buy Now
                         </div>
                     </div>
-                    <div class="p-5 flex-grow flex flex-col">
-                        <div class="text-[10px] text-secondary/60 font-semibold mb-1 uppercase tracking-wider">Memorabilia</div>
-                        <h4 class="text-sm font-bold leading-snug mb-6 line-clamp-2 group-hover/card:text-blue-500 transition-colors">Kobe Bryant Signed Official NBA Spalding Basketball (UDA)</h4>
-                        
-                        <div class="mt-auto border-t border-secondary/10 pt-4">
-                            <div class="text-2xl font-bold text-secondary mb-3">$5,200</div>
-                            <button class="w-full bg-secondary text-primary font-bold py-2.5 rounded-xl hover:bg-secondary/90 transition-colors flex justify-center items-center">
-                                Add to Cart <i data-lucide="shopping-cart" class="w-4 h-4 ml-2"></i>
+                    <div class="flex flex-col flex-grow px-2">
+                        <h3 class="text-base font-bold text-secondary leading-snug mb-2 line-clamp-2">Action Comics #1 CGC 8.0 - First App. Superman</h3>
+                        <p class="text-[10px] text-secondary/40 font-bold uppercase tracking-widest mb-4">CGC Graded</p>
+                        <div class="mt-auto pt-4 border-t border-secondary/5 flex items-center justify-between">
+                            <div class="text-xl font-black text-secondary">$150,500</div>
+                            <button onclick="addToCart('Action Comics #1 CGC 8.0', '$150,500', 'https://i.imgur.com/LFLhLUQ.jpg')" class="bg-secondary hover:bg-secondary/90 text-primary p-3 rounded-xl transition-transform hover:scale-105 shadow-md group/btn relative">
+                                <i data-lucide="plus" class="w-5 h-5 absolute inset-0 m-auto opacity-0 group-hover/btn:opacity-100 transition-opacity transform group-hover/btn:rotate-90"></i>
+                                <i data-lucide="shopping-cart" class="w-5 h-5 group-hover/btn:opacity-0 transition-opacity"></i>
                             </button>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="group/card cursor-pointer flex flex-col">
-                <div class="relative rounded-2xl bg-surface flex flex-col h-full shadow-soft hover:shadow-hover-up dark:shadow-dark-soft dark:hover:shadow-dark-hover-up hover:-translate-y-2 transition-all duration-300 border border-secondary/10">
-                    <div class="h-48 relative overflow-hidden bg-secondary/5 group-hover:bg-secondary/10 transition-colors duration-500 rounded-t-2xl">
-                        <div class="absolute inset-0 bg-gradient-to-tr from-transparent to-secondary/5"></div>
-                        <button class="absolute top-3 right-3 text-secondary/30 hover:text-red-500 hover:scale-110 transition-all z-10"><i data-lucide="heart" class="w-5 h-5"></i></button>
-                        <div class="absolute bottom-3 left-3 bg-blue-500/10 backdrop-blur-sm border border-blue-500/20 text-blue-500 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-widest flex items-center">
-                            Available Now
-                        </div>
-                    </div>
-                    <div class="p-5 flex-grow flex flex-col">
-                        <div class="text-[10px] text-secondary/60 font-semibold mb-1 uppercase tracking-wider">Trading Cards</div>
-                        <h4 class="text-sm font-bold leading-snug mb-6 line-clamp-2 group-hover/card:text-blue-500 transition-colors">2003 Topps Chrome LeBron James Rookie PSA 9</h4>
-                        
-                        <div class="mt-auto border-t border-secondary/10 pt-4">
-                            <div class="text-2xl font-bold text-secondary mb-3">$9,800</div>
-                            <button class="w-full bg-secondary text-primary font-bold py-2.5 rounded-xl hover:bg-secondary/90 transition-colors flex justify-center items-center">
-                                Add to Cart <i data-lucide="shopping-cart" class="w-4 h-4 ml-2"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
             </div>
-            
-            <div class="group/card cursor-pointer flex flex-col">
-                <div class="relative rounded-2xl bg-surface flex flex-col h-full shadow-soft hover:shadow-hover-up dark:shadow-dark-soft dark:hover:shadow-dark-hover-up hover:-translate-y-2 transition-all duration-300 border border-secondary/10">
-                    <div class="h-48 relative overflow-hidden bg-secondary/5 group-hover:bg-secondary/10 transition-colors duration-500 rounded-t-2xl">
-                        <div class="absolute inset-0 bg-gradient-to-tr from-transparent to-secondary/5"></div>
-                        <button class="absolute top-3 right-3 text-secondary/30 hover:text-red-500 hover:scale-110 transition-all z-10"><i data-lucide="heart" class="w-5 h-5"></i></button>
-                        <div class="absolute bottom-3 left-3 bg-blue-500/10 backdrop-blur-sm border border-blue-500/20 text-blue-500 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-widest flex items-center">
-                            Available Now
-                        </div>
-                    </div>
-                    <div class="p-5 flex-grow flex flex-col">
-                        <div class="text-[10px] text-secondary/60 font-semibold mb-1 uppercase tracking-wider">Timepieces</div>
-                        <h4 class="text-sm font-bold leading-snug mb-6 line-clamp-2 group-hover/card:text-blue-500 transition-colors">Patek Philippe Nautilus 5711/1A Blue Dial</h4>
-                        
-                        <div class="mt-auto border-t border-secondary/10 pt-4">
-                            <div class="text-2xl font-bold text-secondary mb-3">$115,000</div>
-                            <button class="w-full bg-secondary text-primary font-bold py-2.5 rounded-xl hover:bg-secondary/90 transition-colors flex justify-center items-center">
-                                Add to Cart <i data-lucide="shopping-cart" class="w-4 h-4 ml-2"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
+        </section>
     </main>
 
-    <div class="fixed bottom-0 left-0 w-full bg-surface border-t border-secondary/10 shadow-[0_-4px_20px_-2px_rgba(0,0,0,0.1)] dark:shadow-dark-soft z-40 p-4 lg:hidden transition-colors duration-300">
-        <div class="flex justify-between items-center max-w-[1400px] mx-auto">
-            <div class="flex items-center text-secondary">
-                <div class="relative mr-3">
-                    <i data-lucide="shopping-cart" class="w-6 h-6"></i>
-                    <span class="absolute -top-1.5 -right-1.5 bg-blue-500 text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center">1</span>
-                </div>
-                <div>
-                    <div class="text-[10px] font-bold uppercase tracking-widest text-secondary/50">Subtotal</div>
-                    <div class="text-sm font-bold">$14,500</div>
-                </div>
+    <div id="cart-overlay" onclick="toggleCart()" class="fixed inset-0 bg-secondary/40 backdrop-blur-sm z-[90] opacity-0 pointer-events-none transition-opacity duration-300"></div>
+    <div id="cart-sidebar" class="fixed top-0 right-0 w-full max-w-md h-full bg-surface shadow-2xl z-[100] transform translate-x-full transition-transform duration-300 flex flex-col border-l border-secondary/10">
+        <div class="p-6 border-b border-secondary/10 flex justify-between items-center bg-surface">
+            <h2 class="text-xl font-black text-secondary tracking-tight flex items-center">
+                <i data-lucide="shopping-bag" class="w-5 h-5 mr-3"></i> Your Bag
+            </h2>
+            <button onclick="toggleCart()" class="p-2 rounded-full hover:bg-secondary/10 text-secondary transition-colors">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+        </div>
+
+        <div id="cart-items-container" class="flex-grow overflow-y-auto p-6 space-y-4">
+            <div id="cart-empty-state" class="h-full flex flex-col items-center justify-center text-center opacity-50">
+                <i data-lucide="shopping-cart" class="w-12 h-12 mb-4 text-secondary/40"></i>
+                <p class="text-sm font-bold uppercase tracking-widest text-secondary/60">Your bag is empty.</p>
             </div>
-            <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-2 rounded-xl transition-colors shadow-glow-blue">
-                Checkout
+            </div>
+
+        <div class="p-6 border-t border-secondary/10 bg-secondary/5">
+            <div class="flex justify-between items-center mb-6">
+                <span class="text-xs font-bold uppercase tracking-widest text-secondary/60">Subtotal</span>
+                <span id="cart-subtotal" class="text-xl font-black text-secondary">$0</span>
+            </div>
+            <button class="w-full bg-blue-600 text-white font-bold py-4 rounded-xl shadow-glow-blue hover:bg-blue-700 transition-all flex justify-center items-center group">
+                Checkout Securely <i data-lucide="arrow-right" class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"></i>
             </button>
         </div>
     </div>
 
-    <footer class="bg-secondary text-primary pt-12 md:pt-16 pb-8 transition-colors duration-300 mt-auto border-t border-secondary/10">
+    <footer class="bg-secondary text-primary pt-16 pb-8 mt-auto relative z-10 border-t border-secondary/10">
         <div class="max-w-[1400px] mx-auto px-6">
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-8 mb-12 md:mb-16 text-sm">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 mb-16 text-sm">
                 <div>
-                    <h4 class="font-bold mb-4 md:mb-6 text-primary text-base">Features</h4>
-                    <ul class="space-y-2 md:space-y-3 text-primary/70 font-medium">
-                        <li><a href="../UpcomingAuctions/" class="hover:text-primary transition-colors">Bid</a></li>
+                    <h4 class="font-bold mb-6 text-primary text-base">Features</h4>
+                    <ul class="space-y-3 text-primary/70 font-medium">
+                        <li><a href="../UpcomingAuctions/" class="hover:text-primary transition-colors">Buy</a></li>
                         <li><a href="../Consign/" class="hover:text-primary transition-colors">Sell</a></li>
                         <li><a href="../Signup/" class="hover:text-primary transition-colors">Sign Up</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-bold mb-4 md:mb-6 text-primary text-base">Legal</h4>
-                    <ul class="space-y-2 md:space-y-3 text-primary/70 font-medium">
+                    <h4 class="font-bold mb-6 text-primary text-base">Legal</h4>
+                    <ul class="space-y-3 text-primary/70 font-medium">
                         <li><a href="../PrivacyPolicy/" class="hover:text-primary transition-colors">Privacy Policy</a></li>
                         <li><a href="../TermsOfService/" class="hover:text-primary transition-colors">Terms of Service</a></li>
                         <li><a href="../SellerAgreement/" class="hover:text-primary transition-colors">Fabyle Seller Agreement</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-bold mb-4 md:mb-6 text-primary text-base">Company</h4>
-                    <ul class="space-y-2 md:space-y-3 text-primary/70 font-medium">
+                    <h4 class="font-bold mb-6 text-primary text-base">Company</h4>
+                    <ul class="space-y-3 text-primary/70 font-medium">
+                        <li><a href="#" class="hover:text-primary transition-colors">Meet Our Experts</a></li>
                         <li><a href="../Contact/" class="hover:text-primary transition-colors">Contact Us</a></li>
                         <li><a href="../FAQ/" class="hover:text-primary transition-colors">FAQ</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-bold mb-4 md:mb-6 text-primary text-base">Follow Us</h4>
-                    <div class="flex space-x-4 mb-6 md:mb-8">
+                    <h4 class="font-bold mb-6 text-primary text-base">Follow Us</h4>
+                    <div class="flex space-x-4 mb-8">
                         <a href="https://x.com/FabyleNYC" target="_blank" aria-label="X (Twitter)" class="text-primary/70 hover:text-primary p-2 bg-primary/10 rounded-full hover:bg-primary/20 transition-colors flex items-center justify-center w-10 h-10">
                             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
@@ -361,33 +345,113 @@
                             </svg>
                         </a>
                     </div>
-                    <div class="font-bold text-2xl md:text-3xl tracking-tight text-primary opacity-90">Fabyle</div>
+                    <div class="font-black text-3xl tracking-tighter text-primary">Fabyle<span class="text-blue-500">.</span></div>
                 </div>
             </div>
-            <div class="pt-6 md:pt-8 border-t border-primary/20 flex flex-col justify-between items-center text-xs text-primary/60 text-center md:text-left">
+            <div class="pt-8 border-t border-primary/10 flex flex-col justify-between items-center text-xs text-primary/50 text-center md:text-left font-medium">
                 <p>© 2026 Fabyle. All rights reserved.</p>
             </div>
         </div>
     </footer>
-    
+
     <script>
         lucide.createIcons();
-        document.addEventListener('DOMContentLoaded', () => {
-            const themeToggleBtn = document.getElementById('theme-toggle');
+
+        // Theme Toggle
+        document.getElementById('theme-toggle').addEventListener('click', () => {
             const htmlElement = document.documentElement;
-            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-            const mobileMenu = document.getElementById('mobile-menu');
-
-            themeToggleBtn.addEventListener('click', () => {
-                htmlElement.classList.toggle('dark');
-                localStorage.setItem('theme', htmlElement.classList.contains('dark') ? 'dark' : 'light');
-            });
-
-            mobileMenuBtn.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-                mobileMenu.classList.toggle('flex');
-            });
+            htmlElement.classList.toggle('dark');
+            localStorage.setItem('theme', htmlElement.classList.contains('dark') ? 'dark' : 'light');
         });
+
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+        });
+
+        // Interactive Slide-Out Cart Logic
+        const cartSidebar = document.getElementById('cart-sidebar');
+        const cartOverlay = document.getElementById('cart-overlay');
+        const cartBadge = document.getElementById('cart-badge');
+        const cartItemsContainer = document.getElementById('cart-items-container');
+        const cartEmptyState = document.getElementById('cart-empty-state');
+        const subtotalDisplay = document.getElementById('cart-subtotal');
+        
+        let cartTotal = 0;
+        let cartItemCount = 0;
+
+        function toggleCart() {
+            const isClosed = cartSidebar.classList.contains('translate-x-full');
+            if(isClosed) {
+                cartSidebar.classList.remove('translate-x-full');
+                cartOverlay.classList.remove('opacity-0', 'pointer-events-none');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            } else {
+                cartSidebar.classList.add('translate-x-full');
+                cartOverlay.classList.add('opacity-0', 'pointer-events-none');
+                document.body.style.overflow = '';
+            }
+        }
+
+        function addToCart(title, priceStr, imgSrc) {
+            // Hide empty state
+            cartEmptyState.classList.add('hidden');
+            
+            // Show badge
+            cartBadge.classList.remove('hidden');
+
+            // Parse price
+            const numericPrice = parseInt(priceStr.replace(/[^0-9.-]+/g,""));
+            cartTotal += numericPrice;
+            cartItemCount++;
+
+            // Create cart item HTML
+            const itemId = 'cart-item-' + Date.now();
+            const itemHTML = `
+                <div id="${itemId}" class="flex gap-4 p-4 bg-primary rounded-2xl border border-secondary/5 shadow-sm animate-fade-in">
+                    <div class="w-20 h-20 bg-surface rounded-xl p-2 flex shrink-0 items-center justify-center border border-secondary/5">
+                        <img src="${imgSrc}" class="max-w-full max-h-full object-contain">
+                    </div>
+                    <div class="flex flex-col justify-center flex-grow">
+                        <h4 class="text-sm font-bold text-secondary line-clamp-2 leading-snug mb-1">${title}</h4>
+                        <div class="text-blue-600 font-black">${priceStr}</div>
+                    </div>
+                    <button onclick="removeFromCart('${itemId}', ${numericPrice})" class="text-secondary/40 hover:text-red-500 transition-colors self-start p-1">
+                        <i data-lucide="trash-2" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            `;
+            
+            // Append item and update total
+            cartItemsContainer.insertAdjacentHTML('beforeend', itemHTML);
+            subtotalDisplay.innerText = '$' + cartTotal.toLocaleString();
+            
+            // Re-initialize lucide icons for the new trash can
+            lucide.createIcons();
+
+            // Auto-open cart to show user what happened
+            if(cartSidebar.classList.contains('translate-x-full')) {
+                toggleCart();
+            }
+        }
+
+        function removeFromCart(itemId, numericPrice) {
+            const item = document.getElementById(itemId);
+            if(item) {
+                item.remove();
+                cartTotal -= numericPrice;
+                cartItemCount--;
+                subtotalDisplay.innerText = '$' + cartTotal.toLocaleString();
+
+                if(cartItemCount === 0) {
+                    cartEmptyState.classList.remove('hidden');
+                    cartBadge.classList.add('hidden');
+                }
+            }
+        }
     </script>
 </body>
 </html>
