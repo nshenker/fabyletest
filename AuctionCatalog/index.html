@@ -196,7 +196,7 @@
                                 <button onclick="openAbsenteeModal('Game Worn Michael Jordan Chicago Bulls Jersey', 32000, 1)" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-2.5 rounded-xl text-xs font-bold transition-all shadow-glow-blue flex items-center justify-center">
                                     Absentee Bid
                                 </button>
-                                <button onclick="openDetailsModal()" class="flex-1 bg-secondary/5 hover:bg-secondary/10 border border-secondary/10 text-secondary py-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center">
+                                <button onclick="openDetailsModal('Game Worn Michael Jordan Chicago Bulls Jersey', 'https://i.imgur.com/ymVBFcB.jpg', 1, '$45,000 - $60,000', 32000)" class="flex-1 bg-secondary/5 hover:bg-secondary/10 border border-secondary/10 text-secondary py-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center">
                                     View Details
                                 </button>
                             </div>
@@ -224,7 +224,7 @@
                                 <button onclick="openAbsenteeModal('Original 1977 Star Wars Movie Poster Signed', 5500, 2)" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-2.5 rounded-xl text-xs font-bold transition-all shadow-glow-blue flex items-center justify-center">
                                     Absentee Bid
                                 </button>
-                                <button onclick="openDetailsModal()" class="flex-1 bg-secondary/5 hover:bg-secondary/10 border border-secondary/10 text-secondary py-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center">
+                                <button onclick="openDetailsModal('Original 1977 Star Wars Movie Poster Signed', 'https://i.imgur.com/kDbBjXw.jpg', 2, '$8,000 - $12,000', 5500)" class="flex-1 bg-secondary/5 hover:bg-secondary/10 border border-secondary/10 text-secondary py-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center">
                                     View Details
                                 </button>
                             </div>
@@ -252,7 +252,7 @@
                                 <button onclick="openAbsenteeModal('Vintage 1952 Topps Mickey Mantle PSA 9 Mint', 14000, 3)" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-2.5 rounded-xl text-xs font-bold transition-all shadow-glow-blue flex items-center justify-center">
                                     Absentee Bid
                                 </button>
-                                <button onclick="openDetailsModal()" class="flex-1 bg-secondary/5 hover:bg-secondary/10 border border-secondary/10 text-secondary py-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center">
+                                <button onclick="openDetailsModal('Vintage 1952 Topps Mickey Mantle PSA 9 Mint', 'https://i.imgur.com/4h3ULRm.jpg', 3, '$15,000 - $20,000', 14000)" class="flex-1 bg-secondary/5 hover:bg-secondary/10 border border-secondary/10 text-secondary py-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center">
                                     View Details
                                 </button>
                             </div>
@@ -280,7 +280,7 @@
                                 <button onclick="openAbsenteeModal('Action Comics #1 CGC 8.0 - First App. Superman', 85000, 4)" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-2.5 rounded-xl text-xs font-bold transition-all shadow-glow-blue flex items-center justify-center">
                                     Absentee Bid
                                 </button>
-                                <button onclick="openDetailsModal()" class="flex-1 bg-secondary/5 hover:bg-secondary/10 border border-secondary/10 text-secondary py-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center">
+                                <button onclick="openDetailsModal('Action Comics #1 CGC 8.0 - First App. Superman', 'https://i.imgur.com/LFLhLUQ.jpg', 4, '$120,000 - $150,000', 85000)" class="flex-1 bg-secondary/5 hover:bg-secondary/10 border border-secondary/10 text-secondary py-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center">
                                     View Details
                                 </button>
                             </div>
@@ -296,39 +296,68 @@
     <div id="details-modal" class="fixed inset-0 z-[200] flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300 p-4 sm:p-6">
         <div class="absolute inset-0 bg-secondary/80 backdrop-blur-sm" onclick="closeDetailsModal()"></div>
         
-        <div class="bg-primary w-full max-w-4xl h-auto max-h-[90vh] rounded-[2rem] shadow-modal dark:shadow-dark-modal relative flex flex-col transform scale-95 transition-transform duration-300 border border-secondary/10" id="details-modal-content">
+        <div class="bg-primary w-full max-w-5xl h-auto max-h-[95vh] rounded-[2rem] shadow-modal dark:shadow-dark-modal relative flex flex-col md:flex-row transform scale-95 transition-transform duration-300 border border-secondary/10 overflow-hidden" id="details-modal-content">
             
-            <button onclick="closeDetailsModal()" class="absolute top-4 right-4 z-20 bg-surface/90 backdrop-blur-md text-secondary p-2.5 rounded-full shadow-sm hover:bg-secondary/10 transition-all border border-secondary/10">
-                <i data-lucide="x" class="w-5 h-5"></i>
+            <button onclick="closeDetailsModal()" class="absolute top-4 right-4 z-30 bg-surface/90 backdrop-blur-md text-secondary p-2.5 rounded-full shadow-md hover:bg-surface hover:scale-110 transition-all border border-secondary/10 group">
+                <i data-lucide="x" class="w-5 h-5 group-hover:rotate-90 transition-transform duration-300"></i>
             </button>
 
-            <div class="p-6 md:p-10 overflow-y-auto flex-grow hide-scrollbar">
-                <h2 class="text-3xl font-black text-secondary mb-4 tracking-tight">Lot Information</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                    <div class="bg-surface rounded-2xl p-6 border border-secondary/10 shadow-sm">
-                        <h4 class="text-xs font-bold uppercase tracking-widest text-secondary/50 mb-2">Description</h4>
-                        <p class="text-sm font-medium text-secondary/80 leading-relaxed">This is a highly sought-after collectible. Originally discovered in a pristine collection, it has remained vaulted for over three decades. A true museum-quality centerpiece for any serious portfolio.</p>
+            <div class="w-full md:w-5/12 bg-surface border-r border-secondary/5 p-8 flex flex-col items-center justify-center relative shrink-0">
+                <div class="w-full aspect-[4/5] bg-secondary/5 rounded-3xl p-6 flex items-center justify-center relative">
+                    <img id="details-modal-img" src="" alt="Lot View" class="max-w-full max-h-full object-contain drop-shadow-2xl">
+                </div>
+            </div>
+
+            <div class="w-full md:w-7/12 p-8 md:p-12 overflow-y-auto hide-scrollbar flex flex-col">
+                
+                <div class="mb-6">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-[10px] font-black tracking-widest uppercase text-blue-600 bg-blue-500/10 px-3 py-1 rounded-md" id="details-modal-lot">Lot #</span>
+                        <span class="text-[10px] font-bold tracking-widest uppercase text-secondary/50" id="details-modal-est">Est: $0 - $0</span>
                     </div>
-                    <div class="space-y-4">
-                        <div class="bg-surface rounded-xl p-4 border border-secondary/10 shadow-sm flex justify-between items-center">
-                            <span class="text-xs font-bold uppercase tracking-widest text-secondary/50">Dimensions</span>
-                            <span class="text-sm font-bold text-secondary">2.6" x 3.7"</span>
+                    <h2 class="text-2xl md:text-3xl font-black text-secondary leading-tight tracking-tight mb-6" id="details-modal-title">Item Title</h2>
+                    
+                    <div class="flex items-center justify-between p-5 bg-secondary/5 border border-secondary/10 rounded-2xl mb-8">
+                        <div>
+                            <span class="block text-[10px] font-bold text-secondary/50 uppercase tracking-widest mb-1">Current Bid</span>
+                            <span class="text-2xl font-black text-secondary" id="details-modal-current-bid">$0</span>
                         </div>
-                        <div class="bg-surface rounded-xl p-4 border border-secondary/10 shadow-sm flex justify-between items-center">
-                            <span class="text-xs font-bold uppercase tracking-widest text-secondary/50">Weight</span>
-                            <span class="text-sm font-bold text-secondary">0.5 lbs</span>
-                        </div>
-                        <div class="bg-surface rounded-xl p-4 border border-secondary/10 shadow-sm flex justify-between items-center">
-                            <span class="text-xs font-bold uppercase tracking-widest text-secondary/50">Condition</span>
-                            <span class="text-sm font-bold text-secondary">Mint</span>
-                        </div>
+                        <button id="details-modal-bid-btn" onclick="" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl transition-all shadow-glow-blue flex items-center">
+                            Place Absentee Bid <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                        </button>
                     </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4 mb-8">
+                    <div class="bg-surface rounded-xl p-4 border border-secondary/10 shadow-sm flex flex-col">
+                        <span class="text-[9px] font-bold uppercase tracking-widest text-secondary/40 mb-1">Dimensions</span>
+                        <span class="text-sm font-bold text-secondary">2.6" x 3.7"</span>
+                    </div>
+                    <div class="bg-surface rounded-xl p-4 border border-secondary/10 shadow-sm flex flex-col">
+                        <span class="text-[9px] font-bold uppercase tracking-widest text-secondary/40 mb-1">Weight</span>
+                        <span class="text-sm font-bold text-secondary">0.5 lbs</span>
+                    </div>
+                    <div class="bg-surface rounded-xl p-4 border border-secondary/10 shadow-sm flex flex-col">
+                        <span class="text-[9px] font-bold uppercase tracking-widest text-secondary/40 mb-1">Condition</span>
+                        <span class="text-sm font-bold text-secondary">Mint / Premium</span>
+                    </div>
+                    <div class="bg-surface rounded-xl p-4 border border-secondary/10 shadow-sm flex flex-col">
+                        <span class="text-[9px] font-bold uppercase tracking-widest text-secondary/40 mb-1">Authentication</span>
+                        <span class="text-sm font-bold text-secondary">Certified Authentic</span>
+                    </div>
+                </div>
+
+                <div class="mt-auto">
+                    <h3 class="text-[10px] font-bold uppercase tracking-widest text-secondary/60 mb-2">Description</h3>
+                    <p class="text-sm font-medium text-secondary/80 leading-relaxed">
+                        This is a highly sought-after collectible. Originally discovered in a pristine collection, it has remained vaulted for over three decades. Featuring flawless registration and sharp corners, it represents a true museum-quality centerpiece for any serious portfolio. Included is full third-party authentication and a secure chain of provenance.
+                    </p>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="absentee-modal" class="fixed inset-0 z-[200] flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300 p-4 sm:p-6">
+    <div id="absentee-modal" class="fixed inset-0 z-[300] flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300 p-4 sm:p-6">
         <div class="absolute inset-0 bg-secondary/80 backdrop-blur-sm" onclick="closeAbsenteeModal()"></div>
         
         <div class="bg-primary w-full max-w-lg h-auto rounded-[2rem] shadow-modal dark:shadow-dark-modal relative flex flex-col transform scale-95 transition-transform duration-300 border border-secondary/10" id="absentee-modal-content">
@@ -457,7 +486,17 @@
         const detailsModal = document.getElementById('details-modal');
         const detailsModalContent = document.getElementById('details-modal-content');
         
-        function openDetailsModal() {
+        function openDetailsModal(title, imgSrc, lotNumber, estimate, currentBid) {
+            // Populate Modal Content
+            document.getElementById('details-modal-title').innerText = title;
+            document.getElementById('details-modal-img').src = imgSrc;
+            document.getElementById('details-modal-lot').innerText = 'Lot ' + lotNumber;
+            document.getElementById('details-modal-est').innerText = 'Est: ' + estimate;
+            document.getElementById('details-modal-current-bid').innerText = '$' + currentBid.toLocaleString();
+            
+            // Link the Absentee button inside the details modal to open the absentee modal with this item's info
+            document.getElementById('details-modal-bid-btn').setAttribute('onclick', `openAbsenteeModal('${title.replace(/'/g, "\\'")}', ${currentBid}, ${lotNumber})`);
+
             detailsModal.classList.remove('opacity-0', 'pointer-events-none');
             detailsModalContent.classList.remove('scale-95');
             document.body.style.overflow = 'hidden'; 
@@ -474,6 +513,12 @@
         const absenteeModalContent = document.getElementById('absentee-modal-content');
         
         function openAbsenteeModal(title, currentBid, lotNumber) {
+            // Close details modal if it's open, so they don't overlap awkwardly
+            if (!detailsModal.classList.contains('opacity-0')) {
+                detailsModal.classList.add('opacity-0', 'pointer-events-none');
+                detailsModalContent.classList.add('scale-95');
+            }
+
             document.getElementById('modal-lot-title').innerText = title;
             document.getElementById('modal-lot-number').innerText = 'Lot ' + lotNumber;
             document.getElementById('modal-current-bid').innerText = '$' + currentBid.toLocaleString();
