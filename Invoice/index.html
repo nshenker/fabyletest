@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invoice #FA-8891 | Fabyle</title>
+    <title>Invoice #INV-2026042 | Fabyle</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     
@@ -18,10 +18,22 @@
                         surface: 'rgb(var(--color-surface) / <alpha-value>)'
                     },
                     boxShadow: {
-                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
-                        'hover-up': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
-                        'dark-soft': '0 4px 20px -2px rgba(0, 0, 0, 0.4)',
-                        'dark-hover-up': '0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5)',
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.05)',
+                        'glow-blue': '0 0 20px rgba(59, 130, 246, 0.4)'
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s ease-out forwards',
+                        'slide-up': 'slideUp 0.6s ease-out forwards'
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        }
                     }
                 }
             }
@@ -38,35 +50,68 @@
     
     <style>
         :root {
-            --color-primary: 242 240 239; 
-            --color-secondary: 10 25 47;  
+            --color-primary: 250 250 250; 
+            --color-secondary: 15 23 42;  
             --color-surface: 255 255 255; 
         }
         .dark {
-            --color-primary: 10 25 47;    
-            --color-secondary: 242 240 239; 
-            --color-surface: 16 38 72;    
+            --color-primary: 15 23 42;    
+            --color-secondary: 250 250 250; 
+            --color-surface: 30 41 59;    
         }
-        .hide-scrollbar::-webkit-scrollbar { display: none; }
-        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         
+        .bg-pattern {
+            background-image: radial-gradient(rgb(var(--color-secondary) / 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        /* --- PRINT OPTIMIZATION STYLES --- */
         @media print {
-            body { background: white !important; color: black !important; }
-            nav, footer, .no-print { display: none !important; }
-            main { padding: 0 !important; margin: 0 !important; width: 100% !important; max-width: 100% !important; }
-            .print-shadow-none { box-shadow: none !important; border: 1px solid #ddd !important; }
+            body {
+                background: white !important;
+                color: black !important;
+            }
+            .no-print, nav, footer, .ambient-glow {
+                display: none !important;
+            }
+            .print-container {
+                box-shadow: none !important;
+                border: 1px solid #e5e7eb !important;
+                margin: 0 !important;
+                padding: 40px !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                border-radius: 0 !important;
+            }
+            .print-bg-gray {
+                background-color: #f3f4f6 !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            .print-text-black {
+                color: #000 !important;
+            }
+            .print-border {
+                border-color: #e5e7eb !important;
+            }
+            /* Ensure images print clearly */
+            img {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
         }
     </style>
 </head>
-<body class="min-h-screen bg-primary font-sans text-secondary overflow-x-hidden transition-colors duration-300 flex flex-col">
+<body class="min-h-screen bg-primary bg-pattern font-sans text-secondary overflow-x-hidden transition-colors duration-300 flex flex-col relative">
 
-    <nav class="sticky top-0 z-50 flex items-center justify-between px-6 py-4 bg-primary/80 backdrop-blur-2xl transition-colors duration-300 shadow-sm relative border-b border-secondary/5">
+    <div class="ambient-glow fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <div class="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[100px]"></div>
+        <div class="absolute bottom-[-10%] right-[-5%] w-[600px] h-[600px] bg-purple-500/10 rounded-full blur-[120px]"></div>
+    </div>
+
+    <nav class="sticky top-0 z-50 flex items-center justify-between px-6 py-4 bg-primary/80 backdrop-blur-2xl transition-colors duration-300 shadow-sm relative border-b border-secondary/5 no-print">
         <div class="flex items-center space-x-8">
             <a href="../" class="font-black text-3xl tracking-tighter text-secondary cursor-pointer">Fabyle<span class="text-blue-600">.</span></a>
-            <div class="hidden lg:flex relative w-[350px] xl:w-[450px]">
-                <i data-lucide="search" class="absolute left-4 top-2.5 h-4 w-4 text-secondary/50"></i>
-                <input type="text" placeholder="Search lots, artists, and events..." class="w-full bg-surface hover:bg-secondary/5 transition-colors rounded-full py-2 pl-11 pr-4 text-sm outline-none focus:ring-2 focus:ring-blue-500 border border-secondary/10 placeholder-secondary/40 text-secondary shadow-inner" />
-            </div>
         </div>
 
         <div class="flex items-center space-x-4 lg:space-x-8">
@@ -95,16 +140,12 @@
                         <circle cx="19" cy="21" r="1.5"></circle>
                         <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
                     </svg>
-                    <span class="absolute top-0 right-0 w-2.5 h-2.5 bg-blue-500 rounded-full border-2 border-surface"></span>
                 </button>
                 
-                <a href="../Login/" class="hidden lg:flex items-center text-secondary hover:text-blue-600 transition-colors ml-2 font-bold">
-                    Log In
+                <a href="../Profile/" class="hidden lg:flex items-center text-secondary hover:text-blue-600 transition-colors ml-2 font-bold">
+                    My Account
                 </a>
 
-                <a href="../Signup/" class="hidden lg:block bg-blue-600 text-white px-6 py-2.5 rounded-full hover:bg-blue-700 transition-transform hover:scale-105 shadow-glow-blue ml-2">
-                    Sign Up
-                </a>
                 <button id="mobile-menu-btn" class="lg:hidden p-2.5 bg-surface border border-secondary/10 rounded-full hover:bg-secondary/5 text-secondary transition-colors">
                     <i data-lucide="menu" class="w-5 h-5"></i>
                 </button>
@@ -113,232 +154,230 @@
 
         <div id="mobile-menu" class="absolute top-full left-0 w-full bg-surface shadow-2xl hidden lg:hidden flex-col border-t border-secondary/10 z-40 transition-all duration-300">
             <div class="p-6 space-y-6">
-                <div class="relative w-full">
-                    <i data-lucide="search" class="absolute left-4 top-3 h-4 w-4 text-secondary/50"></i>
-                    <input type="text" placeholder="Search..." class="w-full bg-primary border border-secondary/10 transition-colors rounded-xl py-3 pl-11 pr-4 text-sm outline-none focus:ring-2 focus:ring-blue-500 text-secondary" />
-                </div>
                 <div class="flex flex-col space-y-4 text-base font-bold text-secondary/80">
                     <a href="../UpcomingAuctions/" class="hover:text-blue-600 transition-colors">Upcoming Auctions</a>
                     <a href="../Results/" class="hover:text-blue-600 transition-colors">Auction Results</a>
                     <a href="../Shop/" class="hover:text-blue-600 transition-colors">Shop Gallery</a>
                     <a href="../Consign/" class="hover:text-blue-600 transition-colors">Consign with Us</a>
                     <hr class="border-secondary/10 my-2">
-                    <div class="flex gap-4">
-                        <a href="../Login/" class="flex-1 bg-secondary/5 border border-secondary/10 text-secondary py-3 rounded-xl text-center hover:bg-secondary/10 transition-colors">Log In</a>
-                        <a href="../Signup/" class="flex-1 bg-blue-600 text-white py-3 rounded-xl text-center hover:bg-blue-700 transition-colors shadow-glow-blue">Sign Up</a>
-                    </div>
+                    <a href="../Profile/" class="hover:text-blue-600 transition-colors">My Account</a>
                 </div>
             </div>
         </div>
     </nav>
-    
-    <main class="max-w-[1000px] mx-auto px-4 md:px-6 py-8 md:py-12 w-full flex-grow flex flex-col gap-6">
+
+    <main class="w-full flex-grow relative z-10 py-10 px-4 flex justify-center">
         
-        <div class="flex flex-col sm:flex-row justify-between items-center gap-4 no-print mb-2">
-            <a href="/Orders" class="flex items-center text-sm font-bold text-secondary/60 hover:text-blue-500 transition-colors">
-                <i data-lucide="arrow-left" class="w-4 h-4 mr-2"></i> Back to Orders
-            </a>
-            <div class="flex gap-3 w-full sm:w-auto">
-                <button onclick="window.print()" class="flex-1 sm:flex-none bg-surface border border-secondary/20 hover:bg-secondary/5 text-secondary px-5 py-2.5 rounded-xl font-bold text-sm transition-colors flex items-center justify-center shadow-sm">
-                    <i data-lucide="printer" class="w-4 h-4 mr-2"></i> Print
-                </button>
-                <button class="flex-1 sm:flex-none bg-surface border border-secondary/20 hover:bg-secondary/5 text-secondary px-5 py-2.5 rounded-xl font-bold text-sm transition-colors flex items-center justify-center shadow-sm">
-                    <i data-lucide="download" class="w-4 h-4 mr-2"></i> Save PDF
-                </button>
-            </div>
-        </div>
-
-        <div class="bg-surface rounded-3xl p-6 md:p-12 border border-secondary/10 shadow-soft dark:shadow-dark-soft print-shadow-none relative overflow-hidden flex flex-col">
-            
-            <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 opacity-80 no-print"></div>
-            
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-secondary/10 pb-8 mb-8 gap-6">
-                <div>
-                    <h1 class="font-bold text-4xl tracking-tight text-secondary mb-1">Fabyle</h1>
-                    <p class="text-xs font-semibold text-secondary/50 uppercase tracking-widest">Auctions & Gallery Shop</p>
-                </div>
-                <div class="text-left md:text-right">
-                    <div class="text-3xl font-bold text-secondary mb-1">INVOICE</div>
-                    <div class="text-sm font-semibold text-secondary/60">#FA-8891</div>
+        <div class="w-full max-w-4xl">
+            <div class="flex justify-between items-center mb-6 no-print animate-fade-in">
+                <a href="../Orders/" class="text-sm font-bold text-secondary/60 hover:text-secondary flex items-center transition-colors">
+                    <i data-lucide="arrow-left" class="w-4 h-4 mr-2"></i> Back to Orders
+                </a>
+                <div class="flex gap-3">
+                    <button onclick="window.print()" class="bg-surface border border-secondary/10 hover:bg-secondary/5 text-secondary px-5 py-2.5 rounded-xl text-sm font-bold shadow-sm flex items-center transition-colors">
+                        <i data-lucide="printer" class="w-4 h-4 mr-2"></i> Print Invoice
+                    </button>
+                    <button class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl text-sm font-bold shadow-glow-blue flex items-center transition-transform hover:-translate-y-0.5">
+                        <i data-lucide="download" class="w-4 h-4 mr-2"></i> Download PDF
+                    </button>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
-                <div>
-                    <h3 class="text-[10px] font-bold text-secondary/50 uppercase tracking-widest mb-3">Billed To</h3>
-                    <div class="text-base font-bold text-secondary mb-1">Nick Shenker</div>
-                    <div class="text-sm font-medium text-secondary/70 leading-relaxed">
-                        123 Collector's Lane<br>
-                        Suite 4B<br>
-                        New York, NY 10012<br>
-                        nick.shenker@example.com
+            <div class="print-container bg-surface rounded-[2rem] shadow-soft border border-secondary/5 p-8 md:p-12 animate-slide-up">
+                
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b print-border border-secondary/10 pb-8 mb-8">
+                    <div>
+                        <div class="font-black text-4xl tracking-tighter print-text-black text-secondary mb-2">Fabyle<span class="text-blue-600">.</span></div>
+                        <p class="text-xs font-semibold print-text-black text-secondary/60">2912 Avenue T<br>Brooklyn, NY 11229<br>info@fabyle.com</p>
                     </div>
-                </div>
-                <div class="md:text-right">
-                    <div class="mb-4">
-                        <h3 class="text-[10px] font-bold text-secondary/50 uppercase tracking-widest mb-1">Date Issued</h3>
-                        <div class="text-sm font-bold text-secondary">April 14, 2026</div>
-                    </div>
-                    <div class="mb-4">
-                        <h3 class="text-[10px] font-bold text-secondary/50 uppercase tracking-widest mb-1">Due Date</h3>
-                        <div class="text-sm font-bold text-red-500 flex items-center md:justify-end">
-                            <i data-lucide="clock" class="w-4 h-4 mr-2"></i> April 17, 2026
+                    <div class="mt-6 md:mt-0 text-left md:text-right">
+                        <h1 class="text-3xl font-black print-text-black text-secondary uppercase tracking-tight mb-2">Invoice</h1>
+                        <p class="text-sm font-bold print-text-black text-secondary/60">Invoice #: <span class="text-secondary print-text-black">INV-2026042</span></p>
+                        <p class="text-sm font-bold print-text-black text-secondary/60">Date: <span class="text-secondary print-text-black">May 28, 2026</span></p>
+                        <div class="inline-flex mt-3 bg-red-500/10 text-red-600 text-xs font-bold px-3 py-1 rounded-md uppercase tracking-widest border border-red-500/20 print-bg-gray print-border">
+                            Pending Payment
                         </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+                    <div>
+                        <p class="text-[10px] font-bold uppercase tracking-widest print-text-black text-secondary/40 mb-2">Billed To</p>
+                        <h3 class="text-base font-bold print-text-black text-secondary">Jonathan Collector</h3>
+                        <p class="text-sm font-medium print-text-black text-secondary/70 leading-relaxed">
+                            123 Main Street<br>
+                            Apt 4B<br>
+                            New York, NY 10001<br>
+                            jonathan.c@example.com
+                        </p>
                     </div>
                     <div>
-                        <h3 class="text-[10px] font-bold text-secondary/50 uppercase tracking-widest mb-2">Status</h3>
-                        <span class="inline-flex items-center bg-orange-500/10 text-orange-600 text-xs font-bold px-3 py-1 rounded border border-orange-500/20 uppercase tracking-widest">
-                            <i data-lucide="alert-circle" class="w-3.5 h-3.5 mr-1.5"></i> Pending Payment
-                        </span>
+                        <p class="text-[10px] font-bold uppercase tracking-widest print-text-black text-secondary/40 mb-2">Shipped To</p>
+                        <h3 class="text-base font-bold print-text-black text-secondary">Jonathan Collector</h3>
+                        <p class="text-sm font-medium print-text-black text-secondary/70 leading-relaxed">
+                            123 Main Street<br>
+                            Apt 4B<br>
+                            New York, NY 10001<br>
+                            FedEx Priority Overnight
+                        </p>
                     </div>
                 </div>
-            </div>
 
-            <div class="overflow-x-auto mb-8">
-                <table class="w-full text-left border-collapse min-w-[800px]">
-                    <thead>
-                        <tr class="text-[10px] uppercase tracking-widest text-secondary/50 border-b border-secondary/10 bg-secondary/5">
-                            <th class="py-4 px-4 font-bold rounded-tl-xl w-2/5">Item & Description</th>
-                            <th class="py-4 px-4 font-bold text-center">Type</th>
-                            <th class="py-4 px-4 font-bold text-right">Hammer Price</th>
-                            <th class="py-4 px-4 font-bold text-right">Premium (20%)</th>
-                            <th class="py-4 px-4 font-bold text-right rounded-tr-xl">Total Amount</th>
-                        </tr>
-                    </thead>
-                    <tbody class="text-sm font-semibold text-secondary">
-                        <tr class="border-b border-secondary/5 hover:bg-secondary/5 transition-colors">
-                            <td class="py-5 px-4">
-                                <div class="flex items-center gap-4">
-                                    <div class="w-16 h-16 bg-secondary/10 rounded-xl shrink-0 flex items-center justify-center relative overflow-hidden">
-                                        <div class="absolute inset-0 bg-gradient-to-tr from-transparent to-secondary/10"></div>
-                                        <i data-lucide="image" class="w-6 h-6 text-secondary/40"></i>
-                                    </div>
-                                    <div>
-                                        <div class="font-bold text-base mb-1">Shedeur Sanders 3/3 Patch Card</div>
-                                        <div class="text-xs text-secondary/60 font-medium mb-1">Lot #42 - Spring Sports Premiere</div>
-                                        <div class="text-xs text-secondary/60 font-medium">
-                                            <span class="font-bold text-secondary">Model/Serial:</span> FA-TCG-33
+                <div class="overflow-x-auto mb-8 border print-border border-secondary/10 rounded-xl">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-secondary/5 print-bg-gray">
+                                <th class="py-3 px-4 text-[10px] font-bold uppercase tracking-widest print-text-black text-secondary/50 border-b print-border border-secondary/10">Item Description</th>
+                                <th class="py-3 px-4 text-[10px] font-bold uppercase tracking-widest print-text-black text-secondary/50 border-b print-border border-secondary/10 text-right">Hammer Price</th>
+                                <th class="py-3 px-4 text-[10px] font-bold uppercase tracking-widest print-text-black text-secondary/50 border-b print-border border-secondary/10 text-right">Buyer's Premium</th>
+                                <th class="py-3 px-4 text-[10px] font-bold uppercase tracking-widest print-text-black text-secondary/50 border-b print-border border-secondary/10 text-right">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm print-text-black text-secondary divide-y print-border divide-secondary/5">
+                            
+                            <tr>
+                                <td class="py-4 px-4 align-top">
+                                    <div class="flex items-center gap-4">
+                                        <div class="w-16 h-16 bg-secondary/5 rounded-lg flex shrink-0 items-center justify-center p-2 print-bg-gray">
+                                            <img src="https://i.imgur.com/4h3ULRm.jpg" class="max-w-full max-h-full object-contain mix-blend-multiply dark:mix-blend-normal">
+                                        </div>
+                                        <div>
+                                            <div class="font-bold mb-1 line-clamp-2 print-text-black">Vintage 1952 Topps Mickey Mantle PSA 9 Mint</div>
+                                            <div class="text-[10px] uppercase tracking-widest print-text-black text-secondary/50 font-bold">Model: PSA-48921</div>
                                         </div>
                                     </div>
-                                </div>
-                            </td>
-                            <td class="py-5 px-4 text-center">
-                                <span class="bg-blue-500/10 text-blue-500 text-[10px] font-bold px-2 py-0.5 rounded border border-blue-500/20 whitespace-nowrap">Auction Win</span>
-                            </td>
-                            <td class="py-5 px-4 text-right text-base text-secondary/80">$5,900.00</td>
-                            <td class="py-5 px-4 text-right text-base text-blue-500">$1,180.00</td>
-                            <td class="py-5 px-4 text-right font-bold text-lg text-secondary">$7,080.00</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+                                </td>
+                                <td class="py-4 px-4 align-top text-right font-semibold print-text-black">$15,000.00</td>
+                                <td class="py-4 px-4 align-top text-right print-text-black">
+                                    <div class="font-semibold text-secondary print-text-black">$750.00</div>
+                                    <div class="text-[10px] text-blue-600 print-text-black font-bold uppercase tracking-widest">(5% Tier)</div>
+                                </td>
+                                <td class="py-4 px-4 align-top text-right font-black print-text-black">$15,750.00</td>
+                            </tr>
 
-            <div class="flex flex-col md:flex-row justify-between items-end gap-8 mb-12">
-                
-                <div class="w-full md:w-1/2 bg-secondary/5 rounded-xl p-5 border border-secondary/10">
-                    <h3 class="text-[10px] font-bold text-secondary/50 uppercase tracking-widest mb-2">Notes & Terms</h3>
-                    <p class="text-xs font-medium text-secondary/70 leading-relaxed">
-                        All auction wins include a standard 20% buyer's premium based on the final hammer price. 
-                        Items are shipped fully insured within 2 business days of payment clearance. 
-                        All sales are final per the Fabyle User Agreement.
-                    </p>
+                            <tr>
+                                <td class="py-4 px-4 align-top">
+                                    <div class="flex items-center gap-4">
+                                        <div class="w-16 h-16 bg-secondary/5 rounded-lg flex shrink-0 items-center justify-center p-2 print-bg-gray">
+                                            <img src="https://i.imgur.com/kDbBjXw.jpg" class="max-w-full max-h-full object-contain mix-blend-multiply dark:mix-blend-normal">
+                                        </div>
+                                        <div>
+                                            <div class="font-bold mb-1 line-clamp-2 print-text-black">Original 1977 Star Wars Movie Poster Signed</div>
+                                            <div class="text-[10px] uppercase tracking-widest print-text-black text-secondary/50 font-bold">Model: JSA-9921</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="py-4 px-4 align-top text-right font-semibold print-text-black">$5,500.00</td>
+                                <td class="py-4 px-4 align-top text-right print-text-black">
+                                    <div class="font-semibold text-secondary print-text-black">$550.00</div>
+                                    <div class="text-[10px] text-blue-600 print-text-black font-bold uppercase tracking-widest">(10% Tier)</div>
+                                </td>
+                                <td class="py-4 px-4 align-top text-right font-black print-text-black">$6,050.00</td>
+                            </tr>
+
+                            <tr>
+                                <td class="py-4 px-4 align-top">
+                                    <div class="flex items-center gap-4">
+                                        <div class="w-16 h-16 bg-secondary/5 rounded-lg flex shrink-0 items-center justify-center p-2 print-bg-gray">
+                                            <img src="https://i.imgur.com/05TR14U.jpg" class="max-w-full max-h-full object-contain mix-blend-multiply dark:mix-blend-normal">
+                                        </div>
+                                        <div>
+                                            <div class="font-bold mb-1 line-clamp-2 print-text-black">Charizard 1st Edition Base Set Holographic</div>
+                                            <div class="text-[10px] uppercase tracking-widest print-text-black text-secondary/50 font-bold">Model: BGS-10</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="py-4 px-4 align-top text-right font-semibold print-text-black">$800.00</td>
+                                <td class="py-4 px-4 align-top text-right print-text-black">
+                                    <div class="font-semibold text-secondary print-text-black">$120.00</div>
+                                    <div class="text-[10px] text-blue-600 print-text-black font-bold uppercase tracking-widest">(15% Tier)</div>
+                                </td>
+                                <td class="py-4 px-4 align-top text-right font-black print-text-black">$920.00</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
                 </div>
 
-                <div class="w-full md:w-1/3 space-y-3">
-                    <div class="flex justify-between items-center text-sm font-semibold text-secondary/70">
-                        <span>Item Subtotal</span>
-                        <span>$7,080.00</span>
+                <div class="flex justify-end mb-10">
+                    <div class="w-full md:w-1/2 lg:w-1/3 space-y-3">
+                        <div class="flex justify-between items-center text-sm font-semibold print-text-black text-secondary/70">
+                            <span>Item Subtotal</span>
+                            <span class="print-text-black text-secondary">$22,720.00</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm font-semibold print-text-black text-secondary/70">
+                            <span>NY Sales Tax (8.875%)</span>
+                            <span class="print-text-black text-secondary">$2,016.40</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm font-semibold print-text-black text-secondary/70 border-b print-border border-secondary/10 pb-3">
+                            <span>Shipping & Insurance</span>
+                            <span class="print-text-black text-secondary">$150.00</span>
+                        </div>
+                        <div class="flex justify-between items-center text-lg font-black print-text-black text-secondary pt-1">
+                            <span>Total Due</span>
+                            <span class="text-blue-600 print-text-black">$24,886.40</span>
+                        </div>
                     </div>
-                    <div class="flex justify-between items-center text-sm font-semibold text-secondary/70">
-                        <span>Insured Shipping</span>
-                        <span>$150.00</span>
-                    </div>
-                    <div class="flex justify-between items-center text-sm font-semibold text-secondary/70">
-                        <span>Sales Tax (0.0%)</span>
-                        <span>$0.00</span>
-                    </div>
-                    <div class="h-px bg-secondary/10 my-2"></div>
-                    <div class="flex justify-between items-center">
-                        <span class="text-sm font-bold text-secondary uppercase tracking-widest">Total Due</span>
-                        <span class="text-2xl font-bold text-blue-500">$7,230.00</span>
+                </div>
+
+                <div class="no-print bg-secondary/5 rounded-2xl p-6 border border-secondary/10">
+                    <h4 class="text-sm font-bold text-secondary mb-4 tracking-tight">Select Payment Method</h4>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                        <button class="bg-surface hover:bg-white border border-secondary/10 rounded-xl p-4 flex flex-col items-center justify-center gap-2 transition-all hover:shadow-md hover:-translate-y-1 group">
+                            <i data-lucide="credit-card" class="w-6 h-6 text-secondary/50 group-hover:text-blue-600 transition-colors"></i>
+                            <span class="text-xs font-bold text-secondary">Credit Card</span>
+                        </button>
+                        <button class="bg-surface hover:bg-white border border-secondary/10 rounded-xl p-4 flex flex-col items-center justify-center gap-2 transition-all hover:shadow-md hover:-translate-y-1 group">
+                            <svg class="w-6 h-6 text-secondary/50 group-hover:text-[#00457C] transition-colors" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.053.309-.092.499l-.036.17-.036.171c-.007.039-.013.08-.02.122-.058.334-.121.67-.197.994-.037.158-.077.319-.118.477-.023.093-.048.188-.074.282-.048.175-.098.351-.151.526-.035.114-.07.23-.106.344-.06.188-.12.378-.184.567-.04.116-.081.233-.124.35-.07.195-.143.39-.219.585-.045.116-.091.232-.138.348-.077.191-.158.381-.24.572-.052.118-.106.236-.16.353-.086.185-.175.369-.267.553-.06.117-.12.235-.181.352-.096.18-.194.358-.295.536-.067.118-.135.235-.205.352-.107.172-.218.344-.33.515-.076.115-.152.23-.23.345-.12.164-.242.327-.367.489-.085.111-.17.221-.258.331-.132.155-.268.309-.406.462-.095.105-.19.21-.288.314-.147.146-.296.29-.448.433-.105.099-.211.198-.318.295-.16.136-.324.27-.492.403-.117.091-.235.182-.354.272-.178.125-.358.247-.542.368-.128.083-.257.165-.389.245-.196.112-.395.221-.598.328-.142.074-.286.146-.432.217-.215.1-.433.197-.655.291-.156.064-.313.125-.473.185-.236.085-.476.167-.719.245-.17.054-.343.107-.517.158-.258.072-.519.141-.784.205-.186.044-.375.085-.566.124-.282.057-.568.109-.857.156-.204.033-.409.064-.617.091-.307.042-.619.08-.934.113-.223.023-.448.043-.676.06-.334.025-.673.044-1.015.057-.245.01-.493.017-.743.02H7.076zm4.568-15.347c-1.396 0-2.483.56-3.13 1.616-.628 1.22-.647 2.924-.047 4.908.156.516.353 1.05.587 1.597.026.06.052.12.079.18.241.562.518 1.127.835 1.691.042.075.085.15.128.225.323.57.684 1.135 1.082 1.691.06.082.12.164.181.246.401.558.838 1.107 1.31 1.644.077.087.155.174.234.261.474.526.982 1.036 1.523 1.527.096.086.192.172.289.257.545.478 1.121.933 1.727 1.362.115.08.23.16.347.239.605.412 1.238.795 1.896 1.144.135.07.27.14.406.209.658.333 1.341.629 2.046.885l.006-.027c-.201-.1-.397-.205-.591-.314-.135-.075-.269-.153-.402-.232-.56-.328-1.096-.689-1.606-1.08-.112-.086-.223-.174-.332-.262-.489-.395-.952-.816-1.388-1.258-.09-.09-.178-.182-.266-.274-.419-.444-.811-.91-1.176-1.392-.07-.094-.139-.188-.207-.283-.347-.482-.667-.981-.96-1.493-.05-.088-.1-.176-.148-.265-.276-.511-.524-1.033-.743-1.562-.032-.078-.063-.156-.094-.235-.2-.524-.372-1.055-.515-1.591.688.083 1.378.136 2.062.158 1.761.056 3.251-.235 4.397-.859 1.171-.637 1.942-1.593 2.274-2.813.111-.408.188-.84.228-1.282.008-.088.014-.176.019-.265.04-1.04-.047-2.007-.253-2.85-.015-.06-.03-.12-.046-.18-.21-.861-.53-1.63-.941-2.285-.022-.036-.045-.072-.068-.108-.42-.656-.932-1.196-1.516-1.607-.038-.027-.076-.053-.114-.08-.588-.41-1.246-.708-1.954-.882-.04-.01-.08-.02-.12-.029-.714-.171-1.477-.247-2.266-.226l-1.096.03z"/>
+                            </svg>
+                            <span class="text-xs font-bold text-secondary">PayPal</span>
+                        </button>
+                        <button class="bg-surface hover:bg-white border border-secondary/10 rounded-xl p-4 flex flex-col items-center justify-center gap-2 transition-all hover:shadow-md hover:-translate-y-1 group">
+                            <i data-lucide="building" class="w-6 h-6 text-secondary/50 group-hover:text-green-600 transition-colors"></i>
+                            <span class="text-xs font-bold text-secondary">Wire Transfer</span>
+                        </button>
+                        <button class="bg-surface hover:bg-white border border-secondary/10 rounded-xl p-4 flex flex-col items-center justify-center gap-2 transition-all hover:shadow-md hover:-translate-y-1 group">
+                            <i data-lucide="mail" class="w-6 h-6 text-secondary/50 group-hover:text-purple-600 transition-colors"></i>
+                            <span class="text-xs font-bold text-secondary">Mail Check</span>
+                        </button>
                     </div>
                 </div>
 
             </div>
-
-            <div class="border-t border-secondary/10 pt-8 no-print">
-                <h3 class="text-lg font-bold text-secondary mb-6 flex items-center">
-                    <i data-lucide="wallet" class="w-5 h-5 mr-2 text-blue-500"></i> Select Payment Method
-                </h3>
-                
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <button class="bg-surface border border-secondary/20 hover:border-blue-500 hover:bg-blue-500/5 p-4 md:p-6 rounded-2xl flex flex-col items-center justify-center gap-3 transition-all group shadow-sm">
-                        <div class="p-3 bg-secondary/5 rounded-full group-hover:bg-white group-hover:shadow-sm transition-colors">
-                            <i data-lucide="credit-card" class="w-6 h-6 text-secondary/60 group-hover:text-blue-500"></i>
-                        </div>
-                        <span class="font-bold text-sm text-secondary">Credit Card</span>
-                    </button>
-                    
-                    <button class="bg-surface border border-secondary/20 hover:border-blue-500 hover:bg-blue-500/5 p-4 md:p-6 rounded-2xl flex flex-col items-center justify-center gap-3 transition-all group shadow-sm">
-                        <div class="p-3 bg-secondary/5 rounded-full group-hover:bg-white group-hover:shadow-sm transition-colors">
-                            <i data-lucide="smartphone" class="w-6 h-6 text-secondary/60 group-hover:text-[#00457C]"></i>
-                        </div>
-                        <span class="font-bold text-sm text-secondary">PayPal</span>
-                    </button>
-                    
-                    <button class="bg-surface border border-secondary/20 hover:border-blue-500 hover:bg-blue-500/5 p-4 md:p-6 rounded-2xl flex flex-col items-center justify-center gap-3 transition-all group shadow-sm">
-                        <div class="p-3 bg-secondary/5 rounded-full group-hover:bg-white group-hover:shadow-sm transition-colors">
-                            <i data-lucide="landmark" class="w-6 h-6 text-secondary/60 group-hover:text-blue-500"></i>
-                        </div>
-                        <span class="font-bold text-sm text-secondary whitespace-nowrap">Wire Transfer</span>
-                    </button>
-                    
-                    <button class="bg-surface border border-secondary/20 hover:border-blue-500 hover:bg-blue-500/5 p-4 md:p-6 rounded-2xl flex flex-col items-center justify-center gap-3 transition-all group shadow-sm">
-                        <div class="p-3 bg-secondary/5 rounded-full group-hover:bg-white group-hover:shadow-sm transition-colors">
-                            <i data-lucide="mail" class="w-6 h-6 text-secondary/60 group-hover:text-blue-500"></i>
-                        </div>
-                        <span class="font-bold text-sm text-secondary">Mail Check</span>
-                    </button>
-                </div>
-            </div>
-
-            <div class="mt-16 pt-8 border-t border-secondary/10 text-center text-xs font-medium text-secondary/40">
-                <p>Thank you for choosing Fabyle.</p>
-                <p class="mt-1">Fabyle LLC • 100 Art District Way, New York, NY 10001 • support@fabyle.com</p>
-            </div>
-
         </div>
     </main>
 
-    <footer class="bg-secondary text-primary pt-12 md:pt-16 pb-8 transition-colors duration-300 mt-auto border-t border-secondary/10">
+    <footer class="no-print bg-secondary text-primary pt-16 pb-8 mt-auto relative z-10 border-t border-secondary/10">
         <div class="max-w-[1400px] mx-auto px-6">
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-8 mb-12 md:mb-16 text-sm">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 mb-16 text-sm">
                 <div>
-                    <h4 class="font-bold mb-4 md:mb-6 text-primary text-base">Features</h4>
-                    <ul class="space-y-2 md:space-y-3 text-primary/70 font-medium">
-                        <li><a href="../UpcomingAuctions/" class="hover:text-primary transition-colors">Bid</a></li>
+                    <h4 class="font-bold mb-6 text-primary text-base">Features</h4>
+                    <ul class="space-y-3 text-primary/70 font-medium">
+                        <li><a href="../UpcomingAuctions/" class="hover:text-primary transition-colors">Buy</a></li>
                         <li><a href="../Consign/" class="hover:text-primary transition-colors">Sell</a></li>
                         <li><a href="../Signup/" class="hover:text-primary transition-colors">Sign Up</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-bold mb-4 md:mb-6 text-primary text-base">Legal</h4>
-                    <ul class="space-y-2 md:space-y-3 text-primary/70 font-medium">
+                    <h4 class="font-bold mb-6 text-primary text-base">Legal</h4>
+                    <ul class="space-y-3 text-primary/70 font-medium">
                         <li><a href="../PrivacyPolicy/" class="hover:text-primary transition-colors">Privacy Policy</a></li>
                         <li><a href="../TermsOfService/" class="hover:text-primary transition-colors">Terms of Service</a></li>
                         <li><a href="../SellerAgreement/" class="hover:text-primary transition-colors">Fabyle Seller Agreement</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-bold mb-4 md:mb-6 text-primary text-base">Company</h4>
-                    <ul class="space-y-2 md:space-y-3 text-primary/70 font-medium">
+                    <h4 class="font-bold mb-6 text-primary text-base">Company</h4>
+                    <ul class="space-y-3 text-primary/70 font-medium">
+                        <li><a href="#" class="hover:text-primary transition-colors">Meet Our Experts</a></li>
                         <li><a href="../Contact/" class="hover:text-primary transition-colors">Contact Us</a></li>
                         <li><a href="../FAQ/" class="hover:text-primary transition-colors">FAQ</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-bold mb-4 md:mb-6 text-primary text-base">Follow Us</h4>
-                    <div class="flex space-x-4 mb-6 md:mb-8">
+                    <h4 class="font-bold mb-6 text-primary text-base">Follow Us</h4>
+                    <div class="flex space-x-4 mb-8">
                         <a href="https://x.com/FabyleNYC" target="_blank" aria-label="X (Twitter)" class="text-primary/70 hover:text-primary p-2 bg-primary/10 rounded-full hover:bg-primary/20 transition-colors flex items-center justify-center w-10 h-10">
                             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
@@ -357,38 +396,31 @@
                             </svg>
                         </a>
                     </div>
-                    <div class="font-bold text-2xl md:text-3xl tracking-tight text-primary opacity-90">Fabyle</div>
+                    <div class="font-black text-3xl tracking-tighter text-primary">Fabyle<span class="text-blue-500">.</span></div>
                 </div>
             </div>
-            <div class="pt-6 md:pt-8 border-t border-primary/20 flex flex-col justify-between items-center text-xs text-primary/60 text-center md:text-left">
+            <div class="pt-8 border-t border-primary/10 flex flex-col justify-between items-center text-xs text-primary/50 text-center md:text-left font-medium">
                 <p>© 2026 Fabyle. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Safely initialize Lucide icons after the DOM is ready
-            lucide.createIcons();
+        lucide.createIcons();
 
-            const themeToggleBtn = document.getElementById('theme-toggle');
+        // Theme Toggle Logic
+        document.getElementById('theme-toggle').addEventListener('click', () => {
             const htmlElement = document.documentElement;
-            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-            const mobileMenu = document.getElementById('mobile-menu');
+            htmlElement.classList.toggle('dark');
+            localStorage.setItem('theme', htmlElement.classList.contains('dark') ? 'dark' : 'light');
+        });
 
-            if (themeToggleBtn) {
-                themeToggleBtn.addEventListener('click', () => {
-                    htmlElement.classList.toggle('dark');
-                    localStorage.setItem('theme', htmlElement.classList.contains('dark') ? 'dark' : 'light');
-                });
-            }
-
-            if (mobileMenuBtn && mobileMenu) {
-                mobileMenuBtn.addEventListener('click', () => {
-                    mobileMenu.classList.toggle('hidden');
-                    mobileMenu.classList.toggle('flex');
-                });
-            }
+        // Mobile Menu Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
         });
     </script>
 </body>
