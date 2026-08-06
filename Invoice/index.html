@@ -7,6 +7,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -71,13 +73,18 @@
                 size: letter;
                 margin: 0.5in;
             }
+            /* Strip all heights to prevent blank 2nd page */
             body, html {
                 background: white !important;
                 color: black !important;
                 padding: 0 !important;
                 margin: 0 !important;
-                /* Ensure it scales perfectly onto one page */
+                min-height: 0 !important;
+                height: auto !important;
                 zoom: 0.90; 
+            }
+            .min-h-screen {
+                min-height: 0 !important;
             }
             .no-print, nav, footer, .ambient-glow {
                 display: none !important;
@@ -86,6 +93,8 @@
                 padding: 0 !important;
                 margin: 0 !important;
                 display: block !important;
+                min-height: 0 !important;
+                height: auto !important;
             }
             /* Strip container padding and borders to maximize paper real estate */
             .print-container {
@@ -192,21 +201,21 @@
     <main class="w-full flex-grow relative z-10 py-10 px-4 flex justify-center">
         
         <div class="w-full max-w-4xl">
-            <div class="flex justify-between items-center mb-6 no-print animate-fade-in">
+            <div class="flex justify-between items-center mb-6 no-print animate-fade-in" id="action-bar">
                 <a href="../Orders/" class="text-sm font-bold text-secondary/60 hover:text-secondary flex items-center transition-colors">
                     <i data-lucide="arrow-left" class="w-4 h-4 mr-2"></i> Back to Orders
                 </a>
-                <div class="flex gap-3">
+                <div class="flex gap-3 flex-wrap justify-end">
                     <button onclick="window.print()" class="bg-surface border border-secondary/10 hover:bg-secondary/5 text-secondary px-5 py-2.5 rounded-xl text-sm font-bold shadow-sm flex items-center transition-colors">
-                        <i data-lucide="printer" class="w-4 h-4 mr-2"></i> Print Invoice
+                        <i data-lucide="printer" class="w-4 h-4 mr-2"></i> Print
                     </button>
-                    <button class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl text-sm font-bold shadow-glow-blue flex items-center transition-transform hover:-translate-y-0.5">
+                    <button id="download-btn" onclick="downloadPDF()" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl text-sm font-bold shadow-glow-blue flex items-center transition-transform hover:-translate-y-0.5">
                         <i data-lucide="download" class="w-4 h-4 mr-2"></i> Download PDF
                     </button>
                 </div>
             </div>
 
-            <div class="print-container bg-surface rounded-[2rem] shadow-soft border border-secondary/5 p-8 md:p-12 animate-slide-up">
+            <div class="print-container bg-surface rounded-[2rem] shadow-soft border border-secondary/5 p-8 md:p-12 animate-slide-up" id="invoice-document">
                 
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b print-border border-secondary/10 pb-8 mb-8">
                     <div>
@@ -343,7 +352,7 @@
                     </div>
                 </div>
 
-                <div class="no-print bg-secondary/5 rounded-2xl p-6 border border-secondary/10">
+                <div class="no-print bg-secondary/5 rounded-2xl p-6 border border-secondary/10" id="payment-options">
                     <h4 class="text-sm font-bold text-secondary mb-4 tracking-tight">Select Payment Method</h4>
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
                         <button class="bg-surface hover:bg-white border border-secondary/10 rounded-xl p-4 flex flex-col items-center justify-center gap-2 transition-all hover:shadow-md hover:-translate-y-1 group">
@@ -445,6 +454,36 @@
             mobileMenu.classList.toggle('hidden');
             mobileMenu.classList.toggle('flex');
         });
+
+        // Generate PDF using html2pdf
+        function downloadPDF() {
+            const element = document.getElementById('invoice-document');
+            const btn = document.getElementById('download-btn');
+            const paymentOptions = document.getElementById('payment-options');
+            
+            // Temporary hide payment options to ensure it doesn't get captured in the PDF
+            paymentOptions.style.display = 'none';
+            
+            // UI Feedback
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i data-lucide="loader-2" class="w-4 h-4 mr-2 animate-spin"></i> Generating...';
+            lucide.createIcons();
+
+            const opt = {
+                margin:       [0.5, 0.5, 0.5, 0.5], // Top, Left, Bottom, Right margins in inches
+                filename:     'Fabyle-Invoice-INV-2026042.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2, useCORS: true, windowWidth: 1000 },
+                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+            
+            html2pdf().set(opt).from(element).save().then(() => {
+                // Restore button and payment options
+                btn.innerHTML = originalText;
+                paymentOptions.style.display = '';
+                lucide.createIcons();
+            });
+        }
     </script>
 </body>
 </html>
